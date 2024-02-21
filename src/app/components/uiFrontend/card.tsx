@@ -8,7 +8,7 @@ export function CardComp() {
           translateZ="50"
           className="text-2xl md:text-xl lg:text-4xl font-bold text-neutral-600 dark:text-white"
         >
-          Orocorp - Digitizes and Maximizes user's gold potential
+          Orocorp - Digitizes and Maximizes user&apos;s gold potential
         </CardItem>
         <CardItem
           as="p"
