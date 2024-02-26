@@ -1,3 +1,4 @@
+import FooterComp from '../components/uiFrontend/footer'
 import { NavbarComp } from '../components/uiFrontend/navbar'
 import '../globals.css'
 // import { Header, Footer } from '@/components/Layout'
@@ -13,6 +14,7 @@ export default function ContentRootLayout({ children } : any) {
       {/* <Header /> */}
       <NavbarComp />
       {children}
+      <FooterComp />
       {/* <Footer /> */}
     </>
   )

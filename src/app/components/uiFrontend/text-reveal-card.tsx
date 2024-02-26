@@ -17,7 +17,7 @@ export function TextRevealCardPreview() {
           my story in simple hover
         </TextRevealCardTitle>
         <TextRevealCardDescription>
-          I turned from CS Engineer to Product designer to solve design related problems in this world.
+          I turned from Computer Science Engineer to self-taught Product designer to solve design related problems in this world.
         </TextRevealCardDescription>
       </TextRevealCard>
     </div>

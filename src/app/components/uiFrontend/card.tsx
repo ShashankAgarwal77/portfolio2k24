@@ -1,51 +1,66 @@
+"use client";
+
+import Image from "next/image";
+import React from "react";
 import { CardBody, CardContainer, CardItem } from "../Animations/3d-card";
 
-export function CardComp() {
-    return (
-        <CardContainer className="inter-var">
-      <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-        <CardItem
-          translateZ="50"
-          className="text-2xl md:text-xl lg:text-4xl font-bold text-neutral-600 dark:text-white"
-        >
-          Orocorp - Digitizes and Maximizes user&apos;s gold potential
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-500 text-lg max-w-sm mt-2 dark:text-neutral-300"
-        >
-          UX Case Study <br />
-          Time to Read : 15 minutes
-        </CardItem>
+import OroThumbnail from '/Portfolio/portfolio/public/Images/Introduction.png';
 
-        <CardItem translateZ="100" className="w-full mt-4">
-          <img
-            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            height={1000}
-            width={1000}
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-            alt="thumbnail"
-          />
-        </CardItem>
-        
-        <div className="flex justify-between items-center mt-20">
-          {/* <CardItem
-            translateZ={20}
-            as="button"
-            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-          >
-            Try now →
-          </CardItem> */}
+export function CardComp() {
+  return (
+    <div className="sm:w-full md:w-full lg:w-2/3">
+      <CardContainer
+        className="inter-var"
+        containerClassName="w-full"
+      >
+        <CardBody className="bg-gray-50 px-12 py-8 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl border hover:border-slate-400 mx-auto">
           <CardItem
-            translateZ={20}
-            as="button"
-            className="px-6 py-4 rounded-xl bg-black dark:bg-white dark:text-black text-white text-md font-bold"
+            translateZ="20"
+            className="sm:text-lg md:text-2xl lg:text-4xl font-bold text-neutral-600 dark:text-white"
           >
-            Read UX Case Study →
+            Orocorp - Digitizes and Maximizes user's gold potential
           </CardItem>
-        </div>
-      </CardBody>
-    </CardContainer>
-    );
+          <CardItem
+            as="p"
+            translateZ="15"
+            className="text-neutral-500 sm:text-sm md:text-lg lg:text-xl my-4 mb-8 dark:text-neutral-300"
+          >
+            Redefining the way people get gold loan in India <br />
+          </CardItem>
+          <CardItem
+            as="p"
+            translateZ="15"
+            className="text-neutral-500 sm:text-sm md:text-lg lg:text-xl my-4 mb-8 dark:text-neutral-300"
+          >
+            Key Takeaways : <br />
+            1. Reducing the gold loan booking time from 45 minutes to ~28 minutes <br />
+            2. Increasing the user engagement from 13.74% to 23.54% <br />
+            3. Achieving higher customer satisfaction and conversion rate <br />
+          </CardItem>
+
+          <CardItem translateZ="10" className="w-full mt-4">
+            <Image
+              src={OroThumbnail}
+              className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-between items-center mt-10">
+            <CardItem
+              // translateZ={20}
+              as="button"
+              className="inline-flex h-16 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 py-8 text-xl font-bold text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+            >
+              Read Full Case Study ➜
+            </CardItem>
+
+            
+  
+       
+      
+          </div>
+        </CardBody>
+      </CardContainer>
+    </div>
+  );
 }
