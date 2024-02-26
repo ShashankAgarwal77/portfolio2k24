@@ -7,7 +7,7 @@ const FooterComp = (): ReactNode => {
                 <div className='flex flex-wrap text-left lg:text-left'>
                     <div className='w-full lg:w-6/12 px-4'>
                         <h4 className="text-3xl font-semibold text-white">
-                            Let's Keep in touch!
+                            Let&apos;s Keep in touch!
                         </h4>
                         <p className='text-white'>asdasdasd</p>
                     </div>
