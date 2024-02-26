@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../Animations/3d-card";
 
-import OroThumbnail from '/Portfolio/portfolio/public/Images/Introduction.png';
+import OroThumbnail from '../../Assets/Images/Introduction.png';
 
 export function CardComp() {
   return (
