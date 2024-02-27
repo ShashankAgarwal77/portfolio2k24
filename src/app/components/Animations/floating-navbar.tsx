@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 const transition = {
   type: "spring",
@@ -28,7 +28,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer text-black hover:text-gray-400 dark:text-white"
       >
         {item}
       </motion.p>
@@ -59,7 +59,6 @@ export const MenuItem = ({
     </div>
   );
 };
-
 export const Menu = ({
   setActive,
   children,
@@ -70,7 +69,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-slate-50 dark:bg-black/[0.5] dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-8 "
+      className="relative rounded-full border border-slate-50 dark:bg-black/[0.5] dark:border-white/[0.2] bg-white shadow-input flex justify-center px-12 py-4"
     >
       {children}
     </nav>
@@ -86,10 +85,10 @@ export const ProductItem = ({
   title: string;
   description: string;
   href: string;
-  src: string;
+  src: StaticImageData;
 }) => {
   return (
-    <Link href={href} className="flex space-x-2">
+    <Link href={href} className="flex space-x-4">
       <Image
         src={src}
         width={140}
@@ -101,7 +100,7 @@ export const ProductItem = ({
         <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
           {title}
         </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
+        <p className="text-neutral-700 text-md max-w-[16rem] dark:text-neutral-300">
           {description}
         </p>
       </div>
@@ -113,7 +112,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
+      className="text-neutral-700 dark:text-neutral-200 hover:text-gray-400 "
     >
       {children}
     </Link>

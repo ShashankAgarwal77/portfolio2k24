@@ -18,7 +18,7 @@ const HeroSection = () => {
                     Product Designer with over 2 years of experience designing 6 highly cross-functional (0 to 1) products
                 </p>
             </div>
-
+            
             <div className='flex flex-col gap-4 mx-40 items-center'> {/* Removed justify-center */}
 
                 <Lamp />

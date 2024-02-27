@@ -6,7 +6,7 @@ export default function About() {
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         
         <div>
-          <p> About Page</p>
+          <h1> About Page</h1>
         </div>
       </main>
     );
