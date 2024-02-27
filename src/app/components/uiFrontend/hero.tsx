@@ -2,6 +2,7 @@ import React from 'react';
 import { CardComp } from './card';
 import { Lamp } from './lamp';
 import { BackgroundBeamsDemo } from './background-beams';
+import { TextGenerateEffectComp } from './text-generate-section';
 
 const HeroSection = () => {
     return (
@@ -25,14 +26,16 @@ const HeroSection = () => {
 
                 <div className='w-full flex flex-col items-center'> {/* Modified justify-center to items-center */}
                     <CardComp />
-                    <CardComp />
-                    <CardComp />
-
                 </div>
 
             </div>
 
+            <div className='h-screen flex flex-col justify-center mx-80'>
+            <TextGenerateEffectComp />
+            </div>
+            
         </div>
+
     )
 }
 

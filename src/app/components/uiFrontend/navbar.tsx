@@ -40,8 +40,10 @@ export function NavbarComp({ className }: { className?: string }) {
             </MenuItem>
 
             <HoveredLink href="/about">About</HoveredLink>
-          
+
+            <Link href="/">
             <Image src={logo} alt="Logo" className="w-40 h-16" />
+            </Link>
 
             <HoveredLink href="https://www.linkedin.com/in/shashank-agarwal11/">LinkedIn</HoveredLink>
             <HoveredLink href="https://www.linkedin.com/in/shashank-agarwal11/">Resume</HoveredLink>
