@@ -1,9 +1,9 @@
 "use client";
 import { TextGenerateEffect } from "../Animations/text-generate-effect";
 
-const words = `Enough with the work stuff 🧑‍💻 If you are interested to know about me, keep scrolling 🤗
+const words = `Computer science grad turned into Product Designer with over 2 years of experience designing 6 highly cross-functional (0 to 1) products.
 `;
 
-export function TextGenerateEffectComp() {
+export function TextGenerateSection() {
   return <TextGenerateEffect words={words} />;
 }

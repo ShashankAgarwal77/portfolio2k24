@@ -45,8 +45,8 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: inViewport ? 1 : 0 }} // Animate opacity based on inViewport state
+              initial={{ opacity: 0, textShadow: "none" }}
+              animate={{ opacity: inViewport ? 1 : 0, textShadow: inViewport ? "0 0 10px rgba(255,255,255,0.7)" : "none" }} // Animate opacity and text shadow based on inViewport state
               transition={{ duration: 1, delay: inViewport ? idx * 0.2 : 0 }} // Transition duration and delay based on inViewport state
               className="dark:text-white text-black"
             >
@@ -59,9 +59,9 @@ export const TextGenerateEffect = ({
   };
 
   return (
-    <div className={cn("font-medium", className)}>
+    <div className={cn("font-regular", className)}>
       <div className="mt-4">
-        <div className="dark:text-white text-black text-6xl leading-snug tracking-wide">
+        <div className="dark:text-white text-black sm:text-xl md:text-6xl lg:text-8xl leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>

@@ -2,7 +2,9 @@ import React from 'react';
 import { CardComp } from './card';
 import { Lamp } from './lamp';
 import { BackgroundBeamsDemo } from './background-beams';
-import { TextGenerateEffectComp } from './text-generate-section';
+import { TextGenerateHeading } from './text-generate-header';
+import { TextGenerateSection } from './text-generate-section';
+import { QuickKnowMe } from './quick-about-me';
 
 const HeroSection = () => {
     return (
@@ -13,7 +15,8 @@ const HeroSection = () => {
                     Hi, My name Shashank Agarwal
                 </p>
                 <h1 className="sm:text-xl md:text-4xl lg:text-8xl text-center text-white relative z-20">
-                    I craft products, interactions & stories
+                    <TextGenerateHeading />
+
                 </h1>
                 <p className="md:text-xl sm:text-xl lg:text-2xl font-normal text-center text-gray-400 relative z-20">
                     Product Designer with over 2 years of experience designing 6 highly cross-functional (0 to 1) products
@@ -28,10 +31,6 @@ const HeroSection = () => {
                     <CardComp />
                 </div>
 
-            </div>
-
-            <div className='h-screen flex flex-col justify-center mx-80'>
-            <TextGenerateEffectComp />
             </div>
             
         </div>
