@@ -1,46 +1,63 @@
 "use client";
-import React from "react";
-// import { calsans } from "@/fonts/calsans";
+
+import React, { useRef } from "react";
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
 
 export default function TracingBeamDemo() {
-  return (
-    <TracingBeam className="px-6 mx-auto my-40 overflow-y-clip">
-      <div className="max-w-7xl mx-auto antialiased pt-8 relative">
-        {dummyContent.map((item, index) => (
-          <div key={`content-${index}`} className="mb-10">
-            <h2 className="bg-white/[0.1] text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4">
-              {item.badge}
-            </h2>
-
-            <p className="sm:text-xl md:text-4xl lg:text-5xl text-white sm:mb-4 md:mb-6 lg:mb-8">
-              {item.title}
-            </p>
-
-            <div className="sm:text-sm md:text-md lg:text-lg text-slate-300 prose prose-sm dark:prose-invert">
-              {item?.image && (
-                <Image
-                  src={item.image}
-                  alt="blog thumbnail"
-                  height="2000"
-                  width="2000"
-                  className="rounded-lg mb-10 object-cover"
-                />
-              )}
-              {item.description}
-            </div>
+    const sidebarRef = useRef<HTMLDivElement | null>(null);
+    
+    return (
+        <div className="flex justify-between">
+        <TracingBeam className="px-6 mx-auto my-40 overflow-y-clip">
+          <div className="max-w-7xl mx-auto antialiased pt-8 relative">
+            {dummyContent.map((item, index) => (
+              <div key={`content-${index}`} id={`content-${index}`} className="mb-10">
+                <h2 className="bg-white/[0.1] text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4">
+                  {item.badge}
+                </h2>
+  
+                <p className="sm:text-xl md:text-4xl lg:text-5xl text-white sm:mb-4 md:mb-6 lg:mb-8">
+                  {item.title}
+                </p>
+  
+                <div className="sm:text-sm md:text-md lg:text-lg text-slate-300 prose prose-sm dark:prose-invert">
+                  {item?.image && (
+                    <Image
+                      src={item.image}
+                      alt="blog thumbnail"
+                      height="2000"
+                      width="2000"
+                      className="rounded-lg mb-10 object-cover"
+                    />
+                  )}
+                  {item.description}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </TracingBeam>
+  
+        <div className="hidden lg:flex fixed mx-20 my-80">
+          <div ref={sidebarRef} className="flex flex-col items-end">
+            <ul className="space-y-4">
+              {dummyContent.map((item, index) => (
+                <li key={`sidebar-item-${index}`}>
+                  <a href={`#content-${index}`} className="text-gray-400 hover:text-white">
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-    </TracingBeam>
   );
 }
 
 const dummyContent = [
   {
-    title: "Lorem Ipsum Dolor Sit Amet",
+    title: "Welcome to my Blog",
     description: (
       <>
         <p>
@@ -114,40 +131,5 @@ const dummyContent = [
     image:
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-  {
-    title: "Lorem Ipsum Dolor Sit Amet",
-    description: (
-      <>
-        <p>
-          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
-          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
-          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
-          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
-          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
-          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
-        </p>
-      </>
-    ),
-    badge: "Launch Week",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Lorem Ipsum Dolor Sit Amet",
-    description: (
-      <>
-        <p>
-          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
-          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
-          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
-          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
-          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
-          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
-        </p>
-      </>
-    ),
-    badge: "Launch Week",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
+  
 ];
