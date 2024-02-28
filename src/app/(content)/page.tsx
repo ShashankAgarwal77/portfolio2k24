@@ -1,5 +1,4 @@
 import React from "react";
-import { CardComp } from "../components/uiFrontend/oro-card";
 import HeroSection from "../components/uiFrontend/hero";
 
 export default function Home() {
