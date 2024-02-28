@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../Animations/3d-card";
 
 import OroThumbnail from '../../Assets/Images/Introduction.png';
 
-export function CardComp() {
+export function OroCard() {
   return (
     <div className="sm:w-full md:w-full lg:w-2/3">
       <CardContainer
@@ -45,6 +46,7 @@ export function CardComp() {
               alt="thumbnail"
             />
           </CardItem>
+          <Link href="/oro">
           <div className="flex justify-between items-center mt-10">
             <CardItem
               // translateZ={20}
@@ -54,6 +56,8 @@ export function CardComp() {
               Read Full Case Study ➜
             </CardItem>
           </div>
+          </Link>
+          
         </CardBody>
       </CardContainer>
     </div>
