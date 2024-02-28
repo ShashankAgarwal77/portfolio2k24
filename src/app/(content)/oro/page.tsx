@@ -7,8 +7,8 @@ import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation"
 
 export default function TracingBeamDemo() {
   return (
-    <TracingBeam className="px-6 my-40">
-      <div className="max-w-5xl mx-auto antialiased pt-8 relative">
+    <TracingBeam className="px-6 mx-auto my-40 overflow-y-clip">
+      <div className="max-w-7xl mx-auto antialiased pt-8 relative">
         {dummyContent.map((item, index) => (
           <div key={`content-${index}`} className="mb-10">
             <h2 className="bg-white/[0.1] text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4">
@@ -24,8 +24,8 @@ export default function TracingBeamDemo() {
                 <Image
                   src={item.image}
                   alt="blog thumbnail"
-                  height="1000"
-                  width="1000"
+                  height="2000"
+                  width="2000"
                   className="rounded-lg mb-10 object-cover"
                 />
               )}
