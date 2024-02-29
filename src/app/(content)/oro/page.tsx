@@ -5,6 +5,8 @@ import Image from "next/image";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
 import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
 
+import Orothumbnail from '@/app/Assets/Images/OroThumbnailpng.png';
+
 
 export default function TracingBeamDemo() {
     const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -45,11 +47,11 @@ export default function TracingBeamDemo() {
                 {item.badge}
               </h2>
 
-              <p className="sm:text-xl md:text-4xl lg:text-5xl text-white sm:mb-4 md:mb-6 lg:mb-8">
+              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-4xl lg:leading-normal lg:text-5xl text-white sm:mb-4 md:mb-6 lg:mb-8">
                 {item.title}
               </p>
 
-              <div className="sm:text-sm md:text-md lg:text-lg text-slate-300 prose prose-sm dark:prose-invert">
+              <div className="md:leading-normal md:text-lg lg:leading-relaxed lg:text-xl text-slate-400 prose prose-sm dark:prose-invert">
                 {item?.image && (
                   <Image
                     src={item.image}
@@ -97,7 +99,7 @@ const dummyContent = [
       <div className="flex sm:flex-col lg:flex-row justify-between">
         <div className="flex flex-col gap-y-8 mr-40">
             <h4 className="text-4xl">My Roles & Responsibilites</h4>
-            <ul className="list-disc text-justify">
+            <ul className="list-disc text-justify leading-loose text-normal">
               <li><b> UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implimenting UX Laws and much more</li>
               <li> <b> UI Design : </b> Multiple Iterations and Ideation on Low & High Fidelity Wireframes and Mockups..</li>
               <li>Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).</li>
@@ -122,8 +124,7 @@ const dummyContent = [
       </>
     ),
     badge: "UI/UX Case Study",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: Orothumbnail,
   },
   {
     title: "Hello Amigo, Hola",

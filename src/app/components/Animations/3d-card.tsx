@@ -118,7 +118,7 @@ export const CardItem = ({
   return (
     <Tag
       ref={ref}
-      className={cn("w-full h-full transition duration-200 ease-linear overflow-hidden", className)}
+      className={cn("w-full h-full transition duration-200 ease-linear ", className)}
       {...rest}
     >
       {children}

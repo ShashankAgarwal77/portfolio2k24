@@ -35,9 +35,9 @@ export function NavbarComp({ className }: { className?: string }) {
       })}
       style={{ justifyContent: "center" }}
     >
-      <div className="flex justify-between mx-auto">
+      <div className="flex justify-between mx-auto font-bold">
         <Menu setActive={setActive}>
-          <div className="flex flex-row items-center justify-around px-10 space-x-16">
+          <div className="flex items-center justify-around px-10 space-x-16">
             <MenuItem setActive={setActive} active={active} item="Hobby">
               <div className="sm:text-sm md:text-md lg:text-lg grid grid-cols-2 space-x-6 gap-y-12 p-6">
                 <ProductItem

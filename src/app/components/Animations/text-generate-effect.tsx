@@ -48,7 +48,7 @@ export const TextGenerateEffect = ({
               initial={{ opacity: 0, textShadow: "none" }}
               animate={{ opacity: inViewport ? 1 : 0, textShadow: inViewport ? "0 0 10px rgba(255,255,255,0.7)" : "none" }} // Animate opacity and text shadow based on inViewport state
               transition={{ duration: 1, delay: inViewport ? idx * 0.2 : 0 }} // Transition duration and delay based on inViewport state
-              className="dark:text-white text-black"
+              className={`dark:text-white text-black ${idx == wordsArray.length - 1 ? "fontGloock" : ""}`}
             >
               {word}{" "}
             </motion.span>

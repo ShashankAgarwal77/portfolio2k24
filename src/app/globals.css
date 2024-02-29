@@ -4,12 +4,7 @@
 
 @font-face {
   font-family: 'Eudoxus_Sans';
-  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansExtraLight.ttf') format('truetype');
-  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansLight.ttf') format('truetype');
   src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansRegular.ttf') format('truetype');
-  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansMedium.ttf') format('truetype');
-  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansBold.ttf') format('truetype');
-  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansExtraBold.ttf') format('truetype');
 }
 
 @font-face {
@@ -49,4 +44,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.fontGloock {
+  font-family: "Gloock";
+  font-style: italic;
 }
