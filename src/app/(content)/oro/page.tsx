@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
+import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
 
 
 export default function TracingBeamDemo() {
@@ -66,7 +67,8 @@ export default function TracingBeamDemo() {
       </TracingBeam>
 
       <div className="hidden lg:flex fixed mx-20 my-80">
-        <div ref={sidebarRef} className="flex flex-col items-end">
+        <div ref={sidebarRef} className="flex flex-col items-start">
+        <h2 className="text-slate-500 text-md uppercase font-bold mb-4">Content</h2>
           <ul className="space-y-4 w-48">
             {dummyContent.map((item, index) => (
               <li key={`sidebar-item-${index}`}>
@@ -92,22 +94,29 @@ const dummyContent = [
     title: "Orocorp - Redefining the way people get gold loan in India",
     description: (
       <>
-      <div className="flex sm:flex-col lg:flex-row space-between justify-between gap-x-16">
-        <div className="flex flex-col gap-y-6">
+      <div className="flex sm:flex-col lg:flex-row justify-between">
+        <div className="flex flex-col gap-y-8 mr-40">
             <h4 className="text-4xl">My Roles & Responsibilites</h4>
-            <ul className="list-disc">
+            <ul className="list-disc text-justify">
               <li><b> UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implimenting UX Laws and much more</li>
-              <li>UI Design : Multiple Iterations and Ideation on Low & High Fidelity Wireframes and Mockups..</li>
+              <li> <b> UI Design : </b> Multiple Iterations and Ideation on Low & High Fidelity Wireframes and Mockups..</li>
               <li>Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).</li>
             </ul>
           </div>
-          <div className="flex flex-col justify-between content-between">
-            <h4 className="text-4xl">My Roles & Responsibilites</h4>
-            <ul className="list-disc">
-              <li>UX Analysis : Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implimenting UX Laws and much more</li>
-              <li>UI Design : Multiple Iterations and Ideation on Low & High Fidelity Wireframes and Mockups..</li>
-              <li>Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).</li>
-            </ul>
+          <div className="flex flex-col align-left">
+            <h4 className="text-4xl">Shoutouts</h4>
+            <div className=" flex flex-col h-full justify-center">
+              <AnimatedTooltipCard />
+
+            </div>
+            {/* <ul className="list-disc">
+              <li>Sreekesh Krishnan, Co-founder & CTO</li>
+              <li>Pragadeesh Kannan, PD</li>
+              <li>Manikandan Logathan, PD</li>
+              <li>Dhruv Bhatnagar, SWE</li>
+              <li>Soundarya Ramesh, Visual Designer</li>
+              <li>Yash Satechi, PM</li>
+            </ul> */}
           </div>
       </div>
       </>

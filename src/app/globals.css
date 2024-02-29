@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Eudoxus_Sans';
+  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansExtraLight.ttf') format('truetype');
+  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansLight.ttf') format('truetype');
+  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansRegular.ttf') format('truetype');
+  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansMedium.ttf') format('truetype');
+  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansBold.ttf') format('truetype');
+  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gloock';
+  src: url('./Assets/fonts/Gloock/Gloock-Regular.ttf') format('truetype');
+  
+}
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -25,6 +41,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+    font-family: 'Eudoxus_Sans', sans-serif;
 }
 
 @layer utilities {

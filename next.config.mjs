@@ -2,7 +2,7 @@
 
 const nextConfig = {
     images: {
-      domains: ['images.unsplash.com', 'pbs.twimg.com'], // Add both domains here
+      domains: ['images.unsplash.com', 'pbs.twimg.com', 'media.licdn.com', 'mir-s3-cdn-cf.behance.net'], // Add both domains here
     },
   };
   
