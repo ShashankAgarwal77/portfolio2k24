@@ -14,7 +14,7 @@ export function OroCard() {
         className="inter-var"
         containerClassName="w-full"
       >
-        <CardBody className="bg-gray-50 px-12 py-8 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl border hover:border-slate-400 mx-auto">
+        <CardBody className="bg-gray-50 px-12 py-8 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl border hover:border-slate-600 mx-auto">
           <CardItem
             translateZ="20"
             className="sm:text-lg md:text-2xl lg:text-4xl font-bold text-neutral-600 dark:text-white"

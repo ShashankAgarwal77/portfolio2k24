@@ -3,8 +3,6 @@ import { OroCard } from './oro-card';
 import { Lamp } from './lamp';
 import { BackgroundBeamsDemo } from './background-beams';
 import { TextGenerateHeading } from './text-generate-header';
-import { TextGenerateSection } from './text-generate-section';
-import { QuickKnowMe } from './quick-about-me';
 
 const HeroSection = () => {
     return (

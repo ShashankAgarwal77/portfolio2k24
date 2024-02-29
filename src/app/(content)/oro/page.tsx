@@ -3,9 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
-import { MacbookScrollComp} from "@/app/components/uiFrontend/macbook-scroll";
 
-import OroThumbnail from '@/app/Assets/Images/Introduction.png';
 
 export default function TracingBeamDemo() {
     const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +34,7 @@ export default function TracingBeamDemo() {
 
         <div className="flex flex-col justify-between">
 
-      <MacbookScrollComp />
+      {/* <MacbookScrollComp /> */}
 
       <TracingBeam className="px-6 mx-auto my-40 overflow-y-clip">
         <div className="max-w-7xl mx-auto antialiased pt-8 relative">
@@ -178,5 +176,6 @@ const dummyContent = [
     image:
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  
   
 ];

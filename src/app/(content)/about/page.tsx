@@ -2,7 +2,6 @@
 
 import { BackgroundBeamsDemo } from "@/app/components/Animations/background-beamsAnimation";
 import { GridBackground } from "@/app/components/uiFrontend/gridBackground";
-import { QuickKnowMe } from "@/app/components/uiFrontend/quick-about-me";
 import { TextGenerateSection } from "@/app/components/uiFrontend/text-generate-section";
 import React from "react";
 // import { CardComp } from "../components/uiFrontend/card";
