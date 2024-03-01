@@ -14,7 +14,7 @@ export function Lamp() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className=" bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center sm:text-xl font-bold tracking-wide text-transparent md:text-4xl lg:text-6xl "
+        className=" bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center sm:text-xl font-bold tracking-wide text-transparent md:text-3xl lg:text-5xl"
       >
         Here is my selected work to showcase
       </motion.h1>

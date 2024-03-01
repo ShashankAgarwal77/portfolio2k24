@@ -23,10 +23,8 @@ const HeroSection = () => {
                 
             </div>
             
-            <div className='flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center'> {/* Removed justify-center */}
-
+            <div className='flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center -gap-y-4'> {/* Removed justify-center */}
                 <Lamp />
-
                 <div className='w-full flex flex-col items-center mb-16'> {/* Modified justify-center to items-center */}
                     <OroCard />
                 </div>

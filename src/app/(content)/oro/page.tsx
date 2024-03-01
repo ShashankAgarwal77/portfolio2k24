@@ -5,7 +5,7 @@ import Image from "next/image";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
 import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
 
-import Orothumbnail from '@/app/Assets/Images/OroThumbnailpng.png';
+import Orothumbnail from '@/app/Assets/Images/Introduction.png';
 
 
 export default function TracingBeamDemo() {
@@ -35,23 +35,23 @@ export default function TracingBeamDemo() {
     return (
 
 
-        <div className="flex flex-col justify-between">
+    <div className="flex flex-col justify-between">
 
       {/* <MacbookScrollComp /> */}
 
       <TracingBeam className="px-6 mx-auto my-40 overflow-y-clip">
-        <div className="max-w-7xl mx-auto antialiased pt-8 relative">
+        <div className="max-w-6xl mx-auto antialiased pt-8 relative">
           {dummyContent.map((item, index) => (
             <div key={`content-${index}`} id={`content-${index}`} className="mb-10">
               <h2 className="bg-white/[0.1] text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4">
                 {item.badge}
               </h2>
 
-              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-4xl lg:leading-normal lg:text-5xl text-white sm:mb-4 md:mb-6 lg:mb-8">
+              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-2xl lg:leading-normal lg:text-4xl text-white sm:mb-4 md:mb-6 lg:mb-8">
                 {item.title}
               </p>
 
-              <div className="md:leading-normal md:text-lg lg:leading-loose lg:text-xl tracking-wide light:text-neutral-600 dark:text-neutral-300 prose prose-sm dark:prose-invert">
+              <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide light:text-neutral-600 dark:text-neutral-300 prose prose-sm dark:prose-invert">
                 {item?.image && (
                   <Image
                     src={item.image}
@@ -68,19 +68,19 @@ export default function TracingBeamDemo() {
         </div>
       </TracingBeam>
 
-      <div className="hidden lg:flex fixed mx-20 my-80">
+      <div className="hidden lg:flex fixed mx-10 my-40">
         <div ref={sidebarRef} className="flex flex-col items-start">
-        <h2 className="text-slate-500 text-md uppercase font-bold mb-4">Content</h2>
+        <h2 className="text-neutral-600 text-md uppercase font-bold mb-4">Content</h2>
           <ul className="space-y-4 w-48">
             {dummyContent.map((item, index) => (
               <li key={`sidebar-item-${index}`}>
                 <a
                   href={`#content-${index}`}
-                  className={`text-gray-400 hover:text-white ${
-                    activeSection === index ? "font-bold" : ""
+                  className={`text-neutral-500 hover:text-white  ${
+                    activeSection === index ? "text-white" : ""
                   }`}
                 >
-                  {item.title}
+                  {item.badge}
                 </a>
               </li>
             ))}
@@ -97,7 +97,7 @@ const dummyContent = [
     description: (
       <>
       <div className="flex sm:flex-col lg:flex-row justify-between">
-        <div className="flex flex-col gap-y-8 mr-40">
+        <div className="flex flex-col gap-y-6 mr-20">
             <h4 className="text-4xl">My Roles & Responsibilites</h4>
             <ul className="list-disc text-justify leading-loose text-normal">
               <li><b> UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implimenting UX Laws and much more</li>
@@ -105,86 +105,83 @@ const dummyContent = [
               <li>Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).</li>
             </ul>
           </div>
-          <div className="flex flex-col align-left">
+          <div className="flex flex-col gap-y-6">
             <h4 className="text-4xl">Shoutouts</h4>
-            <div className=" flex flex-col h-full justify-center">
+            <div className=" flex flex-col ">
               <AnimatedTooltipCard />
-
             </div>
-            {/* <ul className="list-disc">
-              <li>Sreekesh Krishnan, Co-founder & CTO</li>
-              <li>Pragadeesh Kannan, PD</li>
-              <li>Manikandan Logathan, PD</li>
-              <li>Dhruv Bhatnagar, SWE</li>
-              <li>Soundarya Ramesh, Visual Designer</li>
-              <li>Yash Satechi, PM</li>
-            </ul> */}
+            <div className="flex flex-col gap-y-6">
+            <h4 className="text-4xl">Status & Timeline</h4>
+            <ul className="list-disc text-justify leading-loose text-normal">
+              <li>2 Months, Designed Handoff done in March 2022</li>
+              <li> Overall Work Period : January 2022 to October 2023</li>
+              <li>Product Designer @ Orocorp, Tech Office is in Chennai, I worked remotely</li>
+            </ul>
+            </div>
           </div>
       </div>
       </>
     ),
-    badge: "UI/UX Case Study",
+    badge: "Overview",
+    // image: Orothumbnail,
+  },
+
+  {
+    title: "Orocorp - Redefining the way people get gold loan in India",
+    description: (
+      <>
+      <p>
+        In Janauray 2022, Oro decided to redesign their product offerings & expand their business to new cities. To achieve this they need to ship more refined and polished product which users can easily use. <br />
+        <br />
+        I worked as a Product designer, desiging & leading the end to end design direction of the mobile experience for core users which drive the main business of the company. <br />
+        <br />
+        The app and website launch was met with outstanding end customer response, alongside 127% increase in user engagement in first month itself. <br />
+      </p>
+      </>
+    ),
+    badge: "Introduction",
     image: Orothumbnail,
   },
+
   {
-    title: "Hello Amigo, Hola",
+    title: "Transforming Gold Loan Services: Enhancing User Experience and Streamlining Interfaces in India",
     description: (
       <>
-        <p>
-          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
-          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
-          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
-          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
-          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
-          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
-        </p>
-        <p>
-          In dolore veniam excepteur eu est et sunt velit. Ipsum sint esse
-          veniam fugiat esse qui sint ad sunt reprehenderit do qui proident
-          reprehenderit. Laborum exercitation aliqua reprehenderit ea sint
-          cillum ut mollit.
-        </p>
+      <p>
+      In India, there is no seamless experience that handles doorstep gold loan service that customers are truly satisfied with. <br />
+      <br />
+      One of the key challenges we aimed to address was improving the overall user experience for our customers seeking instant gold loans. By understanding their pain points and needs, we strived to create a seamless borrowing journey that instilled trust and confidence in our services. Additionally, we aimed to streamline the interfaces of our Customer App, Partner App, and Admin Dashboard, making them more intuitive and user-friendly. <br />
+      </p>
       </>
     ),
-    badge: "Changelog",
-    image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    badge: "Problem",
+    image: "https://cdn.sanity.io/images/loniby3f/production/869d098d3a409093a549b5ecb29c2aba5a94c2bd-3840x2160.png",
   },
+
   {
-    title: "Lorem Ipsum Dolor Sit Amet",
+    title: "Simplifying Doorstep Gold Loans for Indians with Enhanced UI/UX",
     description: (
       <>
-        <p>
-          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
-          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
-          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
-          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
-          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
-          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
-        </p>
+      <p>
+      Research, strategize & design an mobile application to help Indian's get doorstep gold loans, with a focus to improve UI & UX in-app. Which results reduce the gold loan application time from 45 minutes to ~28 minutes.
+      </p>
       </>
     ),
-    badge: "Launch Week",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    badge: "Objective",
+    // image: Orothumbnail,
   },
-   {
-    title: "Lorem Ipsum Dolor Sit Amet",
+
+  {
+    title: "Design process I followed is Double Diamond",
     description: (
       <>
-        <p>
-          Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat
-          deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation
-          non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur
-          sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea
-          velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam
-          commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.
-        </p>
+      <p>
+      Following a user-centered design approach, we embarked on a comprehensive design process. We ideated, prototyped, and iterated on various solutions, considering user feedback and stakeholder input at each stage. We created customer journey maps that visualized the borrower's end-to-end experience, enabling us to identify opportunities for improvement and streamline the loan application process.
+      </p>
       </>
     ),
-    badge: "Launch Week",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    badge: "Process",
+    image: "https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",
   },
   
   
