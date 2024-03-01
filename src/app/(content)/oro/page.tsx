@@ -96,12 +96,12 @@ const dummyContent = [
     title: "Orocorp - Redefining the way people get gold loan in India",
     description: (
       <>
-      <div className="flex sm:flex-col lg:flex-row justify-between">
-        <div className="flex flex-col gap-y-6 mr-20">
-            <h4 className="text-4xl">My Roles & Responsibilites</h4>
+        <div className="flex sm:flex-col lg:flex-row justify-between">
+          <div className="flex flex-col gap-y-6 mr-20">
+            <h4 className="text-4xl">My Roles &amp; Responsibilities</h4>
             <ul className="list-disc text-justify leading-loose text-normal">
-              <li><b> UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implimenting UX Laws and much more</li>
-              <li> <b> UI Design : </b> Multiple Iterations and Ideation on Low & High Fidelity Wireframes and Mockups..</li>
+              <li><b> UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implementing UX Laws and much more</li>
+              <li><b> UI Design :</b> Multiple Iterations and Ideation on Low &amp; High Fidelity Wireframes and Mockups..</li>
               <li>Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).</li>
             </ul>
           </div>
@@ -111,15 +111,15 @@ const dummyContent = [
               <AnimatedTooltipCard />
             </div>
             <div className="flex flex-col gap-y-6">
-            <h4 className="text-4xl">Status & Timeline</h4>
-            <ul className="list-disc text-justify leading-loose text-normal">
-              <li>2 Months, Designed Handoff done in March 2022</li>
-              <li> Overall Work Period : January 2022 to October 2023</li>
-              <li>Product Designer @ Orocorp, Tech Office is in Chennai, I worked remotely</li>
-            </ul>
+              <h4 className="text-4xl">Status &amp; Timeline</h4>
+              <ul className="list-disc text-justify leading-loose text-normal">
+                <li>2 Months, Designed Handoff done in March 2022</li>
+                <li>Overall Work Period : January 2022 to October 2023</li>
+                <li>Product Designer @ Orocorp, Tech Office is in Chennai, I worked remotely</li>
+              </ul>
             </div>
           </div>
-      </div>
+        </div>
       </>
     ),
     badge: "Overview",
@@ -127,21 +127,22 @@ const dummyContent = [
   },
 
   {
-    title: "Orocorp - Redefining the way people get gold loan in India",
+    title: "It all started in January 2022",
     description: (
       <>
-      <p>
-        In Janauray 2022, Oro decided to redesign their product offerings & expand their business to new cities. To achieve this they need to ship more refined and polished product which users can easily use. <br />
-        <br />
-        I worked as a Product designer, desiging & leading the end to end design direction of the mobile experience for core users which drive the main business of the company. <br />
-        <br />
-        The app and website launch was met with outstanding end customer response, alongside 127% increase in user engagement in first month itself. <br />
-      </p>
+        <p>
+          In January 2022, Oro decided to redesign their product offerings &amp; expand their business to new cities. To achieve this they need to ship more refined and polished product which users can easily use. <br />
+          <br />
+          I worked as a Product designer, designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company. <br />
+          <br />
+          The app and website launch was met with outstanding end customer response, alongside 127% increase in user engagement in the first month itself. <br />
+        </p>
       </>
     ),
     badge: "Introduction",
     image: Orothumbnail,
   },
+
 
   {
     title: "Transforming Gold Loan Services: Enhancing User Experience and Streamlining Interfaces in India",
