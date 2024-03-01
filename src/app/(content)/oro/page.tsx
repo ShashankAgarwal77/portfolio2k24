@@ -100,9 +100,9 @@ const dummyContent = [
           <div className="flex flex-col gap-y-6 mr-20">
             <h4 className="text-4xl">My Roles &amp; Responsibilities</h4>
             <ul className="list-disc text-justify leading-loose text-normal">
-              <li><b>UX Analysis:</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implementing UX Laws, and much more</li>
-              <li><b>UI Design:</b> Multiple Iterations and Ideation on Low &amp; High Fidelity Wireframes and Mockups</li>
-              <li>Make vision easily understandable to the Stakeholders, PMs, Developers in (UX, Software, Product)</li>
+              <li><b>UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implementing UX Laws and much more</li>
+              <li><b>UI Design :</b> Multiple Iterations and Ideation on Low &amp; High Fidelity Wireframes and Mockups..</li>
+              <li>Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).</li>
             </ul>
           </div>
           <div className="flex flex-col gap-y-6">
@@ -114,7 +114,7 @@ const dummyContent = [
               <h4 className="text-4xl">Status &amp; Timeline</h4>
               <ul className="list-disc text-justify leading-loose text-normal">
                 <li>2 Months, Designed Handoff done in March 2022</li>
-                <li>Overall Work Period: January 2022 to October 2023</li>
+                <li>Overall Work Period : January 2022 to October 2023</li>
                 <li>Product Designer @ Orocorp, Tech Office is in Chennai, I worked remotely</li>
               </ul>
             </div>
@@ -131,11 +131,11 @@ const dummyContent = [
     description: (
       <>
         <p>
-          In January 2022, Oro decided to redesign their product offerings &amp; expand their business to new cities. To achieve this, they needed to ship a more refined and polished product which users can easily use. <br />
+          In January 2022, Oro decided to redesign their product offerings &amp; expand their business to new cities. To achieve this they need to ship more refined and polished product which users can easily use. <br />
           <br />
           I worked as a Product designer, designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company. <br />
           <br />
-          The app and website launch were met with an outstanding end-customer response, alongside a 127% increase in user engagement in the first month itself. <br />
+          The app and website launch was met with outstanding end customer response, alongside 127% increase in user engagement in the first month itself. <br />
         </p>
       </>
     ),
@@ -148,11 +148,11 @@ const dummyContent = [
     title: "Transforming Gold Loan Services: Enhancing User Experience and Streamlining Interfaces in India",
     description: (
       <>
-        <p>
-          In India, there is no seamless experience that handles doorstep gold loan service that customers are truly satisfied with. <br />
-          <br />
-          One of the key challenges we aimed to address was improving the overall user experience for our customers seeking instant gold loans. By understanding their pain points and needs, we strived to create a seamless borrowing journey that instilled trust and confidence in our services. Additionally, we aimed to streamline the interfaces of our Customer App, Partner App, and Admin Dashboard, making them more intuitive and user-friendly. <br />
-        </p>
+      <p>
+      In India, there is no seamless experience that handles doorstep gold loan service that customers are truly satisfied with. <br />
+      <br />
+      One of the key challenges we aimed to address was improving the overall user experience for our customers seeking instant gold loans. By understanding their pain points and needs, we strived to create a seamless borrowing journey that instilled trust and confidence in our services. Additionally, we aimed to streamline the interfaces of our Customer App, Partner App, and Admin Dashboard, making them more intuitive and user-friendly. <br />
+      </p>
       </>
     ),
     badge: "Problem",
@@ -163,9 +163,9 @@ const dummyContent = [
     title: "Simplifying Doorstep Gold Loans for Indians with Enhanced UI/UX",
     description: (
       <>
-        <p>
-          Research, strategize & design a mobile application to help Indians get doorstep gold loans, with a focus to improve UI & UX in the app. This resulted in reducing the gold loan application time from 45 minutes to ~28 minutes.
-        </p>
+      <p>
+      Research, strategize &amp; design an mobile application to help Indian&apos;s get doorstep gold loans, with a focus to improve UI &amp; UX in-app. Which results reduce the gold loan application time from 45 minutes to ~28 minutes.
+      </p>
       </>
     ),
     badge: "Objective",
@@ -176,9 +176,9 @@ const dummyContent = [
     title: "Design process I followed is Double Diamond",
     description: (
       <>
-        <p>
-          Following a user-centered design approach, we embarked on a comprehensive design process. We ideated, prototyped, and iterated on various solutions, considering user feedback and stakeholder input at each stage. We created customer journey maps that visualized the borrower's end-to-end experience, enabling us to identify opportunities for improvement and streamline the loan application process.
-        </p>
+      <p>
+      Following a user-centered design approach, we embarked on a comprehensive design process. We ideated, prototyped, and iterated on various solutions, considering user feedback and stakeholder input at each stage. We created customer journey maps that visualized the borrower&apos;s end-to-end experience, enabling us to identify opportunities for improvement and streamline the loan application process.
+      </p>
       </>
     ),
     badge: "Process",
