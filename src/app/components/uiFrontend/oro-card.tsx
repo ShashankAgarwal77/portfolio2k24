@@ -17,7 +17,7 @@ export function OroCard() {
         <CardBody className="bg-gray-50 px-12 py-8 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl border hover:border-slate-600 mx-auto">
           <CardItem
             translateZ="10"
-            className="sm:text-lg md:text-2xl lg:text-4xl font-bold tracking-wide leading-relaxed text-neutral-600 dark:text-white"
+            className="sm:text-lg md:text-2xl lg:text-4xl font-bold tracking-wide text-neutral-600 dark:text-white"
           >
             Orocorp - Digitizes and Maximizes user&apos;s gold potential
           </CardItem>
@@ -51,7 +51,7 @@ export function OroCard() {
             <CardItem
               // translateZ={20}
               as="button"
-              className="inline-flex h-16 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 py-8 text-xl font-bold text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="inline-flex h-16 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 py-8 text-xl font-bold text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
             >
               Read Full Case Study ➜
             </CardItem>

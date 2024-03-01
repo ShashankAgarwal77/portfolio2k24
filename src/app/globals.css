@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Eudoxus_Sans';
-  src: url('./Assets/fonts/Eudoxus-Sans/EudoxusSansRegular.ttf') format('truetype');
+  font-family: 'PP_NeueMontreal';
+  src: url('./Assets/fonts/PPNeueMontreal/ppneuemontreal-medium.woff') format('woff');
 }
 
 @font-face {
@@ -37,7 +37,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 
-    font-family: 'Eudoxus_Sans', sans-serif;
+    font-family: 'PP_NeueMontreal', sans-serif;
 }
 
 @layer utilities {

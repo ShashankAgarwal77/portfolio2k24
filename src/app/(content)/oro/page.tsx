@@ -51,7 +51,7 @@ export default function TracingBeamDemo() {
                 {item.title}
               </p>
 
-              <div className="md:leading-normal md:text-lg lg:leading-relaxed lg:text-xl text-slate-400 prose prose-sm dark:prose-invert">
+              <div className="md:leading-normal md:text-lg lg:leading-loose lg:text-xl tracking-wide light:text-neutral-600 dark:text-neutral-300 prose prose-sm dark:prose-invert">
                 {item?.image && (
                   <Image
                     src={item.image}
