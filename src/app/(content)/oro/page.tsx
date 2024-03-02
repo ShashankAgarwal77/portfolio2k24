@@ -386,8 +386,6 @@ const dummyContent = [
       </>
     ),
     badge: "Conclusion",
-    images:
-      ["https://cdn.sanity.io/images/loniby3f/production/258845651104cc46d8161f0c6043744a1606c0f2-2876x1608.gif", "https://cdn.sanity.io/images/loniby3f/production/9e94a1e7453604e2d21285f8da97aefa0d9592dc-3840x2160.png", "https://cdn.sanity.io/images/loniby3f/production/1f99306611d4ecd2711765549851fb90379baf3d-3840x4486.png", "https://cdn.sanity.io/images/loniby3f/production/159cb63a2b2fcc7635829dfdcbd79add9dcad81a-951x716.png"]
 
   },
 ];
