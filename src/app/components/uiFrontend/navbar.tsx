@@ -29,7 +29,7 @@ export function NavbarComp({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("flex flex-col justify-between center fixed top-10 inset-x-0 mx-auto z-50 text-xl transition-all tracking-wide", className, {
+      className={cn("navbar_comp flex flex-col justify-between center fixed top-10 inset-x-0 mx-auto z-50 text-xl transition-all tracking-wide", className, {
         "opacity-0": !visible,
         "pointer-events-none": !visible,
       })}
@@ -59,7 +59,7 @@ export function NavbarComp({ className }: { className?: string }) {
             <HoveredLink href="/about">About</HoveredLink>
 
             <Link href="/">
-              <Image src={logo} alt="Logo" className="w-40 h-16" />
+              <Image src={logo} alt="Logo" className="w-40 h-16 invert dark:invert-0" />
             </Link>
 
             <HoveredLink href="https://www.linkedin.com/in/shashank-agarwal11/">LinkedIn</HoveredLink>

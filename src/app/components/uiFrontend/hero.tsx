@@ -8,15 +8,15 @@ const HeroSection = () => {
     return (
         <div className='flex flex-col justify-center sm:overflow-hidden md:overflow-hidden lg:overflow-hidden'>
             <BackgroundBeamsDemo />
-            <div className='flex flex-col items-center justify-center h-screen'>
+            <div className='flex flex-col items-center justify-center lg:h-screen'>
                 <div className='flex flex-col sm:gap-y-4 md:gap-y-6 items-left justify-center sm:mx-10 md:mx-20 lg:mx-40'>
-                    <p className="md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-neutral-300 z-1 tracking-wide">
+                    <p className="md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-300 z-1 tracking-wide">
                         Hi, my name is Shashank Agarwal
                     </p>
                     <h1 className="relative z-1">
                         <TextGenerateHeading />
                     </h1>
-                    <p className="md:leading-relaxed md:text-lg lg:leading-relaxed lg:text-2xl text-neutral-400 leading-relaxed z-1 tracking-wide">
+                    <p className="md:leading-relaxed md:text-lg lg:leading-relaxed lg:text-2xl text-slate-400 leading-relaxed z-1 tracking-wide">
                         Product Designer with over 2 years of experience designing 6 highly cross-functional (0 to 1) products
                     </p>
                 </div>

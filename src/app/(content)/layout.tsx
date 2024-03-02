@@ -5,7 +5,7 @@ import '../globals.css'
 // import 'react-toastify/dist/ReactToastify.css'
 export const metadata = {
   description: 'A UX portfolio website of Shashank Agarwal. Designed & Developed by Shashank Agarwal using NextJs, Typescript and Framer Motion',
-  title: 'Shashank Aagrwal - Product Designer',
+  title: 'Shashank Agarwal - Product Designer',
 }
 
 export default function ContentRootLayout({ children } : any) {
