@@ -80,9 +80,8 @@ export default function TracingBeamDemo() {
               <li key={`sidebar-item-${index}`}>
                 <a
                   href={`#content-${index}`}
-                  className={`text-neutral-500 hover:text-white  ${
-                    activeSection === index ? "text-white" : ""
-                  }`}
+                  className={`text-neutral-500 hover:text-white  ${activeSection === index ? "text-white" : ""
+                    }`}
                 >
                   {item.badge}
                 </a>
@@ -90,6 +89,7 @@ export default function TracingBeamDemo() {
             ))}
           </ul>
         </div>
+
       </div>
     </div>
   );
@@ -238,4 +238,95 @@ const dummyContent = [
     image:
       "https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",
   },
+
+  {
+    title: "Lacked understanding of app navigation which leads too much time to complete booking appointment",
+    description: (
+      <>
+        <ul className="list-disc">
+          <li>Based on the data metrics I received from product & design managers and data analysts.</li>
+          <li>Defined the problems such as complicated loan booking appointment, unclear loan terms & lack of transparency and navigation.</li>
+          <li>End users are looking for easy to navigate app.</li>
+          <li>End users need well designed application.</li>
+        </ul>
+        <br />
+        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+      </>
+    ),
+    badge: "Empathize",
+    // image:
+    //   "https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",
+  },
+
+  {
+    title: "After taking enough insights from users, managers & analytics team. It’s time to defined the process",
+    description: (
+      <>
+        <ul className="list-disc">
+          <li>Based on the gathered data, it is important to recreated the user journey mapping of targeted audience</li>
+          <li>So I created user persona & new user journey mapping (optimized the whole flow from 12 phases into 9 phases)</li>
+          <li>User Journey includes : Journey Phases, Actions, Experience, Pain Points, Opportunities and Emotions Touchpoints</li>
+          <li>Presented our insights in front of stakeholders, PMs and tech team to align and show the vision of revamped flow</li>
+        </ul>
+
+        <br />
+        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        <br />
+
+        <h4 className="text-2xl pb-4">Key Takeaways from Customer Journey Mapping</h4>
+
+        <ul className="list-disc">
+          <li>Customer feels lack of trust when installed app first time</li>
+          <li>Customer are struggling by pressing the small CTA that is hard to reach</li>
+          <li>Customer find it hard to understand all of the terms of gold loan</li>
+          <li>Customer find it hard to manage gold loan for repayments</li>
+          <li>Customer feels insecure about gold stored at faculity</li>
+        </ul>
+
+        <br />
+        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        <br />
+
+
+        <h4 className="text-3xl pb-4">Once mapping is done, it’s time to understand what competitors are doing ?</h4>
+        <p>
+        I conducted competitor analysis on Google Sheets and categorized this activitiy into sub modules such as :
+        </p>
+        <ul className="list-disc">
+          <li>General Information : Competitor Type, Location, Product Offering, Price, Business Size and Targeted Audience</li>
+          <li>First Impression : Desktop Website Experience, Mobile and App Experience</li>
+          <li>Interaction : Features, Accessibility, User Flow and Navigation</li>
+          <li>Visual Design : Brand Identity</li>
+          <li>Content : Tone and Descriptiveness</li>
+        </ul>
+        <br />
+        <p>Insights : I found even competitors have great product features but the execution such as well designed product is still main concern, so this could be our opportinuity to create more seamless well designed product</p>
+
+      </>
+    ),
+    badge: "Conceptualize",
+    image:
+      "https://cdn.sanity.io/images/loniby3f/production/22cf51beb4d39c4a79bbf45c9c396011690d4232-7680x12104.png",
+  },
+
+  {
+    title: "We were on a tight deadline and developers need to start developing soon.",
+    description: (
+      <>
+        <ul className="list-disc">
+          <li>So we sit for kickoff call and start gathering inspiration from multiple apps out there</li>
+          <li>Once wireframes of particular phase is finalized with start with the content finalization</li>
+          <li>Once content is finalized, we started with the visual UI design</li>
+          <li>There are certain spacing, icons and font guidelines which are defined. so we use them for our visual design</li>
+          <li>Using the visual design system helps me to create UI faster</li>
+        </ul>
+      </>
+    ),
+    badge: "Design",
+    image:
+      "https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png",
+      
+      
+  },
+
 ];
