@@ -54,15 +54,16 @@ export default function TracingBeamDemo() {
               </p>
 
               <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide light:text-slate-600 dark:text-slate-300 prose prose-sm dark:prose-invert">
-                {item?.image && (
+                {item.images && item.images.map((image, imgIndex) => (
                   <Image
-                    src={item.image}
-                    alt="blog thumbnail"
+                    key={`image-${imgIndex}`}
+                    src={image as string} // Type assertion
+                    alt={`blog thumbnail ${imgIndex}`}
                     height="2000"
                     width="2000"
                     className="rounded-lg mb-10 object-cover"
                   />
-                )}
+                ))}
                 {item.description}
               </div>
             </div>
@@ -138,8 +139,7 @@ const dummyContent = [
           </div>
         </div>
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        
       </>
     ),
     badge: "Overview",
@@ -164,12 +164,11 @@ const dummyContent = [
           month itself. <br />
         </p>
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        
       </>
     ),
     badge: "Introduction",
-    image: Orothumbnail,
+    images: [Orothumbnail],
   },
 
   {
@@ -190,13 +189,11 @@ const dummyContent = [
           intuitive and user-friendly. <br />
         </p>
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
-      </>
+         </>
     ),
     badge: "Problem",
-    image:
-      "https://cdn.sanity.io/images/loniby3f/production/869d098d3a409093a549b5ecb29c2aba5a94c2bd-3840x2160.png",
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/869d098d3a409093a549b5ecb29c2aba5a94c2bd-3840x2160.png",]
   },
 
   {
@@ -209,8 +206,7 @@ const dummyContent = [
           &amp; UX in-app. Which results reduce the gold loan application time
           from 45 minutes to ~28 minutes.
         </p>
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        
       </>
     ),
     badge: "Objective",
@@ -230,13 +226,12 @@ const dummyContent = [
           opportunities for improvement and streamline the loan application
           process.
         </p>
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+     
       </>
     ),
     badge: "Process",
-    image:
-      "https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",]
   },
 
   {
@@ -249,8 +244,7 @@ const dummyContent = [
           <li>End users are looking for easy to navigate app.</li>
           <li>End users need well designed application.</li>
         </ul>
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+
       </>
     ),
     badge: "Empathize",
@@ -290,7 +284,7 @@ const dummyContent = [
 
         <h4 className="text-3xl pb-4">Once mapping is done, it’s time to understand what competitors are doing ?</h4>
         <p>
-        I conducted competitor analysis on Google Sheets and categorized this activitiy into sub modules such as :
+          I conducted competitor analysis on Google Sheets and categorized this activitiy into sub modules such as :
         </p>
         <ul className="list-disc">
           <li>General Information : Competitor Type, Location, Product Offering, Price, Business Size and Targeted Audience</li>
@@ -305,8 +299,8 @@ const dummyContent = [
       </>
     ),
     badge: "Conceptualize",
-    image:
-      "https://cdn.sanity.io/images/loniby3f/production/22cf51beb4d39c4a79bbf45c9c396011690d4232-7680x12104.png",
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/22cf51beb4d39c4a79bbf45c9c396011690d4232-7680x12104.png",]
   },
 
   {
@@ -323,10 +317,77 @@ const dummyContent = [
       </>
     ),
     badge: "Design",
-    image:
-      "https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png",
-      
-      
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png", "https://cdn.sanity.io/images/loniby3f/production/f8bc264455f340f9a4c9124343bc59ee269e6d87-3864x2184.png"]
+
   },
 
+  {
+    title: "Once product & design requirements are done. It’s our duty to give proper guidelines to the developers for polished development",
+    description: (
+      <>
+        <p>
+          Throughout the journey, I was collaborating closely with developers and product managers, we implemented the redesigned interfaces for the Customer App, Partner App, and Admin Dashboard. Throughout the implementation phase, we conducted rigorous testing to ensure the usability and functionality of the new designs. Any issues or challenges that arose were addressed promptly, resulting in a seamless transition to the enhanced user interfaces.
+        </p>
+        <ul className="list-disc">
+          <li>Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers</li>
+        </ul>
+      </>
+    ),
+    badge: "Deliver",
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/8186a6d61181c956ce13aff184cf3776a466caca-2000x1208.png"]
+
+  },
+
+  {
+    title: "Redesign the Customer App for Oromoney Product reduced the gold loan booking time from 45 minutes to ~28 minutes",
+    description: (
+      <>
+        <p>
+        The implementation of the revamped interfaces and improved user experience had a significant positive impact. Customer satisfaction increased as they found it easier to navigate the loan application process, understand the loan terms, and access relevant information. We observed a substantial reduction in customer drop-offs during the loan application as well as new customer journey through landing pages, leading to a higher conversion rate and increased business success.
+        </p>
+      </>
+    ),
+    badge: "Result",
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/258845651104cc46d8161f0c6043744a1606c0f2-2876x1608.gif", "https://cdn.sanity.io/images/loniby3f/production/9e94a1e7453604e2d21285f8da97aefa0d9592dc-3840x2160.png", "https://cdn.sanity.io/images/loniby3f/production/1f99306611d4ecd2711765549851fb90379baf3d-3840x4486.png", "https://cdn.sanity.io/images/loniby3f/production/159cb63a2b2fcc7635829dfdcbd79add9dcad81a-951x716.png"]
+
+  },
+
+  {
+    title: "Lessons Learned, Conclusion & Other Projects I have worked on",
+    description: (
+      <>
+        <p>
+        Throughout these projects, I learned valuable lessons about the importance of user feedback, collaboration with stakeholders, and continuous iteration. User insights played a pivotal role in guiding our design decisions and prioritizing features. I also recognized the value of involving stakeholders early on to align expectations and ensure smooth project execution.
+        </p>
+
+        <br />
+        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        <br />
+
+        <ul className="list-disc"> Other than Customer App, I have worked on multiple products throughout my time period @ Oro. Other products / projects are :
+          <li>Partner App Revamp</li>
+          <li>Admin Dashboard Revamp</li>
+          <li>Quali - Lead Management Application Design</li>
+          <li>Landing Page Designs</li>
+          <li>Aurum Design System</li>
+        </ul>
+
+        <br />
+        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
+        <br />
+
+        <p>
+        In conclusion, my work at Oro involved creating customer journey maps, revamping UIs, and redesigning landing pages to enhance the overall user experience. By addressing pain points, streamlining processes, and improving transparency, we achieved higher customer satisfaction and business success. These projects not only showcased the value of UX but also contributed to my professional growth as a UX professional in delivering impactful solutions.
+        </p>
+
+      </>
+    ),
+    badge: "Conclusion",
+    images:
+      ["https://cdn.sanity.io/images/loniby3f/production/258845651104cc46d8161f0c6043744a1606c0f2-2876x1608.gif", "https://cdn.sanity.io/images/loniby3f/production/9e94a1e7453604e2d21285f8da97aefa0d9592dc-3840x2160.png", "https://cdn.sanity.io/images/loniby3f/production/1f99306611d4ecd2711765549851fb90379baf3d-3840x4486.png", "https://cdn.sanity.io/images/loniby3f/production/159cb63a2b2fcc7635829dfdcbd79add9dcad81a-951x716.png"]
+
+  },
 ];
