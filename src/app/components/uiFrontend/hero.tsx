@@ -3,6 +3,7 @@ import { OroCard } from './oro-card';
 import { Lamp } from './lamp';
 import { BackgroundBeamsDemo } from './background-beams';
 import { TextGenerateHeading } from './text-generate-header';
+import { HonestCard } from './honest-card';
 
 const HeroSection = () => {
     return (
@@ -27,6 +28,7 @@ const HeroSection = () => {
                 <Lamp />
                 <div className='w-full flex flex-col items-center mb-16'> {/* Modified justify-center to items-center */}
                     <OroCard />
+                    <HonestCard />
                 </div>
 
             </div>
