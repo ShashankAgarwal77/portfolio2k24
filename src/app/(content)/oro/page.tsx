@@ -4,9 +4,10 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
 import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
+import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
+
 
 import Orothumbnail from "@/app/Assets/Images/Introduction.png";
-import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -34,11 +35,10 @@ export default function TracingBeamDemo() {
 
   return (
     <div className="flex flex-col justify-between">
-      {/* <MacbookScrollComp /> */}
       <SpotlightPreview />
 
-      <TracingBeam className="px-6 mx-auto my-40 overflow-y-clip">
-        <div className="max-w-6xl mx-auto antialiased pt-8 relative">
+      <TracingBeam className="px-6 xl:max-w-5xl mx-auto my-40 overflow-y-clip">
+        <div className="mx-auto antialiased pt-8 relative">
           {dummyContent.map((item, index) => (
             <div
               key={`content-${index}`}

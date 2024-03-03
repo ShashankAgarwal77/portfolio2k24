@@ -9,10 +9,10 @@ import OroThumbnail from '../../Assets/Images/Introduction.png';
 
 export function OroCard() {
   return (
-    <div className="sm:mx-10 md:mx-20 lg:mx-10">
+    <div className="">
       <CardContainer
         className="inter-var"
-        containerClassName="w-full max-w-[80rem]"
+        containerClassName="w-full"
       >
         <CardBody className="bg-gray-50 px-12 py-10 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl border hover:border-slate-600 mx-auto">
           <CardItem
