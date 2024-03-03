@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from 'react';
 import Image from "next/image";
 import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation";
 import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
@@ -15,26 +15,25 @@ export default function TracingBeamDemo() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
       const sections = document.querySelectorAll("[id^='content-']");
-
+  
       sections.forEach((section, index) => {
-        const top = section.getBoundingClientRect().top;
-        const bottom = section.getBoundingClientRect().bottom;
-
-        if (scrollPosition >= top && scrollPosition < bottom) {
+        const { top, bottom } = section.getBoundingClientRect();
+  
+        // Check if the section is at least 50% visible in the viewport
+        if (top < windowHeight * 0.5 && bottom > windowHeight * 0.5) {
           setActiveSection(index);
         }
       });
     };
-
+  
     window.addEventListener("scroll", handleScroll);
-
+  
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col relative justify-between">
       <SpotlightPreview />
 
       <TracingBeam className="px-6 xl:max-w-5xl mx-auto my-40 overflow-y-clip">
@@ -72,7 +71,7 @@ export default function TracingBeamDemo() {
       </TracingBeam>
 
       <div className="hidden lg:flex fixed mx-10 my-40">
-        <div ref={sidebarRef} className="flex flex-col items-start">
+        <div ref={sidebarRef} className="flex flex-col relative items-start">
           <h2 className="text-slate-600 text-md uppercase font-bold mb-4">
             Content
           </h2>
@@ -90,7 +89,6 @@ export default function TracingBeamDemo() {
             ))}
           </ul>
         </div>
-
       </div>
     </div>
   );
@@ -139,7 +137,7 @@ const dummyContent = [
           </div>
         </div>
 
-        
+
       </>
     ),
     badge: "Overview",
@@ -164,7 +162,7 @@ const dummyContent = [
           month itself. <br />
         </p>
 
-        
+
       </>
     ),
     badge: "Introduction",
@@ -189,7 +187,7 @@ const dummyContent = [
           intuitive and user-friendly. <br />
         </p>
 
-         </>
+      </>
     ),
     badge: "Problem",
     images:
@@ -206,7 +204,7 @@ const dummyContent = [
           &amp; UX in-app. Which results reduce the gold loan application time
           from 45 minutes to ~28 minutes.
         </p>
-        
+
       </>
     ),
     badge: "Objective",
@@ -226,7 +224,7 @@ const dummyContent = [
           opportunities for improvement and streamline the loan application
           process.
         </p>
-     
+
       </>
     ),
     badge: "Process",
@@ -345,7 +343,7 @@ const dummyContent = [
     description: (
       <>
         <p>
-        The implementation of the revamped interfaces and improved user experience had a significant positive impact. Customer satisfaction increased as they found it easier to navigate the loan application process, understand the loan terms, and access relevant information. We observed a substantial reduction in customer drop-offs during the loan application as well as new customer journey through landing pages, leading to a higher conversion rate and increased business success.
+          The implementation of the revamped interfaces and improved user experience had a significant positive impact. Customer satisfaction increased as they found it easier to navigate the loan application process, understand the loan terms, and access relevant information. We observed a substantial reduction in customer drop-offs during the loan application as well as new customer journey through landing pages, leading to a higher conversion rate and increased business success.
         </p>
       </>
     ),
@@ -360,7 +358,7 @@ const dummyContent = [
     description: (
       <>
         <p>
-        Throughout these projects, I learned valuable lessons about the importance of user feedback, collaboration with stakeholders, and continuous iteration. User insights played a pivotal role in guiding our design decisions and prioritizing features. I also recognized the value of involving stakeholders early on to align expectations and ensure smooth project execution.
+          Throughout these projects, I learned valuable lessons about the importance of user feedback, collaboration with stakeholders, and continuous iteration. User insights played a pivotal role in guiding our design decisions and prioritizing features. I also recognized the value of involving stakeholders early on to align expectations and ensure smooth project execution.
         </p>
 
         <br />
@@ -380,7 +378,7 @@ const dummyContent = [
         <br />
 
         <p>
-        In conclusion, my work at Oro involved creating customer journey maps, revamping UIs, and redesigning landing pages to enhance the overall user experience. By addressing pain points, streamlining processes, and improving transparency, we achieved higher customer satisfaction and business success. These projects not only showcased the value of UX but also contributed to my professional growth as a UX professional in delivering impactful solutions.
+          In conclusion, my work at Oro involved creating customer journey maps, revamping UIs, and redesigning landing pages to enhance the overall user experience. By addressing pain points, streamlining processes, and improving transparency, we achieved higher customer satisfaction and business success. These projects not only showcased the value of UX but also contributed to my professional growth as a UX professional in delivering impactful solutions.
         </p>
 
       </>

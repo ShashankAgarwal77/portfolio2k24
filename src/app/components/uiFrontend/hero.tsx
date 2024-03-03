@@ -7,10 +7,10 @@ import { HonestCard } from './honest-card';
 
 const HeroSection = () => {
     return (
-        <div className='flex flex-col justify-center sm:overflow-hidden md:overflow-hidden lg:overflow-hidden'>
+        <div className='flex flex-col justify-center overflow-hidden'>
             <BackgroundBeamsDemo />
-            <div className='flex flex-col items-center justify-center lg:h-screen'>
-                <div className='flex flex-col sm:gap-y-4 md:gap-y-6 items-left justify-center sm:mx-10 md:mx-20 lg:mx-40'>
+            <div className='flex flex-col items-center justify-center h-screen'>
+                <div className='flex flex-col md:gap-y-6 items-left justify-center md:mx-20 lg:mx-40'>
                     <p className="md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-300 z-1 tracking-wide">
                         Hi, my name is Shashank Agarwal
                     </p>
