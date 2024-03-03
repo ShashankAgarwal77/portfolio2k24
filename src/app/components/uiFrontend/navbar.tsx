@@ -63,7 +63,7 @@ export function NavbarComp({ className }: { className?: string }) {
             </Link>
 
             <HoveredLink href="https://www.linkedin.com/in/shashank-agarwal11/">LinkedIn</HoveredLink>
-            <HoveredLink href="https://www.linkedin.com/in/shashank-agarwal11/">Resume</HoveredLink>
+            <HoveredLink href="https://drive.google.com/file/d/1dWgaWeqD8EsBbjOWrhcEDRfzTxshB36I/view?usp=sharing">Resume</HoveredLink>
           </div>
         </Menu>
       </div>
