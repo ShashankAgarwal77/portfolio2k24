@@ -17,19 +17,19 @@ export default function TracingBeamDemo() {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
       const sections = document.querySelectorAll("[id^='content-']");
-  
+
       sections.forEach((section, index) => {
         const { top, bottom } = section.getBoundingClientRect();
-  
+
         // Check if the section is at least 50% visible in the viewport
         if (top < windowHeight * 0.5 && bottom > windowHeight * 0.5) {
           setActiveSection(index);
         }
       });
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -269,6 +269,262 @@ const dummyContent = [
     ),
     badge: "Pain Points",
     images: ["https://cdn.sanity.io/images/loniby3f/production/2d4c923f400e349ad816cef7ae0c1d49fd00820b-3840x1332.png",],
+  },
+
+  {
+    title: "Persona Hypothesis I created",
+    description: (
+      <>
+        <p>It is important to channelize all of the data I received from Research into a singular person  persona to clarify user goals & frustrations with their background story </p> <br />
+
+        <p>To Empathize more with users I tried to create a User Story that will tell users a fictional story in one sentence from the Persona's Point of View based on Who, What, and Why.</p>
+
+
+      </>
+    ),
+    badge: "Personas",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/9b60ae14f4432bc5fcbb7441c4ec660ab0a69325-3840x2160.png",],
+  },
+
+  {
+    title: "User Story Formed",
+    description: (
+      <>
+        <h2 className="text-3xl"> Sahil Rajput</h2>
+        <br />
+        <p>
+          <b>As a/an</b> Software engineer in Urban Bengaluru <br />
+          <b>I want to</b> experience diverse cuisines with accurate representation of dishes <br />
+          <b>so that</b> it will satisfy my adventurous palate with my taste preferences <br />
+        </p>
+        <br />
+        <p>Now it was pretty clear about the user needs through Persona & User Story, I started to visualize the User Journey Mapping</p>
+      </>
+    ),
+    badge: "Story",
+    // images: ["https://cdn.sanity.io/images/loniby3f/production/9b60ae14f4432bc5fcbb7441c4ec660ab0a69325-3840x2160.png",],
+  },
+
+  {
+    title: "User Journey Mapping",
+    description: (
+      <>
+        <p>User Journey Mapping helps me to understand multiple aspects of users tasks performance and more importantly their emotional feelings and improvement opportunities for the product</p>
+        <br />
+        <p><b>Insights:</b> </p> <br />
+        <ul className="list-disc">
+          <li>User's total journey is divided into 8 phases</li>
+          <li>Improvement Opportunity : Inclusion of Personalized, Transparecy , Informative & Trust into product</li>
+        </ul>
+      </>
+    ),
+    badge: "Journey",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png",],
+  },
+
+  {
+    title: "Problem Statement",
+    description: (
+      <>
+        <p>Now i have enough data to empathize, i stated the pain points of the consumers into Problem Statement by defining Who, What, Where, When, Why and How of the problem <br />
+
+          By Defining this framework I was able to clearly state the user characteristics, the user needs, and what particular insight I gain from it
+        </p> <br />
+
+        <h2 className="text-2xl leading-10">Problem Statement - Sahil Rajput</h2>
+        <p>
+          Sahil Rajput <b>is/an</b> software engineer who needs to order cuisines online with trusted representation of dishes because he want to be an explorer of new cuisines from multiple restaurants
+        </p> <br />
+        <p>Now, I understand what user pain points are and define a problem statement that covers a large group of targeted users <br />
+
+          It's time to do a Competitive Audit to understand what potential direct and indirect competitors doing for this particular problem</p>
+      </>
+    ),
+    badge: "Problem",
+    // images: ["https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png",],
+  },
+
+  {
+    title: "Competitive Audit",
+    description: (
+      <>
+        <p>
+          I have done the audit between 3 Companies i.e., Swiggy, Zomato, and Hello Green in which Swiggy and Zomato are Direct Competitors and Hello Green is Indirect Competitor. <br />
+
+          I tried to Audit their Product Offerings, Business Size, Targeted Audience, USPs, First Impressions, Interaction, Visual Design, and Content. <br />
+
+          You can view the whole excel sheet <a href="https://drive.google.com/file/d/1ill-txIR4WjzosMIGLluKgvxMKay-8hv/view" className="hover:text-gray-500">Report Here</a>
+        </p> <br />
+        <br />
+
+        <h2 className="text-2xl">Competitive Audit Report</h2>
+        <ul className="list-disc">After doing the extensive audit of each competitor, I create the Competitive Audit Report which summarizes the <br />
+          <li>Competitive Audit Goals</li>
+          <li>Who are the Key Competitors?</li>
+          <li>What are the type and quality of competitor's products?</li>
+          <li>How do competitors position themselves in the market?</li>
+          <li>How do competitors talk about themselves?</li>
+          <li>Competitors' strengths</li>
+        </ul>
+
+        <p>You can read the whole <a href="https://drive.google.com/file/d/1ill-txIR4WjzosMIGLluKgvxMKay-8hv/view" className="hover:text-gray-500">Report Here</a></p>
+      </>
+    ),
+    badge: "Audit",
+    // images: ["https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png",],
+  },
+
+  {
+    title: "Goal Statement",
+    description: (
+      <>
+        <p>
+          It's time to finalize the problem statement and user pain points into the Final Statement as my Goal Statement
+        </p>
+        <h2 className="text-3xl leading-10 py-8">Our HonestBites will let users order food with trust and transparency which will affect users like sahil who are explorer of different cuisines from different restuarants by satisfy there adventurous palate with their taste preferences. We will measure effectiveness by analyzing the consumer loyalty towards the platform</h2>
+      </>
+    ),
+    badge: "Goal",
+    // images: ["https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png",],
+  },
+
+
+  {
+    title: "Storyboard",
+    description: (
+      <>
+        <p>I use storyboard to visualize and ideate the product scenario</p>
+      </>
+    ),
+    badge: "Story",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/f882216c7db4b643e37bbda51ddda35fcc2d90cd-3840x2146.png",],
+  },
+
+  {
+    title: "Information Architecture(IA) & User Flow",
+    description: (
+      <>
+        <p>Now as I have clear in my mind about user & product scenario of pain points and opportunities , I have started to created the information architecture
+          <br />
+          Information Architecture really helps me to create the structure of navigation & components I will use in the user-flow journey.
+          <br />
+          You can preview the whole IA by <a href="https://www.figma.com/file/pIdmfbNQDwkJ8lJKyc7rX8/HonestBites---UX-Case-Study?type=design&node-id=274%3A1702&mode=design&t=zY0XaOncAy5QCPNh-1" className="hover:text-rgay-500">Click Here</a> <br />
+
+          After, <br />
+          <ul className="list-disc">
+            <li>Empathize with users about their needs and pain points</li>
+            <li>Defining the Problem Statement and Goal Statement</li>
+            <li>Ideating about the scenario using Crazy's 8 and Storyboards</li>
+            <li>Developing the Information Architecture (IA)</li>
+          </ul>
+          <br />
+          It's time to start the designing process <br />
+        </p>
+      </>
+    ),
+    badge: "IA",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/ee5245efd2186017a857fe32e0587155c42b18bd-7680x21272.png",],
+  },
+
+  {
+    title: "Low Fiedility Wireframes",
+    description: (
+      <>
+        <p>Creating Paper Wireframes really helps me to brainstorm ideas on how can particular component can be placed in content architecture.<br /> <br />
+
+          <h2 className="text-3xl">My Goals:</h2>
+          I tried to create 5 different Versions of a Single Page and Pick the Best Component I like from each of the different versions and create the final version.
+
+          <h2 className="text-3xl">My Thoughts:</h2>
+          Finding the best possible way to organize the content structure so that users can easily able to access and navigate through pages.
+        </p>
+
+      </>
+    ),
+    badge: "Low-Fi",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/f99cdc857564e73130a68b616532bf0be6711977-2560x2180.png",],
+  },
+
+  {
+    title: "Design System",
+    description: (
+      <>
+        <p>
+          Once my wireframes are finalized, i started to create the mini design system for my project, started with the basics of defining the fundamentals such as color pallete, typography, iconography & basic components. <br />
+
+          Aim is to build the foundation first, so future designed elements can be easily added and documented <br />
+        </p>
+
+      </>
+    ),
+    badge: "DS",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/3129006f755af3adbea887bbd0e5932235683c2e-11264x7008.png",],
+  },
+
+  {
+    title: " High Fiedility Mockups",
+    description: (
+      <>
+      <h2 className="text-3xl">Points to be explained :</h2> <br />
+      <ul className="list-decimal">
+        <li>Food Overview - Provided by restaurant to summarize about the dish in words</li>
+        <li>Images Uploaded by Restaurant - Curated photos and videos uploaded by the restaurant of particular food</li>
+        <li>Ratings & Reviews - Provided by the customers with the option to for customer to upload their rating & reviews of particular dish</li>
+        <li>Overall Customers Rating - Channelize way to show all of the ratings provided by the customers</li>
+        <li>All Customer Reviews - Show All images and reviews shared by the customers</li>
+        <li>Sort Funtionality - Filter out the reviews by multiple filter options such as High to Low or Low to High Rating</li>
+        <li>Review Media Share - Each review have option for user to upload photo or video of the image</li>
+        <li>Header & sub-caption - Each review is divided into smaller contextual heading with the sub-caption which supports the heading</li>
+        <li>User Verification - User Profile and Name will be reflected with the verified user badge which verifies the authencitiy of the review from HonestBites</li>
+        <li>Report Issue - If user have any issue with the food information, reviews or food itself they can report to the HonestBites as well as Restaurant regarding the issue</li>
+      </ul> <br />
+      <p>Once Mockups are ready, it's time for usability testing of these designs but due to less time i have after my job i decided to give an AI try. I use AI tools such as Attention Insights to get an heatmap about how might users will react/behave on particular screen</p>
+      </>
+    ),
+    badge: "High-Fi",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/ada757caa300eb4e4b1e68c4cee7e131cf107143-7680x4320.png","https://cdn.sanity.io/images/loniby3f/production/96c93f42fe991f9999f3a0da16c95c606b20f84a-7680x4320.png","https://cdn.sanity.io/images/loniby3f/production/d78e0685021b799e2ac2b0ed1c42e3e24aa8da7c-7680x4320.png"],
+  },
+
+  {
+    title: "Insights & Findings",
+    description: (
+      <>
+      <p>Attention Insights data is helpful for giving constructive feedback which improves overall visuals of the design of the product</p>
+      </>
+    ),
+    badge: "Insights",
+    images: ["https://cdn.sanity.io/images/loniby3f/production/be7a5e8eafff7351b0287a7ff69d59346e07a80e-7680x5584.png","https://cdn.sanity.io/images/loniby3f/production/464e330bd95793dd13f0cc6b8abac5828dc445a1-7680x5584.png"],
+  },
+
+  {
+    title: "Insights & Findings",
+    description: (
+      <>
+      <p>
+        <h2 className="text-2xl">Impact</h2>
+        This project really impacts me as an individual because it really helps me understand how critical is UX for any business to grow on the next level and how vast the opportunities to solve social problems by Experience Research and Design <br /> <br />
+
+        <h2 className="text-3xl">Design is not just what it looks like and feels like. Design is how it works. ~ Steve Job</h2> <br />
+
+        <h2 className="text-2xl">What I Learned</h2> 
+        Learned how critical thinking is needed to create a user experience that is delightful yet usable for everyone
+        <br />
+        <br />
+
+        <h2 className="text-2xl">Next Steps</h2> 
+        <ol className="list-decimal">
+          <li>Can create the prototype of the different flows of the app</li>
+          <li>Can conduct Usability Testing with actual customers</li>
+          <li>Can test the dark mode of the app</li>
+        </ol>
+
+
+
+      </p>
+      </>
+    ),
+    badge: "Takeaways",
+    // images: ["https://cdn.sanity.io/images/loniby3f/production/be7a5e8eafff7351b0287a7ff69d59346e07a80e-7680x5584.png","https://cdn.sanity.io/images/loniby3f/production/464e330bd95793dd13f0cc6b8abac5828dc445a1-7680x5584.png"],
   },
 
 ];
