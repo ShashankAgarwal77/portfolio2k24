@@ -33,8 +33,9 @@ export default function TracingBeamDemo() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="flex flex-col relative justify-between">
-      <SpotlightPreview />
+    <div className="flex flex-col justify-between">
+            <SpotlightPreview />
+
 
       <TracingBeam className="px-6 xl:max-w-5xl mx-auto my-40 overflow-y-clip">
         <div className="mx-auto antialiased pt-8 relative">

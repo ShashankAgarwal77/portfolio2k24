@@ -15,21 +15,21 @@ export default function TracingBeamDemo() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
       const sections = document.querySelectorAll("[id^='content-']");
-
+  
       sections.forEach((section, index) => {
-        const top = section.getBoundingClientRect().top;
-        const bottom = section.getBoundingClientRect().bottom;
-
-        if (scrollPosition >= top && scrollPosition < bottom) {
+        const { top, bottom } = section.getBoundingClientRect();
+  
+        // Check if the section is at least 50% visible in the viewport
+        if (top < windowHeight * 0.5 && bottom > windowHeight * 0.5) {
           setActiveSection(index);
         }
       });
     };
-
+  
     window.addEventListener("scroll", handleScroll);
-
+  
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
