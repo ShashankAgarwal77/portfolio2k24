@@ -28,9 +28,10 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:text-gray-400 dark:text-white"
+        className="group relative cursor-pointer text-black hover:text-gray-400 dark:text-white overflow-hidden"
       >
-        {item}
+        <span className="inline-block transition duration-500 ease-out group-hover:-translate-y-[120%]">{item}</span>
+        <span className="absolute left-0 translate-y-[120%] rotate-12 inline-block transition duration-500 ease-out group-hover:translate-y-0 group-hover:rotate-0">{item}</span>
       </motion.p>
       {active !== null && (
         <motion.div
@@ -112,9 +113,10 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-gray-400 "
+      className="group relative cursor-pointer text-black hover:text-gray-400 dark:text-white overflow-hidden"
     >
-      {children}
+      <span className="inline-block transition duration-500 ease-out group-hover:-translate-y-[120%]"> {children} </span>
+      <span className="absolute left-0 translate-y-[120%] rotate-12 inline-block transition duration-500 ease-out group-hover:translate-y-0 group-hover:rotate-0"> {children} </span>
     </Link>
   );
 };
