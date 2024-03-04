@@ -7,7 +7,10 @@ import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-toolti
 import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 
-import Orothumbnail from "@/app/Assets/Images/Introduction.png";
+import Orothumbnail from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
+import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.png";
+import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
+import JourneyImg from "@/app/Assets/Images/OroCaseStudy/UserJourney.png";
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -192,7 +195,7 @@ const dummyContent = [
     ),
     badge: "Problem",
     images:
-      ["https://cdn.sanity.io/images/loniby3f/production/869d098d3a409093a549b5ecb29c2aba5a94c2bd-3840x2160.png",]
+      [ProblemImg,]
   },
 
   {
@@ -230,7 +233,7 @@ const dummyContent = [
     ),
     badge: "Process",
     images:
-      ["https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",]
+      [ProcessImg,]
   },
 
   {
@@ -299,7 +302,7 @@ const dummyContent = [
     ),
     badge: "Conceptualize",
     images:
-      ["https://cdn.sanity.io/images/loniby3f/production/22cf51beb4d39c4a79bbf45c9c396011690d4232-7680x12104.png",]
+      [JourneyImg,]
   },
 
   {
@@ -318,6 +321,7 @@ const dummyContent = [
     badge: "Design",
     images:
       ["https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png", "https://cdn.sanity.io/images/loniby3f/production/f8bc264455f340f9a4c9124343bc59ee269e6d87-3864x2184.png"]
+      
 
   },
 
