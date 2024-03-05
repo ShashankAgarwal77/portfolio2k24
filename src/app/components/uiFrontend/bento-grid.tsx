@@ -11,10 +11,12 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { TextRevealCardPreview } from "./text-reveal-card";
+import { GlowingStarsBackgroundCardPreview } from './glowing-stars';
 
 export function BentoGridComp() {
   return (
-    <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+    <BentoGrid className="max-w-8xl mx-auto md:auto-rows-[20rem]">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -64,7 +66,8 @@ const SkeletonOne = () => {
       whileHover="animate"
       className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
     >
-      <motion.div
+      <TextRevealCardPreview />
+      {/* <motion.div
         variants={variants}
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-white dark:bg-black"
       >
@@ -84,7 +87,7 @@ const SkeletonOne = () => {
       >
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
         <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-      </motion.div>
+      </motion.div> */}
     </motion.div>
   );
 };
@@ -189,52 +192,58 @@ const SkeletonFour = () => {
         variants={first}
         className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
-        <Image
+        {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
           alt="avatar"
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Just code in Vanilla Javascript
+        /> */}
+        <p className="text-4xl">💪</p>
+        <p className="lg:text-base text-center border border-yellow-500 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        Build strong conviction
         </p>
-        <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Delusional
+        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-200 mt-4 tracking-wide">
+        Iterating and testing improves my decisions and work quality.
         </p>
+        
       </motion.div>
       <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
-        <Image
+       {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
           alt="avatar"
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Tailwind CSS is cool, you know
+        /> */}
+        <p className="text-4xl">🧠</p>
+        <p className="text-center border border-pink-500 bg-pink-100 dark:bg-pink-900/20 text-pink-600 text-xs lg:text-base rounded-full px-2 py-0.5 mt-4">
+        Thoughtful complexity
         </p>
-        <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Sensible
+        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-200 mt-4 tracking-wide">
+        I enjoy solving hard problems with product thinking and teamwork.
         </p>
+        
       </motion.div>
       <motion.div
         variants={second}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center "
       >
-        <Image
+        {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
           alt="avatar"
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          I love angular, RSC, and Redux.
+        /> */}
+        <p className="text-4xl">🧘‍♂️</p>
+        <p className="text-center border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs lg:text-base rounded-full px-2 py-0.5 mt-4">
+        Process oriented
         </p>
-        <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Helpless
+        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-200 mt-4 tracking-wide">
+        I collaborate to create a flexible and adaptable process.
         </p>
+        
       </motion.div>
     </motion.div>
   );
@@ -269,40 +278,18 @@ const SkeletonFive = () => {
     <motion.div
       initial="initial"
       whileHover="animate"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+      className="flex flex-1 w-full h-full min-h-[6rem] flex-col space-y-2"
     >
-      <motion.div
-        variants={variants}
-        className="flex flex-row rounded-2xl border border-neutral-100 dark:border-white/[0.2] p-2  items-start space-x-2 bg-white dark:bg-black"
-      >
-        <Image
-          src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
-        <p className="text-xs text-neutral-500">
-          There are a lot of cool framerworks out there like React, Angular,
-          Vue, Svelte that can make your life ....
-        </p>
-      </motion.div>
-      <motion.div
-        variants={variantsSecond}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center justify-end space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
-      >
-        <p className="text-xs text-neutral-500">Use PHP.</p>
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-      </motion.div>
+      <GlowingStarsBackgroundCardPreview />
     </motion.div>
   );
 };
 const items = [
   {
-    title: "AI Content Generation",
+    title: "my career shift in hover",
     description: (
       <span className="text-sm">
-        Experience the power of AI in generating unique content.
+        I am a computer science undergrad turned into self-taught product designer.
       </span>
     ),
     header: <SkeletonOne />,
@@ -310,10 +297,10 @@ const items = [
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Automated Proofreading",
+    title: "design backed with strategy",
     description: (
       <span className="text-sm">
-        Let AI handle the proofreading of your documents.
+        I believe that beauty is not only about aesthetics, but also about functionality, usability, and accessibility.
       </span>
     ),
     header: <SkeletonTwo />,
@@ -321,10 +308,10 @@ const items = [
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Contextual Suggestions",
+    title: "i love gradients",
     description: (
       <span className="text-sm">
-        Get AI-powered suggestions based on your writing context.
+        I love the blend of gradients in the life as well as design.
       </span>
     ),
     header: <SkeletonThree />,
@@ -332,10 +319,10 @@ const items = [
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Sentiment Analysis",
+    title: "my principles",
     description: (
       <span className="text-sm">
-        Understand the sentiment of your text with AI analysis.
+        Some principles I believe in.
       </span>
     ),
     header: <SkeletonFour />,
@@ -344,10 +331,10 @@ const items = [
   },
 
   {
-    title: "Text Summarization",
+    title: "elevating experiences",
     description: (
       <span className="text-sm">
-        Summarize your lengthy documents with AI technology.
+       I thrive on crafting meaningful interactions that resonate with users on a profound level.
       </span>
     ),
     header: <SkeletonFive />,

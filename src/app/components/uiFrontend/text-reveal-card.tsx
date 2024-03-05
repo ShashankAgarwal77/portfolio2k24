@@ -8,7 +8,7 @@ import {
 
 export function TextRevealCardPreview() {
   return (
-    <div className="flex  items-center justify-center rounded-2xl w-full">
+    <div className="flex items-center justify-center rounded-2xl h-full w-full">
       <TextRevealCard
         text="CS Engineer "
         revealText="Product Designer⚡ "
@@ -16,9 +16,9 @@ export function TextRevealCardPreview() {
         <TextRevealCardTitle>
           my story in simple hover
         </TextRevealCardTitle>
-        <TextRevealCardDescription>
+        {/* <TextRevealCardDescription>
           I turned from Computer Science Engineer to self-taught Product designer to solve design related problems in this world.
-        </TextRevealCardDescription>
+        </TextRevealCardDescription> */}
       </TextRevealCard>
     </div>
   );

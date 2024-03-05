@@ -56,13 +56,13 @@ export const TextRevealCard = ({
       onMouseMove={mouseMoveHandler}
       ref={cardRef}
       className={cn(
-        "bg-[#0E0E10]/50 border border-white/[0.08] w-[40rem] rounded-lg p-8 relative overflow-hidden",
+        "bg-[#0E0E10]/50 border border-white/[0.08] w-[40rem] rounded-lg p-8 h-full relative overflow-hidden",
         className
       )}
     >
       {children}
 
-      <div className="h-40  relative flex items-center overflow-hidden">
+      <div className="h-full relative flex items-center overflow-hidden">
         <motion.div
           style={{
             width: "100%",
@@ -118,7 +118,7 @@ export const TextRevealCardTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={twMerge("text-white text-2xl mb-2", className)}>
+    <h2 className={twMerge("text-white md:text-md lg:text-lg xl:text-xl mb-2", className)}>
       {children}
     </h2>
   );
