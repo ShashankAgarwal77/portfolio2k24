@@ -7,10 +7,11 @@ import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-toolti
 import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 
-import Orothumbnail from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
+import OroIntroduction from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.png";
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
 import JourneyImg from "@/app/Assets/Images/OroCaseStudy/UserJourney.png";
+import Thumbnail from "@/app/Assets/Images/OroCaseStudy/Thumbnailpng.png";
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -20,24 +21,34 @@ export default function TracingBeamDemo() {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
       const sections = document.querySelectorAll("[id^='content-']");
-  
+
       sections.forEach((section, index) => {
         const { top, bottom } = section.getBoundingClientRect();
-  
+
         // Check if the section is at least 50% visible in the viewport
         if (top < windowHeight * 0.5 && bottom > windowHeight * 0.5) {
           setActiveSection(index);
         }
       });
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <div className="flex flex-col justify-between">
-            <SpotlightPreview />
+      <div className="grid grid-cols-1 content-end h-screen items-center content-end">
+        <div className="flex flex-row justify-center pb-6">
+          <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">Orocorp Redefined</h2>
+        </div>
+        <div className="flex flex-row justify-center">
+        <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1400}></Image>
+        </div>
+
+      </div>
+
+      <SpotlightPreview />
 
 
       <TracingBeam className="px-6 xl:max-w-5xl mx-auto my-40 overflow-y-clip">
@@ -170,7 +181,7 @@ const dummyContent = [
       </>
     ),
     badge: "Introduction",
-    images: [Orothumbnail],
+    images: [OroIntroduction],
   },
 
   {
@@ -321,7 +332,7 @@ const dummyContent = [
     badge: "Design",
     images:
       ["https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png", "https://cdn.sanity.io/images/loniby3f/production/f8bc264455f340f9a4c9124343bc59ee269e6d87-3864x2184.png"]
-      
+
 
   },
 
