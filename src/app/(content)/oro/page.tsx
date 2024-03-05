@@ -6,7 +6,6 @@ import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation"
 import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
 import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
-
 import OroIntroduction from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.png";
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
@@ -36,6 +35,7 @@ export default function TracingBeamDemo() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <div className="flex flex-col justify-between">
       <div className="grid grid-cols-1 content-end h-screen items-center content-end">
@@ -43,30 +43,22 @@ export default function TracingBeamDemo() {
           <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">Orocorp Redefined</h2>
         </div>
         <div className="flex flex-row justify-center">
-        <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1400}></Image>
+          <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1400}></Image>
         </div>
-
       </div>
 
       <SpotlightPreview />
 
-
       <TracingBeam className="px-6 xl:max-w-5xl mx-auto my-40 overflow-y-clip">
         <div className="mx-auto antialiased pt-8 relative">
           {dummyContent.map((item, index) => (
-            <div
-              key={`content-${index}`}
-              id={`content-${index}`}
-              className="mb-10"
-            >
+            <div key={`content-${index}`} id={`content-${index}`} className="mb-10">
               <h2 className="bg-black/[0.1] dark:bg-white/[0.1] text-gray-800 dark:text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4">
                 {item.badge}
               </h2>
-
-              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-2xl lg:leading-normal lg:text-4xl text-black dark:text-white sm:mb-4 md:mb-6 lg:mb-8">
+              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-xl lg:leading-normal lg:text-4xl text-black dark:text-white sm:mb-4 md:mb-6 lg:mb-8">
                 {item.title}
               </p>
-
               <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide light:text-slate-600 dark:text-slate-300 prose prose-sm dark:prose-invert">
                 {item.images && item.images.map((image, imgIndex) => (
                   <Image
@@ -87,16 +79,13 @@ export default function TracingBeamDemo() {
 
       <div className="hidden lg:flex fixed mx-10 my-40">
         <div ref={sidebarRef} className="flex flex-col relative items-start">
-          <h2 className="text-slate-600 text-md uppercase font-bold mb-4">
-            Content
-          </h2>
+          <h2 className="text-slate-600 text-md uppercase font-bold mb-4">Content</h2>
           <ul className="space-y-4 w-48">
             {dummyContent.map((item, index) => (
               <li key={`sidebar-item-${index}`}>
                 <a
                   href={`#content-${index}`}
-                  className={`text-neutral-500 hover:text-white  ${activeSection === index ? "text-white" : ""
-                    }`}
+                  className={`text-neutral-500 hover:text-white ${activeSection === index ? "text-white" : ""}`}
                 >
                   {item.badge}
                 </a>
@@ -109,51 +98,41 @@ export default function TracingBeamDemo() {
   );
 }
 
+
 const dummyContent = [
   {
     title: "Orocorp - Redefining the way people get gold loans in India",
     description: (
-      <>
-        <div className="flex sm:flex-col lg:flex-row justify-between">
-          <div className="flex flex-col gap-y-6 mr-20">
-            <h4 className="text-3xl">My Roles &amp; Responsibilities</h4>
-            <ul className="list-disc text-justify leading-loose text-normal">
-              <li>
-                <b>UX Analysis :</b> Curating Customer Journey Mapping, Card
-                Sorting Analysis, Heuristic Evaluation, Implementing UX Laws and
-                much more
-              </li>
-              <li>
-                <b>UI Design :</b> Multiple Iterations and Ideation on Low &amp;
-                High Fidelity Wireframes and Mockups..
-              </li>
-              <li>
-                Make vision easily understand to the Stakeholders, PMs,
-                Developers in (UX, Software, Product).
-              </li>
-            </ul>
-          </div>
-          <div className="flex flex-col gap-y-6">
-            <h4 className="text-3xl">Shoutouts</h4>
-            <div className=" flex flex-col ">
-              <AnimatedTooltipCard />
-            </div>
-            <div className="flex flex-col gap-y-6">
-              <h4 className="text-3xl">Status &amp; Timeline</h4>
-              <ul className="list-disc text-justify leading-loose text-normal">
-                <li>2 Months, Designed Handoff done in March 2022</li>
-                <li>Overall Work Period : January 2022 to October 2023</li>
-                <li>
-                  Product Designer @ Orocorp, Tech Office is in Chennai, I
-                  worked remotely
-                </li>
-              </ul>
-            </div>
-          </div>
+      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h4 className="text-2xl pb-4">My Roles &amp; Responsibilities</h4>
+          <ul className="list-disc text-justify leading-loose text-normal">
+            <li>
+              <b>UX Analysis :</b> Curating Customer Journey Mapping, Card Sorting Analysis, Heuristic Evaluation, Implementing UX Laws and much more
+            </li>
+            <li>
+              <b>UI Design :</b> Multiple Iterations and Ideation on Low &amp; High Fidelity Wireframes and Mockups..
+            </li>
+            <li>
+              Make vision easily understand to the Stakeholders, PMs, Developers in (UX, Software, Product).
+            </li>
+          </ul>
         </div>
-
-
-      </>
+        <div>
+          <h4 className="text-2xl pb-4">Shoutouts</h4>
+          <div className=" flex flex-col ">
+            <AnimatedTooltipCard />
+          </div>
+          <h4 className="text-2xl pb-4">Status &amp; Timeline</h4>
+          <ul className="list-disc text-justify leading-loose text-normal">
+            <li>2 Months, Designed Handoff done in March 2022</li>
+            <li>Overall Work Period : January 2022 to October 2023</li>
+            <li>
+              Product Designer @ Orocorp, Tech Office is in Chennai, I worked remotely
+            </li>
+          </ul>
+        </div>
+      </div>
     ),
     badge: "Overview",
     // image: Orothumbnail,
