@@ -6,6 +6,7 @@ import { GridBackground } from "@/app/components/uiFrontend/gridBackground";
 import { TextGenerateSection } from "@/app/components/uiFrontend/text-generate-section";
 
 import ProfileImage from '@/app/Assets/Images/photography.png';
+import { InfiniteMovingCardsDemo } from "@/app/components/uiFrontend/infinite-moving-card";
 
 export default function About() {
   return (
@@ -26,6 +27,17 @@ export default function About() {
         <div className="mx-4 mb-4 md:mx-auto lg:mx-auto sm:mx-4 sm:mb-4 mt-8"> {/* Added margin-top class for space */}
           <BentoGridComp />
         </div>
+      </div>
+
+      <div className="flex flex-col justify-center items-center sm:gap-y-4 md:gap-y-8 lg:gap-y-16 md:mx-10 lg:mx-40 my-20">
+        <div className="flex flex-col gap-y-4">
+          <h2 className="text-4xl text-center tracking-wide leading-6 lg:leading-12 lg:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text lowercase">Here's What My friends & Colleagues told about me</h2>
+
+          <InfiniteMovingCardsDemo />
+
+        </div>
+
+
       </div>
     </main>
   );
