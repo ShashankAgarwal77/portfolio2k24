@@ -8,6 +8,7 @@ import { TextGenerateSection } from "@/app/components/uiFrontend/text-generate-s
 import ProfileImage from '@/app/Assets/Images/photography.png';
 import { InfiniteMovingCardsDemo } from "@/app/components/uiFrontend/infinite-moving-card";
 import { StickyScrollRevealDemo } from "@/app/components/uiFrontend/sticky-scroll";
+import { IconItalic } from "@tabler/icons-react";
 
 export default function About() {
   return (
@@ -24,8 +25,8 @@ export default function About() {
         </div>
       </div>
 
-      <div className="flex flex-col m-20 gap-y-4 ">
-        <h4 className="bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text text-2xl md:leading-12 lg:text-5xl text-center tracking-wide">This is my story — alongside some flicks from my recent trip to Himachal Pradesh.</h4>
+      <div className="flex flex-col md:m-20 lg:mx-40 gap-y-12 ">
+        <h2 className="bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text md:text-3xl lg:text-6xl tracking-wide">This is my story — <br /> alongside some flicks from my recent trip to Himachal Pradesh.</h2>
         <StickyScrollRevealDemo />
       </div>
 
@@ -42,7 +43,7 @@ export default function About() {
 
       <div className="flex flex-col justify-center items-center sm:gap-y-2 md:gap-y-4 lg:gap-y-6 md:mx-10 lg:mx-40 my-20">
         <div className="flex flex-col gap-y-4">
-          <h2 className="text-2xl text-center tracking-wide uppercase leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">About me in</h2>
+          <h2 className="text-2xl text-center tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text px-4">This is About me <span className="italic fontGloock lowercase font-bold pr-2">formally</span> in </h2>
           <h2 className="text-4xl text-center tracking-wide uppercase leading-6 lg:leading-12 lg:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent rounded-md bg-clip-text p-4 border-2 border-slate-600">Bento Grid</h2>
         </div>
         <div className="mx-4 mb-4 md:mx-auto lg:mx-auto sm:mx-4 sm:mb-4 mt-8"> {/* Added margin-top class for space */}
