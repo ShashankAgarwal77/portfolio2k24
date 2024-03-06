@@ -280,7 +280,7 @@ const items = [
     title: "my principles",
     description: (
       <span className="text-sm">
-        Some principles I believe in.
+        Some principles I believe as learning and working as a product designer.
       </span>
     ),
     header: <SkeletonFour />,

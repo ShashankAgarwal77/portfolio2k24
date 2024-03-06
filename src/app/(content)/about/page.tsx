@@ -7,6 +7,7 @@ import { TextGenerateSection } from "@/app/components/uiFrontend/text-generate-s
 
 import ProfileImage from '@/app/Assets/Images/photography.png';
 import { InfiniteMovingCardsDemo } from "@/app/components/uiFrontend/infinite-moving-card";
+import { StickyScrollRevealDemo } from "@/app/components/uiFrontend/sticky-scroll";
 
 export default function About() {
   return (
@@ -14,10 +15,30 @@ export default function About() {
 
       <div className="flex flex-col h-screen">
         <GridBackground />
-        <div className="absolute h-screen flex items-center justify-center md:mx-10 lg:mx-40 z-10">
+        <div className="absolute h-screen flex flex-col justify-center items-left md:mx-10 lg:mx-40 z-10">
+          <div className="flex flex-row justify-content items-center gap-x-4">
+            <div className="w-3 h-3 rounded-md bg-white shadow-lg shadow-white invert dark:invert-0"></div>
+            <h4 className="uppercase text-xl font-medium tracking-wide leading-6 lg:leading-12 lg:text-xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">About Me</h4>
+          </div>
           <TextGenerateSection />
         </div>
       </div>
+
+      <div className="flex flex-col m-20 gap-y-4 ">
+        <h4 className="bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text text-2xl md:leading-12 lg:text-5xl text-center tracking-wide">This is my story — alongside some flicks from my recent trip to Himachal Pradesh.</h4>
+        <StickyScrollRevealDemo />
+      </div>
+
+      {/* <div className="flex flex-col h-screen m-40">
+
+        <div className="flex flex-col gap-y-12">
+          <h4 className="text-4xl font-medium tracking-wide leading-6 lg:leading-12 lg:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">Here is about me outside work</h4>
+
+  
+
+        </div>
+
+      </div> */}
 
       <div className="flex flex-col justify-center items-center sm:gap-y-2 md:gap-y-4 lg:gap-y-6 md:mx-10 lg:mx-40 my-20">
         <div className="flex flex-col gap-y-4">
