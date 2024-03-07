@@ -6,7 +6,8 @@ import { TracingBeam } from "@/app/components/Animations/tracing-beam-animation"
 import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-tooltip";
 import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
-import OroIntroduction from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
+import Introduction01 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction01.png";
+import Introduction02 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction02.png";
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.jpg";
 import ObjectiveImg from '@/app/Assets/Images/OroCaseStudy/Objective.png';
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
@@ -156,21 +157,33 @@ const dummyContent = [
           In January 2022, Oro decided to redesign their product offerings &amp;
           expand their business to new cities. To achieve this they need to ship
           more refined and polished product which users can easily use. <br />
+
           <br />
-          I worked as a Product designer, designing &amp; leading the end-to-end
-          design direction of the mobile experience for core users which drive
-          the main business of the company. <br />
+          <Image src={Introduction02} alt="alt" className='rounded-md' />
           <br />
-          The app and website launch was met with outstanding end customer
-          response, alongside 127% increase in user engagement in the first
-          month itself. <br />
+
+          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+            <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Component Hightlights of multiple products of oro</p>
+
+            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+          </blockquote>
+
+
+          Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company. <br />
+          <br />
+          The app and website launch was met with outstanding end customer response, alongside 127% increase in user engagement in the first month itself. <br />
         </p>
+
+        <br />
+
 
 
       </>
     ),
     badge: "Introduction",
-    images: [OroIntroduction],
+    images: [Introduction01],
   },
 
   {
@@ -237,26 +250,17 @@ const dummyContent = [
       [ObjectiveImg,]
   },
 
-  // {
-  //   title: "Simplifying Doorstep Gold Loans for Indians with Enhanced UI/UX",
-  //   description: (
-  //     <>
-  //       {/* <p>
-  //         Research, strategize &amp; design an mobile application to help
-  //         Indian&apos;s get doorstep gold loans, with a focus to improve UI
-  //         &amp; UX in-app. Which results reduce the gold loan application time
-  //         from 45 minutes to ~28 minutes.
-  //       </p> */}
-  //     </>
-  //   ),
-  //   badge: "Objective",
-  //   image: [ObjectiveImg],
-  // },
-
   {
     title: "Design process I followed is Double Diamond",
     description: (
       <>
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">I diverge & converge basis on the task particular task I am doing</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+        </blockquote>
         <p>
           Following a user-centered design approach, we embarked on a
           comprehensive design process. We ideated, prototyped, and iterated on
@@ -278,7 +282,7 @@ const dummyContent = [
     // title: "Design process I followed is Double Diamond",
     description: (
       <>
-       {/* <ul className="list-disc">
+        {/* <ul className="list-disc">
           <li>Based on the data metrics I received from product & design managers and data analysts.</li>
           <li>Defined the problems such as complicated loan booking appointment, unclear loan terms & lack of transparency and navigation.</li>
           <li>End users are looking for easy to navigate app.</li>
