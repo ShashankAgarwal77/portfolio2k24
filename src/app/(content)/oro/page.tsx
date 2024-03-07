@@ -8,6 +8,7 @@ import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 import Introduction01 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction01.png";
 import Introduction02 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction02.png";
+import Introduction03 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction03.png";
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.jpg";
 import ObjectiveImg from '@/app/Assets/Images/OroCaseStudy/Objective.png';
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
@@ -170,15 +171,21 @@ const dummyContent = [
 
           </blockquote>
 
-
-          Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company. <br />
+          Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company. 
           <br />
-          The app and website launch was met with outstanding end customer response, alongside 127% increase in user engagement in the first month itself. <br />
+          <br />
+          <Image src={Introduction03} alt="alt" className='rounded-md' />
+          <br />
+          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+            <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">All of the products I have design while at Oro</p>
+
+            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+          </blockquote>
+
+          The app and website launch was met with outstanding end customer response, alongside <span className="text-2xl">127% increase</span> in user engagement in the first month itself. <br />
         </p>
-
-        <br />
-
-
 
       </>
     ),
