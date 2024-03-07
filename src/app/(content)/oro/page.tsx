@@ -7,7 +7,7 @@ import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-toolti
 import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 import OroIntroduction from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
-import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.png";
+import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.jpg";
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
 import JourneyImg from "@/app/Assets/Images/OroCaseStudy/UserJourney.png";
 import Thumbnail from "@/app/Assets/Images/OroCaseStudy/Thumbnailpng.png";
@@ -142,6 +142,14 @@ const dummyContent = [
     title: "It all started in January 2022",
     description: (
       <>
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Revamped UI of the core product of Orocorp</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+        </blockquote>
+
         <p>
           In January 2022, Oro decided to redesign their product offerings &amp;
           expand their business to new cities. To achieve this they need to ship
@@ -165,13 +173,20 @@ const dummyContent = [
 
   {
     title:
-      "Transforming Gold Loan Services: Enhancing User Experience and Streamlining Interfaces in India",
+      "In India, there is no seamless experience that handles doorstep gold loan service that customers are truly satisfied with.",
     description: (
       <>
+
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Generated this image using Microsoft Designer AI</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+        </blockquote>
+
+
         <p>
-          In India, there is no seamless experience that handles doorstep gold
-          loan service that customers are truly satisfied with. <br />
-          <br />
           One of the key challenges we aimed to address was improving the
           overall user experience for our customers seeking instant gold loans.
           By understanding their pain points and needs, we strived to create a
