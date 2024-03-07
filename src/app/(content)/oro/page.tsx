@@ -43,7 +43,7 @@ export default function TracingBeamDemo() {
           <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">Orocorp Redefined</h2>
         </div>
         <div className="flex flex-row justify-center">
-          <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1400}></Image>
+          <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1080}></Image>
         </div>
       </div>
 
