@@ -7,7 +7,7 @@ export function SVGMaskEffectDemo() {
       <MaskContainer
         revealText={
           <p className="max-w-4xl mx-auto text-slate-800 text-center  text-8xl font-bold">
-            Welcome to my world of photography 📸
+            Welcome to my world of hobbies 📸🎨
           </p>
         }
         className="h-screen w-full border rounded-md"

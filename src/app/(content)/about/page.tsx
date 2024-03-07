@@ -26,7 +26,7 @@ export default function About() {
       </div>
 
       <div className="flex flex-col md:m-20 lg:mx-40 gap-y-12 ">
-        <h2 className="bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text md:text-3xl lg:text-6xl tracking-wide">This is my story — <br /> alongside some flicks from my recent trip to Himachal Pradesh.</h2>
+        <h2 className="bg-gradient-to-br from-slate-300 to-slate-500 pb-2 inline-block text-transparent bg-clip-text md:text-3xl lg:text-6xl tracking-wide">This is my story — <br /> alongside some flicks from my recent trip to Himachal Pradesh.</h2>
         <StickyScrollRevealDemo />
       </div>
 
