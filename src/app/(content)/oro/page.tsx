@@ -8,9 +8,11 @@ import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 import OroIntroduction from "@/app/Assets/Images/OroCaseStudy/Introduction.png";
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.jpg";
+import ObjectiveImg from '@/app/Assets/Images/OroCaseStudy/Objective.png';
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
 import JourneyImg from "@/app/Assets/Images/OroCaseStudy/UserJourney.png";
 import Thumbnail from "@/app/Assets/Images/OroCaseStudy/Thumbnailpng.png";
+import EmpathiseImg from "@/app/Assets/Images/OroCaseStudy/Empathise.png";
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -204,21 +206,52 @@ const dummyContent = [
   },
 
   {
-    title: "Simplifying Doorstep Gold Loans for Indians with Enhanced UI/UX",
+    title:
+      "Simplifying Doorstep Gold Loans for Indians with the marvellous result",
     description: (
       <>
-        <p>
-          Research, strategize &amp; design an mobile application to help
-          Indian&apos;s get doorstep gold loans, with a focus to improve UI
-          &amp; UX in-app. Which results reduce the gold loan application time
-          from 45 minutes to ~28 minutes.
-        </p>
+
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">This is the Goal Hypothesis I formed & Result I get</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+        </blockquote>
+
+
+        {/* <p>
+          One of the key challenges we aimed to address was improving the
+          overall user experience for our customers seeking instant gold loans.
+          By understanding their pain points and needs, we strived to create a
+          seamless borrowing journey that instilled trust and confidence in our
+          services. Additionally, we aimed to streamline the interfaces of our
+          Customer App, Partner App, and Admin Dashboard, making them more
+          intuitive and user-friendly. <br />
+        </p> */}
 
       </>
     ),
     badge: "Objective",
-    // image: Orothumbnail,
+    images:
+      [ObjectiveImg,]
   },
+
+  // {
+  //   title: "Simplifying Doorstep Gold Loans for Indians with Enhanced UI/UX",
+  //   description: (
+  //     <>
+  //       {/* <p>
+  //         Research, strategize &amp; design an mobile application to help
+  //         Indian&apos;s get doorstep gold loans, with a focus to improve UI
+  //         &amp; UX in-app. Which results reduce the gold loan application time
+  //         from 45 minutes to ~28 minutes.
+  //       </p> */}
+  //     </>
+  //   ),
+  //   badge: "Objective",
+  //   image: [ObjectiveImg],
+  // },
 
   {
     title: "Design process I followed is Double Diamond",
@@ -242,21 +275,21 @@ const dummyContent = [
   },
 
   {
-    title: "Lacked understanding of app navigation which leads too much time to complete booking appointment",
+    // title: "Design process I followed is Double Diamond",
     description: (
       <>
-        <ul className="list-disc">
+       {/* <ul className="list-disc">
           <li>Based on the data metrics I received from product & design managers and data analysts.</li>
           <li>Defined the problems such as complicated loan booking appointment, unclear loan terms & lack of transparency and navigation.</li>
           <li>End users are looking for easy to navigate app.</li>
           <li>End users need well designed application.</li>
-        </ul>
+        </ul> */}
 
       </>
     ),
     badge: "Empathize",
-    // image:
-    //   "https://cdn.sanity.io/images/loniby3f/production/144f349e74ee8395acef78dd7d33693ccc099220-3840x2160.png",
+    images:
+      [EmpathiseImg,]
   },
 
   {

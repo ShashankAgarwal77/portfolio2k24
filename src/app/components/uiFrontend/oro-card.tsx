@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../Animations/3d-card";
 
-import OroThumbnail from '../../Assets/Images/OroCaseStudy/Introduction.png';
+import OroThumbnail from '../../Assets/Images/OroThumbnail.png';
 
 export function OroCard() {
   return (
