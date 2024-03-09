@@ -25,6 +25,14 @@ import DesignWorkflowImg from "@/app/Assets/Images/OroCaseStudy/Design/DesignWor
 import RevampMockup01 from "@/app/Assets/Images/OroCaseStudy/Design/RevampMockups_01.png";
 import RevampMockup02 from "@/app/Assets/Images/OroCaseStudy/Design/RevampMockups_02.png";
 
+//Deliver Images
+import Deliver01 from "@/app/Assets/Images/OroCaseStudy/Deliver/Deliver01.png";
+
+//Result Images 
+import Result01 from "@/app/Assets/Images/OroCaseStudy/Result/Result01.png";
+import Result02 from "@/app/Assets/Images/OroCaseStudy/Result/Result02.png";
+import Result03 from "@/app/Assets/Images/OroCaseStudy/Result/Result03.png";
+
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const [activeSection, setActiveSection] = useState<number | null>(null);
@@ -76,7 +84,7 @@ export default function TracingBeamDemo() {
                 {item.images && item.images.map((image, imgIndex) => (
                   <Image
                     key={`image-${imgIndex}`}
-                    src={image as string} // Type assertion
+                    src={image as any} // Type assertion
                     alt={`blog thumbnail ${imgIndex}`}
                     height="2000"
                     width="2000"
@@ -429,17 +437,18 @@ const dummyContent = [
     title: "Once product & design requirements are done. It’s our duty to give proper guidelines to the developers for polished development",
     description: (
       <>
-        <p>
-          Throughout the journey, I was collaborating closely with developers and product managers, we implemented the redesigned interfaces for the Customer App, Partner App, and Admin Dashboard. Throughout the implementation phase, we conducted rigorous testing to ensure the usability and functionality of the new designs. Any issues or challenges that arose were addressed promptly, resulting in a seamless transition to the enhanced user interfaces.
-        </p>
-        <ul className="list-disc">
-          <li>Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers</li>
-        </ul>
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers.</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+        </blockquote>
+        
       </>
     ),
     badge: "Deliver",
     images:
-      ["https://cdn.sanity.io/images/loniby3f/production/8186a6d61181c956ce13aff184cf3776a466caca-2000x1208.png"]
+      [Deliver01]
 
   },
 
@@ -454,7 +463,7 @@ const dummyContent = [
     ),
     badge: "Result",
     images:
-      ["https://cdn.sanity.io/images/loniby3f/production/258845651104cc46d8161f0c6043744a1606c0f2-2876x1608.gif", "https://cdn.sanity.io/images/loniby3f/production/9e94a1e7453604e2d21285f8da97aefa0d9592dc-3840x2160.png", "https://cdn.sanity.io/images/loniby3f/production/1f99306611d4ecd2711765549851fb90379baf3d-3840x4486.png", "https://cdn.sanity.io/images/loniby3f/production/159cb63a2b2fcc7635829dfdcbd79add9dcad81a-951x716.png"]
+      [Result01, Result02, Result03]
 
   },
 
