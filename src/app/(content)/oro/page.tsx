@@ -12,9 +12,18 @@ import Introduction03 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introd
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.jpg";
 import ObjectiveImg from '@/app/Assets/Images/OroCaseStudy/Objective.png';
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
-import JourneyImg from "@/app/Assets/Images/OroCaseStudy/UserJourney.png";
+
+// Conceptualize Images
+import JourneyImg from "@/app/Assets/Images/OroCaseStudy/Conceptualize/UserJourney.png";
+import UserTakeaways from "@/app/Assets/Images/OroCaseStudy/Conceptualize/KeyTakeaways.png";
+import CompetitionImg from "@/app/Assets/Images/OroCaseStudy/Conceptualize/Competitive.png";
 import Thumbnail from "@/app/Assets/Images/OroCaseStudy/Thumbnailpng.png";
 import EmpathiseImg from "@/app/Assets/Images/OroCaseStudy/Empathise.png";
+
+// Design Images
+import DesignWorkflowImg from "@/app/Assets/Images/OroCaseStudy/Design/DesignWorkflow.png";
+import RevampMockup01 from "@/app/Assets/Images/OroCaseStudy/Design/RevampMockups_01.png";
+import RevampMockup02 from "@/app/Assets/Images/OroCaseStudy/Design/RevampMockups_02.png";
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -171,7 +180,7 @@ const dummyContent = [
 
           </blockquote>
 
-          Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company. 
+          Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company.
           <br />
           <br />
           <Image src={Introduction03} alt="alt" className='rounded-md' />
@@ -320,13 +329,17 @@ const dummyContent = [
 
         <h4 className="text-2xl pb-4">Key Takeaways from Customer Journey Mapping</h4>
 
-        <ul className="list-disc">
+        {/* <ul className="list-disc">
           <li>Customer feels lack of trust when installed app first time</li>
           <li>Customer are struggling by pressing the small CTA that is hard to reach</li>
           <li>Customer find it hard to understand all of the terms of gold loan</li>
           <li>Customer find it hard to manage gold loan for repayments</li>
           <li>Customer feels insecure about gold stored at faculity</li>
-        </ul>
+        </ul> */}
+
+        <br />
+        <Image src={UserTakeaways} alt="alt" className='rounded-md' />
+        <br />
 
         <br />
         <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
@@ -337,7 +350,12 @@ const dummyContent = [
         <p>
           I conducted competitor analysis on Google Sheets and categorized this activitiy into sub modules such as :
         </p>
-        <ul className="list-disc">
+
+        <br />
+        <Image src={CompetitionImg} alt="alt" className='rounded-md'></Image>
+        <br />
+
+        {/* <ul className="list-disc">
           <li>General Information : Competitor Type, Location, Product Offering, Price, Business Size and Targeted Audience</li>
           <li>First Impression : Desktop Website Experience, Mobile and App Experience</li>
           <li>Interaction : Features, Accessibility, User Flow and Navigation</li>
@@ -345,7 +363,7 @@ const dummyContent = [
           <li>Content : Tone and Descriptiveness</li>
         </ul>
         <br />
-        <p>Insights : I found even competitors have great product features but the execution such as well designed product is still main concern, so this could be our opportinuity to create more seamless well designed product</p>
+        <p>Insights : I found even competitors have great product features but the execution such as well designed product is still main concern, so this could be our opportinuity to create more seamless well designed product</p> */}
 
       </>
     ),
@@ -358,18 +376,51 @@ const dummyContent = [
     title: "We were on a tight deadline and developers need to start developing soon.",
     description: (
       <>
-        <ul className="list-disc">
+
+        <Image src={DesignWorkflowImg} alt="alt" className='rounded-md'></Image>
+
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">My Design Workflow for designing Customer App</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+        </blockquote>
+
+        <br />
+
+        <Image src={RevampMockup01} alt="alt" className='rounded-md'></Image>
+
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Visual Mockups of Bunch of Screens as the part of Gold Loan Flow in Cx App </p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+        </blockquote>
+
+        <br />
+
+        <Image src={RevampMockup02} alt="alt" className='rounded-md'></Image>
+
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Every UI design has been done with all consideration of the edgecases</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+        </blockquote>
+
+
+        {/* <ul className="list-disc">
           <li>So we sit for kickoff call and start gathering inspiration from multiple apps out there</li>
           <li>Once wireframes of particular phase is finalized with start with the content finalization</li>
           <li>Once content is finalized, we started with the visual UI design</li>
           <li>There are certain spacing, icons and font guidelines which are defined. so we use them for our visual design</li>
           <li>Using the visual design system helps me to create UI faster</li>
-        </ul>
+        </ul> */}
       </>
     ),
     badge: "Design",
-    images:
-      ["https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png", "https://cdn.sanity.io/images/loniby3f/production/f8bc264455f340f9a4c9124343bc59ee269e6d87-3864x2184.png"]
+    // images:
+    //   ["https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png", "https://cdn.sanity.io/images/loniby3f/production/f8bc264455f340f9a4c9124343bc59ee269e6d87-3864x2184.png"]
 
 
   },
