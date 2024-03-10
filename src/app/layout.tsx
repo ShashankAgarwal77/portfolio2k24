@@ -8,6 +8,8 @@ interface Metadata extends NextMetadata {
     url: string;
     alt: string;
   };
+  // Add the og:image property
+  "og:image"?: string;
 }
 
 const workSans = Work_Sans({ subsets: ["latin"] });
@@ -23,6 +25,8 @@ export const metadata: Metadata = {
     url: imagePath,
     alt: "Description of your image",
   },
+  // Add the og:image property
+  "og:image": imagePath, // Use the same imagePath for og:image
 };
 
 export default function RootLayout({
