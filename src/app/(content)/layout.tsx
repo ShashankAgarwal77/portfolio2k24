@@ -4,7 +4,6 @@ import '../globals.css';
 // import { Header, Footer } from '@/components/Layout'
 // import 'react-toastify/dist/ReactToastify.css'
 
-import Head from 'next/head';
 
 export const metadata = {
   description: 'A UX portfolio website of Shashank Agarwal',

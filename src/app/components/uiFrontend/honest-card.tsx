@@ -46,14 +46,15 @@ export function HonestCard() {
               alt="thumbnail"
             />
           </CardItem>
-          <Link href="/honest">
+          <Link href="/">
           <div className="flex justify-between items-center mt-10">
             <CardItem
               // translateZ={20}
               as="button"
-              className="inline-flex h-16 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 py-8 text-xl font-bold text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
+              className="inline-flex h-16 items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 py-8 text-xl font-bold text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide cursor-not-allowed"
+              
             >
-              Read Full Case Study ➜
+              Coming Soon 🔒
             </CardItem>
           </div>
           </Link>
