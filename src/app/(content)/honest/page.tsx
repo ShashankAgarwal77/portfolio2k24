@@ -7,7 +7,19 @@ import { AnimatedTooltipCard } from "@/app/components/uiFrontend/animated-toolti
 import { SpotlightPreview } from "@/app/components/uiFrontend/spotlight";
 
 
-import HonestThumbnail from "@/app/Assets/Images/HonestIntroduction.png";
+//Import Image
+import HonestThumbnail01_Img from "@/app/Assets/Images/HonestIntroduction.png";
+
+//Problem Section Images
+import ProblemImg from "@/app/Assets/Images/HonestCaseStudy/Problem.png";
+
+//Hypothesis Section Images
+import Hypothesis01_Img from "@/app/Assets/Images/HonestCaseStudy/Hypothesis.png";
+
+//Constrains Section Images
+import Constrains01_img from "@/app/Assets/Images/HonestCaseStudy/Constrains.png";
+
+
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -35,6 +47,7 @@ export default function TracingBeamDemo() {
 
   return (
     <div className="flex flex-col justify-between">
+
       <SpotlightPreview />
 
       <TracingBeam className="px-6 xl:max-w-5xl mx-auto my-40 overflow-y-clip">
@@ -101,6 +114,161 @@ const dummyContent = [
     title: "Honest Bites: Unveiling a World of Culinary Experience",
     description: (
       <>
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+
+          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Highlights of the UI of core consumer product</p>
+
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+
+        </blockquote>
+        <p>
+          In a bustling world where time is of the essence, and appetites crave authenticity, I am set out on a journey to craft an unparalleled user experience in the realm of food ordering and delivery. Welcome to the story of Honest Bites a revolutionary application that tantalizes taste buds, builds trust, and elevates convenience for every culinary explorer.
+        </p>
+
+
+      </>
+    ),
+    badge: "Introduction",
+    images: [HonestThumbnail01_Img],
+
+  },
+  {
+    title: "Quick info about the project",
+    description: (
+      <>
+        <div className="grid sm:grid-cols-1 lg:grid-cols-2 md:gap-16 lg:gap-32">
+          <div>
+            <h4 className="text-2xl pb-4">My Roles &amp; Responsibilities</h4>
+            <ul className="list-disc text-justify leading-loose text-normal">
+              <li>
+                <b>UX Analysis :</b> Problem Hypothesis Ideation & Validation, Curating Customer Journey Mapping, Heuristic Evaluation, Implementing UX Laws and much more.
+              </li>
+              <li>
+                <b>UI Design :</b> Multiple Iterations and Ideation on Low &amp; High Fidelity Wireframes and Mockups.
+              </li>
+              <li>
+                Make vision easily understandable to the Stakeholders, PMs, Developers in (UX, Software, Product).
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-2xl pb-4">Status &amp; Timeline</h4>
+            <ul className="list-disc text-justify leading-loose text-normal">
+              <li>First Version designed back from June 2021 to August 2021</li>
+              <li>Second Version designed back in Decemeber 2023</li>
+            </ul>
+          </div>
+        </div>
+      </>
+    ),
+    badge: "Overview",
+
+  },
+  {
+    title: "Major issue faced by consumers right now.",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Problem",
+    images: [ProblemImg,],
+
+
+  },
+  {
+    title: "Some of the Hypothesis I formed before working on the problem",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Hypothesis",
+    images: [Hypothesis01_Img],
+
+  },
+  {
+    title: "Some of the Constrains I Need to bear before designing the solution",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Constrains",
+    images: [Constrains01_img],
+
+  },
+  {
+    title: "",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Success",
+    // images: [HonestThumbnail],
+
+  },
+  {
+    title: "",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Process",
+    // images: [HonestThumbnail],
+
+  },
+  {
+    title: "",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Ideation",
+    // images: [HonestThumbnail],
+
+  },
+  {
+    title: "",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "User Testing",
+    // images: [HonestThumbnail],
+
+  },
+  {
+    title: "",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Outcome",
+    // images: [HonestThumbnail],
+
+  },
+  {
+    title: "",
+    description: (
+      <>
+
+      </>
+    ),
+    badge: "Key Learnings",
+    // images: [HonestThumbnail],
+
+  },
+
+  {
+    title: "Honest Bites: Unveiling a World of Culinary Experience",
+    description: (
+      <>
         <p>
           In a bustling world where time is of the essence, and appetites crave authenticity, I am set out on a journey to craft an unparalleled user experience in the realm of food ordering and delivery. Welcome to the story of Honest Bites a revolutionary application that tantalizes taste buds, builds trust, and elevates convenience for every culinary explorer.
         </p>
@@ -108,7 +276,7 @@ const dummyContent = [
       </>
     ),
     badge: "Overview",
-    images: [HonestThumbnail],
+    // images: [HonestThumbnail],
 
   },
 
@@ -465,62 +633,62 @@ const dummyContent = [
     title: " High Fiedility Mockups",
     description: (
       <>
-      <h2 className="text-3xl">Points to be explained :</h2> <br />
-      <ul className="list-decimal">
-        <li>Food Overview - Provided by restaurant to summarize about the dish in words</li>
-        <li>Images Uploaded by Restaurant - Curated photos and videos uploaded by the restaurant of particular food</li>
-        <li>Ratings & Reviews - Provided by the customers with the option to for customer to upload their rating & reviews of particular dish</li>
-        <li>Overall Customers Rating - Channelize way to show all of the ratings provided by the customers</li>
-        <li>All Customer Reviews - Show All images and reviews shared by the customers</li>
-        <li>Sort Funtionality - Filter out the reviews by multiple filter options such as High to Low or Low to High Rating</li>
-        <li>Review Media Share - Each review have option for user to upload photo or video of the image</li>
-        <li>Header & sub-caption - Each review is divided into smaller contextual heading with the sub-caption which supports the heading</li>
-        <li>User Verification - User Profile and Name will be reflected with the verified user badge which verifies the authencitiy of the review from HonestBites</li>
-        <li>Report Issue - If user have any issue with the food information, reviews or food itself they can report to the HonestBites as well as Restaurant regarding the issue</li>
-      </ul> <br />
-      <p>Once Mockups are ready, it's time for usability testing of these designs but due to less time i have after my job i decided to give an AI try. I use AI tools such as Attention Insights to get an heatmap about how might users will react/behave on particular screen</p>
+        <h2 className="text-3xl">Points to be explained :</h2> <br />
+        <ul className="list-decimal">
+          <li>Food Overview - Provided by restaurant to summarize about the dish in words</li>
+          <li>Images Uploaded by Restaurant - Curated photos and videos uploaded by the restaurant of particular food</li>
+          <li>Ratings & Reviews - Provided by the customers with the option to for customer to upload their rating & reviews of particular dish</li>
+          <li>Overall Customers Rating - Channelize way to show all of the ratings provided by the customers</li>
+          <li>All Customer Reviews - Show All images and reviews shared by the customers</li>
+          <li>Sort Funtionality - Filter out the reviews by multiple filter options such as High to Low or Low to High Rating</li>
+          <li>Review Media Share - Each review have option for user to upload photo or video of the image</li>
+          <li>Header & sub-caption - Each review is divided into smaller contextual heading with the sub-caption which supports the heading</li>
+          <li>User Verification - User Profile and Name will be reflected with the verified user badge which verifies the authencitiy of the review from HonestBites</li>
+          <li>Report Issue - If user have any issue with the food information, reviews or food itself they can report to the HonestBites as well as Restaurant regarding the issue</li>
+        </ul> <br />
+        <p>Once Mockups are ready, it's time for usability testing of these designs but due to less time i have after my job i decided to give an AI try. I use AI tools such as Attention Insights to get an heatmap about how might users will react/behave on particular screen</p>
       </>
     ),
     badge: "High-Fi",
-    images: ["https://cdn.sanity.io/images/loniby3f/production/ada757caa300eb4e4b1e68c4cee7e131cf107143-7680x4320.png","https://cdn.sanity.io/images/loniby3f/production/96c93f42fe991f9999f3a0da16c95c606b20f84a-7680x4320.png","https://cdn.sanity.io/images/loniby3f/production/d78e0685021b799e2ac2b0ed1c42e3e24aa8da7c-7680x4320.png"],
+    images: ["https://cdn.sanity.io/images/loniby3f/production/ada757caa300eb4e4b1e68c4cee7e131cf107143-7680x4320.png", "https://cdn.sanity.io/images/loniby3f/production/96c93f42fe991f9999f3a0da16c95c606b20f84a-7680x4320.png", "https://cdn.sanity.io/images/loniby3f/production/d78e0685021b799e2ac2b0ed1c42e3e24aa8da7c-7680x4320.png"],
   },
 
   {
     title: "Insights & Findings",
     description: (
       <>
-      <p>Attention Insights data is helpful for giving constructive feedback which improves overall visuals of the design of the product</p>
+        <p>Attention Insights data is helpful for giving constructive feedback which improves overall visuals of the design of the product</p>
       </>
     ),
     badge: "Insights",
-    images: ["https://cdn.sanity.io/images/loniby3f/production/be7a5e8eafff7351b0287a7ff69d59346e07a80e-7680x5584.png","https://cdn.sanity.io/images/loniby3f/production/464e330bd95793dd13f0cc6b8abac5828dc445a1-7680x5584.png"],
+    images: ["https://cdn.sanity.io/images/loniby3f/production/be7a5e8eafff7351b0287a7ff69d59346e07a80e-7680x5584.png", "https://cdn.sanity.io/images/loniby3f/production/464e330bd95793dd13f0cc6b8abac5828dc445a1-7680x5584.png"],
   },
 
   {
     title: "Insights & Findings",
     description: (
       <>
-      <p>
-        <h2 className="text-2xl">Impact</h2>
-        This project really impacts me as an individual because it really helps me understand how critical is UX for any business to grow on the next level and how vast the opportunities to solve social problems by Experience Research and Design <br /> <br />
+        <p>
+          <h2 className="text-2xl">Impact</h2>
+          This project really impacts me as an individual because it really helps me understand how critical is UX for any business to grow on the next level and how vast the opportunities to solve social problems by Experience Research and Design <br /> <br />
 
-        <h2 className="text-3xl">Design is not just what it looks like and feels like. Design is how it works. ~ Steve Job</h2> <br />
+          <h2 className="text-3xl">Design is not just what it looks like and feels like. Design is how it works. ~ Steve Job</h2> <br />
 
-        <h2 className="text-2xl">What I Learned</h2> 
-        Learned how critical thinking is needed to create a user experience that is delightful yet usable for everyone
-        <br />
-        <br />
+          <h2 className="text-2xl">What I Learned</h2>
+          Learned how critical thinking is needed to create a user experience that is delightful yet usable for everyone
+          <br />
+          <br />
 
-        <h2 className="text-2xl">Next Steps</h2> 
-        <ol className="list-decimal">
-          <li>Can create the prototype of the different flows of the app</li>
-          <li>Can conduct Usability Testing with actual customers</li>
-          <li>Can test the dark mode of the app</li>
-        </ol>
+          <h2 className="text-2xl">Next Steps</h2>
+          <ol className="list-decimal">
+            <li>Can create the prototype of the different flows of the app</li>
+            <li>Can conduct Usability Testing with actual customers</li>
+            <li>Can test the dark mode of the app</li>
+          </ol>
 
 
 
-      </p>
+        </p>
       </>
     ),
     badge: "Takeaways",
