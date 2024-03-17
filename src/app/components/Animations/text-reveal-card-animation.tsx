@@ -56,7 +56,7 @@ export const TextRevealCard = ({
       onMouseMove={mouseMoveHandler}
       ref={cardRef}
       className={cn(
-        "bg-[#0E0E10]/50 border border-white/[0.08] w-[40rem] rounded-lg p-8 h-full relative overflow-hidden",
+        "dark:bg-[#0E0E10]/50 border border-white/[0.08] w-[40rem] rounded-lg p-8 h-full relative overflow-hidden",
         className
       )}
     >
@@ -78,13 +78,13 @@ export const TextRevealCard = ({
                 }
           }
           transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
-          className="absolute bg-[#0E0E10]/50 z-20  will-change-transform"
+          className="absolute bg-[#fff] dark:bg-[#0E0E10]/50 z-20  will-change-transform"
         >
           <p
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
             }}
-            className="text-base sm:text-[3rem] py-10 font-bold text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300"
+            className="text-base  sm:text-[3rem] py-10 font-bold text-slate-300 dark:text-white bg-clip-text text-transparent bg-gradient-to-b from-slate-200 to-slate-600 dark:bg-gradient-to-b dark:from-white dark:to-slate-300"
           >
             {revealText}
           </p>
@@ -96,11 +96,11 @@ export const TextRevealCard = ({
             opacity: widthPercentage > 0 ? 1 : 0,
           }}
           transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
-          className="h-40 w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform"
+          className="h-40 w-[8px] bg-gradient-to-b from-transparent via-slate-200 to-transparent dark:bg-gradient-to-b dark:from-transparent dark:via-neutral-800 dark:to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 
         <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-base sm:text-[3rem] py-10 font-bold bg-clip-text text-transparent bg-[#323238]">
+          <p className="text-base sm:text-[3rem] py-10 font-bold bg-clip-text text-transparent bg-[#cbd5e1] dark:bg-[#323238]">
             {text}
           </p>
           <MemoizedStars />
@@ -118,7 +118,7 @@ export const TextRevealCardTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={twMerge("text-white md:text-md lg:text-lg xl:text-xl mb-2", className)}>
+    <h2 className={twMerge("text-slate-700 font-regular tracking-wide dark:text-white md:text-md lg:text-lg xl:text-xl mb-2", className)}>
       {children}
     </h2>
   );
