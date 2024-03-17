@@ -80,7 +80,7 @@ export default function TracingBeamDemo() {
               <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-xl lg:leading-normal lg:text-4xl text-black dark:text-white sm:mb-4 md:mb-6 lg:mb-8">
                 {item.title}
               </p>
-              <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide light:text-slate-600 dark:text-slate-300 prose prose-sm dark:prose-invert">
+              <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide text-slate-700 dark:text-slate-300 prose prose-sm dark:prose-invert">
                 {item.images && item.images.map((image, imgIndex) => (
                   <Image
                     key={`image-${imgIndex}`}
@@ -106,7 +106,7 @@ export default function TracingBeamDemo() {
               <li key={`sidebar-item-${index}`}>
                 <a
                   href={`#content-${index}`}
-                  className={`text-neutral-500 hover:text-white ${activeSection === index ? "text-white" : ""}`}
+                  className={`text-slate-400 dark:text-slate-500 hover:text-slate-500 dark:hover:text-white ${activeSection === index ? "text-slate-900 dark:text-white" : ""}`}
                 >
                   {item.badge}
                 </a>
@@ -163,11 +163,11 @@ const dummyContent = [
     title: "It all started in January 2022",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparent">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Revamped UI of the core product of Orocorp</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Revamped UI of the core product of Orocorp</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -180,11 +180,11 @@ const dummyContent = [
           <Image src={Introduction02} alt="alt" className='rounded-md' />
           <br />
 
-          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-            <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Component Hightlights of multiple products of oro</p>
+            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Component Hightlights of multiple products of oro</p>
 
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
           </blockquote>
 
@@ -193,11 +193,11 @@ const dummyContent = [
           <br />
           <Image src={Introduction03} alt="alt" className='rounded-md' />
           <br />
-          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-            <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">All of the products I have design while at Oro</p>
+            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">All of the products I have design while at Oro</p>
 
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
           </blockquote>
 
@@ -216,11 +216,11 @@ const dummyContent = [
     description: (
       <>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Generated this image using Microsoft Designer AI</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Generated this image using Microsoft Designer AI</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -248,11 +248,11 @@ const dummyContent = [
     description: (
       <>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">This is the Goal Hypothesis I formed & Result I get</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">This is the Goal Hypothesis I formed & Result I get</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -278,11 +278,11 @@ const dummyContent = [
     title: "Design process I followed is Double Diamond",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">I diverge & converge basis on the task particular task I am doing</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">I diverge & converge basis on the task particular task I am doing</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
         <p>
@@ -387,33 +387,33 @@ const dummyContent = [
 
         <Image src={DesignWorkflowImg} alt="alt" className='rounded-md'></Image>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">My Design Workflow for designing Customer App</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">My Design Workflow for designing Customer App</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
         </blockquote>
 
         <br />
 
         <Image src={RevampMockup01} alt="alt" className='rounded-md'></Image>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Visual Mockups of Bunch of Screens as the part of Gold Loan Flow in Cx App </p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Visual Mockups of Bunch of Screens as the part of Gold Loan Flow in Cx App </p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
         </blockquote>
 
         <br />
 
         <Image src={RevampMockup02} alt="alt" className='rounded-md'></Image>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Every UI design has been done with all consideration of the edgecases</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Every UI design has been done with all consideration of the edgecases</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
         </blockquote>
 
 
@@ -437,11 +437,11 @@ const dummyContent = [
     title: "Once product & design requirements are done. It’s our duty to give proper guidelines to the developers for polished development",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers.</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers.</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
         </blockquote>
         
       </>

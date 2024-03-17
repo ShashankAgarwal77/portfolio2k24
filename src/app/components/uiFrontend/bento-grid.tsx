@@ -169,13 +169,13 @@ const SkeletonFour = () => {
     >
       <motion.div
         variants={first}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center "
       >
         <p className="text-4xl">💪</p>
         <p className="lg:text-base text-center border border-yellow-500 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 text-xs rounded-full px-2 py-0.5 mt-4">
         Build strong conviction
         </p>
-        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-200 mt-4 tracking-wide">
+        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-600 dark:text-neutral-200 mt-4 tracking-wide ">
         Iterating and testing improves my decisions and work quality.
         </p>
         
@@ -185,7 +185,7 @@ const SkeletonFour = () => {
         <p className="text-center border border-pink-500 bg-pink-100 dark:bg-pink-900/20 text-pink-600 text-xs lg:text-base rounded-full px-2 py-0.5 mt-4">
         Thoughtful complexity
         </p>
-        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-200 mt-4 tracking-wide">
+        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-600 dark:text-neutral-200 mt-4 tracking-wide ">
         I enjoy solving hard problems with product thinking and teamwork.
         </p>
         
@@ -198,7 +198,7 @@ const SkeletonFour = () => {
         <p className="text-center border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs lg:text-base rounded-full px-2 py-0.5 mt-4">
         Process oriented
         </p>
-        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-200 mt-4 tracking-wide">
+        <p className="sm:text-sm text-xs lg:text-md text-center font-medium  text-neutral-600 dark:text-neutral-200 mt-4 tracking-wide ">
         I collaborate to create a flexible and adaptable process.
         </p>
         
