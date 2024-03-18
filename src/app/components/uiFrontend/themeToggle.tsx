@@ -3,28 +3,30 @@
 import { useEffect, useState } from 'react'
 
 const ThemeSwitcher = () => {
-    const [darkMode, setDarkMode] = useState(true) // Set initial state to true
+    const [darkMode, setDarkMode] = useState(() => {
+        // On initial render, check if dark mode is already enabled or stored in localStorage
+        const existingPreference = localStorage.getItem('darkMode')
+        return existingPreference ? JSON.parse(existingPreference) : true
+    })
 
-    // On component mount, check if dark mode is already enabled
+    // When darkMode state changes, store it in localStorage and update class on document element
     useEffect(() => {
-        if (!document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.add('dark') // Add 'dark' class if not present
+        localStorage.setItem('darkMode', JSON.stringify(darkMode))
+        if (darkMode) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
         }
-    }, [])
+    }, [darkMode])
 
     const toggleDarkMode = () => {
-        if (darkMode) {
-            document.documentElement.classList.remove('dark')
-        } else {
-            document.documentElement.classList.add('dark')
-        }
         setDarkMode(!darkMode)
     }
 
     return (
-            <button onClick={toggleDarkMode} className='bg-slate-200 dark:bg-slate-900 p-4 rounded-xl'>
-                {darkMode ? '🌞' : '🌙'}
-            </button>
+        <button onClick={toggleDarkMode} className='bg-slate-200 dark:bg-slate-900 p-4 rounded-xl'>
+            {darkMode ? '🌞' : '🌙'}
+        </button>
     )
 }
 
