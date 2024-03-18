@@ -96,7 +96,7 @@ export default function TracingBeamDemo() {
 
       <div className="hidden lg:flex fixed mx-10 my-40">
         <div ref={sidebarRef} className="flex flex-col items-start">
-          <h2 className="text-slate-600 text-md uppercase font-bold mb-4">
+          <h2 className="text-slate-400 dark:text-slate-600 text-md uppercase font-bold mb-4">
             Content
           </h2>
           <ul className="space-y-4 w-48">
@@ -104,7 +104,7 @@ export default function TracingBeamDemo() {
               <li key={`sidebar-item-${index}`}>
                 <a
                   href={`#content-${index}`}
-                  className={`text-neutral-500 hover:text-white  ${activeSection === index ? "text-white" : ""
+                  className={`text-slate-400 dark:text-slate-500 hover:text-slate-500 dark:hover:text-white  ${activeSection === index ? "text-slate-900 dark:text-white" : ""
                     }`}
                 >
                   {item.badge}

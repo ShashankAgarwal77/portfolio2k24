@@ -100,7 +100,7 @@ export default function TracingBeamDemo() {
 
       <div className="hidden lg:flex fixed mx-10 my-40">
         <div ref={sidebarRef} className="flex flex-col relative items-start">
-          <h2 className="text-slate-600 text-md uppercase font-bold mb-4">Content</h2>
+          <h2 className="text-slate-200 dark:text-slate-600 text-md uppercase font-bold mb-4">Content</h2>
           <ul className="space-y-4 w-48">
             {dummyContent.map((item, index) => (
               <li key={`sidebar-item-${index}`}>
