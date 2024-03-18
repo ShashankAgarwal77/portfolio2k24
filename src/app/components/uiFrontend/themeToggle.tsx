@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react'
 
 const ThemeSwitcher = () => {
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(true) // Set initial state to true
 
     // On component mount, check if dark mode is already enabled
     useEffect(() => {
-        if (document.documentElement.classList.contains('dark')) {
-            setDarkMode(true)
+        if (!document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.add('dark') // Add 'dark' class if not present
         }
     }, [])
 

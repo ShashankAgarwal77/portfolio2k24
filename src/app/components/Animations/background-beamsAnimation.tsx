@@ -5,7 +5,7 @@ import { cn } from "@/app/lib/utils";
 
 export function BackgroundBeamsDemo() {
   return (
-    <div className="h-screen bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
+    <div className="h-screen relative flex flex-col items-center justify-center antialiased">
       <BackgroundBeams />
     </div>
   );
