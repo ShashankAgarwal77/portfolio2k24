@@ -76,7 +76,7 @@ export default function TracingBeamDemo() {
                 {item.title}
               </p>
 
-              <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide light:text-slate-600 dark:text-slate-300 prose prose-sm dark:prose-invert">
+              <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide text-slate-700 dark:text-slate-300 prose prose-sm dark:prose-inver">
                 {item.images && item.images.map((image, imgIndex) => (
                   <Image
                     key={`image-${imgIndex}`}
@@ -124,11 +124,11 @@ const dummyContent = [
     title: "Honest Bites: Unveiling a World of Culinary Experience",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparent">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Highlights of the UI of core consumer product</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Highlights of the UI of core consumer product</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
         <p>
@@ -179,11 +179,11 @@ const dummyContent = [
     description: (
       <>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Trust and Authencity thought resistance create anxiety and confusion which leads to frustrations to the customers</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Trust and Authencity thought resistance create anxiety and confusion which leads to frustrations to the customers</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -199,11 +199,11 @@ const dummyContent = [
     description: (
       <>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">These are the points that are ficitional or non-ficitional to build this product</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">These are the points that are ficitional or non-ficitional to build this product</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -218,11 +218,11 @@ const dummyContent = [
     description: (
       <>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen :</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen :</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -238,11 +238,11 @@ const dummyContent = [
       <>
 
         <p>
-          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-            <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen</p>
+            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen</p>
 
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
           </blockquote>
         </p>
@@ -257,11 +257,11 @@ const dummyContent = [
     title: "My Process developed and followed in this project",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">The process I developed in-journey to figure out and gather insights from different activities</p>
+          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">The process I developed in-journey to figure out and gather insights from different activities</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
         </blockquote>
 
@@ -278,9 +278,9 @@ const dummyContent = [
         <div className="Empathize">
           <h2 className="md:text-xl lg:text-3xl pb-4">Requirements & HMW's</h2>
           <Image src={Empathize01_Img} alt=""></Image>
-          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
-            <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
+            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
+            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
           </blockquote>
         </div>
 
@@ -296,11 +296,11 @@ const dummyContent = [
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Research Overview</h2>
 
             <Image src={Empathize01_Img} alt=""></Image>
-            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
+              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
             </blockquote>
           </div>
@@ -499,11 +499,11 @@ const dummyContent = [
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/f882216c7db4b643e37bbda51ddda35fcc2d90cd-3840x2146.png" className="my-4" alt="" width={3840} height={2146}></Image>
 
-            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400">I use storyboard to visualize and ideate the product scenario</p>
+              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">I use storyboard to visualize and ideate the product scenario</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
             </blockquote>
 
@@ -523,11 +523,11 @@ const dummyContent = [
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/ee5245efd2186017a857fe32e0587155c42b18bd-7680x21272.png" className="my-4" alt="" width={7680} height={21272}></Image>
 
-            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400"> You can preview the whole IA by <a href="https://www.figma.com/file/pIdmfbNQDwkJ8lJKyc7rX8/HonestBites---UX-Case-Study?type=design&node-id=274%3A1702&mode=design&t=zY0XaOncAy5QCPNh-1" className="hover:text-rgay-500">Click Here</a></p>
+              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400"> You can preview the whole IA by <a href="https://www.figma.com/file/pIdmfbNQDwkJ8lJKyc7rX8/HonestBites---UX-Case-Study?type=design&node-id=274%3A1702&mode=design&t=zY0XaOncAy5QCPNh-1" className="hover:text-rgay-500">Click Here</a></p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
             </blockquote>
 
@@ -553,11 +553,11 @@ const dummyContent = [
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/f99cdc857564e73130a68b616532bf0be6711977-2560x2180.png" className="my-4" alt="" width={2560} height={2180}></Image>
 
-            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400"> Creating Paper Wireframes really helps me to brainstorm ideas on how can particular component can be placed in content architecture.</p>
+              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400"> Creating Paper Wireframes really helps me to brainstorm ideas on how can particular component can be placed in content architecture.</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
             </blockquote>
 
@@ -587,11 +587,11 @@ const dummyContent = [
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/3129006f755af3adbea887bbd0e5932235683c2e-11264x7008.png" alt="" height={11264} width={7008}></Image>
 
-            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-transparent">
+            <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg italic font-medium leading-relaxed text-gray-900 dark:text-gray-400"> Aim is to build the foundation first, so future designed elements can be easily added and documented</p>
+              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400"> Aim is to build the foundation first, so future designed elements can be easily added and documented</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-gray-900 uppercase tracking-wide text-gray-500 text-lg'>Image</p>
+              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
 
             </blockquote>
           </div>
