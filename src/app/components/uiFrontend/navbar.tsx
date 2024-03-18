@@ -36,7 +36,7 @@ export function NavbarComp({ className }: { className?: string }) {
       })}
       style={{ justifyContent: "center" }}
     >
-      <div className="flex justify-between items-center px-8 font-medium">
+      <div className="flex justify-between items-center px-12 font-medium">
         <div />
         <Menu setActive={setActive}>
           <div className="flex items-center justify-around px-10 space-x-16">

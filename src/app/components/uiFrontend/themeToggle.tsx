@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import { IoIosSunny } from "react-icons/io";
+import { IoIosMoon } from "react-icons/io";
+
 const ThemeSwitcher = () => {
     const [darkMode, setDarkMode] = useState(() => {
         // Check localStorage for theme preference, default to true (dark mode) if not found
@@ -23,7 +26,7 @@ const ThemeSwitcher = () => {
 
     return (
         <button onClick={toggleDarkMode} className='bg-slate-200 dark:bg-slate-900 p-4 rounded-xl'>
-            {darkMode ? '🌞' : '🌙'}
+            {darkMode ? <IoIosSunny className='text-slate-100' /> : <IoIosMoon className='text-slate-600'/>}
         </button>
     );
 };
