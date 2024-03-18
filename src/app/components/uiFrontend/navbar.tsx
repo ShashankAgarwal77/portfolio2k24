@@ -4,6 +4,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../Animations/floating
 import { cn } from "@/app/lib/utils";
 import Image from 'next/image'; // Import next/image component
 import Link from 'next/link';
+import ThemeSwitcher from "./themeToggle";
 
 import logo from '@/app/Assets/Images/Logo.svg';
 
@@ -35,7 +36,8 @@ export function NavbarComp({ className }: { className?: string }) {
       })}
       style={{ justifyContent: "center" }}
     >
-      <div className="flex justify-between mx-auto font-medium">
+      <div className="flex justify-between items-center px-8 font-medium">
+        <div />
         <Menu setActive={setActive}>
           <div className="flex items-center justify-around px-10 space-x-16">
             <MenuItem setActive={setActive} active={active} item="Hobby">
@@ -66,6 +68,9 @@ export function NavbarComp({ className }: { className?: string }) {
             <HoveredLink href="https://drive.google.com/file/d/1dWgaWeqD8EsBbjOWrhcEDRfzTxshB36I/view?usp=sharing">Resume</HoveredLink>
           </div>
         </Menu>
+      <ThemeSwitcher />
+
+
       </div>
     </div>
   );

@@ -20,13 +20,19 @@
   --background-end-rgb: 226,232,240;
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
+  --foreground-rgb: 2, 6, 23;
+  --background-start-rgb: 2, 6, 23;
+  --background-end-rgb: 0, 0, 0;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 2, 6, 23;
     --background-start-rgb: 2, 6, 23;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
