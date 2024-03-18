@@ -64,7 +64,7 @@ export default function TracingBeamDemo() {
           <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">Orocorp Redefined</h2>
         </div>
         <div className="flex flex-row justify-center">
-          <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1080}></Image>
+          <Image src={Thumbnail} alt="Thumbnail Alt Text"  width={1080}></Image>
         </div>
       </div>
 
@@ -88,7 +88,7 @@ export default function TracingBeamDemo() {
                     alt={`blog thumbnail ${imgIndex}`}
                     height="2000"
                     width="2000"
-                    className="rounded-lg mb-10 object-cover"
+                    className="rounded-lg object-cover"
                   />
                 ))}
                 {item.description}
@@ -177,7 +177,7 @@ const dummyContent = [
           more refined and polished product which users can easily use. <br />
 
           <br />
-          <Image src={Introduction02} alt="alt" className='rounded-md' />
+          <Image src={Introduction02} alt="alt" className="rounded-xl py-2" />
           <br />
 
           <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
@@ -191,7 +191,7 @@ const dummyContent = [
           Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company.
           <br />
           <br />
-          <Image src={Introduction03} alt="alt" className='rounded-md' />
+          <Image src={Introduction03} alt="alt" className="rounded-xl py-2" />
           <br />
           <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
@@ -346,7 +346,7 @@ const dummyContent = [
         </ul> */}
 
         <br />
-        <Image src={UserTakeaways} alt="alt" className='rounded-md' />
+        <Image src={UserTakeaways} alt="alt" className="rounded-xl py-2" />
         <br />
 
         <br />
@@ -360,7 +360,7 @@ const dummyContent = [
         </p>
 
         <br />
-        <Image src={CompetitionImg} alt="alt" className='rounded-md'></Image>
+        <Image src={CompetitionImg} alt="alt" className="rounded-xl py-2"></Image>
         <br />
 
         {/* <ul className="list-disc">
@@ -385,7 +385,7 @@ const dummyContent = [
     description: (
       <>
 
-        <Image src={DesignWorkflowImg} alt="alt" className='rounded-md'></Image>
+        <Image src={DesignWorkflowImg} alt="alt" className="rounded-xl py-2"></Image>
 
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
@@ -396,7 +396,7 @@ const dummyContent = [
 
         <br />
 
-        <Image src={RevampMockup01} alt="alt" className='rounded-md'></Image>
+        <Image src={RevampMockup01} alt="alt" className="rounded-xl py-2"></Image>
 
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
@@ -407,7 +407,7 @@ const dummyContent = [
 
         <br />
 
-        <Image src={RevampMockup02} alt="alt" className='rounded-md'></Image>
+        <Image src={RevampMockup02} alt="alt" className="rounded-xl py-2"></Image>
 
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 

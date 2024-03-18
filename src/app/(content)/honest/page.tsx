@@ -84,7 +84,7 @@ export default function TracingBeamDemo() {
                     alt={`blog thumbnail ${imgIndex}`}
                     height="2000"
                     width="2000"
-                    className="rounded-lg mb-10 object-cover"
+                    className="rounded-lg object-cover"
                   />
                 ))}
                 {item.description}
@@ -277,7 +277,7 @@ const dummyContent = [
       <>
         <div className="Empathize">
           <h2 className="md:text-xl lg:text-3xl pb-4">Requirements & HMW's</h2>
-          <Image src={Empathize01_Img} alt=""></Image>
+          <Image src={Empathize01_Img} alt="" className="rounded-xl py-2"></Image>
           <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
             <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
             <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
@@ -295,7 +295,7 @@ const dummyContent = [
           <div className="ResearchHeader">
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Research Overview</h2>
 
-            <Image src={Empathize01_Img} alt=""></Image>
+            <Image src={Empathize01_Img} alt="" className="rounded-xl py-2"></Image>
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
               <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
@@ -312,9 +312,9 @@ const dummyContent = [
           <div className="ResearchGoals">
 
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Research Goals</h2>
-            <Image src={ResearchInsights01_Img} alt=""></Image>
+            <Image src={ResearchInsights01_Img} alt="" className="rounded-xl py-2"></Image>
 
-            <div className="grid md:grid-cols-1 lg:grid-cols-3 md:gap-x-4 lg:gap-x-8 md:mb-4 lg:mb-8">
+            <div className="grid md:grid-cols-1 lg:grid-cols-3 md:gap-x-4 lg:gap-x-8 md:my-2 lg:my-4">
               <p className="text-xl">Since the product was at a very early stage, I was interested in exploring opportunities in the online food order & delivery digital products.</p>
               <p className="text-xl">For the research I conducted is Primary Research through User Experience Interview & Surveys while keeping the research goals in mind.</p>
               <p className="text-xl">There is been plus and minuses which I received from the user which is valuable to develop the further product.
@@ -329,7 +329,7 @@ const dummyContent = [
           <div className="UXInterviewResearchInsights">
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">UX Interview // Research Insights</h2>
 
-            <div className="grid md:grid-cols-1 lg:grid-cols-2 md:gap-x-4 lg:gap-x-8 md:mb-4 lg:mb-8">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 md:gap-x-4 lg:gap-x-8 md:mb-2 lg:mb-4">
               <p>
                 Conducting User UX Interview at this particular early stage is valuable to validate the problem hypothesis as well as new problem opportunities to solve users are facing. <br />
               </p>
@@ -339,8 +339,8 @@ const dummyContent = [
               </p>
             </div>
 
-            <Image src={EmapthyMapping_Img} className="pb-8" alt=""></Image>
-            <p>
+            <Image src={EmapthyMapping_Img} className="rounded-xl py-2" alt=""></Image>
+            <p className="py-2">
               Empathy Mapping makes clear that people are facing trust issues with particular food provided by particular restaurant. <br />
               To further validate my problem hypothesis, i conducted UX User Survey to understand overall user's perspective over the food ordering online <br />
             </p>
@@ -355,7 +355,7 @@ const dummyContent = [
 
             <p>To get more insights, I conducted to User Survey online using Google Forms to get more quantitative data to validate my hypothesis </p>
 
-            <Image src="https://cdn.sanity.io/images/loniby3f/production/e1ac9753fe5b65587030803e8f6fe40d9832312c-3840x4850.png" width={3840} height={4850} className="py-4" alt=""></Image>
+            <Image src="https://cdn.sanity.io/images/loniby3f/production/e1ac9753fe5b65587030803e8f6fe40d9832312c-3840x4850.png" width={3840} height={4850} className="rounded-xl py-2" alt=""></Image>
 
             <div className="grid md:grid-cols-1 lg:grid-cols-1 md:gap-x-4 lg:gap-x-8">
               <p>
@@ -394,7 +394,7 @@ const dummyContent = [
         <div className="Persona">
           <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Persona Hypothesis I Created</h2>
 
-          <Image src="https://cdn.sanity.io/images/loniby3f/production/9b60ae14f4432bc5fcbb7441c4ec660ab0a69325-3840x2160.png" width={3840} height={4850} className="py-4" alt=""></Image>
+          <Image src="https://cdn.sanity.io/images/loniby3f/production/9b60ae14f4432bc5fcbb7441c4ec660ab0a69325-3840x2160.png" width={3840} height={4850} className="rounded-xl py-2" alt=""></Image>
 
           <div className="painPoint_Content--list grid grid-cols-2 gap-x-12 list-decimal">
             <p>It is important to channelize all of the data I received from Research into a singular person  persona to clarify user goals & frustrations with their background story </p>
@@ -413,7 +413,7 @@ const dummyContent = [
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">User Journey Mapping</h2>
             <p>Now it was pretty clear about the user needs through Persona, I started to visualize the User Journey Mapping.</p>
 
-            <Image src="https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png" className="my-4" alt="" width={7680} height={6624}></Image>
+            <Image src="https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png" className="rounded-xl py-2" alt="" width={7680} height={6624}></Image>
 
             <div className="UserJourney_Content-list grid grid-cols-2 gap-x-12">
               <p>User Journey Mapping helps me to understand multiple aspects of users tasks performance and more importantly their emotional feelings and improvement opportunities for the product</p>
@@ -497,7 +497,7 @@ const dummyContent = [
           <div className="storyboard_content">
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Storyboard</h2>
 
-            <Image src="https://cdn.sanity.io/images/loniby3f/production/f882216c7db4b643e37bbda51ddda35fcc2d90cd-3840x2146.png" className="my-4" alt="" width={3840} height={2146}></Image>
+            <Image src="https://cdn.sanity.io/images/loniby3f/production/f882216c7db4b643e37bbda51ddda35fcc2d90cd-3840x2146.png" className="rounded-xl py-2" alt="" width={3840} height={2146}></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
@@ -521,7 +521,7 @@ const dummyContent = [
             <p> Now as I have clear in my mind about user & product scenario of pain points and opportunities , I have started to created the information architecture
               Information Architecture really helps me to create the structure of navigation & components I will use in the user-flow journey.</p>
 
-            <Image src="https://cdn.sanity.io/images/loniby3f/production/ee5245efd2186017a857fe32e0587155c42b18bd-7680x21272.png" className="my-4" alt="" width={7680} height={21272}></Image>
+            <Image src="https://cdn.sanity.io/images/loniby3f/production/ee5245efd2186017a857fe32e0587155c42b18bd-7680x21272.png" className="rounded-xl py-2" alt="" width={7680} height={21272}></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
@@ -551,7 +551,7 @@ const dummyContent = [
           <div className="LowFi_content">
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Low Fiedility Wireframes</h2>
 
-            <Image src="https://cdn.sanity.io/images/loniby3f/production/f99cdc857564e73130a68b616532bf0be6711977-2560x2180.png" className="my-4" alt="" width={2560} height={2180}></Image>
+            <Image src="https://cdn.sanity.io/images/loniby3f/production/f99cdc857564e73130a68b616532bf0be6711977-2560x2180.png" className="rounded-xl py-2" alt="" width={2560} height={2180}></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
@@ -585,7 +585,7 @@ const dummyContent = [
             <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Design System</h2>
             <p>Once my wireframes are finalized, i started to create the mini design system for my project, started with the basics of defining the fundamentals such as color pallete, typography, iconography & basic components.</p>
 
-            <Image src="https://cdn.sanity.io/images/loniby3f/production/3129006f755af3adbea887bbd0e5932235683c2e-11264x7008.png" alt="" height={11264} width={7008}></Image>
+            <Image src="https://cdn.sanity.io/images/loniby3f/production/3129006f755af3adbea887bbd0e5932235683c2e-11264x7008.png" alt="" height={11264} width={7008} className="rounded-xl py-2"></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
