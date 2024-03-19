@@ -65,26 +65,3 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
-
-
-/* mobile-view */
-@media only screen and (max-width: 475px) {
-  .navbar_comp {
-    visibility: hidden;
-  }
-}
-
-/* tablet-view */
-@media (min-width: 476px) and (max-width: 786px) {
-  .navbar_comp {
-    visibility: hidden;
-  }
-}
-
-/* desktop-view */
-@media (min-width: 787px) and (max-width: 1440px) {
-  .navbar_comp {
-    visibility: visible;
-  }
-}
-

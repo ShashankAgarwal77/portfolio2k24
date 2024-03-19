@@ -17,7 +17,7 @@ export function OroCard() {
         <CardBody className="bg-gray-50 px-12 py-10 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl border hover:border-slate-400 dark:hover:border-slate-600 mx-auto">
           <CardItem
             translateZ="10"
-            className="sm:text-lg md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white"
+            className="text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white"
           >
             Orocorp - Digitizes and Maximizes user&apos;s gold potential
           </CardItem>
