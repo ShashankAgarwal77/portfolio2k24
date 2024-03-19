@@ -34,7 +34,7 @@ function MobileNavbar({ className }: { className?: string }) {
 
         {/* Logo */}
         <Link href="/">
-          <Image src={logo} alt="Logo" className="w-40 h-16 invert dark:invert-0" />
+          <Image src={logo} alt="Logo" className="w-32 h-16 invert dark:invert-0" />
         </Link>
 
         <ThemeSwitcher />
