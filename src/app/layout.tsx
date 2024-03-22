@@ -1,5 +1,4 @@
 import { Metadata as NextMetadata } from "next";
-
 import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -46,8 +45,8 @@ export default function RootLayout({
       <head>
         {metadata?.openGraph?.images &&
           Array.isArray(metadata.openGraph.images) &&
-          metadata.openGraph.images.map((image) => (
-            <meta property="og:image" content={image.url} />
+          metadata.openGraph.images.map((image, index) => (
+            <meta key={index} property="og:image" content={image.url} />
           ))}
       </head>
 
