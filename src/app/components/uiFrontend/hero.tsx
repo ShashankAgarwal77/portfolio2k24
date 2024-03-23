@@ -1,9 +1,8 @@
 import React from 'react';
-import { OroCard } from './oro-card';
 import { Lamp } from './lamp';
 import { BackgroundBeamsDemo } from './background-beams';
 import { TextGenerateHeading } from './text-generate-header';
-import { HonestCard } from './honest-card';
+import { ProjectCards } from './project-hero-cards';
 
 const HeroSection = () => {
     return (
@@ -37,8 +36,7 @@ const HeroSection = () => {
 
                 
                 <div className='flex flex-col mx-auto w-full max-w-[110rem] items-center mb-16'> {/* Modified justify-center to items-center */}
-                    <OroCard />
-                    <HonestCard />
+                    <ProjectCards />
                 </div>
 
             </div>

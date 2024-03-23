@@ -19,8 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta property="og:image" content="https://shashankagarwal.netlify.app/metaImage.jpg" />
-
+        <meta name="twitter:image" content="https://shashankagarwal.netlify.app/metaImage.jpg" />
       </head>
 
       <body>{children}</body>
