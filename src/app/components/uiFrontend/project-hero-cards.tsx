@@ -40,7 +40,7 @@ export function ProjectCards() {
                         animationSpeed={3}
                         containerClassName="bg-transparent"
                         colors={[
-                          [253, 186, 116],
+                          [253, 230, 138],
                           [251, 191, 36],
                         ]}
                         dotSize={2}
@@ -58,7 +58,7 @@ export function ProjectCards() {
                         containerClassName="bg-transparent"
                         colors={[
                           [167, 243, 208],
-                          [5, 150, 105],
+                          [5, 150, 36],
                         ]}
                         dotSize={2}
                     />
