@@ -29,7 +29,7 @@ export function ProjectCards() {
 
     return (
         <>
-            <div className="flex flex-col justify-center bg-white dark:bg-black w-full gap-4">
+            <div className="flex flex-col justify-center bg-white dark:bg-black w-full gap-8">
                 <Card 
                 title="Orocorp - Digitizes and Maximizes user&apos;s gold potential" 
                 subtitle="Redefining the way people get gold loan in India" 
@@ -38,7 +38,7 @@ export function ProjectCards() {
                 buttonlink="/oro">
                     <CanvasRevealEffect
                         animationSpeed={3}
-                        containerClassName="bg-transparent"
+                        containerClassName="bg-amber-400/[0.4]"
                         colors={[
                           [253, 230, 138],
                           [251, 191, 36],
@@ -55,7 +55,7 @@ export function ProjectCards() {
                 buttonlink="/honest">
                     <CanvasRevealEffect
                         animationSpeed={3}
-                        containerClassName="bg-transparent"
+                        containerClassName="bg-emerald-400/[0.4]"
                         colors={[
                           [167, 243, 208],
                           [5, 150, 36],
