@@ -36,6 +36,11 @@ const HeroSection = () => {
 
             <div className="projects-section">
                 <div className="flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center -gap-y-4">
+                    <div className="block dark:hidden my-32">
+                        <h1 className="md:text-3xl lg:text-5xl text-slate-400 font-bold tracking-loose">
+                            Here is my selected work to showcase
+                        </h1>
+                    </div>
                     <div className="hidden dark:block">
                         <Lamp />
 
@@ -54,7 +59,7 @@ const HeroSection = () => {
 
             <div className="ui-section">
                 <div className="flex flex-col gap-y-12 md:m-20 lg:m-40 items-center">
-                    <h3 className="text-white md:text-3xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
+                    <h3 className="dark:text-white text-slate-600 md:text-3xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
 
                     <DribbbleShots />
                 </div>
