@@ -53,19 +53,12 @@ const HeroSection = () => {
             </div>
 
             <div className="ui-section">
-                <div className="flex flex-col my-32 md:mx-20 lg:mx-40 max-w-[100rem] items-center">
-                    <DribbbleShots />
-                    {/* <BackgroundGradientAnimationDemo /> */}
+                <div className="flex flex-col gap-y-12 md:m-20 lg:m-40 items-center">
+                    <h3 className="text-white md:text-3xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
 
+                    <DribbbleShots />
                 </div>
             </div>
-
-
-            {/* <div className="ui-section h-screen">
-                <div className="flex flex-col items-center mt-32 gap-y-8 w-full">
-                    <BackgroundGradientAnimationDemo />
-                </div>
-            </div> */}
         </div>
     );
 };
