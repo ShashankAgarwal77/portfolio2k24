@@ -3,11 +3,11 @@ import { Lamp } from './lamp';
 import { BackgroundBeamsDemo } from './background-beams';
 import { TextGenerateHeading } from './text-generate-header';
 import { ProjectCards } from './project-hero-cards';
-import { ImagesSliderDemo } from './ui-parallex-showcase';
-import { BackgroundGradientAnimationDemo } from './bg-gradient';
 
 import { EmblaOptionsType } from 'embla-carousel'
 import { DribbbleShots } from './dribbble-posts';
+import { MeteorsDemo } from './bg-meteors';
+import { SparklesPreview } from './sparkles-heading';
 
 
 const HeroSection = () => {
@@ -51,15 +51,21 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col mx-auto w-full max-w-[110rem] items-center">
+                    <div className="flex flex-col mx-4 my-8 md:m-12 lg:mx-40 lg:my-20  max-w-[110rem] items-center">
                         <ProjectCards />
                     </div>
                 </div>
             </div>
 
-            <div className="ui-section">
-                <div className="flex flex-col gap-y-12 md:m-20 lg:m-40 items-center">
-                    <h3 className="dark:text-white text-slate-600 md:text-3xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
+            <div className="ui-section mx-4 my-8 md:m-12 lg:mx-40 lg:my-20">
+                
+
+                <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
+
+                    <h3 className="dark:text-white text-slate-600 text-center text-3xl md:text-4xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
+
+                    <SparklesPreview/>
+
 
                     <DribbbleShots />
                 </div>

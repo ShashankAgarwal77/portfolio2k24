@@ -29,7 +29,7 @@ export function ProjectCards() {
 
     return (
         <>
-            <div className="flex flex-col justify-center bg-white dark:bg-black w-full gap-8">
+            <div className="flex flex-col justify-center bg-white dark:bg-black w-full gap-4">
                 <Card 
                 title="Orocorp - Digitizes and Maximizes user&apos;s gold potential" 
                 subtitle="Redefining the way people get gold loan in India" 
