@@ -58,13 +58,20 @@ const HeroSection = () => {
             </div>
 
             <div className="ui-section mx-4 my-8 md:m-12 lg:mx-40 lg:my-20">
-                
+
 
                 <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
 
-                    <h3 className="dark:text-white text-slate-600 text-center text-3xl md:text-4xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
+                    <div className="dribbble-heading flex flex-col gap-y-4">
 
-                    <SparklesPreview/>
+                        <h3 className="dark:text-white text-slate-600 text-center text-3xl md:text-4xl lg:text-5xl">Here are some of my dribbble shots 🏀</h3>
+                        <p className='text-base md:text-xl lg:text-xl text-center text-slate-400 dark:text-slate-400 tracking-wide'>Click on any of the below project to see the thought process more in detail</p>
+
+                    </div>
+
+                    <div className="sparkles-container hidden md:block">
+                            <SparklesPreview />
+                    </div>
 
 
                     <DribbbleShots />
