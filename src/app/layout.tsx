@@ -20,16 +20,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Primary Meta Tags */}
         <title>Shashank Agarwal Digital Room</title>
         <meta name="description" content="A UX portfolio website of a product designer Shashank Agarwal." />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://shashankagarwal.netlify.app/" />
         <meta property="og:title" content="Shashank Agarwal | Product Designer and Developer" />
         <meta property="og:description" content="A UX portfolio website of a product designer Shashank Agarwal." />
         <meta property="og:image" content="https://shashankagarwal.netlify.app/metaImage.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="627" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://shashankagarwal.netlify.app/" />
-        {/* Add additional tags as needed */}
+
+        {/* Twitter */}
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://shashankagarwal.netlify.app/" />
+        <meta property="twitter:title" content="Shashank Agarwal | Product Designer and Developer" />
+        <meta property="twitter:description" content="A UX portfolio website of a product designer Shashank Agarwal." />
+        <meta property="twitter:image" content="https://shashankagarwal.netlify.app/metaImage.jpg" />
+
       </head>
 
       <body>{children}</body>
