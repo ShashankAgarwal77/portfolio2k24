@@ -1,6 +1,5 @@
 // import { Metadata } from "next";
 
-import Head from "next/head";
 import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -20,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <title>Shashank Agarwal Digital Room</title>
         <meta name="description" content="A UX portfolio website of a product designer Shashank Agarwal." />
         <meta property="og:title" content="Shashank Agarwal | Product Designer and Developer" />
@@ -31,7 +30,7 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://shashankagarwal.netlify.app/" />
         {/* Add additional tags as needed */}
-      </Head>
+      </head>
 
       <body>{children}</body>
     </html>
