@@ -16,7 +16,7 @@ export function Lamp() {
         }}
         className="bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center text-3xl font-bold tracking-wide text-transparent md:text-3xl lg:text-5xl"
       >
-        Here is my selected work to showcase
+      my selected work to showcase
       </motion.h1>
     </LampContainer>
   );
