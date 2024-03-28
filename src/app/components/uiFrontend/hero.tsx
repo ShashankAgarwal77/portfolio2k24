@@ -23,7 +23,7 @@ const HeroSection = () => {
                         <p className=" md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-600 dark:text-slate-300 z-1 tracking-wide text-center">
                             Hi, my name is Shashank Agarwal
                         </p>
-                        <h1 className="z-1 text-center">
+                        <h1 className="z-1 text-center lg:text-left">
                             <TextGenerateHeading />
                         </h1>
                         <p className=" md:leading-relaxed md:text-lg lg:leading-relaxed lg:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed z-1 tracking-wide text-center">
