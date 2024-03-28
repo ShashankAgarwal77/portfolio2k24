@@ -1,7 +1,7 @@
 "use client";
 import { TextGenerateEffect } from "../Animations/text-generate-effect";
 
-const words = `I craft products, interactions & stories.
+const words = `I design experiences, weaving narratives.
 `;
 
 export function TextGenerateHeading() {

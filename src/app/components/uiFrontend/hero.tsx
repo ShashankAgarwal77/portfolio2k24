@@ -18,15 +18,15 @@ const HeroSection = () => {
         <div className="flex flex-col justify-center overflow-hidden">
             <div className="hero-section">
                 <BackgroundBeamsDemo />
-                <div className="flex flex-col items-center justify-center h-screen">
+                <div className="flex flex-col mx-4 justify-center h-screen">
                     <div className="flex flex-col md:gap-y-6 lg:items-start justify-center md:mx-20 lg:mx-40 max-w-[100rem]">
-                        <p className="text-center md:text-left md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-600 dark:text-slate-300 z-1 tracking-wide">
+                        <p className=" md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-600 dark:text-slate-300 z-1 tracking-wide">
                             Hi, my name is Shashank Agarwal
                         </p>
-                        <h1 className="text-center md:text-left z-1">
+                        <h1 className="z-1">
                             <TextGenerateHeading />
                         </h1>
-                        <p className="text-center md:text-left md:leading-relaxed md:text-lg lg:leading-relaxed lg:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed z-1 tracking-wide">
+                        <p className=" md:leading-relaxed md:text-lg lg:leading-relaxed lg:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed z-1 tracking-wide">
                             Product Designer with over 2 years of experience designing 6 highly
                             cross-functional (0 to 1) products
                         </p>
@@ -41,7 +41,7 @@ const HeroSection = () => {
                             Here is my selected work to showcase
                         </h1>
                     </div>
-                    <div className="hidden dark:block">
+                    <div className="hidden md:block">
                         <Lamp />
 
                         <div className="block dark:hidden my-12">
@@ -51,7 +51,7 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col mx-4 my-8 md:m-12 lg:mx-40 lg:my-20  max-w-[110rem] items-center">
+                    <div className="flex flex-col mx-4 my-8  max-w-[110rem] items-center">
                         <ProjectCards />
                     </div>
                 </div>
