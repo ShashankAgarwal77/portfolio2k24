@@ -111,13 +111,13 @@ const Card = ({
 
             <div className="relative z-20">
 
-                <h2 className="text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
+                <h2 className="text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
                     {title}
                 </h2>
                 <h2 className="text-slate-500 dark:text-white sm:text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
                     {subtitle}
                 </h2>
-                <ul className="text-slate-500 sm:text-sm md:text-lg lg:text-xl my-4 mb-8 dark:text-slate-400 tracking-widee">
+                <ul className="text-slate-500 sm:text-base md:text-lg lg:text-xl my-4 mb-8 dark:text-slate-400 tracking-widee">
                     {keypoints.map((keypoint, index) => (
                         <li key={index}>{keypoint}</li>
                     ))}
@@ -126,7 +126,7 @@ const Card = ({
                 
                 <button
                 ref={buttonRef} // Assign the ref to the button element
-                className="inline-flex h-16 w-full mt-8 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
+                className="inline-flex h-16 w-full mt-8 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-base md:text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
                 onClick={() => {
                     if (buttonRef.current) {
                         window.location.href = buttonlink; // Navigate to the link when button clicked

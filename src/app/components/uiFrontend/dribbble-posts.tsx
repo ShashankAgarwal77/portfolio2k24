@@ -41,7 +41,7 @@ export function DribbbleShots() {
             <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
               <img src={shot.images.hidpi} alt={shot.title} className='p-1 w-full  object-cover transform group-hover:scale-100 transition-transform duration-200 rounded-lg mb-2' />
               <div className='px-6 py-4'>
-                <div className='text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 font-bold text-xl transition-colors duration-200 '><style className='line-clamp-1'>{shot.title} </style><MdArrowOutward className='inline'/> </div>
+                <div className='text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 font-bold text-base md:text-xl transition-colors duration-200 '><style className='line-clamp-1'>{shot.title} </style><MdArrowOutward className='inline'/> </div>
               </div>
             </div>
 

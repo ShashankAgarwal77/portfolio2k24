@@ -40,7 +40,7 @@ function MobileNavbar({ className }: { className?: string }) {
   };
 
   return (
-    <div className={cn("fixed top-0 left-0 right-0 z-50 dark:bg-black/[0.8] bg-white shadow-input flex flex-col justify-center px-2 py-2 ", className, { "hidden": !visible })}>
+    <div className={cn("fixed top-0 left-0 right-0 z-50 dark:bg-black/[0.8] bg-white shadow-input flex flex-col justify-center m-4 border border-neutral-200 dark:border-neutral-800 rounded-lg px-2", className, { "hidden": !visible })}>
       <div className="flex items-center justify-between px-4 py-2">
         {isCloseIcon ? (
           <FaTimes className="text-3xl cursor-pointer text-slate-200" onClick={handleToggleMenu} />
