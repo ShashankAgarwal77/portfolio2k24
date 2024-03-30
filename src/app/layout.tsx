@@ -1,8 +1,13 @@
+"use client";
 // import { Metadata } from "next";
+
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import './external_css/aos.css';
 
 import localFont from 'next/font/local';
 
-const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.ttf', variable: '--font-satoshi', display:'swap' });
+const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.ttf', variable: '--font-satoshi', display: 'swap' });
 
 
 // import { Work_Sans } from "next/font/google";
@@ -19,9 +24,15 @@ import "./globals.css";
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+    });
+  }, []);
   return (
     <html lang="en" className={`${satoshi.variable}`}>
       <head>

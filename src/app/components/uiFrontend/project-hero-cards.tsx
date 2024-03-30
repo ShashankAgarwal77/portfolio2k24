@@ -22,47 +22,52 @@ export function ProjectCards() {
 
     const Honestkeypoints = [
         "Key Takeaways",
-            "1. Hobby Project",
-            "2. Solves the trust and authencity problem in food delivery sector",
-            "3. Demonstrate the vast variety of UI and UX Practices to achieve the validation of problem and solution hypothesis"
+        "1. Hobby Project",
+        "2. Solves the trust and authencity problem in food delivery sector",
+        "3. Demonstrate the vast variety of UI and UX Practices to achieve the validation of problem and solution hypothesis"
     ]
 
     return (
         <>
             <div className="flex flex-col justify-center w-full gap-4">
-                <Card 
-                title="Orocorp - Digitizes and Maximizes user&apos;s gold potential" 
-                subtitle="Redefining the way people get gold loan in India" 
-                keypoints={OroKeypoints} 
-                image={OroThumbnail} 
-                buttonlink="/oro">
-                    <CanvasRevealEffect
-                        animationSpeed={4}
-                        containerClassName="bg-amber-400/[0.4]"
-                        colors={[
-                          [253, 230, 138],
-                          [251, 191, 36],
-                        ]}
-                        dotSize={1}
-                    />
-                </Card>
+                <div data-aos="fade-up">
+                    <Card
+                        title="Orocorp - Digitizes and Maximizes user&apos;s gold potential"
+                        subtitle="Redefining the way people get gold loan in India"
+                        keypoints={OroKeypoints}
+                        image={OroThumbnail}
+                        buttonlink="/oro">
+                        <CanvasRevealEffect
+                            animationSpeed={4}
+                            containerClassName="bg-amber-400/[0.4]"
+                            colors={[
+                                [253, 230, 138],
+                                [251, 191, 36],
+                            ]}
+                            dotSize={2}
+                        />
+                    </Card>
+                </div>
 
-                <Card 
-                title="Honest Bites - UI/UX Case Study" 
-                subtitle="Unveiling a World of Culinary Experience" 
-                keypoints={Honestkeypoints} 
-                image={HonestThumbnail} 
-                buttonlink="/honest">
-                    <CanvasRevealEffect
-                        animationSpeed={4}
-                        containerClassName="bg-emerald-400/[0.4]"
-                        colors={[
-                          [167, 243, 208],
-                          [5, 150, 36],
-                        ]}
-                        dotSize={1}
-                    />
-                </Card>
+                <div data-aos="fade-up">
+                    <Card
+                        title="Honest Bites - UI/UX Case Study"
+                        subtitle="Unveiling a World of Culinary Experience"
+                        keypoints={Honestkeypoints}
+                        image={HonestThumbnail}
+                        buttonlink="/honest">
+                        <CanvasRevealEffect
+                            animationSpeed={4}
+                            containerClassName="bg-emerald-400/[0.4]"
+                            colors={[
+                                [167, 243, 208],
+                                [5, 150, 36],
+                            ]}
+                            dotSize={2}
+                        />
+                    </Card>
+                </div>
+
             </div>
         </>
     );
@@ -123,18 +128,18 @@ const Card = ({
                     ))}
                 </ul>
                 <Image src={image} alt="image alt" />
-                
+
                 <button
-                ref={buttonRef} // Assign the ref to the button element
-                className="inline-flex h-16 w-full mt-8 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-base md:text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
-                onClick={() => {
-                    if (buttonRef.current) {
-                        window.location.href = buttonlink; // Navigate to the link when button clicked
-                    }
-                }}
-            >
-                Read Full Case Study ➜
-            </button>
+                    ref={buttonRef} // Assign the ref to the button element
+                    className="inline-flex h-16 w-full mt-8 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-base md:text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
+                    onClick={() => {
+                        if (buttonRef.current) {
+                            window.location.href = buttonlink; // Navigate to the link when button clicked
+                        }
+                    }}
+                >
+                    Read Full Case Study ➜
+                </button>
 
             </div>
         </div>

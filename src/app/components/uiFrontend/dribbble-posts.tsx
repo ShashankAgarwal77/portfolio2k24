@@ -30,7 +30,7 @@ export function DribbbleShots() {
   }, []);
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' data-aos="fade-up">
       {shots && shots.map((shot) => (
         <a href={shot.html_url} key={shot.id} target='_blank' rel='noopener noreferrer' className='group'>
           <div className="w-full h-full bg-gradient-to-b from-slate-300 dark:from-neutral-800 p-0.5 rounded-lg">

@@ -14,7 +14,7 @@ const HeroSection = () => {
             <div className="hero-section">
                 <BackgroundBeamsDemo />
                 <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center h-screen">
-                    <div className="flex flex-col md:gap-y-6 lg:items-start justify-center">
+                    <div className="flex flex-col md:gap-y-6 lg:items-start justify-center" data-aos="fade-up">
                         <p className=" md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-600 dark:text-slate-300 z-1 tracking-wide text-center">
                             Hi, my name is Shashank Agarwal
                         </p>
@@ -52,7 +52,7 @@ const HeroSection = () => {
 
                 <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
 
-                    <div className="dribbble-heading flex flex-col gap-y-4">
+                    <div className="dribbble-heading flex flex-col gap-y-4" data-aos="fade-up">
 
                         <h3 className="dark:text-white text-slate-600 text-center text-3xl md:text-4xl lg:text-5xl font-semibold">Here are some of my dribbble shots 🏀</h3>
                         <p className='text-base md:text-xl lg:text-xl text-center text-slate-500 dark:text-slate-400 tracking-wide font-semibold'>Click on any of the below project to see the thought process more in detail</p>
