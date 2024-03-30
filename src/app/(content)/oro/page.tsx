@@ -61,7 +61,7 @@ export default function TracingBeamDemo() {
     <div className="flex flex-col justify-between">
       <div className="grid grid-cols-1 content-end h-screen items-center content-end">
         <div className="flex flex-row justify-center pb-6">
-          <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text">Orocorp Redefined</h2>
+          <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text font-medium">Orocorp Redefined</h2>
         </div>
         <div className="flex flex-row justify-center">
           <Image src={Thumbnail} alt="Thumbnail Alt Text"  width={1080}></Image>
@@ -74,10 +74,10 @@ export default function TracingBeamDemo() {
         <div className="mx-auto antialiased pt-8 relative">
           {dummyContent.map((item, index) => (
             <div key={`content-${index}`} id={`content-${index}`} className="mb-10">
-              <h2 className="bg-black/[0.1] dark:bg-white/[0.1] text-gray-800 dark:text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4">
+              <h2 className="bg-black/[0.1] dark:bg-white/[0.1] text-gray-800 dark:text-gray-400 rounded-full sm:text-sm md:text-md lg:text-xl w-fit px-4 py-1 mb-4 font-bold">
                 {item.badge}
               </h2>
-              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-xl lg:leading-normal lg:text-4xl text-black dark:text-white sm:mb-4 md:mb-6 lg:mb-8">
+              <p className="sm:leading-loose tracking-wide sm:text-xl md:leading-loose md:text-xl lg:leading-normal lg:text-4xl text-black dark:text-white sm:mb-4 md:mb-6 lg:mb-8 font-semibold">
                 {item.title}
               </p>
               <div className="md:leading-normal md:text-sm lg:leading-loose lg:text-lg tracking-wide text-slate-700 dark:text-slate-300 prose prose-sm dark:prose-invert">

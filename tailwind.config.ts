@@ -18,6 +18,15 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+
+      fontFamily: {
+        'custom-variable': ['var(--font-satoshi)'],
+      },
+
+       fontVariationSettings: {
+        'custom-variable': '\'wght\' var(--font-weight), \'wdth\' var(--font-width)',
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

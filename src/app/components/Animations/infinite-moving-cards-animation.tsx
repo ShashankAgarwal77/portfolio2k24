@@ -104,7 +104,7 @@ export const InfiniteMovingCards = ({
               ></div>
 
               {/* Testimonial quote */}
-              <span className="relative z-20 text-sm lg:text-2xl leading-[1.6] text-slate-700 dark:text-slate-100 font-normal">
+              <span className="relative z-20 text-sm text-lg lg:text-xl leading-[1.6] text-slate-700 dark:text-slate-100 font-normal">
                 {item.quote}
               </span>
 

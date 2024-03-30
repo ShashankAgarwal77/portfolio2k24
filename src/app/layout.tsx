@@ -1,9 +1,14 @@
 // import { Metadata } from "next";
 
-import { Work_Sans } from "next/font/google";
+import localFont from 'next/font/local';
+
+const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.ttf', variable: '--font-satoshi', display:'swap' });
+
+
+// import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const workSans = Work_Sans({ subsets: ["latin"] });
+// const workSans = Work_Sans({ subsets: ["latin"] });
 
 // Now, you can use the Metadata type for your metadata object
 // export const metadata: Metadata = {
@@ -18,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${satoshi.variable}`}>
       <head>
         {/* Primary Meta Tags */}
         <title>Shashank Agarwal Digital Room</title>

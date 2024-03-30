@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.1.4",
     "@nextui-org/react": "^2.2.10",
     "@react-three/fiber": "^8.15.19",
     "@tabler/icons-react": "^2.47.0",

@@ -1,23 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
-  font-family: 'PP_NeueMontreal';
-  src: url('./Assets/fonts/PPNeueMontreal/ppneuemontreal-medium.woff') format('woff');
+  font-family: 'Satoshi';
+  src: url('./Assets/fonts/Satoshi/Satoshi-Variable.ttf') format('truetype-variations');
+  font-weight: 1 999;
 }
 
 @font-face {
   font-family: 'Gloock';
   src: url('./Assets/fonts/Gloock/Gloock-Regular.ttf') format('truetype');
-  
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: 'PP_NeueMontreal';
+  src: url('./Assets/fonts/PPNeueMontreal/ppneuemontreal-medium.woff') format('woff');
+} */
 
 
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 248, 250, 252;
   --background-end-rgb: 226,232,240;
+
+  --font-satoshi: 'Satoshi';
 }
 
 .dark {
@@ -34,6 +41,16 @@
   }
 } */
 
+/* Apply font to HTML */
+html {
+  font-family: var(--font-satoshi), sans-serif;
+}
+
+/* Apply font variation settings */
+html {
+  font-variation-settings: 'wght' var(--font-weight), 'wdth' var(--font-width);
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -43,7 +60,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 
-    font-family: 'PP_NeueMontreal', sans-serif;
+    /* font-family: 'PP_NeueMontreal', sans-serif; */
 }
 
 @layer utilities {
@@ -64,15 +81,4 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
-}
-
-.embla {
-  overflow: hidden;
-}
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  flex: 0 0 100%;
-  min-width: 0;
 }

@@ -66,7 +66,7 @@ export default function About() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8">
           <div className="flex flex-col gap-y-4">
-            <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Orocorp</h4>
+            <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2">Orocorp</h4>
             <div className="gap-y-2">
               <h6 className="md:text-xl lg:text-2xl text-slate-500 dark:text-white font-regular tracking-wide">Product Designer</h6>
               <p className="text-xl text-slate-400">01/22 - 10/23</p>
@@ -75,7 +75,7 @@ export default function About() {
           </div>
 
           <div className="flex flex-col gap-y-4">
-            <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Cogoport</h4>
+            <h4 className="text-2xl py-2 font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Cogoport</h4>
             <div className="gap-y-2">
               <h6 className="md:text-xl lg:text-2xl text-slate-500 dark:text-white font-regular tracking-wide">Product Designer</h6>
               <p className="text-xl text-slate-400">10/21 - 01/22</p>
@@ -84,7 +84,7 @@ export default function About() {
           </div>
 
           <div className="flex flex-col gap-y-4">
-            <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Facebook SOI India</h4>
+            <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2">Facebook SOI India</h4>
             <div className="gap-y-2">
               <h6 className="md:text-xl lg:text-2xl text-slate-500 dark:text-white font-regular tracking-wide">AR Designer & Developer</h6>
               <p className="text-xl text-slate-400">03/20 - 06/20</p>
@@ -105,8 +105,8 @@ export default function About() {
 
 
       <div className="flex flex-col justify-center items-center sm:gap-y-4 md:gap-y-8 lg:gap-y-16 md:mx-10 lg:mx-60 my-20">
-        <div className="flex flex-col gap-y-4">
-        <h2 className="text-3xl text-center tracking-wide leading-6 lg:leading-12 lg:text-5xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text md:text-4xl md:leading-8 md:text-center">Here's what my friends & colleagues say about me</h2>
+        <div className="flex flex-col gap-y-4 mx-2">
+          <h2 className="text-3xl text-center tracking-wide lg:text-5xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text md:text-4xl py-2 font-semibold">Here's what my friends & colleagues say about me</h2>
 
 
           <InfiniteMovingCardsDemo />

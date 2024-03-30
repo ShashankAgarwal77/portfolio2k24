@@ -29,7 +29,7 @@ export function ProjectCards() {
 
     return (
         <>
-            <div className="flex flex-col justify-center bg-white dark:bg-black w-full gap-4">
+            <div className="flex flex-col justify-center w-full gap-4">
                 <Card 
                 title="Orocorp - Digitizes and Maximizes user&apos;s gold potential" 
                 subtitle="Redefining the way people get gold loan in India" 
@@ -37,13 +37,13 @@ export function ProjectCards() {
                 image={OroThumbnail} 
                 buttonlink="/oro">
                     <CanvasRevealEffect
-                        animationSpeed={3}
+                        animationSpeed={4}
                         containerClassName="bg-amber-400/[0.4]"
                         colors={[
                           [253, 230, 138],
                           [251, 191, 36],
                         ]}
-                        dotSize={2}
+                        dotSize={1}
                     />
                 </Card>
 
@@ -54,13 +54,13 @@ export function ProjectCards() {
                 image={HonestThumbnail} 
                 buttonlink="/honest">
                     <CanvasRevealEffect
-                        animationSpeed={3}
+                        animationSpeed={4}
                         containerClassName="bg-emerald-400/[0.4]"
                         colors={[
                           [167, 243, 208],
                           [5, 150, 36],
                         ]}
-                        dotSize={2}
+                        dotSize={1}
                     />
                 </Card>
             </div>
@@ -90,7 +90,7 @@ const Card = ({
         <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="border border-black/[0.2] group/canvas-card flex dark:border-white/[0.2] w-full p-8 relative h-auto relative"
+            className="bg-white dark:bg-black border border-black/[0.2] group/canvas-card flex dark:border-white/[0.2] w-full p-8 relative h-auto relative"
         >
             <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
@@ -117,7 +117,7 @@ const Card = ({
                 <h2 className="text-slate-500 dark:text-white sm:text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
                     {subtitle}
                 </h2>
-                <ul className="text-slate-500 sm:text-base md:text-lg lg:text-xl my-4 mb-8 dark:text-slate-400 tracking-widee">
+                <ul className="text-slate-500 sm:text-base md:text-lg lg:text-xl my-4 mb-8 dark:text-slate-400 tracking-wide font-semibold">
                     {keypoints.map((keypoint, index) => (
                         <li key={index}>{keypoint}</li>
                     ))}
@@ -138,28 +138,6 @@ const Card = ({
 
             </div>
         </div>
-    );
-};
-
-const AceternityIcon = () => {
-    return (
-        <svg
-            width="66"
-            height="65"
-            viewBox="0 0 66 65"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10 text-black dark:text-white group-hover/canvas-card:text-white "
-        >
-            <path
-                d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-                stroke="currentColor"
-                strokeWidth="15"
-                strokeMiterlimit="3.86874"
-                strokeLinecap="round"
-                style={{ mixBlendMode: "darken" }}
-            />
-        </svg>
     );
 };
 
