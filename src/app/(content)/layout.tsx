@@ -1,3 +1,4 @@
+import BannerNotification from '../components/uiFrontend/banner-notification';
 import FooterComp from '../components/uiFrontend/footer';
 import MobileNavbar from '../components/uiFrontend/mobileNavbar';
 import { NavbarComp } from '../components/uiFrontend/navbar';
@@ -5,7 +6,7 @@ import '../globals.css';
 // import { Header, Footer } from '@/components/Layout'
 // import 'react-toastify/dist/ReactToastify.css'
 
-export default function ContentRootLayout({ children } : any) {
+export default function ContentRootLayout({ children }: any) {
   return (
     <>
       {/* <Header /> */}

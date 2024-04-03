@@ -6,11 +6,15 @@ import { ProjectCards } from './project-hero-cards';
 
 import { DribbbleShots } from './dribbble-posts';
 import { SparklesPreview } from './sparkles-heading';
+import BannerNotification from './banner-notification';
 
 
 const HeroSection = () => {
     return (
         <div className="flex flex-col justify-center overflow-hidden">
+            <div className='lg:block md:hidden sm:hidden'>
+                <BannerNotification />
+            </div>
             <div className="hero-section">
                 <BackgroundBeamsDemo />
                 <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center h-screen">
