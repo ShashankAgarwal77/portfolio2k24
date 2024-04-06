@@ -32,6 +32,8 @@ import Deliver01 from "@/app/Assets/Images/OroCaseStudy/Deliver/Deliver01.png";
 import Result01 from "@/app/Assets/Images/OroCaseStudy/Result/Result01.png";
 import Result02 from "@/app/Assets/Images/OroCaseStudy/Result/Result02.png";
 import Result03 from "@/app/Assets/Images/OroCaseStudy/Result/Result03.png";
+import Blockquote from '@/app/components/uiFrontend/blockquote';
+import HorizontalLine from '@/app/components/uiFrontend/horizontal-rule';
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -64,7 +66,7 @@ export default function TracingBeamDemo() {
           <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text font-medium">Orocorp Redefined</h2>
         </div>
         <div className="flex flex-row justify-center">
-          <Image src={Thumbnail} alt="Thumbnail Alt Text"  width={1080}></Image>
+          <Image src={Thumbnail} alt="Thumbnail Alt Text" width={1080}></Image>
         </div>
       </div>
 
@@ -163,45 +165,31 @@ const dummyContent = [
     title: "It all started in January 2022",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparent">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Revamped UI of the core product of Orocorp</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-
-        </blockquote>
+        <Blockquote content="Revamped UI of the core product of Orocorp" type="Image" />
+        <br />
 
         <p>
           In January 2022, Oro decided to redesign their product offerings &amp;
           expand their business to new cities. To achieve this they need to ship
-          more refined and polished product which users can easily use. <br />
+          more refined and polished product which users can easily use.
+        </p>
 
-          <br />
-          <Image src={Introduction02} alt="alt" className="rounded-xl py-2" />
-          <br />
+        <br />
+        <Image src={Introduction02} alt="alt" className="rounded-xl py-2" />
+        <Blockquote content="Component Hightlights of multiple products of oro" type="Image" />
+        <br />
 
-          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Component Hightlights of multiple products of oro</p>
-
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-
-          </blockquote>
-
+        <p>
           Designing &amp; leading the end-to-end design direction of the mobile experience for core users which drive the main business of the company.
-          <br />
-          <br />
-          <Image src={Introduction03} alt="alt" className="rounded-xl py-2" />
-          <br />
-          <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
+        </p>
 
-            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">All of the products I have design while at Oro</p>
+        <br />
+        <Image src={Introduction03} alt="alt" className="rounded-xl py-2" />
+        <Blockquote content="All of the products I have worked while at Oro" type="Image" />
+        <br />
 
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-
-          </blockquote>
-
-          The app and website launch was met with outstanding end customer response, alongside <span className="text-2xl">127% increase</span> in user engagement in the first month itself. <br />
+        <p>
+          The app and website launch was met with outstanding end customer response, alongside <span className="text-2xl">127% increase</span> in user engagement in the first month itself.
         </p>
 
       </>
@@ -211,19 +199,26 @@ const dummyContent = [
   },
 
   {
+    title: "Some Constrains and Hypothesis I had while designing",
+    description: (
+      <>
+      <ul className="list-disc">
+        <li>Ease of Use : Previous Cx App is not easy to use by customers</li>
+        <li>Trust : Previous Cx App doesn't generate trust in customers</li>
+        <li>Transparency : Loan information should be transparency to customers</li>
+      </ul>
+      </>
+    ),
+    badge: "Constrains",
+  },
+
+  {
     title:
       "In India, there is no seamless experience that handles doorstep gold loan service that customers are truly satisfied with.",
     description: (
       <>
-
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Generated this image using Microsoft Designer AI</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-
-        </blockquote>
-
+        <Blockquote content='Generate this image using Microsoft Designer AI' type="Image" />
+        <br />
 
         <p>
           One of the key challenges we aimed to address was improving the
@@ -248,24 +243,7 @@ const dummyContent = [
     description: (
       <>
 
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">This is the Goal Hypothesis I formed & Result I get</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-
-        </blockquote>
-
-
-        {/* <p>
-          One of the key challenges we aimed to address was improving the
-          overall user experience for our customers seeking instant gold loans.
-          By understanding their pain points and needs, we strived to create a
-          seamless borrowing journey that instilled trust and confidence in our
-          services. Additionally, we aimed to streamline the interfaces of our
-          Customer App, Partner App, and Admin Dashboard, making them more
-          intuitive and user-friendly. <br />
-        </p> */}
+        <Blockquote content='This is the Goal Hypothesis I formed & Result I get' type="Image" />
 
       </>
     ),
@@ -278,13 +256,8 @@ const dummyContent = [
     title: "Design process I followed is Double Diamond",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">I diverge & converge basis on the task particular task I am doing</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-
-        </blockquote>
+        <Blockquote content='I diverge & converge basis on the task particular task I am doing' type="Image" />
+        <br />
         <p>
           Following a user-centered design approach, we embarked on a
           comprehensive design process. We ideated, prototyped, and iterated on
@@ -306,12 +279,6 @@ const dummyContent = [
     // title: "Design process I followed is Double Diamond",
     description: (
       <>
-        {/* <ul className="list-disc">
-          <li>Based on the data metrics I received from product & design managers and data analysts.</li>
-          <li>Defined the problems such as complicated loan booking appointment, unclear loan terms & lack of transparency and navigation.</li>
-          <li>End users are looking for easy to navigate app.</li>
-          <li>End users need well designed application.</li>
-        </ul> */}
 
       </>
     ),
@@ -324,6 +291,7 @@ const dummyContent = [
     title: "After taking enough insights from users, managers & analytics team. It’s time to defined the process",
     description: (
       <>
+        <br />
         <ul className="list-disc">
           <li>Based on the gathered data, it is important to recreated the user journey mapping of targeted audience</li>
           <li>So I created user persona & new user journey mapping (optimized the whole flow from 12 phases into 9 phases)</li>
@@ -331,28 +299,15 @@ const dummyContent = [
           <li>Presented our insights in front of stakeholders, PMs and tech team to align and show the vision of revamped flow</li>
         </ul>
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
-        <br />
+        <HorizontalLine />
 
-        <h4 className="text-2xl pb-4">Key Takeaways from Customer Journey Mapping</h4>
-
-        {/* <ul className="list-disc">
-          <li>Customer feels lack of trust when installed app first time</li>
-          <li>Customer are struggling by pressing the small CTA that is hard to reach</li>
-          <li>Customer find it hard to understand all of the terms of gold loan</li>
-          <li>Customer find it hard to manage gold loan for repayments</li>
-          <li>Customer feels insecure about gold stored at faculity</li>
-        </ul> */}
+        <h4 className="text-xl lg:text-3xl">Key Takeaways from Customer Journey Mapping</h4>
 
         <br />
         <Image src={UserTakeaways} alt="alt" className="rounded-xl py-2" />
-        <br />
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
-        <br />
 
+        <HorizontalLine />
 
         <h4 className="text-3xl pb-4">Once mapping is done, it’s time to understand what competitors are doing ?</h4>
         <p>
@@ -361,17 +316,6 @@ const dummyContent = [
 
         <br />
         <Image src={CompetitionImg} alt="alt" className="rounded-xl py-2"></Image>
-        <br />
-
-        {/* <ul className="list-disc">
-          <li>General Information : Competitor Type, Location, Product Offering, Price, Business Size and Targeted Audience</li>
-          <li>First Impression : Desktop Website Experience, Mobile and App Experience</li>
-          <li>Interaction : Features, Accessibility, User Flow and Navigation</li>
-          <li>Visual Design : Brand Identity</li>
-          <li>Content : Tone and Descriptiveness</li>
-        </ul>
-        <br />
-        <p>Insights : I found even competitors have great product features but the execution such as well designed product is still main concern, so this could be our opportinuity to create more seamless well designed product</p> */}
 
       </>
     ),
@@ -384,66 +328,31 @@ const dummyContent = [
     title: "We were on a tight deadline and developers need to start developing soon.",
     description: (
       <>
-
         <Image src={DesignWorkflowImg} alt="alt" className="rounded-xl py-2"></Image>
-
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">My Design Workflow for designing Customer App</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-        </blockquote>
-
+        <Blockquote content='My Design Workflow for designing Customer App' type='Image'></Blockquote>
         <br />
 
+        <h4 className="text-3xl">Here is the glimpse of some of the final mockups at different stages of Oro Consumer App</h4>
+
+        <br />
         <Image src={RevampMockup01} alt="alt" className="rounded-xl py-2"></Image>
-
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Visual Mockups of Bunch of Screens as the part of Gold Loan Flow in Cx App </p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-        </blockquote>
-
+        <Blockquote content='Visual Mockups of Bunch of Screens as the part of Gold Loan Flow in Cx App' type='Image'></Blockquote>
         <br />
 
         <Image src={RevampMockup02} alt="alt" className="rounded-xl py-2"></Image>
-
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Every UI design has been done with all consideration of the edgecases</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-        </blockquote>
-
-
-        {/* <ul className="list-disc">
-          <li>So we sit for kickoff call and start gathering inspiration from multiple apps out there</li>
-          <li>Once wireframes of particular phase is finalized with start with the content finalization</li>
-          <li>Once content is finalized, we started with the visual UI design</li>
-          <li>There are certain spacing, icons and font guidelines which are defined. so we use them for our visual design</li>
-          <li>Using the visual design system helps me to create UI faster</li>
-        </ul> */}
+        <Blockquote content='Every UI design has been done with all consideration of the edgecases' type='Image'></Blockquote>
+        <br />
       </>
     ),
     badge: "Design",
-    // images:
-    //   ["https://cdn.sanity.io/images/loniby3f/production/2f2d0be6fed39d415e488e3f4e9ba60ca3711204-3864x2184.png", "https://cdn.sanity.io/images/loniby3f/production/f8bc264455f340f9a4c9124343bc59ee269e6d87-3864x2184.png"]
-
-
   },
 
   {
     title: "Once product & design requirements are done. It’s our duty to give proper guidelines to the developers for polished development",
     description: (
       <>
-        <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
+      <Blockquote content='Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers.' type='image'></Blockquote>
 
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers.</p>
-
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
-        </blockquote>
-        
       </>
     ),
     badge: "Deliver",
@@ -475,9 +384,7 @@ const dummyContent = [
           Throughout these projects, I learned valuable lessons about the importance of user feedback, collaboration with stakeholders, and continuous iteration. User insights played a pivotal role in guiding our design decisions and prioritizing features. I also recognized the value of involving stakeholders early on to align expectations and ensure smooth project execution.
         </p>
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
-        <br />
+        <HorizontalLine />
 
         <ul className="list-disc"> Other than Customer App, I have worked on multiple products throughout my time period @ Oro. Other products / projects are :
           <li>Partner App Revamp</li>
@@ -487,9 +394,7 @@ const dummyContent = [
           <li>Aurum Design System</li>
         </ul>
 
-        <br />
-        <hr className="h-px bg-slate-200 border-0 dark:bg-slate-700" />
-        <br />
+        <HorizontalLine />
 
         <p>
           In conclusion, my work at Oro involved creating customer journey maps, revamping UIs, and redesigning landing pages to enhance the overall user experience. By addressing pain points, streamlining processes, and improving transparency, we achieved higher customer satisfaction and business success. These projects not only showcased the value of UX but also contributed to my professional growth as a UX professional in delivering impactful solutions.
