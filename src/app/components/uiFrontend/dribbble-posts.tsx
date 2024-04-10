@@ -46,9 +46,11 @@ export function DribbbleShots() {
                   <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
                 </div>
 
-                <img src={shot.images.hidpi} alt={shot.title} className='p-1 w-full object-cover rounded-lg' />
-                
-                
+                <div className='lg:m-4 lg:transition-translate lg:duration-300 lg:ease-out lg:group-hover:scale-105'>
+                  <img src={shot.images.hidpi} alt={shot.title} className='p-2 w-full object-cover rounded-xl' />
+                </div>
+
+
                 <div className="title-wrapper relative">
                   <div className='p-6 absolute bottom-0 bg-gradient-to-t from-slate-200 dark:from-slate-900 w-full transform opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-y-0'>
                     <div className='text-slate-900 dark:text-slate-50 font-bold text-base md:text-xl'>
