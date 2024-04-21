@@ -8,10 +8,19 @@ import { CanvasRevealEffect } from "@/app/components/Animations/canvas-reveal-ef
 
 import OroThumbnail from '../../Assets/Images/OroThumbnail.png';
 import HonestThumbnail from '../../Assets/Images/HonestIntroduction.png';
+import TVThumbnail from '../../Assets/Images/TradingViewThumbnail.png';
+
 import { useRouter } from "next/router";
 
 
 export function ProjectCards() {
+
+    const TVKeypoints = [
+        "Key Takeaways",
+        "1. Hobby Project, Showcase my design system methodology",
+        "2. Design System product which build other products",
+        "3. Centralize the UI design and development decisions",
+    ];
 
     const OroKeypoints = [
         "Key Takeaways",
@@ -30,6 +39,26 @@ export function ProjectCards() {
     return (
         <>
             <div className="flex flex-col justify-center w-full gap-4">
+
+                <div data-aos="fade-up">
+                    <Card
+                        title="Scale In Design System"
+                        subtitle="Building Design Harmony for Trading View Future"
+                        keypoints={TVKeypoints}
+                        image={TVThumbnail}
+                        buttonlink="/tradingview">
+                        <CanvasRevealEffect
+                            animationSpeed={4}
+                            containerClassName="bg-neutral-900/[0.4]"
+                            colors={[
+                                [83, 83, 83],
+                                [82, 82, 82],
+                            ]}
+                            dotSize={2}
+                        />
+                    </Card>
+                </div>
+
                 <div data-aos="fade-up">
                     <Card
                         title="Orocorp - Digitizes and Maximizes user&apos;s gold potential"
