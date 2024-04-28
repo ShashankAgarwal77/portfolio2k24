@@ -37,7 +37,7 @@ export function DribbbleShots() {
           <div className="wrapper">
             <div className="w-full h-full bg-gradient-to-b from-slate-300 dark:from-neutral-800 p-0.5 rounded-lg">
 
-              <div className='border border-black/[0.2] group/canvas-card flex flex-col dark:border-white/[0.2] w-full relative h-auto relative'>
+              <div className='border border-black/[0.2] group/canvas-card flex flex-col dark:border-white/[0.2] w-full relative h-auto relative overflow-hidden'>
 
                 <div className="icons-wrapper">
                   <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
@@ -46,7 +46,7 @@ export function DribbbleShots() {
                   <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
                 </div>
 
-                <div className='lg:m-4 lg:transition-translate lg:duration-300 lg:ease-out lg:group-hover:scale-105'>
+                <div className='lg:m-1 lg:transition-translate lg:duration-300 lg:ease-out lg:group-hover:scale-105 rounded-xl'>
                   <img src={shot.images.hidpi} alt={shot.title} className='p-2 w-full object-cover rounded-xl' />
                 </div>
 
