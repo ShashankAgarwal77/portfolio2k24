@@ -10,7 +10,11 @@ import Introduction01 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introd
 import Introduction02 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction02.png";
 import Introduction03 from "@/app/Assets/Images/OroCaseStudy/Introduction/Introduction03.png";
 import ProblemImg from "@/app/Assets/Images/OroCaseStudy/Problem.jpg";
-import ObjectiveImg from '@/app/Assets/Images/OroCaseStudy/Objective.png';
+
+// Objective Images
+import ObjectiveImg from '@/app/Assets/Images/OroCaseStudy/Objective/Objective.png';
+import ResultImg from '@/app/Assets/Images/OroCaseStudy/Objective/Result.png';
+
 import ProcessImg from "@/app/Assets/Images/OroCaseStudy/Process.png";
 
 // Conceptualize Images
@@ -243,13 +247,13 @@ const dummyContent = [
     description: (
       <>
 
-        <Blockquote content='This is the Goal Hypothesis I formed & Result I get' type="Image" />
+        <Blockquote content='This is the overview we formed & Result we get' type="Image" />
 
       </>
     ),
     badge: "Objective",
     images:
-      [ObjectiveImg,]
+      [ObjectiveImg, ResultImg]
   },
 
   {
