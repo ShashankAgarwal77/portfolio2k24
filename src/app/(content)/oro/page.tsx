@@ -199,17 +199,17 @@ const dummyContent = [
   },
 
   {
-    title: "Some Constrains and Hypothesis I had while designing",
+    title: "Some Assumptions I had before designing",
     description: (
       <>
       <ul className="list-disc">
-        <li>Ease of Use : Previous Cx App is not easy to use by customers</li>
-        <li>Trust : Previous Cx App doesn't generate trust in customers</li>
-        <li>Transparency : Loan information should be transparency to customers</li>
+        <li><b>Ease of Use :</b> Previous Customer App is not user-friendly & easy to navigate for customers</li>
+        <li><b>Trust :</b> Previous Customer App doesn't generate higher level of trust in customers</li>
+        <li><b>Transparency :</b> Previous Customer App doesn't provide clear and transparent loan information to customers</li>
       </ul>
       </>
     ),
-    badge: "Constrains",
+    badge: "Assumptions",
   },
 
   {
