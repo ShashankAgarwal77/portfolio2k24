@@ -265,7 +265,7 @@ const dummyContent = [
         <p>
           Following a user-centered design approach, we embarked on a
           comprehensive design process. We ideated, prototyped, and iterated on
-          various solutions, considering user feedback and stakeholder input at
+          various solutions, considering stakeholder's input at
           each stage. We created customer journey maps that visualized the
           borrower&apos;s end-to-end experience, enabling us to identify
           opportunities for improvement and streamline the loan application
@@ -292,7 +292,7 @@ const dummyContent = [
   },
 
   {
-    title: "After taking enough insights from users, managers & analytics team. It’s time to defined the process",
+    title: "After taking enough insights from stakeholders. It’s time to defined the process",
     description: (
       <>
         <br />
@@ -355,7 +355,7 @@ const dummyContent = [
     title: "Once product & design requirements are done. It’s our duty to give proper guidelines to the developers for polished development",
     description: (
       <>
-      <Blockquote content='Hand off the designs by creating DesignPRD in linear and UX Audits in notion which includes the updated designs, typography, color and spacing guidelines which gradually reduces the many queries from developers.' type='image'></Blockquote>
+      <Blockquote content='Hand off the designs has been done by creating DesignPRD in linear (Product Management Tool) and UX Audits in Notion. This gradually reduces the many queries from developers regarding the flow or user interaction.' type='image'></Blockquote>
 
       </>
     ),
