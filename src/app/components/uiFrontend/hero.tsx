@@ -32,11 +32,11 @@ const HeroSection = () => {
                                     My portfolio website got featured on Wall of Portfolios! 🎉
                                 </p>
                                 
-                                <button className="bg-slate-400 dark:bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block my-4">
+                                <button className="bg-slate-100 dark:bg-slate-800 no-underline group cursor-pointer relative rounded-full p-px text-xs font-semibold leading-6  text-white inline-block my-4 shadow-xl">
                                     <span className="absolute inset-0 overflow-hidden rounded-full">
                                         <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                                     </span>
-                                    <div className="relative flex px-4 py-2 md:px-6 md:py-4 text-lg md:text-xl justify-center z-10 rounded-full bg-zinc-950 py-0.5 ring-1 ring-white/10 ">
+                                    <div className="relative flex px-4 py-2 md:px-6 md:py-4 text-lg md:text-xl justify-center z-10 rounded-full border border-slate-300 dark:border-none dark:bg-zinc-950 py-0.5 ring-1 ring-white/10  text-slate-900 dark:text-white">
                                             Check it out!
                                     </div>
 
