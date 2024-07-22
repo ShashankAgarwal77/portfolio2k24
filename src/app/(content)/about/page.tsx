@@ -53,7 +53,16 @@ export default function About() {
           <h4 className="uppercase text-xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Experience</h4>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-y-8">
+        <div className="flex flex-col gap-y-4">
+            <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2">Zemoso Labs</h4>
+            <div className="gap-y-2">
+              <h6 className="md:text-xl lg:text-2xl text-slate-500 dark:text-white font-regular tracking-wide">UX Designer II</h6>
+              <p className="text-xl text-slate-400">05/24 - 07/24</p>
+            </div>
+            <p className="text-xl text-slate-400 tracking-wide">Worked on a cybersecurity and ecommerce platforms.</p>
+          </div>
+
           <div className="flex flex-col gap-y-4">
             <h4 className="text-2xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-4xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2">Orocorp</h4>
             <div className="gap-y-2">
