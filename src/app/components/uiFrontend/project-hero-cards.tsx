@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef } from "react";
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/app/components/Animations/canvas-reveal-effect";
@@ -10,93 +9,85 @@ import OroThumbnail from '../../Assets/Images/OroThumbnail.png';
 import HonestThumbnail from '../../Assets/Images/HonestIntroduction.png';
 import TVThumbnail from '../../Assets/Images/TradingViewThumbnail.png';
 
-import { useRouter } from "next/router";
-
-
 export function ProjectCards() {
 
     const TVKeypoints = [
         "Key Takeaways",
-        "1. Hobby Project, Showcase my design system methodology",
-        "2. Design System product which build other products",
-        "3. Centralize the UI design and development decisions",
+        "1. Hobby Project",
+        "2. Sharpen design system skills",
+        "3. Created component library",
     ];
 
     const OroKeypoints = [
         "Key Takeaways",
-        "1. Reducing the gold loan booking time from 45 minutes to ~28 minutes",
-        "2. Increasing the user engagement from 13.74% to 23.54%",
-        "3. Achieving higher customer satisfaction and conversion rate",
+        "1. Improved gold loan efficiency",
+        "2. Increase user engagement",
+        "3. Achieve higher conversion and satisfaction",
     ];
 
     const Honestkeypoints = [
         "Key Takeaways",
         "1. Hobby Project",
-        "2. Solves the trust and authencity problem in food delivery sector",
-        "3. Demonstrate the vast variety of UI and UX Practices to achieve the validation of problem and solution hypothesis"
+        "2. Increased trust and authencity",
+        "3. Approached under Google UX Bootcamp"
     ]
 
     return (
         <>
-            <div className="flex flex-col justify-center w-full gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 justify-center w-full gap-4" data-aos="fade-up">
 
-                <div data-aos="fade-up">
-                    <Card
-                        title="Scale In Design System"
-                        subtitle="Building Design Harmony for Trading View Future"
-                        keypoints={TVKeypoints}
-                        image={TVThumbnail}
-                        buttonlink="/tradingview">
-                        <CanvasRevealEffect
-                            animationSpeed={4}
-                            containerClassName="bg-neutral-900/[0.4]"
-                            colors={[
-                                [83, 83, 83],
-                                [82, 82, 82],
-                            ]}
-                            dotSize={2}
-                        />
-                    </Card>
-                </div>
+                <Card
+                    title="Digitizes and Maximizes user's gold potential"
+                    subtitle="Redefining the way people get gold loan in India"
+                    keypoints={OroKeypoints}
+                    image={OroThumbnail}
+                    buttonlink="/oro">
+                    <CanvasRevealEffect
+                        animationSpeed={4}
+                        containerClassName="bg-amber-400/[0.4]"
+                        colors={[
+                            [253, 230, 138],
+                            [251, 191, 36],
+                        ]}
+                        dotSize={2}
+                    />
+                </Card>
 
-                <div data-aos="fade-up">
-                    <Card
-                        title="Orocorp - Digitizes and Maximizes user&apos;s gold potential"
-                        subtitle="Redefining the way people get gold loan in India"
-                        keypoints={OroKeypoints}
-                        image={OroThumbnail}
-                        buttonlink="/oro">
-                        <CanvasRevealEffect
-                            animationSpeed={4}
-                            containerClassName="bg-amber-400/[0.4]"
-                            colors={[
-                                [253, 230, 138],
-                                [251, 191, 36],
-                            ]}
-                            dotSize={2}
-                        />
-                    </Card>
-                </div>
+                <Card
+                    title="Scale-In Design System"
+                    subtitle="Building Design Harmony for Trading View Future"
+                    keypoints={TVKeypoints}
+                    image={TVThumbnail}
+                    buttonlink="/tradingview">
+                    <CanvasRevealEffect
+                        animationSpeed={4}
+                        containerClassName="bg-neutral-900/[0.4]"
+                        colors={[
+                            [83, 83, 83],
+                            [82, 82, 82],
+                        ]}
+                        dotSize={2}
+                    />
+                </Card>
 
-                <div data-aos="fade-up">
-                    <Card
-                        title="Honest Bites - UI/UX Case Study"
-                        subtitle="Unveiling a World of Culinary Experience"
-                        keypoints={Honestkeypoints}
-                        image={HonestThumbnail}
-                        buttonlink="/honest">
-                        <CanvasRevealEffect
-                            animationSpeed={4}
-                            containerClassName="bg-emerald-400/[0.4]"
-                            colors={[
-                                [167, 243, 208],
-                                [5, 150, 36],
-                            ]}
-                            dotSize={2}
-                        />
-                    </Card>
-                </div>
 
+
+                <Card
+                    title="Honest Bites"
+                    subtitle="Unveiling a world of culinary experience"
+                    keypoints={Honestkeypoints}
+                    image={HonestThumbnail}
+                    buttonlink="/honest">
+                    <CanvasRevealEffect
+                        animationSpeed={4}
+                        containerClassName="bg-emerald-400/[0.4]"
+                        colors={[
+                            [167, 243, 208],
+                            [5, 150, 36],
+                        ]}
+                        dotSize={2}
+                    />
+                </Card>
             </div>
         </>
     );
@@ -124,7 +115,7 @@ const Card = ({
         <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="bg-white dark:bg-black border border-black/[0.2] group/canvas-card flex dark:border-white/[0.2] w-full p-8 relative h-auto relative"
+            className="border border-black/[0.2] group/canvas-card flex dark:border-white/[0.2] w-full p-8 relative h-auto relative"
         >
             <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
@@ -143,32 +134,37 @@ const Card = ({
                 )}
             </AnimatePresence>
 
-            <div className="relative z-20">
+            <div className="flex flex-col relative z-20 ">
 
-                <h2 className="text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
-                    {title}
-                </h2>
-                <h2 className="text-slate-500 dark:text-white sm:text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
-                    {subtitle}
-                </h2>
-                <ul className="text-slate-500 sm:text-base md:text-lg lg:text-xl my-4 mb-8 dark:text-slate-400 tracking-wide font-semibold">
-                    {keypoints.map((keypoint, index) => (
-                        <li key={index}>{keypoint}</li>
-                    ))}
-                </ul>
-                <Image src={image} alt="image alt" />
+                <div className="grow wrapper-text">
+                    <h2 className="text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
+                        {title}
+                    </h2>
+                    <h2 className="text-slate-500 text-bold sm:text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
+                        {subtitle}
+                    </h2>
+                    <ul className="text-slate-500 sm:text-base md:text-lg lg:text-xl my-4 mb-8 dark:text-slate-200 tracking-wide">
+                        {keypoints.map((keypoint, index) => (
+                            <li key={index}>{keypoint}</li>
+                        ))}
+                    </ul>
+                    <Image src={image} alt="image alt" />
 
-                <button
-                    ref={buttonRef} // Assign the ref to the button element
-                    className="inline-flex h-16 w-full mt-8 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-base md:text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
-                    onClick={() => {
-                        if (buttonRef.current) {
-                            window.location.href = buttonlink; // Navigate to the link when button clicked
-                        }
-                    }}
-                >
-                    Read Full Case Study ➜
-                </button>
+                </div>
+
+                <div className="wrapper-cta">
+                    <button
+                        ref={buttonRef} // Assign the ref to the button element
+                        className="inline-flex h-16 w-full mt-8 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-base md:text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
+                        onClick={() => {
+                            if (buttonRef.current) {
+                                window.location.href = buttonlink; // Navigate to the link when button clicked
+                            }
+                        }}
+                    >
+                        Read Full Case Study ➜
+                    </button>
+                </div>
 
             </div>
         </div>

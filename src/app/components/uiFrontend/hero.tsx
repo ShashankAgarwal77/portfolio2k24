@@ -44,7 +44,7 @@ const HeroSection = () => {
                         <h2 className="text-slate-400 text-3xl lg:text-5xl font-bold lowercase">My Selected Work to Showcase</h2>
                     </div>
 
-                    <div className="flex flex-col mx-4 my-8 max-w-[110rem] items-center">
+                    <div className="mx-4 my-8 max-w-[110rem] items-center">
                         <ProjectCards />
                     </div>
                 </div>
