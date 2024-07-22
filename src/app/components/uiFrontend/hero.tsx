@@ -16,6 +16,7 @@ const HeroSection = () => {
             <div className='lg:block md:hidden sm:hidden'>
                 {/* <BannerNotification /> */}
             </div>
+            
             <div className="hero-section">
                 <div className="relative bg-anim--wrapper">
                     <AuroraBackgroundAnimation />
@@ -50,7 +51,7 @@ const HeroSection = () => {
 
             </div>
 
-            <div className="projects-section">
+            <div className="projects-section mb-20 md:mb-40">
                 <div className="flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center">
 
                     <div className="lamp-wrapper lg:dark:block hidden lg:hidden">
