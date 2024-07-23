@@ -1,4 +1,3 @@
-import BannerNotification from '../components/uiFrontend/banner-notification';
 import FooterComp from '../components/uiFrontend/footer';
 import MobileNavbar from '../components/uiFrontend/mobileNavbar';
 import { NavbarComp } from '../components/uiFrontend/navbar';
