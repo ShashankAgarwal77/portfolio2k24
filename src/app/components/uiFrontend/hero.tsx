@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Lamp } from './lamp';
 import { TextGenerateHeading } from './text-generate-header';
 import { ProjectCards } from './project-hero-cards';
@@ -14,7 +13,7 @@ const HeroSection = () => {
         <div className="flex flex-col justify-center overflow-hidden">
             <div className='lg:block md:hidden sm:hidden'>
             </div>
-            
+
             <div className="hero-section">
                 <div className="relative bg-anim--wrapper">
                     <AuroraBackgroundAnimation />
@@ -30,18 +29,22 @@ const HeroSection = () => {
                                 <p className="md:leading-relaxed text-lg md:text-xl lg:leading-relaxed lg:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed z-1 tracking-wide text-center">
                                     My portfolio website got featured on Wall of Portfolios! 🎉
                                 </p>
-                                
-                                <button className="bg-slate-100 dark:bg-slate-800 no-underline group cursor-pointer relative rounded-full p-px text-xs font-semibold leading-6  text-white inline-block my-4 shadow-xl">
-                                    <span className="absolute inset-0 overflow-hidden rounded-full">
-                                        <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                                    </span>
-                                    <div className="relative flex px-4 py-2 md:px-6 md:py-4 text-lg md:text-xl justify-center z-10 rounded-full border border-slate-300 dark:border-none dark:bg-zinc-950 py-0.5 ring-1 ring-white/10  text-slate-900 dark:text-white">
-                                            Check it out!
-                                    </div>
 
-                                    <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
-                                </button>
-                                
+                                <a href="https://www.wallofportfolios.in/portfolios/shashank-agarwal" target='_blank'>
+                                    <button className="bg-slate-100 dark:bg-slate-800 no-underline group cursor-pointer relative rounded-full p-px text-xs font-semibold leading-6  text-white inline-block my-4 shadow-xl">
+                                        <span className="absolute inset-0 overflow-hidden rounded-full">
+                                            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                                        </span>
+                                        <div className="relative flex px-4 py-2 md:px-6 md:py-4 text-lg md:text-xl justify-center z-10 rounded-full border border-slate-300 dark:border-none dark:bg-zinc-950 py-0.5 ring-1 ring-white/10  text-slate-900 dark:text-white">
+                                            Check it out!
+                                        </div>
+
+                                        <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+                                    </button>
+                                </a>
+
+
+
                             </div>
                         </div>
                     </div>
