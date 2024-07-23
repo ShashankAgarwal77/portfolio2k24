@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { Lamp } from './lamp';
-import { BackgroundBeamsDemo } from './background-beams';
 import { TextGenerateHeading } from './text-generate-header';
 import { ProjectCards } from './project-hero-cards';
 
@@ -14,7 +13,6 @@ const HeroSection = () => {
     return (
         <div className="flex flex-col justify-center overflow-hidden">
             <div className='lg:block md:hidden sm:hidden'>
-                {/* <BannerNotification /> */}
             </div>
             
             <div className="hero-section">
