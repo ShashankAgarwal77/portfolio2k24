@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { IoIosSunny } from "react-icons/io";
-import { IoIosMoon } from "react-icons/io";
+import {
+    Sun02Icon,
+    Moon02Icon
+} from "hugeicons-react";
 
 const ThemeSwitcher = () => {
     const [darkMode, setDarkMode] = useState(() => {
@@ -25,8 +27,8 @@ const ThemeSwitcher = () => {
     };
 
     return (
-        <button onClick={toggleDarkMode} className='bg-slate-200 dark:bg-slate-900 p-4 rounded-xl'>
-            {darkMode ? <IoIosSunny className='text-slate-100' /> : <IoIosMoon className='text-slate-600'/>}
+        <button onClick={toggleDarkMode} className=''>
+            {darkMode ? <Sun02Icon className='text-slate-100' /> : <Moon02Icon className='text-slate-600'/>}
         </button>
     );
 };
