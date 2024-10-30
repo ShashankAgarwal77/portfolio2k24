@@ -11,19 +11,17 @@ import { AuroraBackgroundAnimation } from './auora-background';
 const HeroSection = () => {
     return (
         <div className="flex flex-col justify-center overflow-hidden">
-            <div className='lg:block md:hidden sm:hidden'>
-            </div>
 
             <div className="hero-section">
-                <div className="relative bg-anim--wrapper">
+                <div className="bg-anim--wrapper relative ">
                     <AuroraBackgroundAnimation />
-                    <div className="absolute inset-0 hero-content--wrapper">
-                        <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center h-screen">
-                            <div className="flex flex-col md:gap-y-6 lg:items-start justify-center" data-aos="fade-up">
+                    <div className="hero-content--wrapper absolute inset-0">
+                        <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center items-center h-screen">
+                            <div className="flex flex-col md:gap-y-6 justify-center items-center" data-aos="fade-up">
                                 <p className="md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-600 dark:text-slate-300 z-1 tracking-wide text-center">
                                     Hi, my name is Shashank Agarwal
                                 </p>
-                                <h1 className="z-1 text-center lg:text-left font-bold">
+                                <h1 className="z-1 text-center font-bold">
                                     <TextGenerateHeading />
                                 </h1>
                                 <p className="md:leading-relaxed text-lg md:text-xl lg:leading-relaxed lg:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed z-1 tracking-wide text-center">
