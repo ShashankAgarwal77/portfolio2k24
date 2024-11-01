@@ -38,6 +38,7 @@ import Result02 from "@/app/Assets/Images/OroCaseStudy/Result/Result02.png";
 import Result03 from "@/app/Assets/Images/OroCaseStudy/Result/Result03.png";
 import Blockquote from '@/app/components/uiFrontend/blockquote';
 import HorizontalLine from '@/app/components/uiFrontend/horizontal-rule';
+import FigmaEmbedLogistics from '../figmaSlides/logistics';
 
 export default function TracingBeamDemo() {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -64,7 +65,11 @@ export default function TracingBeamDemo() {
   }, []);
 
   return (
+
+
     <div className="flex flex-col justify-between">
+      <FigmaEmbedLogistics />
+
       <div className="grid grid-cols-1 content-end h-screen items-center content-end">
         <div className="flex flex-row justify-center pb-6">
           <h2 className="text-2xl xl:text-6xl bg-gradient-to-br from-slate-300 to-slate-500 inline-block text-transparent bg-clip-text font-medium">Orocorp Redefined</h2>
