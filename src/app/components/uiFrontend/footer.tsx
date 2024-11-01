@@ -5,7 +5,7 @@ import Logo from '@/app/Assets/Images/Logo.svg';
 
 const FooterComp = () => {
     return (
-        <footer className='relative flex flex-col justify-center items-center w-full h-fit bg-slate-900/[0.1] dark:bg-slate-800/[0.3] border-t-2 border-slate-400 dark:border-slate-800 py-4'>
+        <footer className='relative flex flex-col justify-center items-center w-full h-fit bg-slate-900/[0.1] dark:bg-slate-800/[0.3] py-4'>
             <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
                 
                 <div className='flex flex-col items-center'>
