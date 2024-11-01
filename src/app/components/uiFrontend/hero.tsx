@@ -24,7 +24,7 @@ const HeroSection = () => {
                                 <h1 className="z-1 text-center font-bold">
                                     <TextGenerateHeading />
                                 </h1>
-                                <p className="md:leading-relaxed text-lg md:text-xl lg:leading-relaxed lg:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed z-1 tracking-wide text-center">
+                                <p className="leading-relaxed text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 z-1 tracking-wide">
                                     My portfolio website got featured on Wall of Portfolios! 🎉
                                 </p>
 
@@ -76,7 +76,7 @@ const HeroSection = () => {
                     <div className="dribbble-heading flex flex-col gap-y-4" data-aos="fade-up">
 
                         <h3 className="dark:text-white text-slate-600 text-center text-3xl md:text-4xl lg:text-5xl font-semibold">Here are some of my dribbble shots 🏀</h3>
-                        <p className='text-base md:text-xl lg:text-xl text-center text-slate-500 dark:text-slate-400 tracking-wide font-semibold'>Click on any of the below project to see the thought process more in detail</p>
+                        <p className='leading-relaxed text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 z-1 tracking-wide'>Click on any of the below project to see the thought process more in detail</p>
 
                     </div>
 
