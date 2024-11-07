@@ -1,14 +1,11 @@
 import React from "react";
-import Image from "next/image";
 
 import { BentoGridComp } from "@/app/components/uiFrontend/bento-grid";
 import { GridBackground } from "@/app/components/uiFrontend/gridBackground";
 import { TextGenerateSection } from "@/app/components/uiFrontend/text-generate-section";
 
-import ProfileImage from '@/app/Assets/Images/photography.png';
 import { InfiniteMovingCardsDemo } from "@/app/components/uiFrontend/infinite-moving-card";
 import { StickyScrollRevealDemo } from "@/app/components/uiFrontend/sticky-scroll";
-import { IconItalic } from "@tabler/icons-react";
 
 export default function About() {
   return (
