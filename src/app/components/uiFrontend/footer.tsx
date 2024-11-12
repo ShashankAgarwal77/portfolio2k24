@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Image from 'next/image'; // Import next/image component
 
-import Logo from '@/app/Assets/Images/Logo.svg';
+import Logo from '../../../../public/Logo.svg';
 
 const FooterComp = () => {
     return (

@@ -7,7 +7,6 @@ import { DribbbleShots } from './dribbble-posts';
 import { SparklesPreview } from './sparkles-heading';
 import { AuroraBackgroundAnimation } from './auora-background';
 
-
 const HeroSection = () => {
     return (
         <div className="flex flex-col justify-center overflow-hidden">
@@ -24,7 +23,7 @@ const HeroSection = () => {
                                 <h1 className="z-1 text-center font-bold">
                                     <TextGenerateHeading />
                                 </h1>
-                                <p className="leading-relaxed text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 z-1 tracking-wide">
+                                <p className="leading-relaxed text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 z-1 tracking-wide text-center">
                                     My portfolio website got featured on Wall of Portfolios! 🎉
                                 </p>
 
