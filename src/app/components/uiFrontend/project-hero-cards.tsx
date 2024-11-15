@@ -123,40 +123,51 @@ const Card = ({
                 )}
             </AnimatePresence>
 
-            <div className="flex flex-col lg:flex-row justify-stretch gap-y-8 lg:gap-x-8 w-full relative">
-
-                <div className="flex flex-col flex-auto wrapper-text">
-                    <h2 className=" text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
+            <div className="flex flex-col lg:flex-row justify-between items-stretch gap-6 w-full relative">
+                {/* Text Content Wrapper (75% width on desktop) */}
+                <div className="flex flex-col lg:w-3/4">
+                    <h2 className="text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
                         {title}
                     </h2>
-                    <h2 className=" text-slate-500 text-bold sm:text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
+                    <h3 className="text-slate-500 font-semibold text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
                         {subtitle}
-                    </h2>
-                    <ol className=" text-slate-500 sm:text-base md:text-lg lg:text-xl dark:text-slate-200 tracking-wide">
+                    </h3>
+                    <ol className="text-slate-500 text-sm md:text-lg lg:text-xl dark:text-slate-200 tracking-wide list-decimal pl-5">
                         {keypoints.map((keypoint, index) => (
-                            <li key={index}>{keypoint}</li>
+                            <li key={index} className="mb-1">
+                                {keypoint}
+                            </li>
                         ))}
                     </ol>
-
                 </div>
 
-                <div className="flex flex-col">
-                    <Image src={image} alt="image alt"  className="w-80"/>
+                {/* Image and CTA Wrapper (25% width on desktop) */}
+                <div className="flex flex-col items-center lg:w-1/4">
+                    {/* Responsive Image that scales with parent */}
+                    <Image
+                        src={image}
+                        alt="Thumbnail"
+                        className="w-full h-auto object-cover rounded-md mb-4"
+                    />
 
+                    {/* CTA Button */}
                     <button
-                        ref={buttonRef} // Assign the ref to the button element
-                        className="inline-flex h-16 w-full mt-4 animate-shimmer items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)] bg-[length:200%_100%] px-8 py-8 text-base md:text-xl font-bold text-slate-800 dark:text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
+                        ref={buttonRef}
+                        className="w-full inline-flex items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 
+                 bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)]
+                 bg-[length:200%_100%] animate-shimmer py-4 text-base md:text-lg font-bold text-slate-800 dark:text-slate-300 transition-colors 
+                 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
                         onClick={() => {
                             if (buttonRef.current) {
-                                window.location.href = buttonlink; // Navigate to the link when button clicked
+                                window.location.href = buttonlink;
                             }
                         }}
                     >
                         Read Full Case Study ➜
                     </button>
                 </div>
-
             </div>
+
         </div>
     );
 };
