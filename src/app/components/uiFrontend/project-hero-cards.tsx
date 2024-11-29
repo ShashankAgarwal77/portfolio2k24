@@ -10,39 +10,49 @@ import HonestThumbnail from '../../Assets/Images/HonestIntroduction.png';
 import HaulkarThumbnail from '../../../../public/haulkarThumbnail.png';
 import TVThumbnail from '../../../../public/thumbnail-tradingview.png';
 
+import SecureHubGif from '../../../../public/SecureHub.gif';
+
+
 export function ProjectCards() {
 
-    const TVKeypoints = [
-        "Key Takeaways",
-        "1. Hobby Project",
-        "2. Sharpen design system skills",
-        "3. Created component library",
+    const SecureKeypoints = [
+        "Web Application Design",
+        "Cyber Security Domain",
+        "First Principles Thinking",
     ];
 
     const OroKeypoints = [
-        "Key Takeaways",
-        "1. Improved gold loan efficiency",
-        "2. Increase user engagement",
-        "3. Achieve higher conversion and satisfaction",
+        "Mobile Application Design",
+        "Finance Tech Domain",
+        "Achieved Higher Conversion and Satisfaction",
     ];
 
     const HaulkarKeypoints = [
-        "Key Takeaways",
-        "1. Hobby Project",
-        "2. Aims to simplify job discovery",
-        "3. Aims to decrease attrition rate",
+        "Hobby Project",
+        "Aims to simplify job discovery",
+        "Aims to decrease attrition rate",
     ];
-
-    const Honestkeypoints = [
-        "Key Takeaways",
-        "1. Hobby Project",
-        "2. Increased trust and authencity",
-        "3. Approached under Google UX Bootcamp"
-    ]
 
     return (
         <>
-            <div className="grid lg:grid-flow-row lg:auto-rows-max md:grid-col-1 justify-center w-full gap-4" data-aos="fade-up">
+            <div className="flex flex-col gap-4 justify-center w-full gap-4" data-aos="fade-up">
+
+                <Card
+                    title="Secure Hub"
+                    subtitle="Designing the way to manage & monitor employees"
+                    keypoints={SecureKeypoints}
+                    image={SecureHubGif}
+                    buttonlink="/case-study/securehub">
+                    <CanvasRevealEffect
+                        animationSpeed={4}
+                        containerClassName="bg-amber-400/[0.4]"
+                        colors={[
+                            [253, 230, 138],
+                            [251, 191, 36],
+                        ]}
+                        dotSize={2}
+                    />
+                </Card>
 
                 <Card
                     title="Digitizes and Maximizes user's gold potential"
@@ -123,31 +133,36 @@ const Card = ({
                 )}
             </AnimatePresence>
 
-            <div className="flex flex-col lg:flex-row justify-between items-stretch gap-6 w-full relative">
+            <div className="flex flex-col justify-between items-stretch gap-4 w-full relative">
                 {/* Text Content Wrapper (75% width on desktop) */}
-                <div className="flex flex-col lg:w-3/4">
+                <div className="flex flex-col gap-0">
                     <h2 className="text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
                         {title}
                     </h2>
                     <h3 className="text-slate-500 font-semibold text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
                         {subtitle}
                     </h3>
-                    <ol className="text-slate-500 text-sm md:text-lg lg:text-xl dark:text-slate-200 tracking-wide list-decimal pl-5">
-                        {keypoints.map((keypoint, index) => (
-                            <li key={index} className="mb-1">
+
+                </div>
+
+                <div className="flex flex-row text-slate-500 text-sm md:text-lg lg:text-xl dark:text-slate-200 tracking-wide gap-2">
+                    {keypoints.map((keypoint, index) => (
+                        <div className="flex flex-row">
+                            <div key={index} className="p-4 bg-slate-300/[0.6] dark:bg-slate-900/[0.6] rounded-md border-slate-800 text-center">
                                 {keypoint}
-                            </li>
-                        ))}
-                    </ol>
+                            </div>
+                        </div>
+
+                    ))}
                 </div>
 
                 {/* Image and CTA Wrapper (25% width on desktop) */}
-                <div className="flex flex-col items-center lg:w-1/4">
+                <div className="flex flex-col items-center">
                     {/* Responsive Image that scales with parent */}
                     <Image
                         src={image}
                         alt="Thumbnail"
-                        className="w-full h-auto object-cover rounded-md mb-4"
+                        className="min-w-80 h-auto object-cover rounded-md mb-4"
                     />
 
                     {/* CTA Button */}
