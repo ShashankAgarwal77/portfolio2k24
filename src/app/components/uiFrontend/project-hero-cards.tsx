@@ -148,15 +148,13 @@ const Card = ({
                 <div className="text-slate-500 text-sm md:text-md dark:text-slate-200 tracking-wide">
                     <ol className="grid grid-cols-2 md:grid-cols-3 col-auto gap-2 justify-self-stretch">
                         {keypoints.map((keypoint, index) => (
-                            <div>
-                                <div key={index} className="p-4 bg-slate-300/[0.6] dark:bg-slate-900/[0.6] rounded-md border-slate-800 text-center">
+                            <div key={index}>
+                                <div className="p-4 bg-slate-300/[0.6] dark:bg-slate-900/[0.6] rounded-md border-slate-800 text-center">
                                     {keypoint}
                                 </div>
                             </div>
-
                         ))}
                     </ol>
-
                 </div>
 
                 {/* Image and CTA Wrapper (25% width on desktop) */}
