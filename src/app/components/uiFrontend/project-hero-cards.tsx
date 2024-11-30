@@ -24,18 +24,18 @@ export function ProjectCards() {
     const OroKeypoints = [
         "Mobile Application Design",
         "Finance Tech Domain",
-        "Achieved Higher Conversion and Satisfaction",
+        "Achieved Higher Conversion",
     ];
 
     const HaulkarKeypoints = [
-        "Hobby Project",
-        "Aims to simplify job discovery",
-        "Aims to decrease attrition rate",
+        "Mobile Application Design",
+        "Simplify job discovery",
+        "Decrease attrition rate",
     ];
 
     return (
         <>
-            <div className="flex flex-col gap-4 justify-center w-full gap-4" data-aos="fade-up">
+            <div className="flex flex-col md:flex-row gap-4 justify-center w-full gap-4" data-aos="fade-up">
 
                 <Card
                     title="Secure Hub"
@@ -114,7 +114,7 @@ const Card = ({
         <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="border border-black/[0.2] group/canvas-card flex dark:border-white/[0.2] w-full p-8 relative h-auto relative"
+            className="border border-black/[0.2] group/canvas-card flex dark:border-white/[0.2] w-full p-6 md:p-8 relative h-auto relative"
         >
             <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
@@ -135,25 +135,28 @@ const Card = ({
 
             <div className="flex flex-col justify-between items-stretch gap-4 w-full relative">
                 {/* Text Content Wrapper (75% width on desktop) */}
-                <div className="flex flex-col gap-0">
-                    <h2 className="text-xl md:text-2xl lg:text-4xl font-bold tracking-wide text-slate-600 dark:text-white">
+                <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold tracking-wide text-slate-600 dark:text-white">
                         {title}
                     </h2>
-                    <h3 className="text-slate-500 font-semibold text-sm md:text-lg lg:text-2xl my-4 tracking-wide">
+                    <h3 className="text-slate-500 font-semibold text-xl tracking-wide">
                         {subtitle}
                     </h3>
 
                 </div>
 
-                <div className="flex flex-row text-slate-500 text-sm md:text-lg lg:text-xl dark:text-slate-200 tracking-wide gap-2">
-                    {keypoints.map((keypoint, index) => (
-                        <div className="flex flex-row">
-                            <div key={index} className="p-4 bg-slate-300/[0.6] dark:bg-slate-900/[0.6] rounded-md border-slate-800 text-center">
-                                {keypoint}
+                <div className="text-slate-500 text-sm md:text-md dark:text-slate-200 tracking-wide">
+                    <ol className="grid grid-cols-2 md:grid-cols-3 col-auto gap-2 justify-self-stretch">
+                        {keypoints.map((keypoint, index) => (
+                            <div>
+                                <div key={index} className="p-4 bg-slate-300/[0.6] dark:bg-slate-900/[0.6] rounded-md border-slate-800 text-center">
+                                    {keypoint}
+                                </div>
                             </div>
-                        </div>
 
-                    ))}
+                        ))}
+                    </ol>
+
                 </div>
 
                 {/* Image and CTA Wrapper (25% width on desktop) */}
