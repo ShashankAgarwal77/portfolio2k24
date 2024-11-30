@@ -45,10 +45,10 @@ export function ProjectCards() {
                     buttonlink="/case-study/securehub">
                     <CanvasRevealEffect
                         animationSpeed={4}
-                        containerClassName="bg-amber-400/[0.4]"
+                        containerClassName="bg-teal-400/[0.4]"
                         colors={[
-                            [253, 230, 138],
-                            [251, 191, 36],
+                            [19, 78, 74],
+                            [204, 251, 241],
                         ]}
                         dotSize={2}
                     />
