@@ -1,0 +1,202 @@
+import {
+  CaseStudyHero,
+  CaseStudyProse,
+  TLDRBento,
+  Pullquote,
+  MediaFrame,
+  TradeoffTable,
+  NumberedPrinciples,
+  Principle,
+  InlineNote,
+} from "@/app/components/CaseStudy";
+
+export const metadata = {
+  title: "BCAS — AI-powered design process for a government pitch",
+  description:
+    "How four designers, zero engineers, and a custom Claude Code skill shipped a production-ready prototype that won a national civil aviation security pitch.",
+};
+
+<CaseStudyProse>
+
+<CaseStudyHero
+  kicker="Case study"
+  headline="An AI-first design process that won a national security pitch — with four designers and zero engineers."
+  client="A national civil aviation security agency"
+  role="Senior Designer · led the AI-powered design process"
+  timeframe="2026 — ongoing"
+/>
+
+<TLDRBento items={[
+  {
+    label: "The bet",
+    title: "Claude Code + a custom design-system skill + bidirectional Figma↔code sync.",
+    body: "Code became canonical. Figma became the gallery.",
+    size: "hero",
+    tone: "primary",
+  },
+  {
+    label: "The team",
+    title: "4 designers, 0 engineers.",
+    body: "Solo at the start. Hired and trained the rest.",
+    size: "small",
+  },
+  {
+    label: "The brief",
+    title: "Scoped as a slice. Reshaped into a full working prototype.",
+    size: "small",
+  },
+  {
+    label: "The constraint",
+    title: "Figma Make priced us out. Pure Figma would have missed the deadline.",
+    size: "small",
+  },
+  {
+    label: "The outcome",
+    title: "Won the pitch. Engineer allocation began after the win.",
+    size: "small",
+  },
+]} />
+
+## The brief, then the brief that followed it
+
+The first ask was small — a slice of one module with 5-6 perona's happy flow, demoed for early feedback. Then management changed the brief. We'd take a **full working prototype** into the stakeholder pitch.
+
+The room included senior civil servants and the agency's engineering leadership. The kind of people who don't sit through walkthroughs of clickable mockups — they click into edge cases.
+
+We had weeks, not months. And the requirement includes multiples of personas, their happy flows and their screens where the *interactions* are the design, not the screens.
+
+<Pullquote>
+The IAS and IPS cadres — roughly the equivalent of a Permanent Secretary in the UK or a Deputy Secretary in the US.
+</Pullquote>
+
+## Three options sat in front of me
+
+<TradeoffTable
+  options={[
+    {
+      name: "Figma Make",
+      pro: "Fastest to a first prototype. AI-native generation inside the tool we already used.",
+      con: "$3,750 (per seat in org plan) ≈₹3.5 lakhs for only 7,500 tokens. The full prototype would have outpaced the pitch budget itself.",
+    },
+    {
+      name: "Pure Figma design",
+      pro: "Predictable cost. Total designer control. The familiar process.",
+      con: "Lost the AI velocity we needed for multiple flows in days.",
+    },
+    {
+      name: "Claude Code + custom skill + Figma↔code sync",
+      pro: "Predictable cost. AI velocity preserved. Code becomes the canonical artifact — designs ship as production-ready frontend.",
+      con: "We had to build the workflow before we could use it. Design governance had to be encoded, not assumed."
+    },
+  ]}
+/>
+
+We chose the third path.
+
+## The bet: code becomes canonical
+
+The hardest part wasn't technical. It was the mental flip.
+
+Figma had always been the source of truth. We inverted it: **plan in Claude Code, build in code against our design system, refine in code, then push the refined screens to Figma via MCP**.
+
+Once code was canonical, every screen we shipped was already engineering-ready.
+
+<Pullquote>
+Figma stopped being where the design lives. Code became the design. Figma became the gallery.
+</Pullquote>
+
+## Inside the skill: governance as code
+
+I wrote a Claude Code skill — a single document the AI has to follow. Not generation help. The **constraint layer** between AI and the design system.
+
+A few moves matter more than the rest.
+
+<NumberedPrinciples>
+<Principle title="Session mode lock">
+Every session locks to either *design-system mode* or *screen-build mode*. The discipline is enforced by the tool, not by the designer remembering to context-switch.
+</Principle>
+
+<Principle title="Two MCP servers — read and write, separated">
+One Figma MCP has read access only. A second has write. The AI cannot write through a read connection. Capability separation is architectural, not policy.
+</Principle>
+
+<Principle title="Dependency walk before push">
+Before pushing a component to Figma. Every sub-component must exist as a real Figma component first. Placeholders — the silent compromise — are refused outright.
+</Principle>
+
+<Principle title="Cross-session handoff">
+When a screen-build session needs a missing primitive, the AI pauses and outputs the exact prompt for a new design-system session. Separation of concerns, enforced.
+</Principle>
+</NumberedPrinciples>
+
+The takeaway: AI orchestration is a senior IC discipline, not a feature you turn on. Encoding the rules is the work.
+
+## Show, don't tell: the two-way review flow
+
+A Director-level reviewer at the agency reads a security programme submitted by a regulated entity, leaves observations on specific clauses. The entity responds. Back and forth, with audit trail, until approved or returned.
+
+<MediaFrame
+  aspect="16/9"
+  src="https://png.pngtree.com/thumb_back/fh260/background/20231206/pngtree-glowing-abstract-gradient-texture-image_13823746.png"
+  caption="Two-persona review loop, end-to-end."
+/>
+
+We built it inside Claude Code's plan mode first — the entire flow on paper before any pixels. Then executed in code, refined for both personas, pushed to Figma. Reviewers were clicking through the **actual product**, not a representation of it.
+
+<MediaFrame
+  aspect="21/9"
+  placeholder="Screen carousel — key states from both personas. Three to five anonymized stills."
+  caption="Screens from both sides of the loop, anonymized."
+/>
+
+## Scaling from one designer to four
+
+I started solo. After leadership saw the velocity, I onboarded three more designers who are eager to learn about this AI Workflow. Training was less *here are our components* and more *here is how to think about working with AI*.
+
+The four of us shipped together via GitHub. Plan mode for design intent. Execute mode for code. Sync via the skill. Peer review on pull requests. Two PMs with us and we ran field research at airports in parallel — pain points fed back into the flows the same week we heard them.
+
+Roughly thirty-five components on our internal Make Kit at peak. (Now being deprecated.)
+
+<MediaFrame
+  aspect="4/3"
+  placeholder="Workflow diagram — designer ↔ Claude Code ↔ Figma, with the skill in the middle."
+  caption="The team's working loop, with the skill at the center."
+/>
+
+## The pitch room
+
+We presented to the agency's senior leadership. The reaction landed where we wanted it: *this isn't a prototype — it's closer to production than we expected at this stage*.
+
+We won.
+
+The proof was in what came next. Engineer allocation is in process *now* — **after** the win, not before. We shipped frontend code engineers can extend, not a clickable mockup they'd rebuild from scratch.
+
+<MediaFrame
+  aspect="4/3"
+  placeholder="Anonymized appraisal screenshots — team and client messages."
+  caption="Selected feedback (anonymized)."
+/>
+
+## What I'd change
+
+Two things I'd tell my past self.
+
+**Plan for the migration cleanup from week one.** Forking a vendor library means every consumer screen has to be re-checked when you bring governance back. We're migrating on-touch, which is the right call — I just discovered that lesson rather than planned for it.
+
+**The skill itself needs iteration.** The first session-mode lock was too restrictive. The first dependency walk missed icon libraries. Building this kind of skill is a design problem, not a one-time setup.
+
+## A new baseline
+
+The team's expectations have shifted. Designers here now expect to iterate and ship frontend code at this speed. The bar for "design done" has moved.
+
+<Pullquote>
+The win wasn't AI making us faster. The win was AI making us shippable.
+</Pullquote>
+
+## What I'd tell anyone starting
+
+Don't start by writing prompts. Start by understanding the four primitives of AI execution: **Agent, Tools, Skills & Planning.** Once you understand how an agent picks tools, when a skill activates, and how they execute plan — you can design orchestration properly.
+
+That's the single biggest unlock.
+
+</CaseStudyProse>

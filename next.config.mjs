@@ -1,10 +1,20 @@
-/** @type {import('next').NextConfig} */
+import createMDX from '@next/mdx';
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['images.unsplash.com', 'pbs.twimg.com', 'media.licdn.com', 'mir-s3-cdn-cf.behance.net', 'cdn.sanity.io', 'aceternity.com'], // Add both domains here
-    },
-  };
-  
-  export default nextConfig;
-  
+  pageExtensions: ['ts', 'tsx', 'mdx', 'md'],
+  images: {
+    domains: [
+      'images.unsplash.com',
+      'pbs.twimg.com',
+      'media.licdn.com',
+      'mir-s3-cdn-cf.behance.net',
+      'cdn.sanity.io',
+      'aceternity.com',
+    ],
+  },
+};
+
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);
