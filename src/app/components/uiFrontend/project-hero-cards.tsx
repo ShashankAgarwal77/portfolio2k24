@@ -9,6 +9,7 @@ import OroThumbnail from '../../../../public/OroThumbnail.png';
 import HonestThumbnail from '../../Assets/Images/HonestIntroduction.png';
 import HaulkarThumbnail from '../../../../public/haulkarThumbnail.png';
 import TVThumbnail from '../../../../public/thumbnail-tradingview.png';
+import BCASThumb from '../../../../public/BCASThumb.png';
 
 import SecureHubGif from '../../../../public/SecureHub.gif';
 
@@ -33,9 +34,32 @@ export function ProjectCards() {
         "Decrease attrition rate",
     ];
 
+    const BCASKeypoints = [
+        "Government Security Platform",
+        "AI-Powered Design Workflow",
+        "4 Designers, 0 Engineers",
+    ];
+
     return (
         <>
-            <div className="flex flex-col md:flex-row gap-4 justify-center w-full gap-4" data-aos="fade-up">
+            <div className="flex flex-col gap-6 justify-center w-full" data-aos="fade-up">
+
+                <Card
+                    title="Winning a national aviation security pitch with zero engineers"
+                    subtitle="How an AI-first workflow turned a forked prototype into a production-ready platform"
+                    keypoints={BCASKeypoints}
+                    image={BCASThumb}
+                    buttonlink="/case-study/bcas">
+                    <CanvasRevealEffect
+                        animationSpeed={4}
+                        containerClassName="bg-[#005197]/[0.4]"
+                        colors={[
+                            [0, 81, 151],
+                            [224, 237, 250],
+                        ]}
+                        dotSize={2}
+                    />
+                </Card>
 
                 <Card
                     title="Secure Hub"

@@ -1,5 +1,6 @@
 import {
   CaseStudyHero,
+  ProblemStatement,
   CaseStudyProse,
   TLDRBento,
   Pullquote,
@@ -7,32 +8,48 @@ import {
   TradeoffTable,
   NumberedPrinciples,
   Principle,
-  InlineNote,
+  WallOfLove,
 } from "@/app/components/CaseStudy";
 
 export const metadata = {
   title: "BCAS — AI-powered design process for a government pitch",
   description:
-    "How four designers, zero engineers, and a custom Claude Code skill shipped a production-ready prototype that won a national civil aviation security pitch.",
+    "How four designers, zero engineers, and a custom Claude Code skill took a forked functional prototype to a governed, production-ready eBCAS 2.0 — and won a national civil aviation security pitch.",
 };
 
 <CaseStudyProse>
 
 <CaseStudyHero
   kicker="Case study"
-  headline="An AI-first design process that won a national security pitch — with four designers and zero engineers."
+  headline="An AI-first design process that won a national security pitch — and matured into a governed product."
   client="A national civil aviation security agency"
   role="Senior Designer · led the AI-powered design process"
   timeframe="2026 — ongoing"
 />
 
+<ProblemStatement>
+Win a national security pitch with a full functional prototype built by four designers and zero engineers — then mature that prototype into eBCAS 2.0, a production-ready platform on a governed design system.
+</ProblemStatement>
+
 <TLDRBento items={[
   {
-    label: "The bet",
-    title: "Claude Code + a custom design-system skill + bidirectional Figma↔code sync.",
-    body: "Code became canonical. Figma became the gallery.",
+    label: "The outcome",
+    title: "Won the national pitch. The prototype became eBCAS 2.0.",
+    body: "Engineers were allocated after the win — we shipped extendable frontend, not a mockup.",
     size: "hero",
     tone: "primary",
+  },
+  {
+    label: "The arc",
+    title: "Functional prototype, then governed product.",
+    body: "Speed-first prototype → eBCAS 2.0 on a real design system.",
+    size: "small",
+  },
+  {
+    label: "The bet",
+    title: "Claude Code + a custom design-system skill + Figma↔code sync.",
+    body: "Code became canonical. Figma became the gallery.",
+    size: "small",
   },
   {
     label: "The team",
@@ -40,163 +57,149 @@ export const metadata = {
     body: "Solo at the start. Hired and trained the rest.",
     size: "small",
   },
-  {
-    label: "The brief",
-    title: "Scoped as a slice. Reshaped into a full working prototype.",
-    size: "small",
-  },
-  {
-    label: "The constraint",
-    title: "Figma Make priced us out. Pure Figma would have missed the deadline.",
-    size: "small",
-  },
-  {
-    label: "The outcome",
-    title: "Won the pitch. Engineer allocation began after the win.",
-    size: "small",
-  },
 ]} />
 
-## The brief, then the brief that followed it
+## Two processes, one product
 
-The first ask was small — a slice of one module with 5-6 perona's happy flow, demoed for early feedback. Then management changed the brief. We'd take a **full working prototype** into the stakeholder pitch.
+The work ran in two phases, and the story is the **process maturing** between them.
 
-The room included senior civil servants and the agency's engineering leadership. The kind of people who don't sit through walkthroughs of clickable mockups — they click into edge cases.
+The first process optimized for one thing: a **functional prototype** good enough to win the pitch, in weeks. The second process traded that raw speed for governance — turning the prototype into **eBCAS 2.0**, a product built on a real, canonical design system. The interesting decisions live in the gap between them.
 
-We had weeks, not months. And the requirement includes multiples of personas, their happy flows and their screens where the *interactions* are the design, not the screens.
+## Phase 1 — the functional prototype
 
-<Pullquote>
-The IAS and IPS cadres — roughly the equivalent of a Permanent Secretary in the UK or a Deputy Secretary in the US.
-</Pullquote>
+The brief grew mid-flight: from a slice of one module to a **full working prototype** for a room of senior civil servants and the agency's own engineering leadership — people who click into edge cases. We had weeks, not months, and multiple personas to cover.
 
-## Three options sat in front of me
+Three build paths sat in front of me. The trade-off was real money against real time.
 
 <TradeoffTable
   options={[
     {
       name: "Figma Make",
       pro: "Fastest to a first prototype. AI-native generation inside the tool we already used.",
-      con: "$3,750 (per seat in org plan) ≈₹3.5 lakhs for only 7,500 tokens. The full prototype would have outpaced the pitch budget itself.",
+      con: "$3,750 per seat (org plan) ≈ ₹3.5 lakhs for only 7,500 tokens. The full prototype would have outpaced the pitch budget itself.",
     },
     {
       name: "Pure Figma design",
       pro: "Predictable cost. Total designer control. The familiar process.",
-      con: "Lost the AI velocity we needed for multiple flows in days.",
+      con: "Lost the AI velocity we needed to cover multiple flows in days.",
     },
     {
       name: "Claude Code + custom skill + Figma↔code sync",
-      pro: "Predictable cost. AI velocity preserved. Code becomes the canonical artifact — designs ship as production-ready frontend.",
-      con: "We had to build the workflow before we could use it. Design governance had to be encoded, not assumed."
+      pro: "Predictable cost, AI velocity preserved, and code becomes the canonical artifact — designs ship as production-ready frontend.",
+      con: "We had to build the workflow before we could use it. Design governance had to be encoded, not assumed.",
+      verdict: "chosen",
     },
   ]}
 />
 
-We chose the third path.
-
-## The bet: code becomes canonical
-
-The hardest part wasn't technical. It was the mental flip.
-
-Figma had always been the source of truth. We inverted it: **plan in Claude Code, build in code against our design system, refine in code, then push the refined screens to Figma via MCP**.
-
-Once code was canonical, every screen we shipped was already engineering-ready.
+We inverted the source of truth: **plan in Claude Code, build in code against our design system, refine in code, then push the refined screens to Figma via MCP**. To move fast enough, the prototype stood on a **forked Make Kit — roughly 35 components lifted from a vendor library** at peak. It got the happy flows clickable in days. That was the right call to win the room, and a debt we knew we'd pay.
 
 <Pullquote>
 Figma stopped being where the design lives. Code became the design. Figma became the gallery.
 </Pullquote>
 
-## Inside the skill: governance as code
+### Design directions for the core interaction
 
-I wrote a Claude Code skill — a single document the AI has to follow. Not generation help. The **constraint layer** between AI and the design system.
+The hardest part of the prototype wasn't a screen — it was the **two-persona review loop**: a Director-level reviewer reads a security programme submitted by a regulated entity, leaves observations on specific clauses, the entity responds, back and forth with an audit trail until approved or returned. The interaction *is* the design.
 
-A few moves matter more than the rest.
+I explored three ways to hold that conversation before committing.
 
-<NumberedPrinciples>
-<Principle title="Session mode lock">
-Every session locks to either *design-system mode* or *screen-build mode*. The discipline is enforced by the tool, not by the designer remembering to context-switch.
-</Principle>
-
-<Principle title="Two MCP servers — read and write, separated">
-One Figma MCP has read access only. A second has write. The AI cannot write through a read connection. Capability separation is architectural, not policy.
-</Principle>
-
-<Principle title="Dependency walk before push">
-Before pushing a component to Figma. Every sub-component must exist as a real Figma component first. Placeholders — the silent compromise — are refused outright.
-</Principle>
-
-<Principle title="Cross-session handoff">
-When a screen-build session needs a missing primitive, the AI pauses and outputs the exact prompt for a new design-system session. Separation of concerns, enforced.
-</Principle>
-</NumberedPrinciples>
-
-The takeaway: AI orchestration is a senior IC discipline, not a feature you turn on. Encoding the rules is the work.
-
-## Show, don't tell: the two-way review flow
-
-A Director-level reviewer at the agency reads a security programme submitted by a regulated entity, leaves observations on specific clauses. The entity responds. Back and forth, with audit trail, until approved or returned.
-
-<MediaFrame
-  aspect="16/9"
-  src="https://png.pngtree.com/thumb_back/fh260/background/20231206/pngtree-glowing-abstract-gradient-texture-image_13823746.png"
-  caption="Two-persona review loop, end-to-end."
+<TradeoffTable
+  options={[
+    {
+      name: "Inline clause annotations",
+      pro: "Reviewers act exactly where the issue lives — observations anchor to the clause, lowest cognitive load to leave and read feedback.",
+      con: "Long programmes get noisy fast; needed collapsing and threading to stay legible.",
+      verdict: "chosen",
+    },
+    {
+      name: "Docked review queue",
+      pro: "Every open observation in one panel — strong for triage and oversight across many submissions.",
+      con: "Forces the reviewer to map a flat list back to the document; constant context-switching.",
+    },
+    {
+      name: "Split-view diff",
+      pro: "Entity response and reviewer observation sit side by side — clearest read of the back-and-forth.",
+      con: "Eats horizontal space; weak on the smaller agency-issued laptops most reviewers actually use.",
+    },
+  ]}
 />
 
-We built it inside Claude Code's plan mode first — the entire flow on paper before any pixels. Then executed in code, refined for both personas, pushed to Figma. Reviewers were clicking through the **actual product**, not a representation of it.
+Inline annotations shipped because the reviewer's mental model is *the document*, not a task list — and field research at airports confirmed reviewers wanted to stay in the clause they were reading. The queue's triage strength came back later as a secondary view rather than the primary frame.
 
 <MediaFrame
   aspect="21/9"
-  placeholder="Screen carousel — key states from both personas. Three to five anonymized stills."
-  caption="Screens from both sides of the loop, anonymized."
+  placeholder="Chosen direction — inline clause annotations, both personas. Three to five anonymized stills."
+  caption="Screens from both sides of the review loop, anonymized."
 />
 
-## Scaling from one designer to four
+## Phase 2 — maturing into eBCAS 2.0
 
-I started solo. After leadership saw the velocity, I onboarded three more designers who are eager to learn about this AI Workflow. Training was less *here are our components* and more *here is how to think about working with AI*.
+We won. And winning is exactly when the forked-kit debt comes due. eBCAS 2.0 is the prototype brought under governance: the same flows, rebuilt on a **canonical design system** instead of a vendor fork.
 
-The four of us shipped together via GitHub. Plan mode for design intent. Execute mode for code. Sync via the skill. Peer review on pull requests. Two PMs with us and we ran field research at airports in parallel — pain points fed back into the flows the same week we heard them.
+This is the core trade-off of the whole project.
 
-Roughly thirty-five components on our internal Make Kit at peak. (Now being deprecated.)
-
-<MediaFrame
-  aspect="4/3"
-  placeholder="Workflow diagram — designer ↔ Claude Code ↔ Figma, with the skill in the middle."
-  caption="The team's working loop, with the skill at the center."
+<TradeoffTable
+  options={[
+    {
+      name: "Forked Make Kit — the functional prototype",
+      pro: "~35 vendor components, forked, got the happy flows clickable in days. Enough fidelity to win the pitch on time and on budget.",
+      con: "Every forked component is debt: no governance, drift from the real system, and a re-check waiting on every consumer screen that used it.",
+    },
+    {
+      name: "Governed design system — eBCAS 2.0",
+      pro: "The skill enforces one canonical system; components are real, versioned and engineering-ready. Durable well past the pitch.",
+      con: "Slower per step, and we pay the migration debt on-touch as forked screens come back under governance — a cost we discovered rather than planned.",
+      verdict: "chosen",
+    },
+  ]}
 />
 
-## The pitch room
+We're migrating **on-touch** — a screen comes under governance the next time anyone edits it — which spreads the cost instead of stopping the world. The right call, but I'd tell my past self to plan for it from week one rather than meet it at the finish line.
 
-We presented to the agency's senior leadership. The reaction landed where we wanted it: *this isn't a prototype — it's closer to production than we expected at this stage*.
+### How the governed process holds together
 
-We won.
+The leverage in Phase 2 isn't a clever prompt — it's a Claude Code skill acting as the **constraint layer** between the AI and the design system. Three rules carry most of the weight.
 
-The proof was in what came next. Engineer allocation is in process *now* — **after** the win, not before. We shipped frontend code engineers can extend, not a clickable mockup they'd rebuild from scratch.
+<NumberedPrinciples>
+<Principle title="Session mode lock">
+Every session locks to either *design-system mode* or *screen-build mode*. Discipline enforced by the tool, not by a designer remembering to context-switch.
+</Principle>
 
-<MediaFrame
-  aspect="4/3"
-  placeholder="Anonymized appraisal screenshots — team and client messages."
-  caption="Selected feedback (anonymized)."
-/>
+<Principle title="Read and write MCP servers, separated">
+One Figma MCP has read access only; a second has write. The AI cannot write through a read connection. Capability separation is architectural, not policy.
+</Principle>
 
-## What I'd change
+<Principle title="Dependency walk before push">
+Before a component reaches Figma, every sub-component must already exist there as a real component. Placeholders — the silent compromise that created the fork in the first place — are refused outright.
+</Principle>
+</NumberedPrinciples>
 
-Two things I'd tell my past self.
+Four of us shipped eBCAS 2.0 through GitHub with pull-request review; two PMs ran field research at airports in parallel, and pain points fed the flows the same week we heard them. I started solo and trained three designers as the velocity became visible — less *here are our components*, more *here is how to think about working with AI*.
 
-**Plan for the migration cleanup from week one.** Forking a vendor library means every consumer screen has to be re-checked when you bring governance back. We're migrating on-touch, which is the right call — I just discovered that lesson rather than planned for it.
+## Outcome — and what it cost
 
-**The skill itself needs iteration.** The first session-mode lock was too restrictive. The first dependency walk missed icon libraries. Building this kind of skill is a design problem, not a one-time setup.
+Leadership's reaction landed where we wanted it: *this isn't a prototype, it's closer to production than we expected at this stage*. **We won.** The proof was in the sequencing — engineer allocation began *after* the win, against frontend code engineers can extend rather than a clickable mockup they'd rebuild from scratch.
 
-## A new baseline
+The win came with a bill, and it's the honest centre of this story: the speed that won the pitch was borrowed against a forked kit, and eBCAS 2.0 is us paying it back deliberately. The skill itself needed iteration too — the first session-mode lock was too restrictive, the first dependency walk missed icon libraries. Building this kind of skill is a design problem, not a one-time setup.
 
-The team's expectations have shifted. Designers here now expect to iterate and ship frontend code at this speed. The bar for "design done" has moved.
+<WallOfLove items={[
+  {
+    placeholder: "Leadership message after the pitch — “closer to production than we expected.” (anonymized screenshot)",
+  },
+  {
+    placeholder: "Agency engineering lead on the eBCAS 2.0 handoff quality. (anonymized screenshot)",
+  },
+  {
+    placeholder: "Teammate feedback on learning the AI workflow. (anonymized screenshot)",
+  },
+  {
+    placeholder: "PM note on field-research turnaround speed. (anonymized screenshot)",
+  },
+]} />
 
 <Pullquote>
-The win wasn't AI making us faster. The win was AI making us shippable.
+The win wasn't AI making us faster. The win was AI making us shippable — and then governed.
 </Pullquote>
-
-## What I'd tell anyone starting
-
-Don't start by writing prompts. Start by understanding the four primitives of AI execution: **Agent, Tools, Skills & Planning.** Once you understand how an agent picks tools, when a skill activates, and how they execute plan — you can design orchestration properly.
-
-That's the single biggest unlock.
 
 </CaseStudyProse>

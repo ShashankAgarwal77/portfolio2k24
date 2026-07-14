@@ -254,6 +254,86 @@ export function MediaFrame({
   );
 }
 
+/* ProblemStatement — single-line problem lead. Sits at the very top,
+   before context. Per Hardik: one line is usually enough to say what you
+   were solving for. */
+export function ProblemStatement({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mt-2 mb-16 md:mb-20 text-2xl md:text-3xl lg:text-4xl font-medium leading-snug tracking-tight text-slate-900 dark:text-slate-100">
+      {children}
+    </p>
+  );
+}
+
+/* WallOfLove — grid of testimonial screenshots / verbatim quotes.
+   Pass `src` for a screenshot, `quote`+`author` for text, or `placeholder`
+   to scaffold a slot before assets land. */
+type TestimonialItem = {
+  quote?: string;
+  author?: string;
+  role?: string;
+  src?: string;
+  placeholder?: string;
+};
+
+export function WallOfLove({
+  items,
+  title = "Wall of love",
+}: {
+  items: TestimonialItem[];
+  title?: string;
+}) {
+  return (
+    <section className="my-16 md:my-20">
+      <div className="mb-6 flex items-center gap-3">
+        <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+          {title}
+        </span>
+        <span className="h-px flex-1 bg-slate-200 dark:bg-white/[0.08]" />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+        {items.map((item, i) => (
+          <Testimonial key={i} {...item} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Testimonial({ quote, author, role, src, placeholder }: TestimonialItem) {
+  return (
+    <figure className="rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white/40 dark:bg-slate-900/30 overflow-hidden">
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={author ? `Feedback from ${author}` : "Feedback"}
+          className="w-full h-auto block"
+        />
+      ) : quote ? (
+        <blockquote className="p-6 md:p-7">
+          <p className="text-base md:text-lg leading-relaxed text-slate-800 dark:text-slate-200">
+            &ldquo;{quote}&rdquo;
+          </p>
+          {(author || role) && (
+            <figcaption className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+              {author}
+              {author && role ? " · " : ""}
+              {role}
+            </figcaption>
+          )}
+        </blockquote>
+      ) : (
+        <div className="flex items-center justify-center p-8 min-h-[8rem] bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800">
+          <p className="text-center text-sm text-slate-500 dark:text-slate-400 max-w-xs">
+            {placeholder ?? "Testimonial screenshot"}
+          </p>
+        </div>
+      )}
+    </figure>
+  );
+}
+
 /* TradeoffTable — option cards. The "Chosen" indicator floats so it
    never breaks the title's wrapping. */
 export function TradeoffTable({
