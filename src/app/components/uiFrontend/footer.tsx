@@ -36,16 +36,6 @@ const FooterComp = () => {
                         </a>
                     </div>
                     <div className="px-5 py-2">
-                        <a href="/photography" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
-                            Photography
-                        </a>
-                    </div>
-                    <div className="px-5 py-2">
-                        <a href="/visualarts" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
-                            Visual Arts
-                        </a>
-                    </div>
-                    <div className="px-5 py-2">
                         <a href="https://dribbble.com/boywhodesign" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
                             Dribbble
                         </a>
@@ -53,8 +43,8 @@ const FooterComp = () => {
 
                 </nav>
 
-                <p className="text-lg leading-6 tracking-wide text-center text-slate-400 dark:text-slate-600">
-                    © 2024 Shashank Agarwal. Created with Chai 🍵 & Patience 🧘‍♂️
+                <p className="text-md leading-6 tracking-wide text-center text-slate-400 dark:text-slate-600">
+                    self created and now updated with ai
                 </p>
             </div>
 

@@ -56,7 +56,7 @@ const HeroSection = () => {
                     </div>
 
                     <div className='light-wrapper2 lg:block hidden lg:dark:hidden md:mb-4 lg:mb-8'>
-                        <h2 className="text-slate-400 text-3xl lg:text-5xl font-bold lowercase">My Selected Work to Showcase</h2>
+                        <h2 className="text-slate-400 text-[clamp(1.875rem,3.5vw,2.75rem)] leading-[1.15] font-bold lowercase text-balance">My Selected Work to Showcase</h2>
                     </div>
 
                     <div className="w-full max-w-5xl px-4 my-8">
@@ -73,8 +73,8 @@ const HeroSection = () => {
 
                     <div className="dribbble-heading flex flex-col gap-y-4" data-aos="fade-up">
 
-                        <h3 className="dark:text-white text-slate-600 text-center text-3xl md:text-4xl lg:text-5xl font-semibold">Here are some of my dribbble shots 🏀</h3>
-                        <p className='leading-relaxed text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 z-1 tracking-wide'>Click on any of the below project to see the thought process more in detail</p>
+                        <h3 className="dark:text-white text-slate-600 text-center text-[clamp(1.875rem,3.5vw,2.75rem)] leading-[1.15] font-semibold text-balance">Here are some of my dribbble shots 🏀</h3>
+                        <p className='leading-relaxed text-base md:text-lg text-slate-600 dark:text-slate-400 z-1 tracking-wide text-center'>Click on any of the below project to see the thought process more in detail</p>
 
                     </div>
 

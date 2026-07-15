@@ -53,11 +53,11 @@ export function DribbbleShots() {
 
                 <div className="title-wrapper relative">
                   <div className='p-6 absolute bottom-0 bg-gradient-to-t from-slate-200 dark:from-slate-900 w-full transform opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-y-0'>
-                    <div className='text-slate-900 dark:text-slate-50 font-bold text-base md:text-xl'>
-                      <style className='line-clamp-1'>
+                    <div className='text-slate-900 dark:text-slate-50 font-bold text-sm md:text-base'>
+                      <p className='line-clamp-1'>
                         {shot.title}
-                        <MdArrowOutward className='inline' />
-                      </style>
+                        <MdArrowOutward className='inline ml-1 align-[-0.125em]' />
+                      </p>
                     </div>
                   </div>
                 </div>

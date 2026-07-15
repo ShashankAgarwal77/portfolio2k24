@@ -56,7 +56,7 @@ export const TextRevealCard = ({
       onMouseMove={mouseMoveHandler}
       ref={cardRef}
       className={cn(
-        "dark:bg-[#0E0E10]/50 border border-white/[0.08] w-[40rem] rounded-lg p-8 h-full relative overflow-hidden",
+        "dark:bg-[#0E0E10]/50 border border-white/[0.08] w-full max-w-[40rem] rounded-lg p-6 sm:p-8 h-full relative overflow-hidden",
         className
       )}
     >
@@ -84,7 +84,7 @@ export const TextRevealCard = ({
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
             }}
-            className="text-base  sm:text-[3rem] py-10 font-bold text-slate-300 dark:text-white bg-clip-text text-transparent bg-gradient-to-b from-slate-200 to-slate-600 dark:bg-gradient-to-b dark:from-white dark:to-slate-300"
+            className="text-[clamp(1.5rem,3.2vw,2.25rem)] py-6 font-bold text-slate-300 dark:text-white bg-clip-text text-transparent bg-gradient-to-b from-slate-200 to-slate-600 dark:bg-gradient-to-b dark:from-white dark:to-slate-300"
           >
             {revealText}
           </p>
@@ -100,7 +100,7 @@ export const TextRevealCard = ({
         ></motion.div>
 
         <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-base sm:text-[3rem] py-10 font-bold bg-clip-text text-transparent bg-[#cbd5e1] dark:bg-[#323238]">
+          <p className="text-[clamp(1.5rem,3.2vw,2.25rem)] py-6 font-bold bg-clip-text text-transparent bg-[#cbd5e1] dark:bg-[#323238]">
             {text}
           </p>
           <MemoizedStars />

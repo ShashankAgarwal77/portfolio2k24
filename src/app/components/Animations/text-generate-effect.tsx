@@ -61,7 +61,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-medium", className)}>
       <div className="my-4">
-        <div className="text-4xl md:text-6xl lg:text-8xl tracking-wide">
+        <div className="text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.1] tracking-wide text-balance">
           {renderWords()}
         </div>
       </div>

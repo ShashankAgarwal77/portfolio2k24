@@ -1,12 +1,12 @@
 "use client";
 import { cn } from "@/app/lib/utils";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BentoGrid, BentoGridItem } from "../Animations/bento-grids";
 import {
   IconBoxAlignRightFilled,
   IconClipboardCopy,
   IconFileBroken,
-  IconSignature,
+  IconSparkles,
   IconTableColumn,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
@@ -109,34 +109,193 @@ const SkeletonTwo = () => {
     </motion.div>
   );
 };
+// AI-in-the-loop: a polished Matrix-style digital rain on a dark "terminal" tile.
+//
+// How it works:
+//  - A <canvas> (DPR-scaled for retina, resized via ResizeObserver) fills the tile.
+//  - Each column has a "drop" (row index of its leading glyph). Every capped
+//    frame (~26fps) drops advance; glyphs flicker as they fall. The head glyph is
+//    drawn brightest, with a trailing gradient fading up the column.
+//  - Rest vs. hover is NOT a hard swap: render params (color, opacity, speed,
+//    glow) are lerped toward per-state targets every frame, so it eases smoothly
+//    (~300-500ms) from muted slate-green at rest into saturated Matrix green on hover.
+//  - prefers-reduced-motion: no rAF loop — one static faint frame; hover just
+//    repaints a brighter static frame (no falling motion).
+const MATRIX_GLYPHS =
+  "アカサタナハマヤラワイキシチニヒミリヰウクスツヌフムユルグゲゴ0123456789#$%&*<>/=+".split("");
+
 const SkeletonThree = () => {
-  const variants = {
-    initial: {
-      backgroundPosition: "0 50%",
-    },
-    animate: {
-      backgroundPosition: ["0, 50%", "100% 50%", "0 50%"],
-    },
-  };
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  // Keep latest hover state readable inside the rAF loop without re-subscribing.
+  const hoveredRef = useRef(false);
+  hoveredRef.current = isHovered;
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || typeof window === "undefined") return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const fontSize = 14;
+    let columns = 0;
+    let drops: number[] = [];
+    let cssWidth = 0;
+    let cssHeight = 0;
+
+    // Animated params that lerp toward hover/rest targets each frame.
+    const params = { intensity: 0, hue: 0 }; // 0 = rest (muted), 1 = hover (green)
+
+    const setupSize = () => {
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const rect = canvas.getBoundingClientRect();
+      cssWidth = rect.width || canvas.clientWidth || 1;
+      cssHeight = rect.height || canvas.clientHeight || 1;
+      canvas.width = Math.floor(cssWidth * dpr);
+      canvas.height = Math.floor(cssHeight * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.font = `${fontSize}px monospace`;
+      ctx.textBaseline = "top";
+      columns = Math.max(1, Math.ceil(cssWidth / fontSize));
+      drops = new Array(columns)
+        .fill(0)
+        .map(() => Math.floor((Math.random() * cssHeight) / fontSize));
+    };
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    // Mix muted slate-green (rest) -> vivid matrix green (hover) by intensity.
+    const trailColor = (t: number, alpha: number) => {
+      const r = Math.round(lerp(90, 34, t));
+      const g = Math.round(lerp(120, 197, t));
+      const b = Math.round(lerp(100, 94, t));
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+    const headColor = (t: number, alpha: number) => {
+      const r = Math.round(lerp(150, 190, t));
+      const g = Math.round(lerp(180, 255, t));
+      const b = Math.round(lerp(160, 190, t));
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
+    const drawFrame = () => {
+      const t = params.intensity;
+      // Fade the previous frame to build the trailing tails.
+      ctx.fillStyle = "rgba(10, 10, 15, 0.10)";
+      ctx.fillRect(0, 0, cssWidth, cssHeight);
+
+      const restAlpha = 0.18;
+      const hoverAlpha = 0.85;
+      const trailAlpha = lerp(restAlpha, hoverAlpha, t);
+
+      for (let i = 0; i < columns; i++) {
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        const glyph =
+          MATRIX_GLYPHS[Math.floor(Math.random() * MATRIX_GLYPHS.length)];
+
+        // Bright leading character, with a soft glow that grows on hover.
+        ctx.shadowBlur = lerp(0, 8, t);
+        ctx.shadowColor = headColor(t, 0.9);
+        ctx.fillStyle = headColor(t, lerp(0.5, 1, t));
+        ctx.fillText(glyph, x, y);
+        ctx.shadowBlur = 0;
+
+        // A dimmer glyph just above the head to suggest a falling trail.
+        if (drops[i] > 0) {
+          ctx.fillStyle = trailColor(t, trailAlpha);
+          const prevGlyph =
+            MATRIX_GLYPHS[Math.floor(Math.random() * MATRIX_GLYPHS.length)];
+          ctx.fillText(prevGlyph, x, y - fontSize);
+        }
+      }
+    };
+
+    const advanceDrops = () => {
+      for (let i = 0; i < columns; i++) {
+        const y = drops[i] * fontSize;
+        // Reset column to top randomly once it falls past the bottom.
+        if (y > cssHeight && Math.random() > 0.975) {
+          drops[i] = 0;
+        } else {
+          drops[i] += 1;
+        }
+      }
+    };
+
+    setupSize();
+
+    // Reduced motion: paint a single static frame; repaint on hover changes only.
+    if (reduceMotion) {
+      const paintStatic = () => {
+        params.intensity = hoveredRef.current ? 1 : 0;
+        ctx.fillStyle = "#0a0a0f";
+        ctx.fillRect(0, 0, cssWidth, cssHeight);
+        drawFrame();
+      };
+      paintStatic();
+      const ro = new ResizeObserver(() => {
+        setupSize();
+        paintStatic();
+      });
+      ro.observe(canvas);
+      // Repaint when hover toggles (cheap polling, no animation).
+      const poll = window.setInterval(() => {
+        if ((hoveredRef.current ? 1 : 0) !== params.intensity) paintStatic();
+      }, 120);
+      return () => {
+        ro.disconnect();
+        window.clearInterval(poll);
+      };
+    }
+
+    // Animated path: cap the rain cadence to ~26fps for a smooth, calm feel.
+    let rafId = 0;
+    let last = 0;
+    const frameInterval = 1000 / 26;
+
+    const loop = (now: number) => {
+      rafId = requestAnimationFrame(loop);
+      // Ease intensity toward the hover/rest target every rAF tick (~300-500ms).
+      const target = hoveredRef.current ? 1 : 0;
+      params.intensity = lerp(params.intensity, target, 0.08);
+
+      if (now - last < frameInterval) return;
+      last = now;
+      drawFrame();
+      advanceDrops();
+    };
+
+    // Solid dark backdrop before the first fade builds up.
+    ctx.fillStyle = "#0a0a0f";
+    ctx.fillRect(0, 0, cssWidth, cssHeight);
+    rafId = requestAnimationFrame(loop);
+
+    const ro = new ResizeObserver(() => {
+      setupSize();
+      ctx.fillStyle = "#0a0a0f";
+      ctx.fillRect(0, 0, cssWidth, cssHeight);
+    });
+    ro.observe(canvas);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      ro.disconnect();
+    };
+  }, []);
+
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={variants}
-      transition={{
-        duration: 5,
-        repeat: Infinity,
-        repeatType: "reverse",
-      }}
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-      style={{
-        background:
-          "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-        backgroundSize: "400% 400%",
-      }}
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative flex flex-1 w-full h-full min-h-[6rem] rounded-lg overflow-hidden bg-[#0a0a0f] border border-transparent dark:border-white/[0.1]"
     >
-      <motion.div className="h-full w-full rounded-lg"></motion.div>
-    </motion.div>
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+    </div>
   );
 };
 const SkeletonFour = () => {
@@ -247,7 +406,7 @@ const items = [
     title: "my career shift in hover",
     description: (
       <span className="text-sm">
-        I am a computer science undergrad turned into self-taught product designer.
+        CS undergrad turned self-taught product designer.
       </span>
     ),
     header: <SkeletonOne />,
@@ -258,7 +417,7 @@ const items = [
     title: "design backed with strategy",
     description: (
       <span className="text-sm">
-        I believe that beauty is not only about aesthetics, but also about functionality, usability, and accessibility.
+        Beauty is function, usability, and access — not just aesthetics.
       </span>
     ),
     header: <SkeletonTwo />,
@@ -266,21 +425,21 @@ const items = [
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "i love gradients",
+    title: "designing with AI in the loop",
     description: (
       <span className="text-sm">
-        I love the blend of gradients in the life as well as design.
+        I ship production-ready frontends with Claude Code — problem to prod, faster.
       </span>
     ),
     header: <SkeletonThree />,
     className: "md:col-span-1",
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+    icon: <IconSparkles className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "my principles",
     description: (
       <span className="text-sm">
-        Some principles I believe as learning and working as a product designer.
+        The convictions I design and build by.
       </span>
     ),
     header: <SkeletonFour />,
@@ -292,14 +451,14 @@ const items = [
     title: "elevating experiences",
     description: (
       <span className="text-sm">
-       I thrive on crafting meaningful interactions that resonate with users on a profound level.
+        Crafting interactions that genuinely resonate with people.
       </span>
     ),
     header: <SkeletonFive />,
     className: "md:col-span-1",
     icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
   },
-  
+
 ];
 
 

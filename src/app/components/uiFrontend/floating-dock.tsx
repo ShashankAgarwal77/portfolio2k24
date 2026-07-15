@@ -11,10 +11,8 @@ import {
   IconTerminal2,
 } from "@tabler/icons-react";
 
-import { 
+import {
     Home12Icon,
-    Camera01Icon,
-    BrushIcon,
     UserIcon,
     Linkedin02Icon,
     LicenseIcon
@@ -30,16 +28,6 @@ export function FloatingDockUI() {
       href: "/",
     },
     {
-      title: "Photography",
-      icon: <Camera01Icon className="h-full w-full text-slate-500 dark:text-slate-300" />,
-      href: "/photography",
-    },
-    {
-      title: "Visual Arts",
-      icon: <BrushIcon className="h-full w-full text-slate-500 dark:text-slate-300" />,
-      href: "/visualarts",
-    },
-    {
       title: "About",
       icon: <UserIcon className="h-full w-full text-slate-500 dark:text-slate-300" />,
       href: "/about",
@@ -52,7 +40,8 @@ export function FloatingDockUI() {
     {
       title: "Resume",
       icon: <LicenseIcon className="h-full w-full text-slate-500 dark:text-slate-300" />,
-      href: "https://drive.google.com/file/d/1dWgaWeqD8EsBbjOWrhcEDRfzTxshB36I/view?usp=sharing",
+      href: "/Shashank-Agarwal-Resume.pdf",
+      target: "_blank",
     },
     {
         title: "Theme",
