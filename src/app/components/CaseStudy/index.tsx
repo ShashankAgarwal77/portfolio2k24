@@ -334,48 +334,62 @@ function Testimonial({ quote, author, role, src, placeholder }: TestimonialItem)
   );
 }
 
-/* TradeoffTable — option cards. The "Chosen" indicator floats so it
-   never breaks the title's wrapping. */
+/* TradeoffTable — option cards. Cards share row tracks via CSS subgrid so the
+   status / upside / cost rows line up across all options no matter how the copy
+   wraps. The chosen option is marked with an in-flow status eyebrow (no floating
+   pill that collides with the title). */
 export function TradeoffTable({
   options,
 }: {
   options: Array<{ name: string; pro: string; con: string; verdict?: string }>;
 }) {
   return (
-    <div className="my-16 md:my-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+    <div className="my-16 md:my-20 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5 md:[grid-template-rows:repeat(3,auto)]">
       {options.map((opt) => {
         const isChosen = opt.verdict === "chosen";
         return (
           <div
             key={opt.name}
             className={cn(
-              "relative rounded-2xl border p-6 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1",
+              "flex flex-col gap-5 rounded-2xl border p-6 transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 md:grid md:row-span-3 md:gap-5 md:[grid-template-rows:subgrid]",
               isChosen
-                ? "border-slate-900 dark:border-slate-100 bg-slate-50 dark:bg-slate-900/60 shadow-lg dark:shadow-slate-950/50"
-                : "border-slate-200 dark:border-white/[0.08] bg-white/40 dark:bg-slate-900/20"
+                ? "border-slate-900 bg-slate-50 shadow-lg dark:border-slate-100 dark:bg-slate-900/60 dark:shadow-slate-950/50"
+                : "border-slate-200 bg-white/40 hover:shadow-md dark:border-white/[0.08] dark:bg-slate-900/20"
             )}
           >
-            {isChosen && (
-              <span className="absolute top-4 right-4 text-[9px] uppercase tracking-[0.18em] text-slate-100 dark:text-slate-900 bg-slate-900 dark:bg-slate-100 rounded-full px-2 py-0.5">
-                Chosen
+            {/* Header row — status eyebrow + option name */}
+            <div className="flex flex-col gap-2">
+              <span
+                className={cn(
+                  "inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em]",
+                  isChosen
+                    ? "text-slate-900 dark:text-slate-100"
+                    : "text-slate-400 dark:text-slate-500"
+                )}
+              >
+                {isChosen && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-900 dark:bg-slate-100" />
+                )}
+                {isChosen ? "Chosen" : "Considered"}
               </span>
-            )}
-            <h4 className={cn(
-              "text-lg font-semibold text-slate-900 dark:text-slate-100 leading-snug",
-              isChosen && "pr-20"
-            )}>
-              {opt.name}
-            </h4>
+              <h4 className="text-lg font-semibold leading-snug text-slate-900 [text-wrap:balance] dark:text-slate-100">
+                {opt.name}
+              </h4>
+            </div>
+
+            {/* Upside row */}
             <div>
-              <p className="text-[10px] uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400 mb-1.5">
+              <p className="mb-1.5 text-[10px] uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400">
                 Upside
               </p>
               <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                 {opt.pro}
               </p>
             </div>
+
+            {/* Cost row */}
             <div>
-              <p className="text-[10px] uppercase tracking-[0.18em] text-rose-600 dark:text-rose-400 mb-1.5">
+              <p className="mb-1.5 text-[10px] uppercase tracking-[0.18em] text-rose-600 dark:text-rose-400">
                 Cost
               </p>
               <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
