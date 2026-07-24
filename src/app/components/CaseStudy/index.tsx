@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { cn } from "@/app/lib/utils";
 import { BentoGrid, BentoGridItem } from "../Animations/bento-grids";
 
@@ -265,14 +267,17 @@ export function ProblemStatement({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* WallOfLove — grid of testimonial screenshots / verbatim quotes.
-   Pass `src` for a screenshot, `quote`+`author` for text, or `placeholder`
-   to scaffold a slot before assets land. */
+/* WallOfLove — carousel of testimonial screenshots / verbatim quotes.
+   Pass `src` (+ `alt`) for a designed screenshot/slide — it renders full-bleed,
+   no added chrome, since the asset already carries its own frame. Pass
+   `quote`+`author` for a plain-text card, or `placeholder` to scaffold a
+   slot before assets land. */
 type TestimonialItem = {
   quote?: string;
   author?: string;
   role?: string;
   src?: string;
+  alt?: string;
   placeholder?: string;
 };
 
@@ -283,6 +288,31 @@ export function WallOfLove({
   items: TestimonialItem[];
   title?: string;
 }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
+    };
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi]);
+
   return (
     <section className="my-16 md:my-20">
       <div className="mb-6 flex items-center gap-3">
@@ -290,27 +320,77 @@ export function WallOfLove({
           {title}
         </span>
         <span className="h-px flex-1 bg-slate-200 dark:bg-white/[0.08]" />
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={scrollPrev}
+            disabled={!canScrollPrev}
+            aria-label="Previous"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 dark:border-white/[0.12] text-slate-600 dark:text-slate-300 transition-colors hover:bg-slate-100 dark:hover:bg-white/[0.06] disabled:opacity-30 disabled:pointer-events-none"
+          >
+            <MdChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={scrollNext}
+            disabled={!canScrollNext}
+            aria-label="Next"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 dark:border-white/[0.12] text-slate-600 dark:text-slate-300 transition-colors hover:bg-slate-100 dark:hover:bg-white/[0.06] disabled:opacity-30 disabled:pointer-events-none"
+          >
+            <MdChevronRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-        {items.map((item, i) => (
-          <Testimonial key={i} {...item} />
-        ))}
+
+      <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
+        <div className="flex">
+          {items.map((item, i) => (
+            <div className="min-w-0 flex-[0_0_100%]" key={i}>
+              <Testimonial {...item} />
+            </div>
+          ))}
+        </div>
       </div>
+
+      {items.length > 1 && (
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={cn(
+                "h-1.5 rounded-full transition-all",
+                i === selectedIndex
+                  ? "w-6 bg-slate-900 dark:bg-slate-100"
+                  : "w-1.5 bg-slate-300 dark:bg-white/[0.2] hover:bg-slate-400 dark:hover:bg-white/[0.35]"
+              )}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
 
-function Testimonial({ quote, author, role, src, placeholder }: TestimonialItem) {
-  return (
-    <figure className="rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white/40 dark:bg-slate-900/30 overflow-hidden">
-      {src ? (
-        // eslint-disable-next-line @next/next/no-img-element
+function Testimonial({ quote, author, role, src, alt, placeholder }: TestimonialItem) {
+  if (src) {
+    return (
+      <figure className="overflow-hidden rounded-2xl bg-black aspect-[3/2]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
-          alt={author ? `Feedback from ${author}` : "Feedback"}
-          className="w-full h-auto block"
+          alt={alt ?? (author ? `Feedback from ${author}` : "Feedback")}
+          className="w-full h-full object-contain"
         />
-      ) : quote ? (
+      </figure>
+    );
+  }
+
+  return (
+    <figure className="rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white/40 dark:bg-slate-900/30 overflow-hidden">
+      {quote ? (
         <blockquote className="p-6 md:p-7">
           <p className="text-base md:text-lg leading-relaxed text-slate-800 dark:text-slate-200">
             &ldquo;{quote}&rdquo;
