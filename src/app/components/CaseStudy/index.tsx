@@ -496,7 +496,9 @@ export function GovernanceCard({
       <h4 className="text-base md:text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2 leading-snug">
         {title}
       </h4>
-      <div className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+      {/* Child <p> normalisation: MDX wraps block children in <p>, which would
+          otherwise inherit the global prose paragraph size and bottom margin. */}
+      <div className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300 [&>p]:mb-0 [&>p]:text-sm md:[&>p]:text-base [&>p]:leading-relaxed [&>p]:text-slate-700 dark:[&>p]:text-slate-300 [&>p+p]:mt-3">
         {children}
       </div>
     </div>

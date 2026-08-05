@@ -23,7 +23,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => {
       const id = slugify(extractText(children));
       return (
-        <h1 id={id} className="mt-24 mb-8 scroll-mt-28 text-4xl md:text-6xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-400">
+        <h1 id={id} className="mt-24 mb-8 scroll-mt-28 text-4xl md:text-6xl font-semibold tracking-[-0.03em] leading-[1.05] text-balance text-slate-900 dark:text-slate-100">
           {children}
         </h1>
       );
@@ -31,7 +31,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children }) => {
       const id = slugify(extractText(children));
       return (
-        <h2 id={id} className="mt-24 md:mt-28 mb-6 scroll-mt-28 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+        <h2 id={id} className="mt-32 md:mt-40 mb-6 scroll-mt-28 text-3xl md:text-4xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100">
           {children}
         </h2>
       );
@@ -45,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     p: ({ children }) => (
-      <p className="mb-6 text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mb-6 text-base/[1.7] md:text-lg/[1.7] text-slate-700 dark:text-slate-300">
         {children}
       </p>
     ),

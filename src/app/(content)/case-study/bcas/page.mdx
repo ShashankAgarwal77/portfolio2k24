@@ -1,155 +1,206 @@
-import {
-  CaseStudyHero,
-  ProblemStatement,
-  CaseStudyProse,
-  StatGrid,
-  Pullquote,
-  MediaFrame,
-  TradeoffTable,
-  NumberedPrinciples,
-  Principle,
-  WallOfLove,
-} from "@/app/components/CaseStudy";
+import { ArticleShell } from "@/app/components/Article";
 
 export const metadata = {
-  title: "BCAS — an AI-native design process that won a national security pitch",
+  title: "I could not design 487 screens in 4 weeks, so I designed the system that renders them",
   description:
-    "How four designers and no engineers used an AI-native design process to ship 487 production-ready screens — and win a national civil aviation security pitch.",
+    "A national civil aviation security platform: five modules, eighteen personas, four designers and no engineers. How AI made it possible, and what a day at Lucknow airport taught me about where the real cost was hiding.",
 };
 
-<CaseStudyProse>
-
-<CaseStudyHero
-  kicker="Case study"
-  headline="An AI-native design process that won a national civil aviation security pitch."
-  client="A national civil aviation security agency"
-  role="Senior Designer · led the design and the AI-native process"
-  timeframe="2026 — ongoing"
-/>
-
-<ProblemStatement>
-Design a clickable prototype good enough to win a national civil aviation security pitch — every module, every persona — with four designers and no engineers.
-</ProblemStatement>
-
-The brief grew fast: from one module to a full working prototype for a room of senior officials and the agency's own engineers — people who click into every edge case. Weeks, not months; five modules and around eighteen personas to cover.
-
-<MediaFrame
-  src="/case-study/bcas/audit-assessment.webp"
-  alt="The eBCAS 2.0 audit workspace: an airline's authorised signatory works section by section through a 106-question pre-audit security assessment, with critical items flagged and a response panel for each question."
-  aspect="16/9"
-  caption="eBCAS 2.0 — a regulated airline answering its pre-audit security assessment."
-/>
-
-## The hardest part was a conversation
-
-The trickiest thing to design wasn't a screen — it was a back-and-forth. An airport submits its security plan; a senior regulator reads it, leaves notes on specific clauses, the airport responds, and it continues — with a clear record of every exchange — until the plan is approved or sent back. Two people, one document, real stakes on both sides. Making that conversation feel effortless *was* the design.
-
-## Three directions, one that fit the reviewer
-
-I tried three ways to hold that conversation before committing.
-
-<TradeoffTable
-  options={[
-    {
-      name: "Notes on the clause",
-      pro: "The reviewer works right where the issue is — notes sit on the exact line, so leaving and reading feedback takes almost no effort.",
-      con: "Long plans get busy; needs gentle collapsing and threading to stay calm.",
-      verdict: "chosen",
-    },
-    {
-      name: "A docked review queue",
-      pro: "Every open note in one panel — great for scanning many submissions at once.",
-      con: "The reviewer keeps mapping a flat list back to the document.",
-    },
-    {
-      name: "Side-by-side view",
-      pro: "The airport's reply and the reviewer's note sit next to each other — the clearest read of the exchange.",
-      con: "Hungry for width; awkward on the smaller laptops most reviewers actually use.",
-    },
+<ArticleShell
+  index={[
+    { id: "one-system-not-eighteen-products", label: "One system" },
+    { id: "a-day-at-lucknow", label: "Lucknow" },
+    { id: "closing-the-loop-after-it-starts", label: "Observations" },
+    { id: "removing-the-loop-before-it-starts", label: "Floor plans" },
+    { id: "how-four-designers-shipped-487-screens", label: "The process" },
+    { id: "the-call-i-got-wrong", label: "What I got wrong" },
+    { id: "what-happened", label: "Outcome" },
+    { id: "what-i-would-fix-next", label: "What's next" },
+    { id: "what-people-said", label: "Feedback" },
   ]}
-/>
+>
 
-Notes-on-the-clause won because the reviewer thinks in *the document*, not a task list — and time at the airports confirmed it: reviewers wanted to stay in the clause they were reading. The queue's scanning strength came back later as a handy second view.
+# I could not design 487 screens, so I designed the <span className="fontGloock italic font-normal">system</span> that renders them
 
-<MediaFrame
-  src="/case-study/bcas/field-research-lucknow.png"
-  alt="Field research at Lucknow Airport — walking the terminal alongside a government official to see how staff and travelers actually move through security, retail and gate signage in a live environment."
-  aspect="16/9"
-  caption="On the ground at Lucknow Airport, with government officials — testing assumptions against how the terminal actually works."
-/>
+<p className="mt-[-1rem] mb-8 text-lg md:text-xl leading-relaxed text-slate-600 dark:text-slate-400">A national civil aviation security platform, built for a pitch by four designers with no engineers. The system is what made it possible. A day at Lucknow airport is what told me where the real cost was hiding.</p>
 
-<MediaFrame
-  src="/case-study/bcas/ebcas-dashboard.webp"
-  alt="The shipped eBCAS 2.0 Airport Entry Permits dashboard — live permit counts, a controlled-zone access-density heatmap and an attention queue — shown beside the /ai context folder and the merged pull request that produced it."
-  aspect="16/9"
-  caption="The shipped eBCAS 2.0 — built in code against the design system and merged through pull-request review."
-/>
+<p className="mb-12 text-sm text-slate-500 dark:text-slate-400">Senior Designer · A national civil aviation security agency · 2026, ongoing</p>
 
-## An AI that speaks our design language
+<div className="bleed-wide mb-12">
 
-Four designers shipped 487 screens because the AI never guessed — it worked from our world, our system, and our rules. Three layers made that possible.
+![The eBCAS 2.0 audit workspace: an airline's authorised signatory works section by section through a 106-question pre-audit security assessment, with critical items flagged and a response panel for each question.](/case-study/bcas/audit-assessment.webp)
 
-<NumberedPrinciples>
-<Principle title="First, teach it our world">
-An `/ai` folder holds everything the AI reads before it designs: who we design for and the jobs they're doing, how the work flows, and the domain it lives in — plus `PRODUCT.md` (what the product is) and `DESIGN.md` (our design system, written down). I set this up with the impeccable skill, so every session starts from the same shared understanding.
-</Principle>
+<p className="-mt-2 text-center text-sm text-slate-500 dark:text-slate-400">eBCAS 2.0: a regulated airline answering its pre-audit security assessment.</p>
 
-<Principle title="Then build the system before the screens">
-From `DESIGN.md`, the AI builds the design system first — real components, real tokens. Only then does it generate screens on top, pulling context from the `/ai` folder. Screens inherit the system instead of reinventing it, so they stay consistent by default.
-</Principle>
+</div>
 
-<Principle title="And keep it coherent with guardrails">
-An `AGENTS.md` file sets the rules every session follows — what to check, what never to skip. It's what keeps 487 screens feeling like one product, and production-ready rather than drifting apart.
-</Principle>
-</NumberedPrinciples>
+<div className="mb-14 rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-slate-50/60 dark:bg-slate-900/40 p-6 md:p-7">
+<p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">The short version</p>
+<p className="mb-2.5 text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300"><strong className="font-semibold text-slate-900 dark:text-slate-100">Problem.</strong> A national regulator and thousands of private aviation entities negotiate compliance through slow, offline revision loops. Every round costs weeks.</p>
+<p className="mb-2.5 text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300"><strong className="font-semibold text-slate-900 dark:text-slate-100">Approach.</strong> One role-based system instead of eighteen persona products, then two attacks on the loop: compress it after submission, remove it before.</p>
+<p className="mb-2.5 text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300"><strong className="font-semibold text-slate-900 dark:text-slate-100">My role.</strong> Started as IC Contributor then design lead for a team of four.</p>
+<p className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300"><strong className="font-semibold text-slate-900 dark:text-slate-100">Outcome.</strong> We won the pitch. 487 screens, 121 workflows, 18 personas, 5 modules. Engineers joined after the win and inherited frontend, not a mockup.</p>
+</div>
 
-## Shipping production-ready, not a mockup
+The brief arrived as one module and did not stay that way. By the time it mattered it was a full clickable product for a room of senior officials and the agency's own engineers, the kind of audience that clicks into every edge case looking for the seams. Five modules. Eighteen personas. 121 workflows. Weeks, not months. Four designers and no engineers.
 
-We won. Leadership's read was exactly what we'd aimed for: *this is closer to production than we expected at this stage.* The tell was the timing — engineers joined only **after** the win, and picked up frontend they could build on, not a mockup to redo.
+Do that arithmetic and one thing becomes obvious. Nobody was going to design 487 screens. The only way through was to stop treating a screen as the unit of work.
 
-<StatGrid
-  items={[
-    {
-      value: "487",
-      label: "Screens designed & built",
-      sublabel: "121 workflows · 18 personas · 5 modules",
-    },
-    {
-      value: "4",
-      label: "Designers, zero engineers",
-      sublabel: "Started solo, trained 3 on the AI workflow",
-    },
-    {
-      value: "₹3.5L",
-      label: "Tooling cost avoided",
-      sublabel: "vs. Figma Make's token budget alone",
-    },
-  ]}
-/>
 
-Speed came from a deliberate call: we forked about thirty-five components from a vendor kit to get the happy flows clickable in days, then brought each one under our own design system as we touched it. Fast when we needed speed; fully ours by the time it counted.
+## One system, not eighteen products
 
-<Pullquote>
-AI didn't just make us faster. It made us shippable.
-</Pullquote>
+Five modules and eighteen personas is where a design team quietly starts producing eighteen products, each drifting from the others at its own speed.
 
-<WallOfLove items={[
-  {
-    src: "/case-study/bcas/wall-of-love/pm-appreciation.png",
-    alt: "Product Manager Aksha Joshi thanking the team for their incredible effort after CEO approval and the stakeholder demo.",
-  },
-  {
-    src: "/case-study/bcas/wall-of-love/ba-kudos.png",
-    alt: "Business Analyst Ashish Joshi sending kudos to the team after the stakeholder demo.",
-  },
-  {
-    src: "/case-study/bcas/wall-of-love/workshop-presenting.png",
-    alt: "Running a full-day hands-on 'Claude Code for Designers' workshop, training 30+ designers on the AI-native workflow.",
-  },
-  {
-    src: "/case-study/bcas/wall-of-love/workshop-group.png",
-    alt: "Group photo of the 30+ designers who attended the Claude Code workshop.",
-  },
-]} />
+We never let a persona be a design unit.
 
-</CaseStudyProse>
+The system is role-based. One document model, one set of states a document moves through, and permissions deciding what a given role can see and do with it. A persona's workspace is a view assembled from those permissions, not a bespoke interface someone hand-built.
+
+The test of that is what a single change costs. When we changed how an observation behaves, we changed it once, and it arrived correctly for the airline's authorised signatory, for the programme director who raised it, and for the Director General approving the file. Three roles, three different views, one object underneath.
+
+This case study follows one of those modules, the Security Programme, all the way through. It is the module where the regulator and the entity argue in the most detail, so it is where the system had the most to prove.
+
+{/* IMAGE NEEDED: diagram. One document model in the centre, role permissions as a layer over it, three persona workspaces (authorised signatory, programme director, DG) rendered from the same model. Save to /public/case-study/bcas/persona-model.webp */}
+
+
+## A day at Lucknow
+
+We landed at Lucknow airport around ten in the morning.
+
+The day was not a usability session. It was a room of people who each hold a different piece of a regulated process: an IPS officer, regional directors, architects. I asked all of them the same kind of question. What does your day actually look like. What are you waiting on. Who do you have to talk to before anything moves.
+
+I went in looking for two things: how private entities and the government actually co-operate to comply with regulation, and which of the tasks between them could be automated. The answer to the second turned out to depend entirely on the first.
+
+Almost every friction I heard that day had the same shape. A private entity prepares something. It goes to the government. The government responds. The entity revises. It goes back. Each pass takes days or weeks, most of it spent waiting or clarifying rather than working.
+
+**The revision loop, not any individual screen, was where the time went.**
+
+Floor plan approval was the clearest case. Still offline, drawings moving back and forth, with an architect finding out what the regulator objects to only after submitting.
+
+That reframed the platform for me. There are only two ways to attack a loop like that. Make each pass cheaper, or stop the passes from being needed.
+
+![Field research at Lucknow airport, mapping the current physical and technical process for security compliance with the officials and architects who run it.](/case-study/bcas/field-research-lucknow.png)
+
+<p className="-mt-2 mb-12 text-center text-sm text-slate-500 dark:text-slate-400">Lucknow: mapping how a regulated process actually runs, with the people who run it.</p>
+
+
+## Closing the loop after it starts
+
+The Security Programme module is where the loop is most formal. An airline, airport operator or ground handler, an *entity* in the regulator's language, submits its security programme. A programme director raises observations against specific clauses. The entity responds. If the director is satisfied the file goes to the Director General. If not, another round.
+
+To be straight about where this design came from: not from Lucknow. It came from my own reading of the assessment, a 106-question document where every question can spawn its own thread of disagreement. Answering one observation means first reconstructing everything already said about that clause, and with observations scattered across 106 questions, nobody can see what is still outstanding.
+
+I tried three directions.
+
+<img src="/case-study/bcas/directions-comparison.svg" alt="The three explored directions side by side. Notes pinned to the clause scatters observations down a long document with no overview. Side by side review needs more width than a reviewer's laptop has. The docked observation workspace, which shipped, holds every observation in one list with its regulation reference and the conversation trail docked beside it." className="bleed-wide my-10 w-full" />
+
+**Notes pinned to the clause** meant zero context switching, since the observation sits on the item it belongs to. But across 106 questions the open observations scatter, and nothing answers *what is still on me?* It optimises for reading one observation and makes surveying all of them impossible. Surveying was the expensive part, so it lost.
+
+**Side by side assessment and review** gave the clearest possible read of an exchange, reply and observation adjacent. And it was hungry for width, awkward on the smaller laptops reviewers actually use.
+
+**A docked observation workspace** put every open observation in one place with a visible count of what is left. Its cost is honest: it is a second place to be, so every rule reference has to be reproduced exactly right. Get that wrong in a regulatory product and you have built a liability.
+
+I took that cost because of the condition I attached to it, and the condition turned out to be the design.
+
+> Instead of sending people back to the rule, I brought the rule to them.
+
+Observations became their own stage in the programme lifecycle, sitting between Under Review and Approved, so the state of a file is legible before you read a word of its content.
+
+<div className="bleed-wide my-12">
+
+![The shipped Observations stage. Lifecycle tabs run across the top with Observations active. The left column lists each observation with its status and time remaining, one expanded to show its key finding, directed action, declared value, supporting reference and regulatory provision. The right column holds the conversation with the programme director and the response composer.](/case-study/bcas/observations-stage.webp)
+
+<p className="-mt-2 text-center text-sm text-slate-500 dark:text-slate-400">The shipped Observations stage: what is outstanding on the left, the exchange on the right.</p>
+
+</div>
+
+An expanded observation carries everything the entity used to reconstruct by hand. The regulatory provision it is raised under, down to the clause and its plain-language name. The value they declared. Whether a supporting reference is attached. How long is left. The conversation sits beside it, not behind a click.
+
+Four details do most of the work.
+
+**Status names a person, not a state.** *Awaiting your response* and *With BCAS* say whose turn it is. In a process where either side can stall, that is the most useful thing a row can tell you, and it is why the legend sits above the list rather than buried in a filter. *Open* and *Pending* would have said nothing.
+
+**Every observation states its directed action.** Beside the finding sits what the entity must actually do about it: *Not Submitted*, and next to it, *Submit Supporting Document*. A finding describes what is wrong. A directed action names what closes it. Only the second one moves the file, so it gets equal weight rather than living in the body of a message.
+
+**The finish line stays visible.** A footer reads "3 observations still need your response". The count people were holding in their heads is now permanent, and always in the same place.
+
+**The reply is a filing, not a comment.** A twenty-character minimum, an optional revised document, and a Class C digital signature attested as a binding record. The interaction looks like chat. The artefact is evidence, and the composer says so rather than assuming anyone read the policy. Its placeholder asks for exactly the two things that close an observation: what changed, and where to find it.
+
+
+## Removing the loop before it starts
+
+The floor plan problem does not need a better conversation. It needs the conversation not to happen.
+
+An architect designing to a security requirement is guessing at how a regulator will read their drawing. They find out after submitting. That gap between guess and answer is the entire cost, and it is paid in revision rounds.
+
+So here is what I proposed to the panel. Let the entity upload the sliced CAD floor map and get a read on how likely it is to be approved before anything is formally submitted, along with what will probably be objected to. The architect fixes it while fixing is still cheap. The regulator receives cleaner submissions. The rounds that used to *be* the process stop being needed.
+
+To be precise about status, because it matters: this was a proposal I made in the room, not something we shipped. It is not among the 487 screens. I am claiming the opportunity and the argument for it, not the execution.
+
+It is also the part of this project I would most want to build next. Every other module makes a regulated conversation faster. This is the only idea that removes one.
+
+{/* IMAGE NEEDED: the floor plan concept. Even a rough sketch or whiteboard photo works: CAD upload, sliced floor map, and the approval-confidence read with flagged clauses. Save to /public/case-study/bcas/floor-plan-concept.webp */}
+
+
+## How four designers shipped 487 screens
+
+The work moved fast because the AI never had to guess. It worked from our world, our system and our rules, in that order.
+
+**Our world first.** An `/ai` folder holds everything read before a single screen exists: who we design for, how the work flows, the domain it lives in, plus `PRODUCT.md` and `DESIGN.md`. Every session starts from the same understanding rather than the last person's prompt.
+
+**Then the system, then the screens.** The design system gets built from `DESIGN.md` before any screen exists, so consistency is the default state instead of a review activity.
+
+**Then guardrails.** An `AGENTS.md` file sets the rules every session follows. It is the difference between 487 screens that feel like one product and 487 that feel like four designers in separate rooms.
+
+Speed also came from a compromise I will not romanticise. We forked about thirty-five components from a vendor kit to get the happy paths clickable in days, then brought each under our own system as we touched it. Fast when we needed it, fully ours by the time it counted. But for a few weeks the codebase held two opinions about what a button was.
+
+
+## The call I got wrong
+
+When the scope was a single module I built it with Figma Make and a make kit. That was the right tool for one module and I would make the same call again. What I got wrong was not re-examining it fast enough when the scope went to five.
+
+Module one alone consumed **14,500 AI credits**: the 3,500 included with our organisation plan across two months, plus 7,500 we bought outright. Five modules on that trajectory was not a budget line anyone would approve, and I only ran the arithmetic once we were deep into module two.
+
+So we migrated mid-flight. Everything in progress across five modules was reverse-engineered onto a Claude Code pipeline, with the context layer and guardrails built *during* the move rather than before it. Migrating while shipping cost real time.
+
+It is also the reason the context layer exists at all.
+
+> The process I am proudest of is one I only built because the first approach ran out of money.
+
+
+## What happened
+
+We won.
+
+Leadership's read was the one we had aimed for: they had a real product to interact with, not a deck describing one. The agency's engineers valued something more specific, the frontend build time it took off their plate. The tell was the timing. Engineers joined **after** the win, and picked up frontend they could build on.
+
+<p className="mt-12 mb-1 text-[clamp(3.5rem,10vw,6rem)] font-semibold leading-[0.85] tracking-[-0.035em] text-slate-900 dark:text-slate-100">487</p>
+
+<p className="mb-12 max-w-xl text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400">screens across 121 workflows, 18 personas and 5 modules, built by four designers with no engineers. I started solo on module one, then onboarded and trained the other three.</p>
+
+An honest caveat, because it changes how much weight this deserves. eBCAS 2.0 is still in progress and I do not have real usage data yet. What was validated was the pitch, that this was the right product built to a standard the agency believed. Whether it actually shortens a revision loop is a question I cannot answer yet, and it is the first thing I want instrumented.
+
+
+## What I would fix next
+
+**The collapsed row hides the trail's depth.** It tells you whose turn it is, but not whether this is a one-line clarification or a four-round dispute. Last speaker and round count belong on the row.
+
+**There is no first-class way to disagree.** An entity that believes an observation is wrong replies in the same box it would use to comply. Contesting a finding is a different act with a different outcome and deserves its own state.
+
+**The floor plan idea is an argument, not a validated one.** I know the loop is expensive. I do not know whether a confidence read would be trusted enough to change what an architect submits, and that is the assumption it all rests on.
+
+**It has not met a large airline yet.** A national carrier with dozens of open observations across several stations will need filtering the current design does not have.
+
+
+## What people said
+
+![Written appreciation from the business analyst on the eBCAS 2.0 team.](/case-study/bcas/wall-of-love/ba-kudos.png)
+
+![Appreciation from the product manager on the eBCAS 2.0 engagement.](/case-study/bcas/wall-of-love/pm-appreciation.png)
+
+![Presenting the AI-assisted design workflow to the wider design team in a training workshop.](/case-study/bcas/wall-of-love/workshop-presenting.png)
+
+<p className="-mt-2 mb-12 text-center text-sm text-slate-500 dark:text-slate-400">Training the team: the workflow only mattered once three other designers could run it without me.</p>
+
+![The design team during the workshop on building production-ready prototypes.](/case-study/bcas/wall-of-love/workshop-group.png)
+
+</ArticleShell>

@@ -6,17 +6,21 @@ import { WorkStack } from './work-stack';
 import { DribbbleShots } from './dribbble-posts';
 import { SparklesPreview } from './sparkles-heading';
 import { AuroraBackgroundAnimation } from './auora-background';
+import { Reveal } from '../Reveal';
 
 const HeroSection = () => {
     return (
-        <div className="flex flex-col justify-center">
+        <Reveal className="flex flex-col justify-center">
 
-            <div className="hero-section">
+            {/* data-reveal="off": the hero runs its own entrance (aurora
+                background, text generate) and the page-transition reveal
+                already brings it in. */}
+            <div className="hero-section" data-reveal="off">
                 <div className="bg-anim--wrapper relative overflow-hidden">
                     <AuroraBackgroundAnimation />
                     <div className="hero-content--wrapper absolute inset-0">
                         <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center items-center h-screen">
-                            <div className="flex flex-col gap-y-4 md:gap-y-6 justify-center items-center" data-aos="fade-up">
+                            <div className="flex flex-col gap-y-4 md:gap-y-6 justify-center items-center">
                                 <p className="md:leading-sung md:text-xl lg:leading-sung lg:text-2xl text-slate-600 dark:text-slate-300 z-1 tracking-wide text-center">
                                     Hi, I&apos;m Shashank Agarwal
                                 </p>
@@ -71,7 +75,7 @@ const HeroSection = () => {
 
                 <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
 
-                    <div className="dribbble-heading flex flex-col gap-y-4" data-aos="fade-up">
+                    <div className="dribbble-heading flex flex-col gap-y-4">
 
                         <h3 className="dark:text-white text-slate-600 text-center text-[clamp(1.875rem,3.5vw,2.75rem)] leading-[1.15] font-semibold text-balance">Here are some of my dribbble shots 🏀</h3>
                         <p className='leading-relaxed text-base md:text-lg text-slate-600 dark:text-slate-400 z-1 tracking-wide text-center'>Click on any of the below project to see the thought process more in detail</p>
@@ -86,7 +90,7 @@ const HeroSection = () => {
                     <DribbbleShots />
                 </div>
             </div>
-        </div>
+        </Reveal>
     );
 };
 

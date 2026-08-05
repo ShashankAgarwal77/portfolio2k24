@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="Wireframe of direction one: observations pinned as notes directly on individual clauses, scattered down a long assessment document.">
+  <style>
+    .f  { fill: none; stroke: #94a3b8; stroke-opacity: .45 }
+    .fd { fill: none; stroke: #94a3b8; stroke-opacity: .5; stroke-dasharray: 5 5 }
+    .b  { fill: #94a3b8; fill-opacity: .14 }
+    .l  { fill: #94a3b8; fill-opacity: .3 }
+    .t  { fill: #94a3b8; font: 400 13px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif }
+    .tk { fill: #94a3b8; font: 600 11px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: .14em }
+    .ts { fill: #38bdf8; font: 400 11px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif }
+    .as { fill: none; stroke: #38bdf8; stroke-opacity: .85 }
+    .ad { fill: #38bdf8; fill-opacity: .85 }
+    .ab { fill: #38bdf8; fill-opacity: .1 }
+  </style>
+
+  <rect class="f" x="24" y="24" width="752" height="372" rx="14"/>
+  <text class="tk" x="48" y="56">DIRECTION 01</text>
+  <text class="t" x="48" y="78">Notes pinned to the clause</text>
+
+  <!-- the assessment document -->
+  <rect class="f" x="196" y="100" width="286" height="272" rx="8"/>
+  <rect class="b" x="196" y="100" width="286" height="28" rx="8"/>
+  <rect class="l" x="212" y="110" width="96" height="8" rx="4"/>
+
+  <!-- clause rows -->
+  <g>
+    <rect class="l" x="214" y="148" width="250" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="164" width="196" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="196" width="238" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="212" width="164" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="244" width="250" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="260" width="210" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="292" width="228" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="308" width="180" height="7" rx="3.5"/>
+    <rect class="l" x="214" y="340" width="244" height="7" rx="3.5"/>
+  </g>
+
+  <!-- pinned observations, scattered -->
+  <g>
+    <circle class="ad" cx="472" cy="151" r="3.5"/>
+    <path class="as" d="M476 151 H528"/>
+    <rect class="ab" x="528" y="136" width="180" height="32" rx="6"/>
+    <rect class="as" x="528" y="136" width="180" height="32" rx="6"/>
+    <text class="ts" x="542" y="156">observation</text>
+  </g>
+  <g>
+    <circle class="ad" cx="472" cy="247" r="3.5"/>
+    <path class="as" d="M476 247 H528"/>
+    <rect class="ab" x="528" y="232" width="180" height="32" rx="6"/>
+    <rect class="as" x="528" y="232" width="180" height="32" rx="6"/>
+    <text class="ts" x="542" y="252">observation</text>
+  </g>
+  <g>
+    <circle class="ad" cx="472" cy="343" r="3.5"/>
+    <path class="as" d="M476 343 H528"/>
+    <rect class="ab" x="528" y="328" width="180" height="32" rx="6"/>
+    <rect class="as" x="528" y="328" width="180" height="32" rx="6"/>
+    <text class="ts" x="542" y="348">observation</text>
+  </g>
+
+  <!-- scroll indication: the document continues -->
+  <path class="fd" d="M196 372 H482"/>
+  <text class="t" x="196" y="392">106 questions, observations scattered throughout</text>
+
+  <!-- no overview -->
+  <rect class="fd" x="48" y="136" width="120" height="224" rx="8"/>
+  <text class="t" x="60" y="244">no overview</text>
+  <text class="t" x="60" y="262">of what is</text>
+  <text class="t" x="60" y="280">still open</text>
+</svg>

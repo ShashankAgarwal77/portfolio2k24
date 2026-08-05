@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" role="img" aria-label="Three explored directions side by side. Notes pinned to the clause scatters observations down a long document with no overview. Side by side review needs more width than a reviewer's laptop has. The docked observation workspace, which shipped, holds every observation in one list with its regulation reference, and the conversation trail docked beside it.">
+  <style>
+    .f   { fill: none; stroke: #94a3b8; stroke-opacity: .4 }
+    .fs  { fill: none; stroke: #94a3b8; stroke-opacity: .8 }
+    .fd  { fill: none; stroke: #94a3b8; stroke-opacity: .55; stroke-dasharray: 5 4 }
+    .b   { fill: #94a3b8; fill-opacity: .1 }
+    .bs  { fill: #94a3b8; fill-opacity: .2 }
+    .l   { fill: #94a3b8; fill-opacity: .26 }
+    .ls  { fill: #94a3b8; fill-opacity: .45 }
+    .h   { font: 600 16px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #94a3b8; fill-opacity: .75 }
+    .hs  { font: 600 16px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #94a3b8; fill-opacity: 1 }
+    .c   { font: 400 13px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #94a3b8; fill-opacity: .7 }
+    .cs  { font: 600 13px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #94a3b8; fill-opacity: 1 }
+    .m   { font: 400 11px ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #94a3b8; fill-opacity: .85 }
+  </style>
+
+  <!-- ── 01 · notes pinned to the clause ─────────────────────────────── -->
+  <g opacity=".62">
+    <text class="h" x="40" y="40">Notes pinned to the clause</text>
+    <rect class="f" x="40" y="64" width="340" height="300" rx="10"/>
+
+    <!-- the long document -->
+    <rect class="f" x="88" y="92" width="150" height="244" rx="6"/>
+    <rect class="b" x="88" y="92" width="150" height="18" rx="6"/>
+    <rect class="l" x="100" y="124" width="122" height="6" rx="3"/>
+    <rect class="l" x="100" y="138" width="92" height="6" rx="3"/>
+    <rect class="l" x="100" y="166" width="122" height="6" rx="3"/>
+    <rect class="l" x="100" y="180" width="104" height="6" rx="3"/>
+    <rect class="l" x="100" y="208" width="118" height="6" rx="3"/>
+    <rect class="l" x="100" y="222" width="86" height="6" rx="3"/>
+    <rect class="l" x="100" y="250" width="122" height="6" rx="3"/>
+    <rect class="l" x="100" y="264" width="98" height="6" rx="3"/>
+    <rect class="l" x="100" y="292" width="112" height="6" rx="3"/>
+    <rect class="l" x="100" y="306" width="80" height="6" rx="3"/>
+
+    <!-- observations, scattered down its length -->
+    <path class="f" d="M238 132 H264"/>
+    <rect class="bs" x="264" y="118" width="92" height="26" rx="5"/>
+    <path class="f" d="M238 216 H264"/>
+    <rect class="bs" x="264" y="202" width="92" height="26" rx="5"/>
+    <path class="f" d="M238 300 H264"/>
+    <rect class="bs" x="264" y="286" width="92" height="26" rx="5"/>
+
+    <text class="c" x="40" y="396">Easy to read one.</text>
+    <text class="c" x="40" y="416">Impossible to survey all 106.</text>
+  </g>
+
+  <!-- ── 02 · side by side ───────────────────────────────────────────── -->
+  <g opacity=".62">
+    <text class="h" x="430" y="40">Side by side review</text>
+    <rect class="f" x="430" y="64" width="340" height="300" rx="10"/>
+
+    <rect class="f" x="452" y="92" width="140" height="244" rx="6"/>
+    <rect class="b" x="452" y="92" width="140" height="18" rx="6"/>
+    <rect class="l" x="464" y="126" width="112" height="6" rx="3"/>
+    <rect class="l" x="464" y="140" width="84" height="6" rx="3"/>
+    <rect class="b" x="464" y="162" width="112" height="38" rx="5"/>
+    <rect class="l" x="464" y="216" width="106" height="6" rx="3"/>
+    <rect class="b" x="464" y="238" width="112" height="38" rx="5"/>
+
+    <rect class="f" x="606" y="92" width="158" height="244" rx="6"/>
+    <rect class="b" x="606" y="92" width="158" height="18" rx="6"/>
+    <rect class="l" x="618" y="126" width="130" height="6" rx="3"/>
+    <rect class="l" x="618" y="140" width="98" height="6" rx="3"/>
+    <rect class="b" x="618" y="162" width="130" height="38" rx="5"/>
+    <rect class="l" x="618" y="216" width="122" height="6" rx="3"/>
+    <rect class="b" x="618" y="238" width="130" height="38" rx="5"/>
+
+    <!-- the reviewer's actual screen edge -->
+    <path class="fd" d="M712 78 V350"/>
+    <text class="m" x="706" y="72" text-anchor="end">laptop ends here</text>
+
+    <text class="c" x="430" y="396">The clearest read of an exchange.</text>
+    <text class="c" x="430" y="416">Needs width reviewers do not have.</text>
+  </g>
+
+  <!-- ── 03 · docked observation workspace · shipped ─────────────────── -->
+  <g>
+    <text class="hs" x="820" y="40">Docked observation workspace</text>
+    <rect class="fs" x="820" y="64" width="340" height="300" rx="10"/>
+
+    <!-- lifecycle stages -->
+    <rect class="b"  x="840" y="84" width="66" height="16" rx="8"/>
+    <rect class="b"  x="914" y="84" width="66" height="16" rx="8"/>
+    <rect class="ls" x="988" y="84" width="80" height="16" rx="8"/>
+    <rect class="b"  x="1076" y="84" width="64" height="16" rx="8"/>
+
+    <!-- the observation list -->
+    <rect class="f" x="840" y="116" width="152" height="196" rx="6"/>
+    <rect class="bs" x="850" y="126" width="132" height="54" rx="5"/>
+    <rect class="fs" x="850" y="126" width="132" height="54" rx="5"/>
+    <rect class="ls" x="860" y="136" width="60" height="7" rx="3.5"/>
+    <rect class="ls" x="936" y="135" width="36" height="9" rx="4.5"/>
+    <rect class="l" x="860" y="154" width="112" height="5" rx="2.5"/>
+    <path class="fs" d="M860 168 H916"/>
+
+    <rect class="b" x="850" y="190" width="132" height="26" rx="5"/>
+    <rect class="l" x="860" y="200" width="58" height="6" rx="3"/>
+    <rect class="ls" x="936" y="199" width="36" height="8" rx="4"/>
+    <rect class="b" x="850" y="226" width="132" height="26" rx="5"/>
+    <rect class="l" x="860" y="236" width="66" height="6" rx="3"/>
+    <rect class="ls" x="936" y="235" width="36" height="8" rx="4"/>
+    <rect class="b" x="850" y="262" width="132" height="26" rx="5"/>
+    <rect class="l" x="860" y="272" width="52" height="6" rx="3"/>
+
+    <!-- the docked conversation -->
+    <rect class="f" x="1004" y="116" width="136" height="196" rx="6"/>
+    <rect class="b" x="1014" y="128" width="94" height="30" rx="5"/>
+    <rect class="l" x="1024" y="138" width="70" height="5" rx="2.5"/>
+    <rect class="l" x="1024" y="148" width="52" height="5" rx="2.5"/>
+    <rect class="bs" x="1036" y="166" width="94" height="30" rx="5"/>
+    <rect class="l" x="1046" y="176" width="70" height="5" rx="2.5"/>
+    <rect class="l" x="1046" y="186" width="58" height="5" rx="2.5"/>
+    <rect class="fs" x="1014" y="212" width="116" height="40" rx="5"/>
+    <rect class="l" x="1024" y="226" width="56" height="6" rx="3"/>
+    <rect class="ls" x="1096" y="222" width="26" height="14" rx="7"/>
+
+    <!-- the persistent count -->
+    <path class="f" d="M840 330 H1140"/>
+    <rect class="ls" x="840" y="342" width="128" height="6" rx="3"/>
+
+    <text class="cs" x="820" y="396">Chosen. One list, one count,</text>
+    <text class="cs" x="820" y="416">and the rule travels with the observation.</text>
+  </g>
+</svg>

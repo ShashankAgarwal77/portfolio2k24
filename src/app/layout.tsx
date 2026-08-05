@@ -1,9 +1,7 @@
 "use client";
 // import { Metadata } from "next";
 
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import './external_css/aos.css';
+import React from 'react';
 
 import localFont from 'next/font/local';
 
@@ -27,12 +25,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-    });
-  }, []);
   return (
     <html lang="en" className={`${satoshi.variable}`}>
       <head>

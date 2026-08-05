@@ -42,7 +42,7 @@ export function ProjectCards() {
 
     return (
         <>
-            <div className="flex flex-col gap-6 justify-center w-full" data-aos="fade-up">
+            <div className="flex flex-col gap-6 justify-center w-full">
 
                 <Card
                     title="Winning a national aviation security pitch with zero engineers"

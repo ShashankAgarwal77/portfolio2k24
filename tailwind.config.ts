@@ -14,6 +14,9 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    // Root-level file: every class the MDX typography uses lives here, and
+    // without this glob Tailwind never generates them.
+    "./mdx-components.tsx",
   ],
   darkMode: 'class',
   theme: {

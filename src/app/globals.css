@@ -97,3 +97,49 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .bleed-wide — lets a figure break past the article's reading measure.
+   Only past 1280px, where the shell's grid guarantees enough slack beside
+   the 46rem column that a wider figure cannot reach the sticky index.
+   Below that the figure stays at column width.
+   ───────────────────────────────────────────────────────────────────────── */
+@media (min-width: 1280px) {
+  .bleed-wide {
+    width: 60rem;
+    max-width: none;
+    margin-inline: -9rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .article-index — the reading index, lifted out of layout flow so the
+   article can centre on the viewport instead of inside a grid column.
+
+   Vertically centred on the scrollport, not the document. `top: 50vh` and
+   a viewport-relative `left` are deliberate: during a page transition an
+   ancestor briefly carries a `filter`, which makes it the containing block
+   for fixed children. Percentage offsets would resolve against the full
+   document height and fling this off-screen for the length of the
+   transition; vh and a left edge that matches the viewport's do not.
+
+   Appears only past 1376px, the width at which a 9rem index plus a gap
+   still clears a .bleed-wide figure reaching 9rem left of the column.
+   ───────────────────────────────────────────────────────────────────────── */
+.article-index {
+  display: none;
+}
+
+@media (min-width: 1400px) {
+  .article-index {
+    display: block;
+    position: fixed;
+    top: 50vh;
+    left: 2.5rem;
+    z-index: 20;
+    width: 9rem;
+    max-height: 72vh;
+    overflow-y: auto;
+    transform: translateY(-50%);
+  }
+}
