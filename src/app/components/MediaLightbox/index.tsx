@@ -70,9 +70,16 @@ export function MediaLightbox({
     const root = containerRef.current;
     if (!root) return;
 
+    /* data-lightbox="off"   never opens.
+       data-lightbox="clone" opens on click but takes no tab stop. Marquee
+       duplicates use it: they sit in an aria-hidden subtree, which must not
+       contain focusable elements, but a visible thumbnail still has to be
+       clickable or half the strip would look broken. */
     const media = Array.from(
       root.querySelectorAll<HTMLElement>("img, video")
-    ).filter((el) => el.dataset.lightbox !== "off");
+    ).filter(
+      (el) => el.dataset.lightbox !== "off" && el.dataset.lightbox !== "clone"
+    );
 
     media.forEach((el) => {
       el.dataset.lightboxBound = "true";
@@ -99,7 +106,14 @@ export function MediaLightbox({
       const el = (event.target as HTMLElement | null)?.closest<HTMLElement>(
         "img, video"
       );
-      if (!el || !root.contains(el) || el.dataset.lightbox === "off") return;
+      if (
+        !el ||
+        !root.contains(el) ||
+        el.dataset.lightbox === "off" ||
+        el.dataset.lightbox === "clone"
+      ) {
+        return;
+      }
       event.preventDefault();
       open(el);
     };

@@ -37,6 +37,17 @@ const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* Nothing may be hidden unless it can also be shown again. Browsers freeze
+   transitions in a hidden document, so a page that mounts while backgrounded
+   (opened in a background tab, or fetched by a crawler or screenshot service)
+   would hide its content and never get the frame that reveals it. When the
+   document is not visible at mount, skip the effect entirely: the content
+   simply renders, which is always better than rendering blank. */
+const canAnimate = () =>
+  typeof document !== "undefined" &&
+  document.visibilityState === "visible" &&
+  !prefersReducedMotion();
+
 const hide = (el: HTMLElement) => {
   el.style.filter = BLUR;
   el.style.opacity = "0";
@@ -81,7 +92,7 @@ export function useRevealChildren<T extends HTMLElement>() {
 
   useIsomorphicLayoutEffect(() => {
     const root = ref.current;
-    if (!root || prefersReducedMotion()) return;
+    if (!root || !canAnimate()) return;
 
     const blocks = (Array.from(root.children) as HTMLElement[]).filter(
       (el) => el.dataset.reveal !== "off"
@@ -166,7 +177,7 @@ export function useRevealOnMount<T extends HTMLElement>() {
 
   useIsomorphicLayoutEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
+    if (!el || !canAnimate()) return;
 
     hide(el);
 

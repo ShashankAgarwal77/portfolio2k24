@@ -183,7 +183,7 @@ body {
   height: auto;
   max-width: 80vw;
   max-height: 80vh;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 0 24px 60px rgb(0 0 0 / 0.45);
 }
 
@@ -203,7 +203,6 @@ body {
 }
 
 .media-lightbox__close:hover {
-  background: #ffffff;
   transform: scale(1.06);
 }
 
@@ -258,5 +257,103 @@ body {
   .media-lightbox__close {
     animation: none;
     transition: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .media-marquee — thumbnail strip for the feedback section.
+
+   The track holds the item set twice and shifts by half its width, which
+   makes the loop seamless. Gap and translate distance must agree: the
+   shared `scroll` keyframe moves by calc(-50% - 0.5rem), which assumes the
+   1rem gap set below.
+   ───────────────────────────────────────────────────────────────────────── */
+.media-marquee {
+  margin-block: 2.5rem 1rem;
+}
+
+.media-marquee__viewport {
+  overflow: hidden;
+  /* Items dissolve at the edges instead of being guillotined by the crop. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+}
+
+.media-marquee__track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: scroll var(--marquee-duration, 72s) linear infinite;
+}
+
+.media-marquee__track > li {
+  flex: none;
+  margin: 0;
+  padding: 0;
+}
+
+.media-marquee:hover .media-marquee__track,
+.media-marquee:focus-within .media-marquee__track {
+  animation-play-state: paused;
+}
+
+.media-marquee img {
+  display: block;
+  height: 13rem;
+  width: auto;
+  max-width: none;
+  /* Reserves each slot before the image loads. Without it the track
+     collapses to nothing and snaps to full width mid-animation. Thumbnails
+     crop rather than distort; the lightbox shows the whole asset. */
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: 6px;
+  border: 1px solid rgb(148 163 184 / 0.22);
+  opacity: 0.82;
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+}
+
+.media-marquee img:hover,
+.media-marquee img:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .media-marquee img {
+    height: 9.5rem;
+  }
+}
+
+/* No motion: a plain scroller, so every item is still reachable. */
+@media (prefers-reduced-motion: reduce) {
+  .media-marquee__viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .media-marquee__track {
+    animation: none;
+  }
+
+  .media-marquee img {
+    opacity: 1;
   }
 }
