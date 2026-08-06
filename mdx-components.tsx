@@ -23,7 +23,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => {
       const id = slugify(extractText(children));
       return (
-        <h1 id={id} className="mt-24 mb-8 scroll-mt-28 text-4xl md:text-6xl font-semibold tracking-[-0.03em] leading-[1.05] text-balance text-slate-900 dark:text-slate-100">
+        <h1 id={id} className="mt-24 mb-8 scroll-mt-28 text-[clamp(2.5rem,5vw,3.5rem)] font-semibold tracking-[-0.03em] leading-[1.05] text-balance text-slate-900 dark:text-slate-100">
           {children}
         </h1>
       );
@@ -31,7 +31,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children }) => {
       const id = slugify(extractText(children));
       return (
-        <h2 id={id} className="mt-32 md:mt-40 mb-6 scroll-mt-28 text-3xl md:text-4xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100">
+        <h2 id={id} className="mt-24 md:mt-32 mb-6 scroll-mt-28 text-3xl font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100">
           {children}
         </h2>
       );
@@ -39,13 +39,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: ({ children }) => {
       const id = slugify(extractText(children));
       return (
-        <h3 id={id} className="mt-12 mb-3 scroll-mt-28 text-xl md:text-2xl font-medium tracking-tight text-slate-800 dark:text-slate-200">
+        <h3 id={id} className="mt-12 mb-3 scroll-mt-28 text-3xl font-medium tracking-tight text-slate-800 dark:text-slate-200">
           {children}
         </h3>
       );
     },
     p: ({ children }) => (
-      <p className="mb-6 text-base/[1.7] md:text-lg/[1.7] text-slate-700 dark:text-slate-300">
+      <p className="mb-6 text-lg/[1.7] text-slate-700 dark:text-slate-300">
         {children}
       </p>
     ),
@@ -60,12 +60,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     ul: ({ children }) => (
-      <ul className="mb-6 ml-6 list-disc space-y-2 text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-300 marker:text-slate-400">
+      <ul className="mb-6 ml-6 list-disc space-y-2 text-lg leading-[1.7] text-slate-700 dark:text-slate-300 marker:text-slate-400">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="mb-6 ml-6 list-decimal space-y-2 text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-300 marker:text-slate-500">
+      <ol className="mb-6 ml-6 list-decimal space-y-2 text-lg leading-[1.7] text-slate-700 dark:text-slate-300 marker:text-slate-500">
         {children}
       </ol>
     ),

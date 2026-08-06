@@ -357,3 +357,100 @@ body {
     opacity: 1;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .annotated — screenshot with numbered markers and a matching legend.
+   Markers are positioned as percentages of the frame so they hold at any
+   width, and are pointer-transparent so the figure stays clickable.
+   ───────────────────────────────────────────────────────────────────────── */
+.annotated {
+  margin: 2.5rem 0 3rem;
+}
+
+.annotated figcaption {
+  /* Keeps the figure inside the article's four-size type scale. */
+  font-size: 0.875rem;
+}
+
+.annotated__frame {
+  position: relative;
+  line-height: 0;
+}
+
+.annotated__frame img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgb(148 163 184 / 0.22);
+}
+
+.annotated__marker,
+.annotated__num {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: #0f172a;
+  color: #f8fafc;
+  box-shadow: 0 0 0 2px rgb(248 250 252 / 0.9);
+}
+
+.dark .annotated__marker,
+.dark .annotated__num {
+  background: #f1f5f9;
+  color: #020617;
+  box-shadow: 0 0 0 2px rgb(2 6 23 / 0.85);
+}
+
+.annotated__marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.annotated__legend {
+  display: grid;
+  gap: 0.625rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .annotated__legend {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+}
+
+.annotated__legend > li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.625rem;
+  align-items: start;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgb(71 85 105);
+}
+
+.dark .annotated__legend > li {
+  color: rgb(148 163 184);
+}
+
+.annotated__num {
+  box-shadow: none;
+}
+
+.annotated__caption {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgb(100 116 139);
+}
