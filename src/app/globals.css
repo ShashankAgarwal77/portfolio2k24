@@ -143,3 +143,120 @@ body {
     transform: translateY(-50%);
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .media-lightbox — full-size media viewer, rendered in the top layer via
+   <dialog>.showModal(). The dialog box itself is the click target for
+   "close on backdrop", so it fills the viewport and centres its contents;
+   the visible surface is the media inside it.
+   ───────────────────────────────────────────────────────────────────────── */
+.media-lightbox {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.media-lightbox:not([open]) {
+  display: none;
+}
+
+.media-lightbox::backdrop {
+  background: rgb(2 6 23 / 0.88);
+}
+
+.media-lightbox__inner {
+  position: relative;
+  display: flex;
+}
+
+.media-lightbox img,
+.media-lightbox video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.45);
+}
+
+.media-lightbox__close {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  color: #0f172a;
+  background: #f8fafc;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.35);
+  transition: transform 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.media-lightbox__close:hover {
+  background: #ffffff;
+  transform: scale(1.06);
+}
+
+.media-lightbox__close:focus-visible {
+  outline: 2px solid #f8fafc;
+  outline-offset: 3px;
+}
+
+/* Media in an article reads as openable. */
+.media-openable img,
+.media-openable video {
+  cursor: zoom-in;
+}
+
+.media-openable img:focus-visible,
+.media-openable video:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.media-lightbox[open] {
+  animation: lightbox-in 0.18s ease-out;
+}
+
+.media-lightbox[open]::backdrop {
+  animation: lightbox-backdrop-in 0.18s ease-out;
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lightbox-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-lightbox[open],
+  .media-lightbox[open]::backdrop,
+  .media-lightbox__close {
+    animation: none;
+    transition: none;
+  }
+}

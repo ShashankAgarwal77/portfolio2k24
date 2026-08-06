@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/app/lib/utils";
 import { useRevealChildren } from "@/app/lib/useReveal";
+import { MediaLightbox } from "@/app/components/MediaLightbox";
 
 /* ─────────────────────────────────────────────────────────────────────────
    ArticleShell — reading chrome for long-form MDX posts.
@@ -94,11 +95,15 @@ export function ArticleShell({
       <div className="px-6">
         <article
           ref={contentRef}
-          className="mx-auto w-full max-w-[42rem] pt-28 pb-32 [&>*:first-child]:mt-0"
+          className="media-openable mx-auto w-full max-w-[42rem] pt-28 pb-32 [&>*:first-child]:mt-0"
         >
           {children}
         </article>
       </div>
+
+      {/* Rendered outside <article> on purpose: the reveal hides and shows
+          the article's direct children, and the viewer must not be one. */}
+      <MediaLightbox containerRef={contentRef} />
     </div>
   );
 }
