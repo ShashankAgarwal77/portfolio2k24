@@ -39,6 +39,28 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Native cursor is hidden only once CustomCursor has confirmed (via a
+   hover/pointer-fine media query, not just "JS is running") that this is a
+   desktop pointer device — see custom-cursor.tsx. The class is applied to
+   <html> at that point, never assumed up front, so a touch visitor — or
+   anyone whose custom cursor fails to mount for some reason — always keeps
+   a real, native cursor rather than losing pointer feedback entirely.
+   Interactive tags are listed explicitly because the UA stylesheet sets
+   `cursor: pointer` on them directly, which beats an inherited `cursor: none`
+   from a lower-specificity ancestor rule. */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [role="button"],
+.has-custom-cursor input,
+.has-custom-cursor select,
+.has-custom-cursor textarea,
+.has-custom-cursor summary,
+.has-custom-cursor label,
+.has-custom-cursor .cursor-pointer {
+  cursor: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -136,6 +158,58 @@ body {
     overflow-y: auto;
     transform: translateY(-50%);
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .case-study-backdrop — the case study's own thumbnail, bled full-width
+   behind the top of the article and faded out before the body copy starts.
+
+   Two separate fades are doing different jobs here:
+
+   · the mask is the top-to-bottom falloff the design asks for — the image
+     is fully present at the very top of the page and completely gone by
+     the bottom of the band, so it reads as an atmospheric header rather
+     than a picture with an edge;
+
+   · the veil sits between the photo and the text and is what keeps the
+     copy readable. It has to be this strong because the thumbnails are
+     photographs carrying both near-black and near-white regions (each one
+     has a bright UI screenshot in it), while the heading colours are fixed
+     by the theme and cannot adapt per-pixel. It is deliberately painted in
+     the page's own background colour so the band dissolves into the page
+     instead of ending on a visible seam.
+   ───────────────────────────────────────────────────────────────────────── */
+.case-study-backdrop {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: clamp(400px, 62vh, 660px);
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgb(0 0 0 / 0.92) 30%,
+    rgb(0 0 0 / 0.5) 62%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgb(0 0 0 / 0.92) 30%,
+    rgb(0 0 0 / 0.5) 62%,
+    transparent 100%
+  );
+}
+
+.case-study-backdrop__veil {
+  position: absolute;
+  inset: 0;
+  background: rgb(248 250 252 / 0.86);
+}
+
+.dark .case-study-backdrop__veil {
+  background: rgb(2 6 23 / 0.86);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────

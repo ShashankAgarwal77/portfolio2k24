@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image, { StaticImageData } from "next/image";
 import { cn } from "@/app/lib/utils";
 import { useRevealChildren } from "@/app/lib/useReveal";
 import { MediaLightbox } from "@/app/components/MediaLightbox";
@@ -15,6 +16,7 @@ import { MediaLightbox } from "@/app/components/MediaLightbox";
      · a sticky left index with short labels (scroll-spy via IntersectionObserver)
      · a blur-to-sharp reveal on each top-level block as it scrolls in,
        shared with the rest of the site via useRevealChildren
+     · an optional full-bleed backdrop image behind the top of the article
    ───────────────────────────────────────────────────────────────────────── */
 
 type IndexItem = {
@@ -26,9 +28,17 @@ type IndexItem = {
 
 export function ArticleShell({
   index,
+  backdrop,
   children,
 }: {
   index: IndexItem[];
+  /**
+   * The case study's thumbnail, bled full-width behind the top of the page
+   * and faded out before the body copy. Decorative — the headline already
+   * carries the meaning, so it is hidden from assistive tech rather than
+   * given alt text that would just restate the h1.
+   */
+  backdrop?: StaticImageData;
   children: React.ReactNode;
 }) {
   /* Each top-level markdown block blurs in as it scrolls up. Blocks already
@@ -58,6 +68,20 @@ export function ArticleShell({
 
   return (
     <div className="relative">
+      {backdrop && (
+        <div className="case-study-backdrop" aria-hidden="true">
+          <Image
+            src={backdrop}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="case-study-backdrop__veil" />
+        </div>
+      )}
+
       {/* The index is taken out of the layout flow entirely (see
           .article-index) so it costs no horizontal space. That lets the
           article centre on the viewport rather than inside a grid column
@@ -92,7 +116,13 @@ export function ArticleShell({
         </ul>
       </nav>
 
-      <div className="px-6">
+      {/* relative, not a z-index: the backdrop above is absolutely
+          positioned, and positioned elements paint over static ones no
+          matter the source order. Making this a positioned element too puts
+          the two in the same painting group, where DOM order decides — and
+          the article comes second. A negative z-index on the backdrop would
+          instead push it behind the page background entirely. */}
+      <div className="relative px-6">
         <article
           ref={contentRef}
           className="media-openable mx-auto w-full max-w-[42rem] pt-28 pb-32 [&>*:first-child]:mt-0"

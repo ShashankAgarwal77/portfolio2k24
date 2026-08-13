@@ -10,6 +10,7 @@ const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.ttf', 
 
 // import { Work_Sans } from "next/font/google";
 import "./globals.css";
+import { CustomCursor } from "./components/uiFrontend/custom-cursor";
 
 // const workSans = Work_Sans({ subsets: ["latin"] });
 
@@ -51,7 +52,10 @@ export default function RootLayout({
 
       </head>
 
-      <body>{children}</body>
+      <body>
+        {children}
+        <CustomCursor />
+      </body>
     </html>
   );
 }

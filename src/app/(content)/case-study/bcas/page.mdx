@@ -1,6 +1,7 @@
 import { ArticleShell } from "@/app/components/Article";
 import { MediaMarquee } from "@/app/components/MediaMarquee";
 import { Annotated } from "@/app/components/Annotated";
+import BCASThumb from "../../../../../public/bcas_thumbnail.png";
 
 export const metadata = {
   title: "487 production-ready screens in 6 weeks, by four designers with no engineers",
@@ -9,6 +10,7 @@ export const metadata = {
 };
 
 <ArticleShell
+  backdrop={BCASThumb}
   index={[
     { id: "the-problem", label: "Problem" },
     { id: "three-variants-one-shipped", label: "Variants" },
@@ -24,7 +26,7 @@ export const metadata = {
 
 <p className="mb-10 text-body text-slate-600 dark:text-slate-400">eBCAS 2.0, the compliance platform a national civil aviation security regulator uses with every airline, airport operator and ground handler in India.</p>
 
-<p className="mb-12 text-caption text-slate-500 dark:text-slate-400">Senior Designer · Started as IC, then design lead for a team of four · 2026, ongoing</p>
+<p className="mb-12 text-caption text-slate-600 dark:text-slate-400">Senior Designer · Started as IC, then design lead for a team of four · 2026, ongoing</p>
 
 <div className="mb-14 grid grid-cols-2 gap-x-6 gap-y-5 border-y border-slate-200 py-6 dark:border-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
   <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">164</p><p className="text-caption text-slate-500 dark:text-slate-400">airports</p></div>

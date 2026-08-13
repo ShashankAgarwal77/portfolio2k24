@@ -1,5 +1,6 @@
 import { ArticleShell } from "@/app/components/Article";
 import { Annotated } from "@/app/components/Annotated";
+import Audit360Thumb from "../../../../../public/audit360_thumbnail.png";
 
 export const metadata = {
   title: "I rewrote a national UX standard so a machine could read it",
@@ -8,6 +9,7 @@ export const metadata = {
 };
 
 <ArticleShell
+  backdrop={Audit360Thumb}
   index={[
     { id: "the-conversation-that-started-it", label: "Origin" },
     { id: "what-was-actually-broken", label: "The problem" },
@@ -25,7 +27,7 @@ export const metadata = {
 
 <p className="mb-10 text-body text-slate-600 dark:text-slate-400">Audit360, the AI audit platform NeGD uses to evaluate government websites against UX4G, GIGW and Lighthouse. Built by four people. The tool was the easy half.</p>
 
-<p className="mb-12 text-caption text-slate-500 dark:text-slate-400">Product and Designe · Team of four · Feb 2025 – Mar 2026, in production</p>
+<p className="mb-12 text-caption text-slate-600 dark:text-slate-400">Product and Designe · Team of four · Feb 2025 – Mar 2026, in production</p>
 
 <div className="mb-14 grid grid-cols-2 gap-x-6 gap-y-5 border-y border-slate-200 py-6 dark:border-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
   <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">60,000</p><p className="text-caption text-slate-500 dark:text-slate-400">government sites</p></div>
