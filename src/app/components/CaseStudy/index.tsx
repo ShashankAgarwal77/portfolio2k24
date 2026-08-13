@@ -30,11 +30,11 @@ export function CaseStudyHero({
   return (
     <header className="pt-24 md:pt-32 pb-12 md:pb-16">
       {kicker && (
-        <p className="mb-4 text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+        <p className="mb-4 text-label font-semibold uppercase text-slate-500 dark:text-slate-400">
           {kicker}
         </p>
       )}
-      <h1 className="mb-10 text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-400">
+      <h1 className="mb-10 text-headline font-semibold bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-400">
         {headline}
       </h1>
       <dl className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 mt-12">
@@ -50,10 +50,10 @@ export function CaseStudyHero({
 function Meta({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 mb-2">
+      <dt className="text-label font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">
         {label}
       </dt>
-      <dd className="text-sm md:text-base font-medium text-slate-900 dark:text-slate-100 leading-snug">
+      <dd className="text-body font-semibold text-slate-900 dark:text-slate-100">
         {value}
       </dd>
     </div>
@@ -64,10 +64,10 @@ function Meta({ label, value }: { label: string; value: string }) {
 export function TLDR({ children }: { children: React.ReactNode }) {
   return (
     <aside className="my-16 md:my-20 rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-slate-50/60 dark:bg-slate-900/40 backdrop-blur p-6 md:p-8">
-      <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-3">
+      <p className="text-label font-semibold uppercase text-slate-500 dark:text-slate-400 mb-3">
         TL;DR
       </p>
-      <div className="text-base md:text-lg leading-relaxed text-slate-800 dark:text-slate-200 [&>p]:mb-3 last:[&>p]:mb-0">
+      <div className="text-body text-slate-800 dark:text-slate-200 [&>p]:mb-3 last:[&>p]:mb-0">
         {children}
       </div>
     </aside>
@@ -87,7 +87,7 @@ export function TLDRBento({ items }: { items: TLDRItem[] }) {
   return (
     <section className="my-16 md:my-20">
       <div className="mb-6 flex items-center gap-3">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+        <span className="text-label font-semibold uppercase text-slate-500 dark:text-slate-400">
           TL;DR
         </span>
         <span className="h-px flex-1 bg-slate-200 dark:bg-white/[0.08]" />
@@ -131,7 +131,7 @@ function TLDRHeader({
           }}
         />
         <div className="relative flex items-end p-4 w-full">
-          <span className="text-[10px] uppercase tracking-[0.22em] text-slate-200">
+          <span className="text-label font-semibold uppercase text-slate-200">
             {label}
           </span>
         </div>
@@ -141,7 +141,7 @@ function TLDRHeader({
   return (
     <div className="relative flex w-full min-h-[6rem] rounded-xl bg-dot-black/[0.2] dark:bg-dot-white/[0.15] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent dark:border-white/[0.05] bg-neutral-100 dark:bg-black overflow-hidden">
       <div className="relative flex items-end p-4 w-full">
-        <span className="text-[10px] uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+        <span className="text-label font-semibold uppercase text-slate-500 dark:text-slate-400">
           {label}
         </span>
       </div>
@@ -162,14 +162,14 @@ export function StatGrid({
           key={item.label}
           className="rounded-2xl border border-slate-200 dark:border-white/[0.08] p-6 bg-white/40 dark:bg-slate-900/30"
         >
-          <p className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 mb-2 leading-none">
+          <p className="text-body font-semibold text-slate-900 dark:text-slate-100 mb-2">
             {item.value}
           </p>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-snug">
+          <p className="text-caption text-slate-600 dark:text-slate-400">
             {item.label}
           </p>
           {item.sublabel && (
-            <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+            <p className="text-caption text-slate-500 dark:text-slate-500 mt-1">
               {item.sublabel}
             </p>
           )}
@@ -190,12 +190,12 @@ export function Pullquote({
   return (
     <figure className="my-16 md:my-20">
       <blockquote className="border-l-2 border-slate-900 dark:border-slate-100 pl-6 md:pl-8">
-        <p className="text-xl md:text-2xl lg:text-3xl font-medium leading-snug tracking-tight text-slate-900 dark:text-slate-100 italic">
+        <p className="text-title font-semibold text-slate-900 dark:text-slate-100 italic">
           {children}
         </p>
       </blockquote>
       {attribution && (
-        <figcaption className="mt-4 pl-6 md:pl-8 text-sm text-slate-500 dark:text-slate-400">
+        <figcaption className="mt-4 pl-6 md:pl-8 text-caption text-slate-500 dark:text-slate-400">
           — {attribution}
         </figcaption>
       )}
@@ -241,14 +241,14 @@ export function MediaFrame({
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center p-8">
-            <p className="text-center text-sm text-slate-500 dark:text-slate-400 max-w-md">
+            <p className="text-center text-caption text-slate-500 dark:text-slate-400 max-w-md">
               {placeholder ?? "Asset placeholder"}
             </p>
           </div>
         )}
       </div>
       {caption && (
-        <figcaption className="mt-3 text-sm text-slate-500 dark:text-slate-400 text-center">
+        <figcaption className="mt-3 text-caption text-slate-500 dark:text-slate-400 text-center">
           {caption}
         </figcaption>
       )}
@@ -261,7 +261,7 @@ export function MediaFrame({
    were solving for. */
 export function ProblemStatement({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mt-2 mb-16 md:mb-20 text-2xl md:text-3xl lg:text-4xl font-medium leading-snug tracking-tight text-slate-900 dark:text-slate-100">
+    <p className="mt-2 mb-16 md:mb-20 text-title font-semibold text-slate-900 dark:text-slate-100">
       {children}
     </p>
   );
@@ -316,7 +316,7 @@ export function WallOfLove({
   return (
     <section className="my-16 md:my-20">
       <div className="mb-6 flex items-center gap-3">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+        <span className="text-label font-semibold uppercase text-slate-500 dark:text-slate-400">
           {title}
         </span>
         <span className="h-px flex-1 bg-slate-200 dark:bg-white/[0.08]" />
@@ -392,11 +392,11 @@ function Testimonial({ quote, author, role, src, alt, placeholder }: Testimonial
     <figure className="rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white/40 dark:bg-slate-900/30 overflow-hidden">
       {quote ? (
         <blockquote className="p-6 md:p-7">
-          <p className="text-base md:text-lg leading-relaxed text-slate-800 dark:text-slate-200">
+          <p className="text-body text-slate-800 dark:text-slate-200">
             &ldquo;{quote}&rdquo;
           </p>
           {(author || role) && (
-            <figcaption className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+            <figcaption className="mt-4 text-caption text-slate-500 dark:text-slate-400">
               {author}
               {author && role ? " · " : ""}
               {role}
@@ -405,7 +405,7 @@ function Testimonial({ quote, author, role, src, alt, placeholder }: Testimonial
         </blockquote>
       ) : (
         <div className="flex items-center justify-center p-8 min-h-[8rem] bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800">
-          <p className="text-center text-sm text-slate-500 dark:text-slate-400 max-w-xs">
+          <p className="text-center text-caption text-slate-500 dark:text-slate-400 max-w-xs">
             {placeholder ?? "Testimonial screenshot"}
           </p>
         </div>
@@ -441,7 +441,7 @@ export function TradeoffTable({
             <div className="flex flex-col gap-2">
               <span
                 className={cn(
-                  "inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em]",
+                  "inline-flex items-center gap-1.5 text-label font-semibold uppercase",
                   isChosen
                     ? "text-slate-900 dark:text-slate-100"
                     : "text-slate-400 dark:text-slate-500"
@@ -452,27 +452,27 @@ export function TradeoffTable({
                 )}
                 {isChosen ? "Chosen" : "Considered"}
               </span>
-              <h4 className="text-lg font-semibold leading-snug text-slate-900 [text-wrap:balance] dark:text-slate-100">
+              <h4 className="text-title font-semibold text-slate-900 [text-wrap:balance] dark:text-slate-100">
                 {opt.name}
               </h4>
             </div>
 
             {/* Upside row */}
             <div>
-              <p className="mb-1.5 text-[10px] uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400">
+              <p className="mb-1.5 text-label font-semibold uppercase text-emerald-600 dark:text-emerald-400">
                 Upside
               </p>
-              <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+              <p className="text-caption text-slate-700 dark:text-slate-300">
                 {opt.pro}
               </p>
             </div>
 
             {/* Cost row */}
             <div>
-              <p className="mb-1.5 text-[10px] uppercase tracking-[0.18em] text-rose-600 dark:text-rose-400">
+              <p className="mb-1.5 text-label font-semibold uppercase text-rose-600 dark:text-rose-400">
                 Cost
               </p>
-              <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+              <p className="text-caption text-slate-700 dark:text-slate-300">
                 {opt.con}
               </p>
             </div>
@@ -493,12 +493,12 @@ export function GovernanceCard({
 }) {
   return (
     <div className="my-4 rounded-2xl border border-slate-200 dark:border-white/[0.08] p-6 md:p-7 bg-white/40 dark:bg-slate-900/30 transition-colors hover:border-slate-300 dark:hover:border-white/[0.15]">
-      <h4 className="text-base md:text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2 leading-snug">
+      <h4 className="text-title font-semibold text-slate-900 dark:text-slate-100 mb-2">
         {title}
       </h4>
       {/* Child <p> normalisation: MDX wraps block children in <p>, which would
           otherwise inherit the global prose paragraph size and bottom margin. */}
-      <div className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300 [&>p]:mb-0 [&>p]:text-sm md:[&>p]:text-base [&>p]:leading-relaxed [&>p]:text-slate-700 dark:[&>p]:text-slate-300 [&>p+p]:mt-3">
+      <div className="text-body text-slate-700 dark:text-slate-300 [&>p]:mb-0 [&>p]:text-body [&>p]:text-slate-700 dark:[&>p]:text-slate-300 [&>p+p]:mt-3">
         {children}
       </div>
     </div>
@@ -517,7 +517,7 @@ export function GovernanceGrid({ children }: { children: React.ReactNode }) {
 /* InlineNote — tiny inline gloss for unfamiliar terms */
 export function InlineNote({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block align-baseline mx-1 px-2 py-0.5 rounded-md text-[0.8em] text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 italic">
+    <span className="inline-block align-baseline mx-1 px-2 py-0.5 rounded-md text-caption text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 italic">
       ({children})
     </span>
   );
@@ -553,10 +553,10 @@ export function Principle({
   // Kept as a real component so it works standalone if needed.
   return (
     <div className="my-6">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2 leading-snug">
+      <h4 className="text-title font-semibold text-slate-900 dark:text-slate-100 mb-2">
         {title}
       </h4>
-      <div className="text-sm md:text-base leading-relaxed text-slate-600 dark:text-slate-400">
+      <div className="text-body text-slate-600 dark:text-slate-400">
         {children}
       </div>
     </div>
@@ -579,14 +579,14 @@ export function NumberedPrinciples({ children }: { children: React.ReactNode }) 
             key={`${title}-${i}`}
             className="group relative grid grid-cols-[auto_1fr] gap-6 md:gap-12 py-8 md:py-10 border-b border-slate-200 dark:border-white/[0.08] transition-colors hover:bg-slate-50/40 dark:hover:bg-white/[0.02]"
           >
-            <div className="text-3xl md:text-5xl font-extralight text-slate-300 dark:text-slate-700 tabular-nums leading-none pt-1 transition-colors group-hover:text-slate-700 dark:group-hover:text-slate-300 select-none">
+            <div className="text-title font-normal text-slate-300 dark:text-slate-700 tabular-nums pt-1 transition-colors group-hover:text-slate-700 dark:group-hover:text-slate-300 select-none">
               {String(i + 1).padStart(2, "0")}
             </div>
             <div className="min-w-0">
-              <h4 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2 leading-snug">
+              <h4 className="text-title font-semibold text-slate-900 dark:text-slate-100 mb-2">
                 {title}
               </h4>
-              <div className="text-sm md:text-base leading-relaxed text-slate-600 dark:text-slate-400 [&>p]:m-0 [&>p+p]:mt-3">
+              <div className="text-body text-slate-600 dark:text-slate-400 [&>p]:m-0 [&>p+p]:mt-3">
                 {content}
               </div>
             </div>
@@ -639,7 +639,7 @@ export function TableOfContents() {
 
   return (
     <nav aria-label="Table of contents">
-      <p className="text-[10px] uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400 mb-4 pl-3">
+      <p className="text-label font-semibold uppercase text-slate-500 dark:text-slate-400 mb-4 pl-3">
         On this page
       </p>
       <ul className="space-y-1 border-l border-slate-200 dark:border-white/[0.08]">
@@ -653,10 +653,10 @@ export function TableOfContents() {
               <a
                 href={`#${heading.id}`}
                 className={cn(
-                  "block text-xs leading-snug py-1.5 pl-3 transition-colors",
+                  "block text-caption py-1.5 pl-3 transition-colors",
                   isActive
-                    ? "text-slate-900 dark:text-slate-100 font-medium"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+                    ? "text-slate-900 dark:text-slate-100 font-semibold"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-normal"
                 )}
               >
                 {heading.text}

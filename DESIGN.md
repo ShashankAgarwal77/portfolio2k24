@@ -30,28 +30,34 @@ typography:
     letterSpacing: "normal"
   headline:
     fontFamily: "Satoshi, sans-serif"
-    fontSize: "clamp(2.25rem, 5vw, 4.5rem)"
-    fontWeight: 700
-    lineHeight: 1.1
+    fontSize: "clamp(2.25rem, 5vw, 4rem)"
+    fontWeight: 600
+    lineHeight: 1.05
     letterSpacing: "normal"
   title:
     fontFamily: "Satoshi, sans-serif"
-    fontSize: "1.5rem"
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: "0.01em"
+    fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)"
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: "normal"
   body:
     fontFamily: "Satoshi, sans-serif"
     fontSize: "1.125rem"
     fontWeight: 400
-    lineHeight: 1.6
-    letterSpacing: "0.01em"
-  label:
+    lineHeight: 1.65
+    letterSpacing: "normal"
+  caption:
     fontFamily: "Satoshi, sans-serif"
     fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
+  label:
+    fontFamily: "Satoshi, sans-serif"
+    fontSize: "0.75rem"
     fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: "0.2em"
+    letterSpacing: "0.14em"
 rounded:
   sm: "6px"
   pill: "9999px"
@@ -128,19 +134,26 @@ Almost monochrome at rest; color is spent on purpose, one hue per case study.
 ## 3. Typography
 
 **Display Font:** Gloock (with Georgia, serif fallback)
-**Body Font:** Satoshi (variable, weights 1–999, with system sans-serif fallback)
+**Body Font:** Satoshi (variable, weights 1–999, with system sans-serif fallback — only 400 and 600 are ever instanced)
 
-**Character:** A single technical variable sans carries every weight the interface needs; Gloock's italic serif is dropped in for exactly one word at a time as a signature flourish, never a running face.
+**Character:** A single technical variable sans carries the entire interface at just two weights; Gloock's italic serif is dropped in for exactly one word at a time as a signature flourish, never a running face. Emphasis comes from size and role, not from reaching for bold — the system has no 700 weight anywhere, on purpose, so the page reads as light and unforced even where the case-study copy runs long.
 
-### Hierarchy
+### Hierarchy — six roles, nothing outside them
+Every piece of text on the site maps to exactly one of these six roles. There is no seventh size, no third weight, no hand-typed `text-[…]`/`leading-[…]`/`tracking-[…]` arbitrary value — if a new piece of UI needs type, it picks the closest existing role rather than inventing a value.
+
 - **Display** (400, inherits parent size, italic, line-height 1.1): the final word of the hero headline and select emphasis words (e.g. "formally" on the About page) — always via `.fontGloock`, never a full heading.
-- **Headline** (700, clamp(2.25rem, 5vw, 4.5rem), line-height 1.1): hero heading, case-study titles (scale up to 7xl on case-study pages specifically).
-- **Title** (700, 1.5rem, line-height 1.3, tracking wide): project card titles.
-- **Body** (400, 1.125rem–1.5rem responsive, line-height 1.6, tracking wide): all paragraph copy; cap prose at 65–75ch.
-- **Label** (600, 0.875rem, tracking 0.2em, uppercase): case-study metadata fields, keypoint chips.
+- **Headline** (600, `clamp(2.25rem, 5vw, 4rem)`, line-height 1.05): the hero H1 only — one per page, ever. Size carries the weight the old 700 used to; nothing on the page should out-shout it.
+- **Title** (600, `clamp(1.5rem, 2.5vw, 1.875rem)`, line-height 1.25): every other heading — H2/H3, case-study section headers, project card titles. One size for the whole "heading below the hero" tier, whether it's an MDX `<h2>` or a card title.
+- **Body** (400, 1.125rem fixed, line-height 1.65): all paragraph copy, no exceptions — cap prose at 65–75ch. Fixed, not responsive; the viewport is not a reason to change body size.
+- **Caption** (400, 0.875rem, line-height 1.5): secondary/sentence-case text — nav links, footer, image captions, stat sub-labels, table cells.
+- **Label** (600, 0.75rem, tracking 0.14em, uppercase, line-height 1.4): tracked micro-caps only — kickers, case-study metadata `dt`s, keypoint chips. The one place 0.14em tracking is used; nowhere else gets custom tracking.
 
 ### Named Rules
 **The One-Word Serif Rule.** Gloock italic marks a single word of emphasis per view. It is never used for a full heading, paragraph, or navigation label — its rarity is what makes it read as a signature rather than a font choice.
+
+**The Two-Weight Rule.** Only 400 and 600 are ever set. No `font-bold` (700), no `font-medium` (500), no `font-light`/`font-extralight` — hierarchy comes from size and role, never from reaching for a heavier weight. This is what keeps the page feeling light even where a case study runs long.
+
+**The Six-Role Rule.** Display, Headline, Title, Body, Caption, Label — that's the whole scale. A component that needs type picks the nearest role; it does not introduce a new size, weight, line-height, or tracking value to fit its exact pixel intent.
 
 ## 4. Elevation
 
@@ -178,8 +191,9 @@ Flat by default. Cards and chips carry no box-shadow; depth is implied by a hair
 - **Do** keep every accent color scoped to its own case study's hover-reveal canvas — never promote a project accent to global chrome.
 - **Do** use Gloock italic for exactly one emphasis word at a time; treat it as a signature mark, not a display face.
 - **Do** keep cards flat (border + corner brackets), never add a box-shadow to a card to "make it pop."
-- **Do** cap body copy at 65–75ch and keep the slate ramp (600/500/400) as the only body-text variation.
+- **Do** cap body copy at 65–75ch and keep the slate ramp (600/500/400) as the only body-text color variation.
 - **Do** make every motion effect (aurora, shimmer, canvas-reveal, AOS fades) optional to comprehension — the page must read fine with `prefers-reduced-motion` collapsing them to instant/static.
+- **Do** map every text element to one of the six typography roles (Display/Headline/Title/Body/Caption/Label) — see Section 3.
 
 ### Don't:
 - **Don't** introduce a global "brand color" — this system has no single primary hue by design; slate + per-project accent is the whole palette.
@@ -187,3 +201,5 @@ Flat by default. Cards and chips carry no box-shadow; depth is implied by a hair
 - **Don't** stack multiple case-study accent colors on the same view — one hue per hover state, never blended.
 - **Don't** reach for generic SaaS-portfolio patterns (hero-metric stat rows, tiny uppercase eyebrows above every section, identical icon-card grids) — the brief is confident-minimal, and those patterns read as templated, not deliberate.
 - **Don't** add drop shadows to buttons or cards beyond the single documented `cta-lift` exception on the aurora hero CTA.
+- **Don't** use `font-bold` (700) anywhere — the Two-Weight Rule means 400 or 600, always.
+- **Don't** hand-type an arbitrary `text-[…]`, `leading-[…]`, or `tracking-[…]` value, or reach for a Tailwind size/weight/leading class outside the six-role table — every new piece of UI type maps onto an existing role instead.

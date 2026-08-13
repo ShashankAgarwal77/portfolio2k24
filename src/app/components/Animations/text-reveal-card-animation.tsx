@@ -84,7 +84,7 @@ export const TextRevealCard = ({
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
             }}
-            className="text-[clamp(1.5rem,3.2vw,2.25rem)] py-6 font-bold text-slate-300 dark:text-white bg-clip-text text-transparent bg-gradient-to-b from-slate-200 to-slate-600 dark:bg-gradient-to-b dark:from-white dark:to-slate-300"
+            className="text-title font-semibold py-6 text-slate-300 dark:text-white bg-clip-text text-transparent bg-gradient-to-b from-slate-200 to-slate-600 dark:bg-gradient-to-b dark:from-white dark:to-slate-300"
           >
             {revealText}
           </p>
@@ -100,7 +100,7 @@ export const TextRevealCard = ({
         ></motion.div>
 
         <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-[clamp(1.5rem,3.2vw,2.25rem)] py-6 font-bold bg-clip-text text-transparent bg-[#cbd5e1] dark:bg-[#323238]">
+          <p className="text-title font-semibold py-6 bg-clip-text text-transparent bg-[#cbd5e1] dark:bg-[#323238]">
             {text}
           </p>
           <MemoizedStars />
@@ -118,7 +118,7 @@ export const TextRevealCardTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={twMerge("text-slate-700 font-regular tracking-wide dark:text-white md:text-md lg:text-lg xl:text-xl mb-2", className)}>
+    <h2 className={twMerge("text-slate-700 font-normal dark:text-white text-caption mb-2", className)}>
       {children}
     </h2>
   );
@@ -132,7 +132,7 @@ export const TextRevealCardDescription = ({
   className?: string;
 }) => {
   return (
-    <p className={twMerge("text-[#a9a9a9] text-lg", className)}>{children}</p>
+    <p className={twMerge("text-[#a9a9a9] text-body font-normal", className)}>{children}</p>
   );
 };
 

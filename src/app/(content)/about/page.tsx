@@ -51,21 +51,21 @@ export default function About() {
         <div className="absolute h-screen flex flex-col justify-center items-left mx-5 lg:mx-40 z-10">
           <div className="flex flex-row justify-content items-center gap-x-4">
             <div className="w-3 h-3 rounded-md bg-slate-500 shadow-lg shadow-white"></div>
-            <h4 className="uppercase text-md lg:text-xl font-medium tracking-wide leading-6 lg:leading-12 lg:text-xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">About Me</h4>
+            <h4 className="uppercase text-label font-semibold bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">About Me</h4>
           </div>
           <TextGenerateSection />
         </div>
       </div>
 
       <div className="flex flex-col mx-5 my-10 lg:m-40 lg:gap-y-12">
-        <h2 className="bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 py-2 inline-block text-transparent bg-clip-text text-[clamp(1.75rem,4vw,3rem)] leading-[1.15] tracking-wide text-balance">This is my story — <br /> how an engineer became a designer.</h2>
+        <h2 className="bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 py-2 inline-block text-transparent bg-clip-text text-headline font-semibold text-balance">This is my story — <br /> how an engineer became a designer.</h2>
         <StickyScrollRevealDemo />
       </div>
 
       <div className="flex flex-col justify-center items-center sm:gap-y-2 md:gap-y-4 lg:gap-y-6 md:mx-10 lg:mx-40 my-20">
         <div className="flex flex-col items-center gap-y-3">
-          <h2 className="text-[clamp(1.875rem,3.5vw,2.75rem)] text-center font-bold leading-[1.15] tracking-wide text-balance bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2">what makes me <span className="fontGloock italic">tick</span></h2>
-          <p className="text-base lg:text-lg text-slate-500 dark:text-slate-400 text-center text-balance">the bits that shape how I think, design, and build.</p>
+          <h2 className="text-title text-center font-semibold text-balance bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2">what makes me <span className="fontGloock italic">tick</span></h2>
+          <p className="text-body font-normal text-slate-500 dark:text-slate-400 text-center text-balance">the bits that shape how I think, design, and build.</p>
         </div>
         <div className="mx-4 mb-4 md:mx-auto lg:mx-auto sm:mx-4 sm:mb-4 mt-8"> {/* Added margin-top class for space */}
           <BentoGridComp />
@@ -76,7 +76,7 @@ export default function About() {
 
         <div className="flex flex-row items-center gap-x-4">
           <div className="w-3 h-3 rounded-md bg-slate-400 shadow-lg shadow-white"></div>
-          <h4 className="uppercase text-xl font-bold tracking-wide leading-6 lg:leading-12 lg:text-xl bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Experience</h4>
+          <h4 className="uppercase text-label font-semibold bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">Experience</h4>
         </div>
 
         <ol className="relative ml-1.5 flex flex-col">
@@ -98,13 +98,13 @@ export default function About() {
               </span>
 
               <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-                <h4 className="text-lg lg:text-xl font-bold tracking-wide bg-gradient-to-br from-slate-500 to-slate-700 dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">
+                <h4 className="text-title font-semibold bg-gradient-to-br from-slate-500 to-slate-700 dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text">
                   {exp.company}
                 </h4>
-                <p className="text-sm text-slate-400 tabular-nums shrink-0">{exp.period}</p>
+                <p className="text-caption font-normal text-slate-400 tabular-nums shrink-0">{exp.period}</p>
               </div>
-              <h6 className="text-sm lg:text-base text-slate-500 dark:text-white tracking-wide mt-0.5">{exp.role}</h6>
-              <p className="text-sm text-slate-400 tracking-wide mt-1 max-w-xl">{exp.summary}</p>
+              <h6 className="text-caption font-normal text-slate-500 dark:text-white mt-0.5">{exp.role}</h6>
+              <p className="text-caption font-normal text-slate-400 mt-1 max-w-xl">{exp.summary}</p>
             </li>
           ))}
         </ol>
@@ -114,7 +114,7 @@ export default function About() {
 
       <div className="flex flex-col justify-center items-center sm:gap-y-4 md:gap-y-8 lg:gap-y-16 md:mx-10 lg:mx-60 my-20">
         <div className="flex flex-col gap-y-4 mx-2">
-          <h2 className="text-[clamp(1.875rem,3.5vw,2.75rem)] text-center leading-[1.15] tracking-wide bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2 font-semibold text-balance">Here's what my friends & colleagues say about me</h2>
+          <h2 className="text-title text-center bg-gradient-to-br from-slate-500 to-slate-700 dark:bg-gradient-to-br dark:from-slate-300 dark:to-slate-500 inline-block text-transparent bg-clip-text py-2 font-semibold text-balance">Here's what my friends & colleagues say about me</h2>
 
 
           <InfiniteMovingCardsDemo />

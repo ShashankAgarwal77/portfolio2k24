@@ -21,29 +21,29 @@ const FooterComp = () => {
                 <nav className="flex flex-wrap justify-center z-1000">
 
                     <div className="px-5 py-2">
-                        <a href="/" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
+                        <a href="/" className="text-caption font-normal text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200">
                             Home
                         </a>
                     </div>
                     <div className="px-5 py-2">
-                        <a href="/about" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
+                        <a href="/about" className="text-caption font-normal text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200">
                             About
                         </a>
                     </div>
                     <div className="px-5 py-2">
-                        <a href="https://www.linkedin.com/in/shashank-agarwal11/" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
+                        <a href="https://www.linkedin.com/in/shashank-agarwal11/" className="text-caption font-normal text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200">
                             LinkedIn
                         </a>
                     </div>
                     <div className="px-5 py-2">
-                        <a href="https://dribbble.com/boywhodesign" className="text-lg leading-6 text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200 tracking-wide">
+                        <a href="https://dribbble.com/boywhodesign" className="text-caption font-normal text-slate-500 hover:text-slate-900 dark:text-slate-500 dark:hover:text-gray-200">
                             Dribbble
                         </a>
                     </div>
 
                 </nav>
 
-                <p className="text-md leading-6 tracking-wide text-center text-slate-400 dark:text-slate-600">
+                <p className="text-caption font-normal text-center text-slate-400 dark:text-slate-600">
                     self created and now updated with ai
                 </p>
             </div>

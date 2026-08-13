@@ -68,7 +68,7 @@ export const StickyScroll = ({
                     y: isActive ? 0 : 4,
                   }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex items-center gap-x-3 text-[clamp(1.5rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-wide text-slate-700 dark:text-slate-100 text-balance"
+                  className="flex items-center gap-x-3 text-title font-semibold text-slate-700 dark:text-slate-100 text-balance"
                 >
                   <motion.span
                     aria-hidden
@@ -88,7 +88,7 @@ export const StickyScroll = ({
                     y: isActive ? 0 : 4,
                   }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-base lg:text-lg leading-relaxed text-slate-500 dark:text-slate-300 max-w-md mt-4 lg:pl-6"
+                  className="text-body font-normal text-slate-500 dark:text-slate-300 max-w-md mt-4 lg:pl-6"
                 >
                   {item.description}
                 </motion.p>

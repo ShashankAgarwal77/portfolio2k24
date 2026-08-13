@@ -57,7 +57,7 @@ export default function TracingBeamDemo() {
 
       <div className="hidden lg:flex fixed mx-10 my-40">
         <div ref={sidebarRef} className="flex flex-col items-start">
-          <h2 className="text-slate-400 dark:text-slate-600 text-md uppercase font-bold mb-4">
+          <h2 className="text-slate-400 dark:text-slate-600 text-title font-semibold uppercase mb-4">
             Content
           </h2>
           <ul className="space-y-4 w-48">
@@ -87,9 +87,9 @@ const dummyContent = [
       <>
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparent">
 
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Highlights of the UI of core consumer product</p>
+          <p className="text-body font-normal text-slate-500 dark:text-slate-400">Highlights of the UI of core consumer product</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+          <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
         </blockquote>
         <p>
@@ -109,8 +109,8 @@ const dummyContent = [
       <>
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 md:gap-16 lg:gap-32">
           <div>
-            <h4 className="text-2xl pb-4">My Roles &amp; Responsibilities</h4>
-            <ul className="list-disc text-justify leading-loose text-normal">
+            <h4 className="text-title font-semibold pb-4">My Roles &amp; Responsibilities</h4>
+            <ul className="list-disc text-justify text-body font-normal">
               <li>
                 <b>UX Analysis :</b> Problem Hypothesis Ideation & Validation, Curating Customer Journey Mapping, Heuristic Evaluation, Implementing UX Laws and much more.
               </li>
@@ -123,8 +123,8 @@ const dummyContent = [
             </ul>
           </div>
           <div>
-            <h4 className="text-2xl pb-4">Status &amp; Timeline</h4>
-            <ul className="list-disc text-justify leading-loose text-normal">
+            <h4 className="text-title font-semibold pb-4">Status &amp; Timeline</h4>
+            <ul className="list-disc text-justify text-body font-normal">
               <li>First Version designed back from June 2021 to August 2021</li>
               <li>Second Version designed back in Decemeber 2023</li>
             </ul>
@@ -142,9 +142,9 @@ const dummyContent = [
 
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Trust and Authencity thought resistance create anxiety and confusion which leads to frustrations to the customers</p>
+          <p className="text-body font-normal text-slate-500 dark:text-slate-400">Trust and Authencity thought resistance create anxiety and confusion which leads to frustrations to the customers</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+          <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
         </blockquote>
 
@@ -162,9 +162,9 @@ const dummyContent = [
 
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">These are the points that are ficitional or non-ficitional to build this product</p>
+          <p className="text-body font-normal text-slate-500 dark:text-slate-400">These are the points that are ficitional or non-ficitional to build this product</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+          <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
         </blockquote>
 
@@ -181,9 +181,9 @@ const dummyContent = [
 
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen :</p>
+          <p className="text-body font-normal text-slate-500 dark:text-slate-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen :</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+          <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
         </blockquote>
 
@@ -201,9 +201,9 @@ const dummyContent = [
         <p>
           <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen</p>
+            <p className="text-body font-normal text-slate-500 dark:text-slate-400">Since this is my personal hobby project, there would be some technical and non-technical constrains that might happen</p>
 
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+            <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
           </blockquote>
         </p>
@@ -220,9 +220,9 @@ const dummyContent = [
       <>
         <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-          <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">The process I developed in-journey to figure out and gather insights from different activities</p>
+          <p className="text-body font-normal text-slate-500 dark:text-slate-400">The process I developed in-journey to figure out and gather insights from different activities</p>
 
-          <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+          <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
         </blockquote>
 
@@ -237,31 +237,31 @@ const dummyContent = [
     description: (
       <>
         <div className="Empathize">
-          <h2 className="md:text-xl lg:text-3xl pb-4">Requirements & HMW's</h2>
+          <h2 className="text-title font-semibold pb-4">Requirements & HMW's</h2>
           <Image src={Empathize01_Img} alt="" className="rounded-xl py-2"></Image>
           <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
-            <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
-            <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+            <p className="text-body font-normal text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
+            <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
           </blockquote>
         </div>
 
         <br />
 
         <div className="ResearchGoalsAndInsights">
-          <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Research Goals & Insights</h2>
+          <h2 className="text-title font-semibold">Research Goals & Insights</h2>
 
           <hr className="h-px md:my-2 lg:my-4 bg-slate-200 border-0 dark:bg-slate-700" />
 
 
           <div className="ResearchHeader">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Research Overview</h2>
+            <h2 className="text-title font-semibold">Research Overview</h2>
 
             <Image src={Empathize01_Img} alt="" className="rounded-xl py-2"></Image>
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
+              <p className="text-body font-normal text-slate-500 dark:text-slate-400">Upon receiving my prompt, I start to emphasize cognizant of its complexities. Therefore, I try to deconstruct the prompt into tangible subproblems, which I tackled by establishing research goals.</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+              <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
             </blockquote>
           </div>
@@ -272,13 +272,13 @@ const dummyContent = [
 
           <div className="ResearchGoals">
 
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Research Goals</h2>
+            <h2 className="text-title font-semibold">Research Goals</h2>
             <Image src={ResearchInsights01_Img} alt="" className="rounded-xl py-2"></Image>
 
             <div className="grid md:grid-cols-1 lg:grid-cols-3 md:gap-x-4 lg:gap-x-8 md:my-2 lg:my-4">
-              <p className="text-xl">Since the product was at a very early stage, I was interested in exploring opportunities in the online food order & delivery digital products.</p>
-              <p className="text-xl">For the research I conducted is Primary Research through User Experience Interview & Surveys while keeping the research goals in mind.</p>
-              <p className="text-xl">There is been plus and minuses which I received from the user which is valuable to develop the further product.
+              <p className="text-body font-normal">Since the product was at a very early stage, I was interested in exploring opportunities in the online food order & delivery digital products.</p>
+              <p className="text-body font-normal">For the research I conducted is Primary Research through User Experience Interview & Surveys while keeping the research goals in mind.</p>
+              <p className="text-body font-normal">There is been plus and minuses which I received from the user which is valuable to develop the further product.
                 I channelize the data into Research Insights</p>
             </div>
           </div>
@@ -288,7 +288,7 @@ const dummyContent = [
           <br />
 
           <div className="UXInterviewResearchInsights">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">UX Interview // Research Insights</h2>
+            <h2 className="text-title font-semibold">UX Interview // Research Insights</h2>
 
             <div className="grid md:grid-cols-1 lg:grid-cols-2 md:gap-x-4 lg:gap-x-8 md:mb-2 lg:mb-4">
               <p>
@@ -312,7 +312,7 @@ const dummyContent = [
           <br />
 
           <div className="UXSurveyInsights">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">UX Survey // Research Insights</h2>
+            <h2 className="text-title font-semibold">UX Survey // Research Insights</h2>
 
             <p>To get more insights, I conducted to User Survey online using Google Forms to get more quantitative data to validate my hypothesis </p>
 
@@ -333,7 +333,7 @@ const dummyContent = [
         <br />
 
         <div className="PainPoints">
-          <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">UX Pain Points</h2>
+          <h2 className="text-title font-semibold">UX Pain Points</h2>
 
           <div className="painPoint_Content flex flex-col gap-y-4">
 
@@ -353,7 +353,7 @@ const dummyContent = [
         <br />
 
         <div className="Persona">
-          <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Persona Hypothesis I Created</h2>
+          <h2 className="text-title font-semibold">Persona Hypothesis I Created</h2>
 
           <Image src="https://cdn.sanity.io/images/loniby3f/production/9b60ae14f4432bc5fcbb7441c4ec660ab0a69325-3840x2160.png" width={3840} height={4850} className="rounded-xl py-2" alt=""></Image>
 
@@ -371,7 +371,7 @@ const dummyContent = [
         <div className="UserJourney">
 
           <div className="UserJourney_Content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">User Journey Mapping</h2>
+            <h2 className="text-title font-semibold">User Journey Mapping</h2>
             <p>Now it was pretty clear about the user needs through Persona, I started to visualize the User Journey Mapping.</p>
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/92ff8bccaf587e66197b0424a87846984af59a12-7680x6624.png" className="rounded-xl py-2" alt="" width={7680} height={6624}></Image>
@@ -393,8 +393,8 @@ const dummyContent = [
 
         <div className="problem">
           <div className="problem_content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Problem Statement</h2>
-            <p className="text-4xl text-slate-400 leading-normal">
+            <h2 className="text-title font-semibold">Problem Statement</h2>
+            <p className="text-title font-semibold text-slate-400">
               Sahil Rajput <i>is/an</i> software engineer <i>who</i> needs to order cuisines online with trusted representation of dishes <i>because</i> he want to be an explorer of new cuisines from multiple restaurants
             </p> <br />
 
@@ -409,13 +409,13 @@ const dummyContent = [
 
         <div className="Audit ">
           <div className="audit_content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Competitor Analysis</h2>
+            <h2 className="text-title font-semibold">Competitor Analysis</h2>
 
             <p>I have done the audit between 3 Companies i.e., Swiggy, Zomato, and Hello Green in which Swiggy and Zomato are Direct Competitors and Hello Green is Indirect Competitor.</p>
 
             <br />
 
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Competitor Analysis Report</h2>
+            <h2 className="text-title font-semibold">Competitor Analysis Report</h2>
 
             <ul className="list-disc">After doing the extensive audit of each competitor, I create the Competitive Audit Report which summarizes the <br />
               <li>Competitive Audit Goals</li>
@@ -428,7 +428,7 @@ const dummyContent = [
 
             <br />
 
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Competitor Analysis Insights</h2>
+            <h2 className="text-title font-semibold">Competitor Analysis Insights</h2>
 
             <p>Although there is an good product offerings by competitors but they lack in product vision execution.</p>
 
@@ -441,10 +441,10 @@ const dummyContent = [
 
         <div className="goal">
           <div className="goal_content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Goal Statement</h2>
+            <h2 className="text-title font-semibold">Goal Statement</h2>
             <p>It's time to finalize the problem statement and user pain points into the Final Statement as my Goal Statement</p>
             <br />
-            <p className="text-4xl text-slate-400 leading-normal">
+            <p className="text-title font-semibold text-slate-400">
               Our HonestBites will let users order food with trust and transparency which will affect users like sahil who are explorer of different cuisines from different restuarants by satisfy there adventurous palate with their taste preferences. We will measure effectiveness by analyzing the consumer loyalty towards the platform
             </p> <br />
           </div>
@@ -456,15 +456,15 @@ const dummyContent = [
 
         <div className="storyboard">
           <div className="storyboard_content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Storyboard</h2>
+            <h2 className="text-title font-semibold">Storyboard</h2>
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/f882216c7db4b643e37bbda51ddda35fcc2d90cd-3840x2146.png" className="rounded-xl py-2" alt="" width={3840} height={2146}></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400">I use storyboard to visualize and ideate the product scenario</p>
+              <p className="text-body font-normal text-slate-500 dark:text-slate-400">I use storyboard to visualize and ideate the product scenario</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+              <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
             </blockquote>
 
@@ -477,7 +477,7 @@ const dummyContent = [
 
         <div className="IA">
           <div className="IA_content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Information Architecture(IA) & User Flow</h2>
+            <h2 className="text-title font-semibold">Information Architecture(IA) & User Flow</h2>
 
             <p> Now as I have clear in my mind about user & product scenario of pain points and opportunities , I have started to created the information architecture
               Information Architecture really helps me to create the structure of navigation & components I will use in the user-flow journey.</p>
@@ -486,9 +486,9 @@ const dummyContent = [
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400"> You can preview the whole IA by <a href="https://www.figma.com/file/pIdmfbNQDwkJ8lJKyc7rX8/HonestBites---UX-Case-Study?type=design&node-id=274%3A1702&mode=design&t=zY0XaOncAy5QCPNh-1" className="hover:text-rgay-500">Click Here</a></p>
+              <p className="text-body font-normal text-slate-500 dark:text-slate-400"> You can preview the whole IA by <a href="https://www.figma.com/file/pIdmfbNQDwkJ8lJKyc7rX8/HonestBites---UX-Case-Study?type=design&node-id=274%3A1702&mode=design&t=zY0XaOncAy5QCPNh-1" className="hover:text-rgay-500">Click Here</a></p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+              <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
             </blockquote>
 
@@ -499,7 +499,7 @@ const dummyContent = [
               <li>Ideating about the scenario using Crazy's 8 and Storyboards</li>
               <li>Developing the Information Architecture (IA)</li>
             </ul>
-            <h3 className="text-3xl leading-loose"> It's time to start the designing process </h3>
+            <h3 className="text-title font-semibold"> It's time to start the designing process </h3>
 
           </div>
         </div>
@@ -510,25 +510,25 @@ const dummyContent = [
 
         <div className="LowFi">
           <div className="LowFi_content">
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Low Fiedility Wireframes</h2>
+            <h2 className="text-title font-semibold">Low Fiedility Wireframes</h2>
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/f99cdc857564e73130a68b616532bf0be6711977-2560x2180.png" className="rounded-xl py-2" alt="" width={2560} height={2180}></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400"> Creating Paper Wireframes really helps me to brainstorm ideas on how can particular component can be placed in content architecture.</p>
+              <p className="text-body font-normal text-slate-500 dark:text-slate-400"> Creating Paper Wireframes really helps me to brainstorm ideas on how can particular component can be placed in content architecture.</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+              <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
             </blockquote>
 
             <div className="grid grid-cols-2 gap-x-12">
               <div className="myGoals">
-                <h3 className="text-3xl">My Goals</h3>
+                <h3 className="text-title font-semibold">My Goals</h3>
                 <p>I tried to create 5 different Versions of a Single Page and Pick the Best Component I like from each of the different versions and create the final version.</p>
               </div>
               <div className="myThoughts">
-                <h3 className="text-3xl">My Thoughts</h3>
+                <h3 className="text-title font-semibold">My Thoughts</h3>
                 <p>Finding the best possible way to organize the content structure so that users can easily able to access and navigate through pages.</p>
               </div>
             </div>
@@ -543,16 +543,16 @@ const dummyContent = [
         <div className="DesignSystem">
           <div className="DesignSystem_content">
 
-            <h2 className="md:text-xl lg:text-3xl md:leading-relaxed lg:leading-loose">Design System</h2>
+            <h2 className="text-title font-semibold">Design System</h2>
             <p>Once my wireframes are finalized, i started to create the mini design system for my project, started with the basics of defining the fundamentals such as color pallete, typography, iconography & basic components.</p>
 
             <Image src="https://cdn.sanity.io/images/loniby3f/production/3129006f755af3adbea887bbd0e5932235683c2e-11264x7008.png" alt="" height={11264} width={7008} className="rounded-xl py-2"></Image>
 
             <blockquote className="flex flex-row justify-between items-center p-2 my-4 border-s-4 border-slate-300 dark:border-gray-500 dark:bg-transparentt">
 
-              <p className="text-lg font-medium leading-relaxed text-slate-500 dark:text-slate-400"> Aim is to build the foundation first, so future designed elements can be easily added and documented</p>
+              <p className="text-body font-normal text-slate-500 dark:text-slate-400"> Aim is to build the foundation first, so future designed elements can be easily added and documented</p>
 
-              <p className='inline-block font-mono font-bold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase tracking-wide text-slate-400 dark:text-slate-500 text-lg'>Image</p>
+              <p className='inline-block font-mono text-label font-semibold px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 uppercase text-slate-400 dark:text-slate-500'>Image</p>
 
             </blockquote>
           </div>
@@ -567,7 +567,7 @@ const dummyContent = [
     title: " High Fiedility Mockups",
     description: (
       <>
-        <h2 className="text-3xl">Points to be explained :</h2> <br />
+        <h2 className="text-title font-semibold">Points to be explained :</h2> <br />
         <ul className="list-decimal">
           <li>Food Overview - Provided by restaurant to summarize about the dish in words</li>
           <li>Images Uploaded by Restaurant - Curated photos and videos uploaded by the restaurant of particular food</li>
@@ -605,7 +605,7 @@ const dummyContent = [
 
         This project really impacts me as an individual because it really helps me understand how critical is UX for any business to grow on the next level and how vast the opportunities to solve social problems by Experience Research and Design <br /> <br />
 
-        <h2 className="text-3xl">Design is not just what it looks like and feels like. Design is how it works. ~ Steve Job</h2>
+        <h2 className="text-title font-semibold">Design is not just what it looks like and feels like. Design is how it works. ~ Steve Job</h2>
 
       </>
     ),

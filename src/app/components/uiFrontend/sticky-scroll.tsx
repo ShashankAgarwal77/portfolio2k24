@@ -63,14 +63,14 @@ function Chapter({
   return (
     <Reveal as="section" className="mx-auto w-full max-w-[68ch]">
       <div className="flex items-baseline gap-x-4">
-        <span className="select-none text-sm font-medium tabular-nums tracking-widest text-slate-400 dark:text-slate-500">
+        <span className="select-none uppercase text-label font-semibold tabular-nums text-slate-400 dark:text-slate-500">
           {index}
         </span>
-        <h3 className="text-[clamp(1.5rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-tight text-balance text-slate-700 dark:text-slate-100">
+        <h3 className="text-title font-semibold text-balance text-slate-700 dark:text-slate-100">
           {title}
         </h3>
       </div>
-      <div className="mt-5 space-y-5 text-base lg:text-lg leading-relaxed text-slate-500 dark:text-slate-300">
+      <div className="mt-5 space-y-5 text-body font-normal text-slate-500 dark:text-slate-300">
         {children}
       </div>
     </Reveal>
@@ -81,7 +81,7 @@ export function StickyScrollRevealDemo() {
   return (
     <div className="flex flex-col gap-y-12 lg:gap-y-16 pt-6">
       {/* Dek — sets the first-person tone before the chapters begin. */}
-      <Reveal as="p" className="mx-auto w-full max-w-[68ch] text-lg lg:text-xl leading-relaxed text-slate-500 dark:text-slate-300">
+      <Reveal as="p" className="mx-auto w-full max-w-[68ch] text-body font-normal text-slate-500 dark:text-slate-300">
         Every designer has an origin story. Mine runs through engineering
         lecture halls, a pandemic full of half-broken AR prototypes, and a long
         chase after why{" "}
@@ -104,8 +104,8 @@ export function StickyScrollRevealDemo() {
       {/* 2 — But I wanted to shape it. */}
       <Chapter index="02" title="But I wanted to shape it.">
         <p>
-          Engineering taught me the <em className="not-italic font-medium text-slate-700 dark:text-slate-200">how</em>;
-          design was the <em className="not-italic font-medium text-slate-700 dark:text-slate-200">why</em>. So I
+          Engineering taught me the <em className="not-italic font-semibold text-slate-700 dark:text-slate-200">how</em>;
+          design was the <em className="not-italic font-semibold text-slate-700 dark:text-slate-200">why</em>. So I
           taught myself UX — chasing craft and real impact instead of waiting
           for the industry to catch up. The more I built, the more I wanted a
           say in what got built in the first place.

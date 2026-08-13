@@ -1,0 +1,148 @@
+import { ArticleShell } from "@/app/components/Article";
+import { Annotated } from "@/app/components/Annotated";
+
+export const metadata = {
+  title: "I rewrote a national UX standard so a machine could read it",
+  description:
+    "Audit360, an AI audit platform for India's 60,000 government websites. The tool was the easy half. Making 480 guidelines machine-readable was the work.",
+};
+
+<ArticleShell
+  index={[
+    { id: "the-conversation-that-started-it", label: "Origin" },
+    { id: "what-was-actually-broken", label: "The problem" },
+    { id: "the-standard-was-the-product", label: "The standard" },
+    { id: "the-machine-that-reads-it", label: "The machine" },
+    { id: "scoring-inside-a-government", label: "Scoring" },
+    { id: "the-five-minute-wait", label: "The product" },
+    { id: "auditing-my-own-work", label: "What I found" },
+    { id: "what-happened", label: "Outcome" },
+    { id: "what-id-do-differently", label: "What I'd change" },
+  ]}
+>
+
+# I rewrote a national UX standard so a <span className="fontGloock italic font-normal">machine could read it</span>
+
+<p className="mb-10 text-body text-slate-600 dark:text-slate-400">Audit360, the AI audit platform NeGD uses to evaluate government websites against UX4G, GIGW and Lighthouse. Built by four people. The tool was the easy half.</p>
+
+<p className="mb-12 text-caption text-slate-500 dark:text-slate-400">Product and Designe · Team of four · Feb 2025 – Mar 2026, in production</p>
+
+<div className="mb-14 grid grid-cols-2 gap-x-6 gap-y-5 border-y border-slate-200 py-6 dark:border-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
+  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">60,000</p><p className="text-caption text-slate-500 dark:text-slate-400">government sites</p></div>
+  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">480 → 411</p><p className="text-caption text-slate-500 dark:text-slate-400">guidelines rewritten</p></div>
+  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">21 → 63%</p><p className="text-caption text-slate-500 dark:text-slate-400">machine-evaluable</p></div>
+  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">5,463</p><p className="text-caption text-slate-500 dark:text-slate-400">websites audited</p></div>
+  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">7 days → 5 min</p><p className="text-caption text-slate-500 dark:text-slate-400">per audit</p></div>
+  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">4</p><p className="text-caption text-slate-500 dark:text-slate-400">people</p></div>
+</div>
+
+{/* SECTION STUB — §1 The conversation that started it. The CEO exchange, the 7-days-per-site arithmetic, the 1,000-year number with its single-auditor assumption stated. */}
+
+{/* SECTION STUB — §2 What was actually broken. Manual audit anatomy, PDF to ministry POC, 6-month re-audit, no scoring, no tracking. Land the irony: an audit programme that could not audit itself. */}
+
+## The standard was the product
+
+UX4G had 480 guidelines. A team of four to five designers audited against them by hand, seven days a site. The obvious read is that the bottleneck was speed.
+
+It wasn't. It was that most of the standard could not be evaluated by anything — a machine or a person.
+
+Three guidelines, verbatim:
+
+> *Your website is hosted on a secure server.*
+>
+> *Text on the homepage is concise and to the point to accommodate smaller screens.*
+>
+> *The relationship between controls and their corresponding actions is clear and apparent.*
+
+The first is testable in a single request. The third is a judgement two designers could reasonably disagree on. Nothing in the document distinguished them. There was no field saying what evidence a rule needed, which page it applied to, what a pass looked like, or who was supposed to fix it. The guidelines lived in a spreadsheet and on a website, written by a designer and a project manager who had both since moved on, with no version history.
+
+So automating the audit was the second problem. The first was that **the standard had never been written to be measured.**
+
+I went through all 480 rules one at a time and gave the corpus a schema — 22 fields, every one of them answering a question the pipeline would otherwise have to guess.
+
+<div className="my-8 overflow-x-auto">
+  <table className="w-full min-w-[34rem] border-collapse text-left text-caption">
+    <thead>
+      <tr className="border-b border-slate-300 dark:border-white/[0.14]">
+        <th className="py-2.5 pr-6 font-semibold text-slate-900 dark:text-slate-100">Field</th>
+        <th className="py-2.5 font-semibold text-slate-900 dark:text-slate-100">Answers</th>
+      </tr>
+    </thead>
+    <tbody className="text-slate-600 dark:text-slate-400">
+      {[
+        ["Evidence Type", "What must be captured to judge this — DOM, visual, content, behavioural, semantic"],
+        ["AI Support", "What kind of evaluator can judge it — deterministic, evaluative, assisted, manual"],
+        ["Enforcement Level", "How hard the requirement is — foundational, optimizing, advanced"],
+        ["Page / Component / Context / Platform", "Where it applies, so it never fires where it doesn't belong"],
+        ["Examples – Pass / Fail", "What compliance actually looks like, so judgement has an anchor"],
+        ["Roles", "Who fixes it — developer, designer, content"],
+        ["Stable ID / Version", "So a rule can change without breaking every report that cites it"],
+      ].map(([field, answer]) => (
+        <tr key={field} className="border-b border-slate-200 dark:border-white/[0.08]">
+          <td className="py-2.5 pr-6 align-top">
+            <code className="rounded bg-slate-100 px-1.5 py-0.5 text-slate-800 dark:bg-white/[0.06] dark:text-slate-200">{field}</code>
+          </td>
+          <td className="py-2.5 align-top">{answer}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+Then I collapsed the duplicates. Rules written in different tones that asked for the same thing became one rule. **480 became 411.**
+
+What the schema bought was not tidiness. It turned a guideline from a sentence into a **routable object**: *this rule needs a full-page screenshot of the footer, on the homepage, judged by a vision model, and a developer is the one who fixes it.* Before the applicability fields existed, we ran the same page through the pipeline repeatedly and got different answers, because a rule with no declared page and no declared evidence gives the model nothing to hold onto. It fills the gap with invention.
+
+**Machine-evaluable coverage went from roughly 100 of 480 rules to 260 of 411** — about 21% to 63%. Not one line of that came from a better model. It came from rewriting the input.
+
+{/* IMAGE NEEDED: one real guideline row expanded across all 22 fields — TC-001 (SSL/TLS) is the clearest. Show Issue, Advice, Pass/Fail examples, References, applicability axes. Save to /public/case-study/audit360/schema-row.webp */}
+
+{/* SECTION STUB — §4 The machine that reads it. Evidence-type routing, DOM-first with visual fallback, one prompt per page, human page-tagging and why crawling was rejected. State plainly that OpenAI was directed by the CTO, not chosen by evaluation. */}
+
+{/* SECTION STUB — §5 Scoring inside a government. The 50/25/25 split and its self-weighting tension, refusing a single site-level number, the leaderboard scoped to homepages, band language. */}
+
+{/* SECTION STUB — §6 The five-minute wait. IA, report structure, progressive disclosure, then the async job design: email hand-off, per-page progress, retry, API failure, restricted and empty states, and using the wait to teach UX. */}
+
+## Auditing my own work
+
+A year in, I ran the analysis on my own corpus that I had built the product to run on other people's websites.
+
+It failed.
+
+The schema I had designed to eliminate inconsistency had drifted. `Severity` was carrying five values where it should have carried three — 193 rules said *Medium Issue*, another 62 just said *Medium*. `AI Support` had fourteen values, because two different vocabularies had been mixed into one column: the type of evaluator, and, on 94 rules, a completely separate scale of *High / Medium / Low / Partial*. `Evidence Type` had thirty-odd values including free text somebody had typed once — *UX review*, *Data logic*, *Logic review*. Three different spellings meant "applies everywhere."
+
+The interesting part was the shape of it. **The drift wasn't scattered. It was clustered in 7 of 32 categories** — Performance Optimization, Analytics, Accessibility, Offline Functionality and three others, 104 rules in total. Random carelessness spreads evenly. Clustering means provenance.
+
+Those categories were the ones where the metadata had been AI-populated in a separate pass, and never normalised afterward. The guidelines themselves were human-written and fine. The fields the pipeline actually routes on were not.
+
+That mattered because routing is exact-match. A guideline whose page reads `All pages` does not match a filter looking for `Common`. It doesn't error. It just quietly isn't there.
+
+Which led to the finding I least wanted:
+
+<blockquote>
+
+`Page-wise Applicability` held **156 distinct values** across 411 rules. The product accepts **7**.
+
+</blockquote>
+
+Half of those page values weren't page types at all — `Pre-SSO`, `Deep hierarchies`, `Core journeys`, `Repeating content types`. They were contexts, sitting in the page column, while a perfectly good `Context` column sat unused beside them. Of the 336 rules a machine can judge, **182 are addressed to pages a user has no way to submit**, and they fall outside the automated audit entirely. Whole categories go with them — Lists and Filters, Navigation and IA, Forms and Data Entry.
+
+I also shipped a `Confidence Weight` on every rule, a number between 0.55 and 0.98. It looks like rigour. It is a placeholder. It was never calibrated against outcomes, it doesn't gate a finding, and it doesn't move a score. The honest version is that I designed the field before I had a way to earn it, and left it in.
+
+So I fixed what I could fix, and made the rest visible:
+
+- **Normalised the corpus.** 405 of 412 rows touched. Severity 5 → 3 values. `AI Support` 14 → 5, with the automation *level* split into its own column where it belonged. Platform formats unified. Evidence types reduced to 14 canonical tokens.
+- **Logged every edit.** A `Normalization Note` column preserving the original value of every cell I changed, and every inferred value flagged for review rather than silently accepted.
+- **Closed the door behind me.** Controlled-vocabulary constraints on the four routing fields, so the next person to add a guideline physically cannot invent a sixth severity. The drift happened because nothing stopped it, not because anyone was careless.
+
+The routing gap is not fixed. Fixing it means separating page from context across 411 rules, and — the part that matters more — never letting an unmatched guideline disappear silently. A compliance tool that skips a check without saying so is worse than one that fails loudly.
+
+<p className="mb-10 mt-8 text-body text-slate-600 dark:text-slate-400">The lesson wasn't about spreadsheets. I built a system to make a standard measurable, and then let the system's own inputs go unmeasured. The governance was the deliverable, and I had shipped the schema without it.</p>
+
+{/* IMAGE NEEDED: before/after distribution of the four controlled-vocabulary fields — 5→3 severity, 14→5 AI support, 30+→14 evidence types, and the 156-vs-7 page value gap. Save to /public/case-study/audit360/drift-analysis.webp */}
+
+{/* SECTION STUB — §8 What happened. 5,463 websites since Aug 2025. Effort equivalence with the assumption shown: 38,241 audit-days across a team of four to five ≈ 21–26 years of throughput, delivered in twelve months. The honest part: no accuracy baseline, no re-audit deltas yet. */}
+
+{/* SECTION STUB — §9 What I'd do differently. Calibrate confidence or remove the field. Split page from context, add an explicit unknown state. Build the dispute path. Solve version comparability. Surface severity, enforcement level and roles in the report — the schema carries them and the report renders none of them. Label all of these as proposals, not shipped work. */}
+
+</ArticleShell>

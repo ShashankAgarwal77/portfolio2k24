@@ -160,16 +160,16 @@ const Card = ({
             <div className="flex flex-col justify-between items-stretch gap-4 w-full relative">
                 {/* Text Content Wrapper (75% width on desktop) */}
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-2xl font-bold tracking-wide text-slate-600 dark:text-white">
+                    <h2 className="text-title font-semibold text-slate-600 dark:text-white">
                         {title}
                     </h2>
-                    <h3 className="text-slate-500 font-semibold text-xl tracking-wide">
+                    <h3 className="text-title font-semibold text-slate-500">
                         {subtitle}
                     </h3>
 
                 </div>
 
-                <div className="text-slate-500 text-sm md:text-md dark:text-slate-200 tracking-wide">
+                <div className="text-label font-semibold uppercase text-slate-500 dark:text-slate-200">
                     <ol className="grid grid-cols-2 md:grid-cols-3 col-auto gap-2 justify-self-stretch">
                         {keypoints.map((keypoint, index) => (
                             <div key={index}>
@@ -193,10 +193,10 @@ const Card = ({
                     {/* CTA Button */}
                     <button
                         ref={buttonRef}
-                        className="w-full inline-flex items-center justify-center rounded-md border border-slate-400 dark:border-slate-800 
+                        className="text-caption font-semibold w-full inline-flex items-center justify-center rounded-md border border-slate-400 dark:border-slate-800
                  bg-[linear-gradient(110deg,#cbd5e1,45%,#f1f5f9,55%,#cbd5e1)] dark:bg-[linear-gradient(110deg,#000103,80%,#1e2631,90%,#000103)]
-                 bg-[length:200%_100%] animate-shimmer py-4 text-base md:text-lg font-bold text-slate-800 dark:text-slate-300 transition-colors 
-                 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 tracking-wide"
+                 bg-[length:200%_100%] animate-shimmer py-4 text-slate-800 dark:text-slate-300 transition-colors
+                 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
                         onClick={() => {
                             if (buttonRef.current) {
                                 window.location.href = buttonlink;

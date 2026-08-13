@@ -100,7 +100,7 @@ export const InfiniteMovingCards = ({
               ></div>
 
               {/* Testimonial quote */}
-              <span className="relative z-20 text-base lg:text-lg leading-[1.55] text-slate-700 dark:text-slate-100 font-normal text-balance">
+              <span className="relative z-20 text-body font-normal text-slate-700 dark:text-slate-100 text-balance">
                 {item.quote}
               </span>
 
@@ -116,10 +116,10 @@ export const InfiniteMovingCards = ({
                 </span>
 
                 <span className="flex flex-col ml-3">
-                  <span className="text-sm lg:text-base leading-snug text-slate-700 dark:text-slate-200 font-semibold">
+                  <span className="text-caption font-semibold text-slate-700 dark:text-slate-200">
                     {item.name}
                   </span>
-                  <span className="text-xs lg:text-sm leading-snug text-slate-500 dark:text-slate-400 font-normal">
+                  <span className="text-caption font-normal text-slate-500 dark:text-slate-400">
                     {item.title}
                   </span>
                 </span>

@@ -6,7 +6,7 @@ export function SVGMaskEffectDemo() {
     <div className="h-screen w-full flex items-center justify-center overflow-hidden">
       <MaskContainer
         revealText={
-          <p className="max-w-4xl mx-auto text-slate-800 text-center  text-8xl font-bold">
+          <p className="max-w-4xl mx-auto text-slate-800 text-center text-8xl font-semibold">
             Welcome to my world of hobbies 📸🎨
           </p>
         }

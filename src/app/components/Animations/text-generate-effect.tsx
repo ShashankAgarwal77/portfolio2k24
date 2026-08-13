@@ -59,9 +59,9 @@ export const TextGenerateEffect = ({
   };
 
   return (
-    <div className={cn("font-medium", className)}>
+    <div className={cn("font-semibold", className)}>
       <div className="my-4">
-        <div className="text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.1] tracking-wide text-balance">
+        <div className="text-headline text-balance">
           {renderWords()}
         </div>
       </div>

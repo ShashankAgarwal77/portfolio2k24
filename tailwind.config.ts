@@ -26,8 +26,14 @@ const config: Config = {
         'custom-variable': ['var(--font-satoshi)'],
       },
 
-       fontVariationSettings: {
-        'custom-variable': '\'wght\' var(--font-weight), \'wdth\' var(--font-width)',
+      // The six-role type scale (DESIGN.md §3). Every text element on the
+      // site maps to exactly one of these — no arbitrary text-[...] values.
+      fontSize: {
+        headline: ['clamp(2.25rem, 5vw, 4rem)', { lineHeight: '1.05', letterSpacing: 'normal' }],
+        title: ['clamp(1.5rem, 2.5vw, 1.875rem)', { lineHeight: '1.25', letterSpacing: 'normal' }],
+        body: ['1.125rem', { lineHeight: '1.65', letterSpacing: 'normal' }],
+        caption: ['0.875rem', { lineHeight: '1.5', letterSpacing: 'normal' }],
+        label: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.14em' }],
       },
 
       backgroundImage: {

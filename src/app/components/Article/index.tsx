@@ -78,9 +78,9 @@ export function ArticleShell({
                   href={`#${id}`}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "block py-1.5 pl-3 text-xs leading-snug transition-colors",
+                    "block py-1.5 pl-3 text-caption transition-colors",
                     isActive
-                      ? "font-medium text-slate-900 dark:text-slate-100"
+                      ? "font-semibold text-slate-900 dark:text-slate-100"
                       : "text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-300"
                   )}
                 >
