@@ -1,6 +1,7 @@
 import { ArticleShell } from "@/app/components/Article";
 import { Annotated } from "@/app/components/Annotated";
-import Audit360Thumb from "../../../../../public/audit360_thumbnail.png";
+import { MediaMarquee } from "@/app/components/MediaMarquee";
+import { ShotPlaceholder } from "@/app/components/ShotPlaceholder";
 
 export const metadata = {
   title: "I rewrote a national UX standard so a machine could read it",
@@ -9,7 +10,6 @@ export const metadata = {
 };
 
 <ArticleShell
-  backdrop={Audit360Thumb}
   index={[
     { id: "the-conversation-that-started-it", label: "Origin" },
     { id: "what-was-actually-broken", label: "The problem" },
@@ -25,22 +25,46 @@ export const metadata = {
 
 # I rewrote a national UX standard so a <span className="fontGloock italic font-normal">machine could read it</span>
 
-<p className="mb-10 text-body text-slate-600 dark:text-slate-400">Audit360, the AI audit platform NeGD uses to evaluate government websites against UX4G, GIGW and Lighthouse. Built by four people. The tool was the easy half.</p>
+<p className="mb-10 text-lg leading-[1.7] text-slate-600 dark:text-slate-400">Audit360, the AI audit platform NeGD uses to evaluate government websites against UX4G, GIGW and Lighthouse. Built by four people. The tool was the easy half.</p>
 
-<p className="mb-12 text-caption text-slate-600 dark:text-slate-400">Product and Designe · Team of four · Feb 2025 – Mar 2026, in production</p>
+<p className="mb-12 text-sm text-slate-500 dark:text-slate-400">Product Manager and Product Designer · Team of four · Feb 2025 – Mar 2026, in production</p>
 
 <div className="mb-14 grid grid-cols-2 gap-x-6 gap-y-5 border-y border-slate-200 py-6 dark:border-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">60,000</p><p className="text-caption text-slate-500 dark:text-slate-400">government sites</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">480 → 411</p><p className="text-caption text-slate-500 dark:text-slate-400">guidelines rewritten</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">21 → 63%</p><p className="text-caption text-slate-500 dark:text-slate-400">machine-evaluable</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">5,463</p><p className="text-caption text-slate-500 dark:text-slate-400">websites audited</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">7 days → 5 min</p><p className="text-caption text-slate-500 dark:text-slate-400">per audit</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">4</p><p className="text-caption text-slate-500 dark:text-slate-400">people</p></div>
+  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">60,000</p><p className="text-sm text-slate-500 dark:text-slate-400">government sites</p></div>
+  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">480 → 411</p><p className="text-sm text-slate-500 dark:text-slate-400">guidelines rewritten</p></div>
+  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">21 → 63%</p><p className="text-sm text-slate-500 dark:text-slate-400">machine-evaluable</p></div>
+  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">5,463</p><p className="text-sm text-slate-500 dark:text-slate-400">websites audited</p></div>
+  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">7 days → 5 min</p><p className="text-sm text-slate-500 dark:text-slate-400">per audit</p></div>
+  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">4</p><p className="text-sm text-slate-500 dark:text-slate-400">people</p></div>
 </div>
 
-{/* SECTION STUB — §1 The conversation that started it. The CEO exchange, the 7-days-per-site arithmetic, the 1,000-year number with its single-auditor assumption stated. */}
+## The conversation that started it
 
-{/* SECTION STUB — §2 What was actually broken. Manual audit anatomy, PDF to ministry POC, 6-month re-audit, no scoring, no tracking. Land the irony: an audit programme that could not audit itself. */}
+India runs more than 60,000 government websites. In 2025, none of them had been systematically evaluated for usability or accessibility. Not audited badly — never audited at all.
+
+I was at an office gathering with NeGD's President and CEO when it came up, and he asked me directly what we should do about it.
+
+I gave him arithmetic instead of an opinion. A manual UX audit took my team seven days per site. One auditor working through 60,000 sites at that rate is a little over eleven hundred years. Even the whole team never finishes.
+
+So the answer could not be *audit harder*. It had to be a system that evaluated government websites against UX4G, GIGW, WCAG and DBIM without a designer reading every page. He approved it in that conversation. The CEO directed that it be built and shipped under UX4G.
+
+The stated goal was making India's digital ecosystem accessible and intuitive for citizens. The real pressure was narrower and more embarrassing: we owned 480 published guidelines with no structure, no versioning, no changelog, no scoring, and no record of how many websites we had ever audited.
+
+## What was actually broken
+
+The manual process worked like this. One designer took one platform and spent seven days on it, alongside their actual project work.
+
+Day one went to understanding the product, its audience and its IA. Days two and three were heuristic evaluation plus GIGW and DBIM. Days four to six were the UX4G guidelines, one at a time, by eye. Day seven was writing it up.
+
+The deliverable was a PDF, emailed to a point of contact at the ministry. If they understood it, they acted on it. If they did not, they called us. A re-audit happened six months later, if it happened.
+
+There was no score. Two designers auditing the same site would produce different findings and we had no way to know how different, because we never tested it. There was no tracker either, which is why I cannot tell you how many audits the team completed before Audit360 existed.
+
+<blockquote>
+
+An audit programme that could not audit itself. That is the sentence the whole project came out of.
+
+</blockquote>
 
 ## The standard was the product
 
@@ -63,7 +87,7 @@ So automating the audit was the second problem. The first was that **the standar
 I went through all 480 rules one at a time and gave the corpus a schema — 22 fields, every one of them answering a question the pipeline would otherwise have to guess.
 
 <div className="my-8 overflow-x-auto">
-  <table className="w-full min-w-[34rem] border-collapse text-left text-caption">
+  <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
     <thead>
       <tr className="border-b border-slate-300 dark:border-white/[0.14]">
         <th className="py-2.5 pr-6 font-semibold text-slate-900 dark:text-slate-100">Field</th>
@@ -82,9 +106,9 @@ I went through all 480 rules one at a time and gave the corpus a schema — 22 f
       ].map(([field, answer]) => (
         <tr key={field} className="border-b border-slate-200 dark:border-white/[0.08]">
           <td className="py-2.5 pr-6 align-top">
-            <code className="rounded bg-slate-100 px-1.5 py-0.5 text-slate-800 dark:bg-white/[0.06] dark:text-slate-200">{field}</code>
+            <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[0.8em] text-slate-800 dark:bg-white/[0.06] dark:text-slate-200">{field}</code>
           </td>
-          <td className="py-2.5 align-top">{answer}</td>
+          <td className="py-2.5 align-top leading-[1.6]">{answer}</td>
         </tr>
       ))}
     </tbody>
@@ -97,13 +121,127 @@ What the schema bought was not tidiness. It turned a guideline from a sentence i
 
 **Machine-evaluable coverage went from roughly 100 of 480 rules to 260 of 411** — about 21% to 63%. Not one line of that came from a better model. It came from rewriting the input.
 
-{/* IMAGE NEEDED: one real guideline row expanded across all 22 fields — TC-001 (SSL/TLS) is the clearest. Show Issue, Advice, Pass/Fail examples, References, applicability axes. Save to /public/case-study/audit360/schema-row.webp */}
+<ShotPlaceholder
+  title="One guideline, all 22 fields"
+  detail="Export a single row of the mastersheet — TC-001, the SSL/TLS rule, is the clearest. Show Issue, Advice, Pass and Fail examples, References, Enforcement Level, and the four applicability axes so a reader can see the sentence become an object."
+  path="/public/case-study/audit360/schema-row.webp"
+  ratio="16 / 10"
+/>
 
-{/* SECTION STUB — §4 The machine that reads it. Evidence-type routing, DOM-first with visual fallback, one prompt per page, human page-tagging and why crawling was rejected. State plainly that OpenAI was directed by the CTO, not chosen by evaluation. */}
+## The machine that reads it
 
-{/* SECTION STUB — §5 Scoring inside a government. The 50/25/25 split and its self-weighting tension, refusing a single site-level number, the leaderboard scoped to homepages, band language. */}
+Once a guideline declares its own evidence, the pipeline stops guessing and starts routing.
 
-{/* SECTION STUB — §6 The five-minute wait. IA, report structure, progressive disclosure, then the async job design: email hand-off, per-page progress, retry, API failure, restricted and empty states, and using the wait to teach UX. */}
+A rule tagged `DOM` gets a structural query. A rule tagged `Visual` gets a full-page screenshot, captured with Puppeteer. Content rules read text, behavioural rules look at state. The screenshot is not decoration — visual hierarchy, contrast in rendered state and whether a control *looks* like a control are not recoverable from markup. When DOM extraction fails, the screenshot is also the fallback, so a rule degrades instead of disappearing.
+
+Each page is evaluated in a single call: one JSON prompt carrying every guideline applicable to that page, returning a structured verdict per rule.
+
+The part that looks like a compromise, and is actually the design: **a human tells us which pages to audit.** The user pastes in up to seven URLs — homepage mandatory, then About Us, Contact Us, Sign In and three of their choosing.
+
+We could have crawled. We chose not to, for three reasons that are specific to this ecosystem. Government sites share no path-naming convention, so *about us* is `aboutus`, `about-us`, or something a vendor invented in 2011. Many of them block crawlers outright. And we cannot hit a ministry's servers at volume without permission we do not have. Seven typed URLs buys accuracy that no classifier would have given us, and it keeps us on the right side of an infrastructure question that is not ours to answer.
+
+One constraint I did not control: **the model was chosen for us.** Our CTO directed OpenAI at project initiation, and no alternatives were evaluated. It works. But I cannot tell you it was the right call, because nobody ran the comparison, and I did not push for one.
+
+<ShotPlaceholder
+  title="Evidence routing, end to end"
+  detail="A diagram: 411 guidelines → applicability filter (page, component, context, platform) → evidence capture split across DOM, Puppeteer screenshot and Lighthouse → single structured prompt per page → verdicts. Draw it; do not screenshot a whiteboard."
+  path="/public/case-study/audit360/pipeline-diagram.webp"
+  ratio="16 / 9"
+/>
+
+## Scoring inside a government
+
+The manual process produced no score at all. Introducing one meant deciding what a government website's number is made of, which turned out to be the most political decision in the product.
+
+The split is **UX4G 50%, GIGW UI/UX 25%, Lighthouse 25%**. My Project Head and I set it. The defensible reason is proportionality: UX4G contributes over 400 evaluated guidelines where GIGW contributes twenty parameters, so equal weighting would have let twenty rules outvote four hundred.
+
+The uncomfortable reason is that UX4G is our own standard, and we weighted it highest in the score we use to grade other people's websites. Nobody inside challenged it. I would expect a ministry CTO to, and the honest answer is that the weighting reflects our team's experience with government products rather than any external validation.
+
+Three decisions I would defend without hedging:
+
+**No single site-level number.** You get a score per page and a score per audit, never one figure for an entire domain. A site that submits four pages and a site that submits seven have not taken the same test, and one number would have implied they had.
+
+**The leaderboard ranks homepages only.** Every government website has a homepage, so it is the one page where the denominator is constant and the comparison is fair. Ranking whole sites would have rewarded whoever submitted the least.
+
+**Findings say who, not what.** Bands read Excellent, Average and Poor rather than Pass and Fail, because the audience for a low score is a department that has to be willing to run the audit again.
+
+And one gap I will not dress up. **AI confidence does not discount the score.** A finding the model was unsure about moves the number exactly as much as an SSL check that either passes or does not, and the only mitigation shipped is a disclaimer telling users to verify important information. A disclaimer moves risk onto the user instead of handling it. It is the thing in this product I most want to fix.
+
+<ShotPlaceholder
+  title="Score composition and the Rank Tracker"
+  detail="Two shots side by side: the report's Overall Results block showing the donut and the six category tiles, and the Rank Tracker leaderboard showing national and ministry rank. Replace mock data first — the current file shows three sites with different overall scores and identical sub-scores."
+  path="/public/case-study/audit360/scoring-and-rank.webp"
+  ratio="16 / 9"
+/>
+
+I also lost an argument here worth recording. I proposed opening the platform beyond government, including a paid tier for businesses that wanted their own UX health checked, which would have funded the compute and widened the sample enormously. It was rejected — a government body cannot generate revenue that way. Access stayed with government officials and invited members. I still think the reach was worth more than the tidiness, but the constraint was real and it was not mine to overrule.
+
+## The five-minute wait
+
+An audit takes about five minutes. That single number defines the product's shape more than any screen does.
+
+Five minutes is too long to watch and too short to schedule. So the run has three exits. You can watch it, with per-page progress that reports *2 of 6 webpages audited* rather than an indeterminate spinner. You can leave, and hand us an email address so the report arrives when it is ready. Or it fails, and it says so, with a retry that does not start the whole audit over.
+
+The wait screen also teaches. While the pipeline runs, it shows the site being audited and a piece of UX evidence — *users form an opinion about a website's credibility in about 50 milliseconds*. We are a UX advocacy organisation with a captive government audience for five minutes. Spending that on a progress bar would have been a waste.
+
+<ShotPlaceholder
+  title="The wait screen, with the email modal open"
+  detail="Export Automated Report / Loading – Enter Email from the v2 Figma page. Must show three things at once: live per-check progress, the site thumbnail, and the UX education card behind the modal. Swap this block for the <Annotated> markup held in the comment below, and check the three marker positions against the exported image."
+  path="/public/case-study/audit360/wait-state.webp"
+  ratio="4 / 3"
+/>
+
+{/* READY TO SWAP IN once wait-state.webp exists — replace the ShotPlaceholder above with this, then verify marker x/y against the real export:
+
+<Annotated
+  src="/case-study/audit360/wait-state.webp"
+  alt="The Audit360 wait screen. The page being audited is shown as a thumbnail with live per-check progress beside it, a UX education card below, and a modal requesting an email address so the finished report can be delivered without waiting."
+  markers={[
+    { x: 50, y: 24, note: "Progress names the check running now, not a percentage. A user can tell whether we are stuck." },
+    { x: 50, y: 46, note: "The email hand-off. Five minutes is too long to hold someone hostage to a tab." },
+    { x: 30, y: 74, note: "The wait teaches. A captive government audience for five minutes is worth more than a spinner." },
+  ]}
+  caption="Added in v2, after v1 made people sit and watch. The audit does not get faster; the waiting stops being the user's problem."
+/>
+
+*/}
+
+The report itself is organised the way a ministry reads it, not the way the pipeline produces it. A site summary, then per-page scores with a non-compliant count, then every finding grouped by category and collapsed by default. Findings filter to Compliant, Not Compliant, or Not Applicable — the third one matters, because a rule that does not apply to your page is not a rule you passed, and conflating those two is how compliance tools lose trust.
+
+Underneath, a comparison against the previous audit, per page. That view is what turns a report into a loop.
+
+<ShotPlaceholder
+  title="The report, annotated"
+  detail="Full audit report: site hero, Overall Results, the per-page Page Analysis table, and History and Comparison. Fix the mock data first — the current file shows five pages in the table and seven in the chart, and Sign Up appears as both 0% unavailable and a healthy bar."
+  path="/public/case-study/audit360/report-annotated.webp"
+  ratio="4 / 5"
+/>
+
+Everything that can fail, has a screen. Unreachable URL, API failure mid-run, restricted audits, a first-time account with nothing in it, and a second attempt that resumes rather than restarts. None of these are interesting to design and all of them are the difference between a demo and a product a government department will use unattended.
+
+<ShotPlaceholder
+  title="Five edge states, as a gallery"
+  detail="Export from the v2 Figma page: Homepage / Empty, Homepage / In Progress, Loading Screen / API failure, Audit in Progress – Second Attempt, and Homepage / Audit Restricted. Swap this block for the <MediaMarquee> markup held in the comment below."
+  path="/public/case-study/audit360/states/01-empty.webp … 05-audit-restricted.webp"
+  ratio="16 / 9"
+/>
+
+{/* READY TO SWAP IN once the five state exports exist — replace the ShotPlaceholder above with this:
+
+<MediaMarquee
+  label="The states nobody screenshots: empty, in progress, restricted, retry, failure"
+  items={[
+    { src: "/case-study/audit360/states/01-empty.webp", alt: "First-run empty state before any audit has been run." },
+    { src: "/case-study/audit360/states/02-in-progress.webp", alt: "Dashboard showing an audit in progress with per-page completion." },
+    { src: "/case-study/audit360/states/03-api-failure.webp", alt: "API failure state shown when the audit service cannot complete a run." },
+    { src: "/case-study/audit360/states/04-second-attempt.webp", alt: "Second attempt state, resuming an audit that failed partway." },
+    { src: "/case-study/audit360/states/05-audit-restricted.webp", alt: "Audit restricted state shown when a user cannot run an audit on this site." },
+  ]}
+/>
+
+<p className="mt-1 text-center text-caption text-slate-500 dark:text-slate-400">Click any thumbnail to open it.</p>
+
+*/}
 
 ## Auditing my own work
 
@@ -129,6 +267,8 @@ Which led to the finding I least wanted:
 
 Half of those page values weren't page types at all — `Pre-SSO`, `Deep hierarchies`, `Core journeys`, `Repeating content types`. They were contexts, sitting in the page column, while a perfectly good `Context` column sat unused beside them. Of the 336 rules a machine can judge, **182 are addressed to pages a user has no way to submit**, and they fall outside the automated audit entirely. Whole categories go with them — Lists and Filters, Navigation and IA, Forms and Data Entry.
 
+This is a scope boundary rather than a bug: the automated audit evaluates what it can address and reports the count. But the report says *X of 411 evaluated* without saying which 411 minus X, so a department reading a strong score has no way to know that navigation was never in scope.
+
 I also shipped a `Confidence Weight` on every rule, a number between 0.55 and 0.98. It looks like rigour. It is a placeholder. It was never calibrated against outcomes, it doesn't gate a finding, and it doesn't move a score. The honest version is that I designed the field before I had a way to earn it, and left it in.
 
 So I fixed what I could fix, and made the rest visible:
@@ -139,12 +279,45 @@ So I fixed what I could fix, and made the rest visible:
 
 The routing gap is not fixed. Fixing it means separating page from context across 411 rules, and — the part that matters more — never letting an unmatched guideline disappear silently. A compliance tool that skips a check without saying so is worse than one that fails loudly.
 
-<p className="mb-10 mt-8 text-body text-slate-600 dark:text-slate-400">The lesson wasn't about spreadsheets. I built a system to make a standard measurable, and then let the system's own inputs go unmeasured. The governance was the deliverable, and I had shipped the schema without it.</p>
+<p className="mb-10 mt-8 text-lg leading-[1.7] text-slate-600 dark:text-slate-400">The lesson wasn't about spreadsheets. I built a system to make a standard measurable, and then let the system's own inputs go unmeasured. The governance was the deliverable, and I had shipped the schema without it.</p>
 
-{/* IMAGE NEEDED: before/after distribution of the four controlled-vocabulary fields — 5→3 severity, 14→5 AI support, 30+→14 evidence types, and the 156-vs-7 page value gap. Save to /public/case-study/audit360/drift-analysis.webp */}
+<ShotPlaceholder
+  title="The drift, before and after"
+  detail="A chart of the four controlled-vocabulary fields before and after normalisation: Severity 5→3, AI Support 14→5, Evidence Type 30+→14, and the 156-versus-7 page value gap called out separately. Generate from the mastersheet; do not screenshot Excel."
+  path="/public/case-study/audit360/drift-analysis.webp"
+  ratio="16 / 9"
+/>
 
-{/* SECTION STUB — §8 What happened. 5,463 websites since Aug 2025. Effort equivalence with the assumption shown: 38,241 audit-days across a team of four to five ≈ 21–26 years of throughput, delivered in twelve months. The honest part: no accuracy baseline, no re-audit deltas yet. */}
+## What happened
 
-{/* SECTION STUB — §9 What I'd do differently. Calibrate confidence or remove the field. Split page from context, add an explicit unknown state. Build the dispute path. Solve version comparability. Surface severity, enforcement level and roles in the report — the schema carries them and the report renders none of them. Label all of these as proposals, not shipped work. */}
+**5,463 government websites have been audited since v1 shipped in August 2025.**
+
+The comparison worth making is against the process it replaced, with the assumption visible. At seven days a site, 5,463 audits is 38,241 audit-days. Those days were elapsed time rather than full-time effort — designers ran audits alongside their real projects — so across the four to five people who did this work, it is somewhere between **twenty-one and twenty-six years of team throughput, delivered in twelve months.** The comparison is conservative: an Audit360 run covers up to seven pages where a manual audit covered about five.
+
+<p className="mb-2 mt-10 text-[clamp(2.5rem,5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-slate-900 dark:text-slate-100">5,463</p>
+
+<p className="mb-10 max-w-xl text-lg leading-[1.7] text-slate-600 dark:text-slate-400">government websites audited in twelve months, by a team of four, against a standard that could not be measured at all the year before.</p>
+
+Now the honest part, and it is pointed.
+
+**I have no accuracy baseline.** I believe the schema cut false positives sharply, because we watched the same page stop producing contradictory verdicts. But I never built a labelled set, never compared the tool's findings against a human audit of the same site, and cannot give you a false-positive rate. Belief is not evidence and I am not going to present it as evidence.
+
+**I have no remediation data yet.** The product tracks score history per page, so the question *did these websites actually get better* is answerable from data that already exists. I have not answered it. Adoption proves the tool gets used; it does not prove a single citizen had a better experience.
+
+And the one that stings. **Audit360 exists because nobody at NeGD could answer how many websites we had audited.** A year and three versions later, the counter exists — but completion rates, drop-off at the URL form, and per-version usage still do not. I did the design work thoroughly and the product instrumentation incompletely, and defining success metrics was my job.
+
+## What I'd do differently
+
+**Calibrate the confidence score or delete it.** Sample findings across confidence levels, check whether low-confidence findings are actually wrong more often, and either let confidence gate what enters a score or stop displaying a number that implies a rigour it does not have.
+
+**Split page from context, and add an explicit unknown.** The 182 unaddressable guidelines exist because one column carried two concepts. Separating them is mechanical. The design work is the third state: a check that could not run must say so, because a silent skip reads exactly like a pass.
+
+**Build the dispute path.** There is no way for a ministry to flag a false positive or mark a finding as an intentional deviation. Every enterprise compliance product needs one, and its absence puts the entire score's credibility on our being right every time.
+
+**Surface the fields the report throws away.** The schema carries `Severity`, `Enforcement Level` and `Roles` for every rule. The report renders none of them, so a foundational blocker and an advanced nice-to-have look identical, and a developer cannot filter to the work that is theirs. The routing metadata exists to make findings actionable and the last mile flattens it back into a checklist.
+
+**Solve version comparability.** When a guideline's text changes, every score computed under the old wording becomes quietly incomparable. I have no answer for this yet. It is the hardest open problem in the product and it gets harder with every audit we run.
+
+<p className="mt-16 border-t border-slate-200 pt-10 text-body text-slate-700 dark:border-white/[0.08] dark:text-slate-300">The parts I could not fit — the arguments about weighting, the things that did not work, what a national standard teaches you about designing with AI — I am happy to walk through. <a href="https://www.linkedin.com/in/shashank-agarwal11/" target="_blank" rel="noopener noreferrer" className="text-slate-900 underline decoration-slate-400/60 underline-offset-4 transition-colors hover:decoration-slate-900 dark:text-slate-100 dark:hover:decoration-slate-100">Find me on LinkedIn</a>.</p>
 
 </ArticleShell>
