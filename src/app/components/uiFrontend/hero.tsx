@@ -1,7 +1,7 @@
 import React from 'react';
 import { Lamp } from './lamp';
 import { TextGenerateHeading } from './text-generate-header';
-import { WorkStack } from './work-stack';
+import { WorkShowcase } from './work-showcase';
 
 import { DribbbleShots } from './dribbble-posts';
 import { SparklesPreview } from './sparkles-heading';
@@ -64,7 +64,7 @@ const HeroSection = () => {
                     </div>
 
                     <div className="w-full my-8">
-                        <WorkStack />
+                        <WorkShowcase />
                     </div>
                 </div>
             </div>
