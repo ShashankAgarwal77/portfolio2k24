@@ -48,6 +48,58 @@ const canAnimate = () =>
   document.visibilityState === "visible" &&
   !prefersReducedMotion();
 
+/* ─────────────────────────────────────────────────────────────────────────
+   The veil.
+
+   One attribute (`data-veil` on <html>) marks "something opaque owns the
+   screen right now" — the first-landing site loader, or the card-expand
+   overlay during a case-study transition. While it is up, mount reveals
+   wait; when whoever raised it calls liftVeil(), they run, so content
+   blurs in exactly as the veil fades instead of finishing underneath it.
+
+   The attribute is raised before first paint by an inline script in the
+   root layout (loader), or synchronously on click (page transition), so
+   there is never a frame where the destination content flashes.
+
+   Failsafe: onVeilLift always fires its callback after a timeout even if
+   the lift event never arrives. A reveal must never be the reason content
+   is missing.
+   ───────────────────────────────────────────────────────────────────────── */
+
+const VEIL_ATTR = "data-veil";
+const VEIL_EVENT = "sa:veil-lift";
+
+export const veilUp = () =>
+  typeof document !== "undefined" &&
+  document.documentElement.hasAttribute(VEIL_ATTR);
+
+export const raiseVeil = () =>
+  document.documentElement.setAttribute(VEIL_ATTR, "");
+
+export const liftVeil = () => {
+  document.documentElement.removeAttribute(VEIL_ATTR);
+  window.dispatchEvent(new Event(VEIL_EVENT));
+};
+
+/** Runs cb once, when the veil lifts — or after timeoutMs regardless. */
+export function onVeilLift(cb: () => void, timeoutMs = 4000) {
+  let done = false;
+  const fire = () => {
+    if (done) return;
+    done = true;
+    window.removeEventListener(VEIL_EVENT, fire);
+    window.clearTimeout(timer);
+    cb();
+  };
+  const timer = window.setTimeout(fire, timeoutMs);
+  window.addEventListener(VEIL_EVENT, fire);
+  return () => {
+    done = true;
+    window.removeEventListener(VEIL_EVENT, fire);
+    window.clearTimeout(timer);
+  };
+}
+
 const hide = (el: HTMLElement) => {
   el.style.filter = BLUR;
   el.style.opacity = "0";
@@ -186,6 +238,17 @@ export function useRevealOnMount<T extends HTMLElement>() {
        background tab, which would leave the page blurred until it was
        focused. A forced reflow is synchronous and visibility-independent. */
     void el.offsetHeight;
+
+    /* If the loader or a page transition still owns the screen, hold the
+       reveal so it plays as the veil fades, not invisibly underneath it. */
+    if (veilUp()) {
+      const cancel = onVeilLift(() => show(el));
+      return () => {
+        cancel();
+        clear(el);
+      };
+    }
+
     show(el);
 
     return () => clear(el);

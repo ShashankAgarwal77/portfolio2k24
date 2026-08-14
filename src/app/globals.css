@@ -7,12 +7,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: 'PP_NeueMontreal';
-  src: url('./Assets/fonts/PPNeueMontreal/ppneuemontreal-medium.woff') format('woff');
-} */
-
-
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 248, 250, 252;
@@ -97,6 +91,75 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   The veil — `data-veil` on <html> means an opaque surface (the first-visit
+   loader, or the card-expand page transition) owns the screen. Scroll is
+   parked while it's up so the page can't move underneath it.
+   ───────────────────────────────────────────────────────────────────────── */
+html[data-veil] body {
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .site-loader — first-landing veil. Painted in the page's own background
+   gradient so lifting it is a pure crossfade into the page, and gated on
+   the data-veil attribute (set by an inline script before first paint) so
+   repeat visits never see even one frame of it.
+
+   `:not(.site-loader--leaving)` matters: lifting the veil removes the
+   attribute at the same moment the fade starts, and without it the loader
+   would display:none instantly instead of fading.
+   ───────────────────────────────────────────────────────────────────────── */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 70; /* above the dock (50) and the transition overlay (60) */
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
+  display: none;
+}
+
+.site-loader--leaving {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The wordmark blurs in — the same blur-to-sharp signature the rest of the
+   site reveals with. */
+.site-loader__word {
+  animation: veil-word-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+/* `animation: none` lets the exit transition win — a filling animation
+   otherwise overrides transitioned properties for as long as it applies. */
+.site-loader--leaving .site-loader__word {
+  animation: none;
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.45s ease-out, filter 0.45s ease-out;
+}
+
+@keyframes veil-word-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
   }
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/app/lib/utils";
+import { onVeilLift, veilUp } from "@/app/lib/useReveal";
 
 export const TextGenerateEffect = ({
   words,
@@ -11,9 +12,22 @@ export const TextGenerateEffect = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [inViewport, setInViewport] = useState(false);
+  /* While the first-landing loader (the veil) covers the page, hold the
+     word-by-word reveal — otherwise it plays out invisibly underneath and
+     the hero is already static when the veil lifts. */
+  const [gateOpen, setGateOpen] = useState(false);
   let wordsArray = words.split(" ");
 
   useEffect(() => {
+    if (!veilUp()) {
+      setGateOpen(true);
+      return;
+    }
+    return onVeilLift(() => setGateOpen(true));
+  }, []);
+
+  useEffect(() => {
+    if (!gateOpen) return;
     const handleScroll = () => {
       const container = containerRef.current;
       if (!container) return;
@@ -36,7 +50,7 @@ export const TextGenerateEffect = ({
       // Clean up by removing the scroll event listener
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [inViewport]);
+  }, [inViewport, gateOpen]);
 
   const renderWords = () => {
     return (

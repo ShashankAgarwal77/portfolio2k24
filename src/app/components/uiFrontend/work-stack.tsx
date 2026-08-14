@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { CanvasRevealEffect } from "@/app/components/Animations/canvas-reveal-effect";
+import { useCaseStudyExpand } from "@/app/components/PageTransition";
 
 import Audit360Thumb from "../../../../public/audit360_thumbnail.png";
 import BCASThumb from "../../../../public/bcas_thumbnail.png";
@@ -126,7 +127,31 @@ const StackCard = ({
 }) => {
     const [hovered, setHovered] = React.useState(false);
     const prefersReducedMotion = useReducedMotion();
+    const expand = useCaseStudyExpand();
     const peek = `${STACK_TOP_OFFSET_VH + index * PEEK_VH}vh`;
+
+    /* Hand the navigation to the card-expand transition instead of letting
+       the Link jump-cut. Only for a plain left-click: modified clicks (new
+       tab, etc.) and reduced motion keep the browser's native behaviour. */
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        if (!expand || prefersReducedMotion) return;
+        if (e.defaultPrevented || e.button !== 0) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const card = cardRef.current;
+        if (!card) return;
+        e.preventDefault();
+        const r = card.getBoundingClientRect();
+        expand({
+            href: project.href,
+            image: project.image,
+            label: project.label,
+            title: project.title,
+            outcome: project.outcome,
+            keypoints: project.keypoints,
+            hovered,
+            rect: { top: r.top, left: r.left, width: r.width, height: r.height },
+        });
+    };
 
     // Same fade-in language as the hero heading's word-by-word reveal
     // (TextGenerateEffect: opacity 0→1), but tied directly to this card's own
@@ -152,6 +177,7 @@ const StackCard = ({
                     href={project.href}
                     aria-label={`Open the ${project.label} case study`}
                     className="block"
+                    onClick={handleClick}
                 >
                     {/* bg-slate-950 is a solid fallback behind the image — without it, a
                         missing or slow-to-load thumbnail leaves the card transparent,

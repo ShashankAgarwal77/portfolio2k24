@@ -11,6 +11,32 @@ const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.ttf', 
 // import { Work_Sans } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "./components/uiFrontend/custom-cursor";
+import { SiteLoader } from "./components/SiteLoader";
+
+/* Runs before first paint, so both decisions land before anything renders:
+
+   1. Theme — apply the stored dark-mode preference (default dark, same as
+      ThemeSwitcher) to <html> immediately. Without this the first paint is
+      always light and snaps dark after hydration.
+
+   2. The veil — on the first landing of a session (and only when motion is
+      allowed and the tab is visible), raise `data-veil` so the site loader
+      is visible from the very first frame and page reveals wait for it.
+      See SiteLoader and useReveal for the other half of this contract. */
+const bootScript = `(function () {
+  var d = document.documentElement;
+  try {
+    var p = localStorage.getItem('darkMode');
+    if (p === null || JSON.parse(p)) d.classList.add('dark');
+  } catch (e) { d.classList.add('dark'); }
+  try {
+    if (
+      !sessionStorage.getItem('sa:loader-shown') &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      document.visibilityState === 'visible'
+    ) d.setAttribute('data-veil', '');
+  } catch (e) {}
+})();`;
 
 // const workSans = Work_Sans({ subsets: ["latin"] });
 
@@ -27,8 +53,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${satoshi.variable}`}>
+    // suppressHydrationWarning: the boot script legitimately mutates the
+    // <html> class (theme) and attributes (data-veil) before React hydrates.
+    <html lang="en" className={`${satoshi.variable}`} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         {/* Primary Meta Tags */}
         <title>Shashank Agarwal Digital Room</title>
         <meta name="description" content="A UX portfolio website of a product designer Shashank Agarwal." />
@@ -53,6 +82,7 @@ export default function RootLayout({
       </head>
 
       <body>
+        <SiteLoader />
         {children}
         <CustomCursor />
       </body>
