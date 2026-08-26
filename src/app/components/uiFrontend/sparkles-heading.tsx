@@ -22,8 +22,10 @@ export function SparklesPreview() {
           particleColor="#94a3b8"
         />
 
-        {/* Radial Gradient to prevent sharp edges */}
-        <div className="absolute inset-0 w-full h-full bg-[#e6ecf2] dark:bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+        {/* Radial gradient to soften the sparkle field's edges — painted in
+            the PAGE's own background colors, or it prints as a visible
+            block against them (dark:bg-black on #020617 did exactly that). */}
+        <div className="absolute inset-0 w-full h-full bg-[#e6ecf2] dark:bg-[#020617] [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
     </div>
   );

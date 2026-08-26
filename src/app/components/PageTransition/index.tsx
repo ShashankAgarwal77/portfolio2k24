@@ -167,30 +167,6 @@ export function CaseStudyTransitionProvider({
               transition={{ duration: 0.3, ease: "easeOut" }}
             />
 
-            {/* Passing through the clouds: two fog puffs sweep the frame as
-                the card expands, completing the site's metaphor — entering
-                a case study crosses the cloud layer one more time. They
-                linger at partial opacity and leave with the overlay's own
-                lifting fade. This whole overlay only exists when reduced
-                motion is off (the card falls back to plain navigation). */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
-            >
-              <motion.div
-                className="cloud-sweep cloud-sweep--a"
-                initial={{ x: "-70%", opacity: 0 }}
-                animate={{ x: "35%", opacity: [0, 1, 0.5] }}
-                transition={{ duration: 1.1, ease: "easeOut" }}
-              />
-              <motion.div
-                className="cloud-sweep cloud-sweep--b"
-                initial={{ x: "65%", opacity: 0 }}
-                animate={{ x: "-30%", opacity: [0, 0.9, 0.4] }}
-                transition={{ duration: 1.25, ease: "easeOut", delay: 0.08 }}
-              />
-            </div>
-
             {/* The card's text rides the expansion briefly, then dissolves —
                 the case study's own headline takes over from here. */}
             <motion.div

@@ -8,6 +8,7 @@ import { SparklesPreview } from './sparkles-heading';
 import { NightSkyHero } from './night-sky';
 import { WorkAtmosphere } from './atmosphere';
 import { ContactSection } from './contact-section';
+import { GreetingRotator } from './greeting-rotator';
 import { Reveal } from '../Reveal';
 
 const HeroSection = () => {
@@ -21,8 +22,11 @@ const HeroSection = () => {
                 <NightSkyHero>
                     <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center items-center h-full">
                             <div className="flex flex-col gap-y-4 md:gap-y-6 justify-center items-center">
-                                <p className="text-caption font-normal text-slate-600 dark:text-slate-300 z-1 text-center">
-                                    Hi, I&apos;m Shashank Agarwal
+                                {/* text-body, not caption: the intro line
+                                    earns real presence now that it opens
+                                    with the rotating greeting. */}
+                                <p className="text-body font-normal text-slate-600 dark:text-slate-300 z-1 text-center">
+                                    <GreetingRotator />, I&apos;m Shashank Agarwal
                                 </p>
                                 <h1 className="text-headline font-semibold z-1 text-center">
                                     <TextGenerateHeading />
@@ -56,7 +60,7 @@ const HeroSection = () => {
             {/* Section rhythm: every section owns its own pt-16 md:pt-24 top
                 padding and no bottom margin — spacing between sections can
                 never stack or drift. */}
-            <div id="work" className="projects-section relative pt-16 md:pt-24 scroll-mt-16">
+            <div id="work" className="projects-section relative pt-24 md:pt-32 pb-12 md:pb-20 scroll-mt-16">
                 {/* The section's environment — WebGL mist feathered into the
                     hero above, stars at night. The content wrapper below is
                     `relative` so it paints above. */}
@@ -66,9 +70,14 @@ const HeroSection = () => {
                     {/* One heading for every theme and breakpoint, arriving
                         with the hero's word-by-word shimmer fade. */}
                     <SectionHeading
-                        text="My Selected Work to Showcase"
-                        className="text-title font-semibold lowercase text-center text-balance text-slate-500 dark:text-slate-300 mb-8 md:mb-12"
+                        text="Selected Case Studies"
+                        className="text-title font-semibold lowercase text-center text-balance text-slate-500 dark:text-slate-300 mb-3 md:mb-4"
                     />
+                    <p className="text-body font-normal max-w-2xl text-center text-balance text-slate-600 dark:text-slate-400 mb-8 md:mb-12">
+                        Government security, fintech, cybersecurity, and gig
+                        logistics — real products taken from problem to
+                        production.
+                    </p>
 
                     {/* Bottom margin only. A top margin here would stack with
                         the heading's own and open a 48px gap, which both reads
