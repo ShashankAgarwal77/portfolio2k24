@@ -5,7 +5,7 @@
  **/
 
 import { cn } from "@/app/lib/utils";
-import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
+import { List } from "@phosphor-icons/react";
 import {
   AnimatePresence,
   MotionValue,
@@ -72,7 +72,7 @@ const FloatingDockMobile = ({
                   key={item.title}
                   target={item.target}
                   rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-                  className="h-10 w-10 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center"
+                  className="dock-glass__item h-10 w-10 rounded-full flex items-center justify-center"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </Link>
@@ -83,9 +83,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center"
+        className="dock-glass dock-glass__item h-10 w-10 rounded-full flex items-center justify-center"
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-slate-500 dark:text-slate-400" />
+        <List weight="light" className="h-5 w-5 text-slate-600 dark:text-slate-200" />
       </button>
     </div>
   );
@@ -104,7 +104,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end rounded-2xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-800 px-4 pb-3",
+        "dock-glass mx-auto hidden md:flex h-16 gap-4 items-end rounded-2xl px-4 pb-3",
         className
       )}
     >
@@ -181,7 +181,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="aspect-square rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center relative"
+        className="dock-glass__item aspect-square rounded-full flex items-center justify-center relative"
       >
         <AnimatePresence>
           {hovered && (
@@ -189,7 +189,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md bg-slate-100 border dark:bg-slate-800 dark:border-slate-900 dark:text-white border-slate-200 text-slate-700 absolute left-1/2 -translate-x-1/2 -top-10 w-fit text-base"
+              className="dock-glass__tooltip px-2 py-0.5 whitespace-pre rounded-md absolute left-1/2 -translate-x-1/2 -top-10 w-fit text-base"
             >
               {title}
             </motion.div>

@@ -2,6 +2,9 @@ import { ArticleShell } from "@/app/components/Article";
 import { Annotated } from "@/app/components/Annotated";
 import { MediaMarquee } from "@/app/components/MediaMarquee";
 import { ShotPlaceholder } from "@/app/components/ShotPlaceholder";
+import { PipelineDiagram } from "@/app/components/PipelineDiagram";
+import { SheetRow } from "@/app/components/SheetRow";
+import { TC001_FIELDS } from "@/app/components/SheetRow/tc001";
 
 export const metadata = {
   title: "I rewrote a national UX standard so a machine could read it",
@@ -121,11 +124,14 @@ What the schema bought was not tidiness. It turned a guideline from a sentence i
 
 **Machine-evaluable coverage went from roughly 100 of 480 rules to 260 of 411** — about 21% to 63%. Not one line of that came from a better model. It came from rewriting the input.
 
-<ShotPlaceholder
-  title="One guideline, all 22 fields"
-  detail="Export a single row of the mastersheet — TC-001, the SSL/TLS rule, is the clearest. Show Issue, Advice, Pass and Fail examples, References, Enforcement Level, and the four applicability axes so a reader can see the sentence become an object."
-  path="/public/case-study/audit360/schema-row.webp"
-  ratio="16 / 10"
+<SheetRow
+  url="docs.google.com/guideline_mastersheet_v3"
+  file="guideline_mastersheet_v3"
+  meta="411 guidelines · 22 fields"
+  rowLabel="TC-001"
+  tab="UX4G v3.0.0"
+  status="1 guideline shown · all 22 fields"
+  fields={TC001_FIELDS}
 />
 
 ## The machine that reads it
@@ -142,12 +148,7 @@ We could have crawled. We chose not to, for three reasons that are specific to t
 
 One constraint I did not control: **the model was chosen for us.** Our CTO directed OpenAI at project initiation, and no alternatives were evaluated. It works. But I cannot tell you it was the right call, because nobody ran the comparison, and I did not push for one.
 
-<ShotPlaceholder
-  title="Evidence routing, end to end"
-  detail="A diagram: 411 guidelines → applicability filter (page, component, context, platform) → evidence capture split across DOM, Puppeteer screenshot and Lighthouse → single structured prompt per page → verdicts. Draw it; do not screenshot a whiteboard."
-  path="/public/case-study/audit360/pipeline-diagram.webp"
-  ratio="16 / 9"
-/>
+<PipelineDiagram />
 
 ## Scoring inside a government
 

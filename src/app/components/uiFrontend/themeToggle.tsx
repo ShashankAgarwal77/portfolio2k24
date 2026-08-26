@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import {
-    Sun02Icon,
-    Moon02Icon
-} from "hugeicons-react";
+/* Phosphor light, matching the rest of the dock set. MoonStars over a
+   plain crescent: the toggle invites you into the starry night. */
+import { Sun, MoonStars } from "@phosphor-icons/react";
 
 const ThemeSwitcher = () => {
     const [darkMode, setDarkMode] = useState(() => {
@@ -27,8 +26,10 @@ const ThemeSwitcher = () => {
     };
 
     return (
-        <button onClick={toggleDarkMode} className=''>
-            {darkMode ? <Sun02Icon className='text-slate-100' /> : <Moon02Icon className='text-slate-600'/>}
+        <button onClick={toggleDarkMode} className='h-full w-full flex items-center justify-center'>
+            {darkMode
+                ? <Sun weight="light" className='h-full w-full text-slate-200' />
+                : <MoonStars weight="light" className='h-full w-full text-slate-600' />}
         </button>
     );
 };

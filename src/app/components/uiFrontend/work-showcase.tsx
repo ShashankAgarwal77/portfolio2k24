@@ -5,9 +5,11 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import * as THREE from "three";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useCaseStudyExpand } from "@/app/components/PageTransition";
 
+import CloudWispA from "../../../../public/homepage_assets/cloud_wisp_a.png";
+import CloudWispB from "../../../../public/homepage_assets/cloud_wisp_b.png";
 import Audit360Thumb from "../../../../public/audit360_thumbnail.png";
 import BCASThumb from "../../../../public/bcas_thumbnail.png";
 import SecureHubThumb from "../../../../public/securehub_thumbnail.png";
@@ -215,6 +217,15 @@ export function WorkShowcase() {
     const [index, setIndex] = React.useState(0);
     const [prevIndex, setPrevIndex] = React.useState(0);
     const [glReady, setGlReady] = React.useState(false);
+
+    /* Surfacing parallax: 0 while the section is below the fold, 1 once its
+       top reaches 35% down the viewport — the card rides the tail of the
+       cloud band's parting. */
+    const { scrollYProgress: surfaceProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "start 0.35"],
+    });
+    const surfaceY = useTransform(surfaceProgress, [0, 1], [44, 0]);
 
     const gl = React.useRef<GL | null>(null);
     const indexRef = React.useRef(0);
@@ -495,16 +506,28 @@ export function WorkShowcase() {
     return (
         <section
             ref={sectionRef}
-            className="relative flex w-screen ml-[calc(50%-50vw)] flex-col items-center gap-5 md:gap-6"
+            className="relative flex w-screen ml-[calc(50%-50vw)] flex-col items-center gap-4 md:gap-5"
             aria-roledescription="carousel"
             aria-label="Selected case studies"
         >
+            {/* Surfacing: the card rises the last few centimetres as the
+                section scrolls in — position-linked, so it can't double-fire
+                against the section's own blur reveal. The breath wrapper is
+                separate because framer and the CSS breathing animation would
+                otherwise fight over the same transform. */}
+            <motion.div
+                className="relative w-[75vw]"
+                style={prefersReducedMotion ? undefined : { y: surfaceY }}
+            >
+            <div className="showcase-breath relative">
             {/* The showcase card: 75% of the viewport, hairline border in the
-                page's own frame language (Flat-Card Rule — border, no shadow,
-                square corners). bg-slate-950 is the fallback behind the image. */}
+                page's own frame language (Flat-Card Rule — square corners,
+                but with the documented moonlight-rim exception: it floats
+                over the night atmosphere, like the CTA over the sky).
+                bg-slate-950 is the fallback behind the image. */}
             <div
                 ref={cardRef}
-                className="relative h-[75vh] w-[75vw] overflow-hidden border border-black/20 bg-slate-950 dark:border-white/15"
+                className="showcase-halo relative h-[75vh] w-full overflow-hidden border border-black/20 bg-slate-950 dark:border-white/15"
             >
             {/* Media stack: crossfade <Image> slides always exist (SSR, LCP,
                 fade mode); the canvas sits above them and takes over once
@@ -532,9 +555,10 @@ export function WorkShowcase() {
                 aria-hidden="true"
             />
 
-            {/* Same scrim language as the old cards: legible text left, the
-                product shot stays visible right. */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10 md:from-black/85 md:via-black/45 md:to-transparent" />
+            {/* Same scrim language as the old cards — but night-indigo, not
+                pure black, so the card belongs to the same air as the sky
+                around it. slate-950 is the sky's own void. */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/10 md:from-slate-950/90 md:via-slate-950/50 md:to-transparent" />
 
             {/* The whole slide opens the active case study. */}
             <Link
@@ -585,6 +609,20 @@ export function WorkShowcase() {
                 </p>
             </div>
 
+            {/* Fog crossing the card's lower corners — in FRONT of it, so
+                the rectangle reads as an object inside the cloudscape
+                rather than a screenshot on top of it. Siblings of the card
+                (not children): the card's overflow-hidden would clip the
+                spill past its edges, which is the whole point. */}
+            <div aria-hidden="true" className="showcase-wisp showcase-wisp--l">
+                <Image src={CloudWispA} alt="" sizes="35vw" draggable={false} className="cloud-art cloud-art--front" />
+            </div>
+            <div aria-hidden="true" className="showcase-wisp showcase-wisp--r">
+                <Image src={CloudWispB} alt="" sizes="30vw" draggable={false} className="cloud-art cloud-art--front -scale-x-100" />
+            </div>
+            </div>
+            </motion.div>
+
             {/* The switcher rail: one segment per case study, horizontal,
                 just below the card and outside it — on the page background,
                 where its contrast doesn't depend on the photograph behind
@@ -610,7 +648,7 @@ export function WorkShowcase() {
                                     ref={(el) => {
                                         fillRefs.current[i] = el;
                                     }}
-                                    className="absolute inset-y-0 left-0 w-0 bg-[color:var(--rail-light)] dark:bg-[color:var(--rail-dark)]"
+                                    className="rail-fill absolute inset-y-0 left-0 w-0 bg-[color:var(--rail-light)] dark:bg-[color:var(--rail-dark)]"
                                     style={
                                         {
                                             "--rail-light": isActive ? p.accentLight : "transparent",

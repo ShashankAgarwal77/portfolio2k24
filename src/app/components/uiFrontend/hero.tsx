@@ -1,25 +1,24 @@
 import React from 'react';
-import { Lamp } from './lamp';
+import { SectionHeading } from './section-heading';
 import { TextGenerateHeading } from './text-generate-header';
 import { WorkShowcase } from './work-showcase';
 
 import { DribbbleShots } from './dribbble-posts';
 import { SparklesPreview } from './sparkles-heading';
-import { AuroraBackgroundAnimation } from './auora-background';
+import { NightSkyHero } from './night-sky';
+import { CloudBand, WorkAtmosphere } from './atmosphere';
 import { Reveal } from '../Reveal';
 
 const HeroSection = () => {
     return (
         <Reveal className="flex flex-col justify-center">
 
-            {/* data-reveal="off": the hero runs its own entrance (aurora
-                background, text generate) and the page-transition reveal
+            {/* data-reveal="off": the hero runs its own entrance (star
+                ignition, text generate) and the page-transition reveal
                 already brings it in. */}
             <div className="hero-section" data-reveal="off">
-                <div className="bg-anim--wrapper relative overflow-hidden">
-                    <AuroraBackgroundAnimation />
-                    <div className="hero-content--wrapper absolute inset-0">
-                        <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center items-center h-screen">
+                <NightSkyHero>
+                    <div className="flex flex-col mx-4 md:mx-20 lg:mx-40 justify-center items-center h-full">
                             <div className="flex flex-col gap-y-4 md:gap-y-6 justify-center items-center">
                                 <p className="text-caption font-normal text-slate-600 dark:text-slate-300 z-1 text-center">
                                     Hi, I&apos;m Shashank Agarwal
@@ -45,25 +44,38 @@ const HeroSection = () => {
                                     </a>
                                 </div>
 
-                            </div>
                         </div>
                     </div>
-                </div>
-
+                </NightSkyHero>
             </div>
 
-            <div id="work" className="projects-section mb-20 md:mb-40 scroll-mt-16">
-                <div className="flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center">
+            {/* The cloud layer straddling the seam — fog builds as you leave
+                the meadow, then parts to reveal the work. Zero flow height,
+                so it never shifts the layout; data-reveal="off" because it
+                choreographs its own scroll appearance. */}
+            <CloudBand />
 
-                    <div className="lamp-wrapper lg:dark:block hidden lg:hidden">
-                        <Lamp />
-                    </div>
+            {/* pt: the breathing room after the meadow — the cloud band's
+                overlap fills this whitespace with fog, so the heading gets
+                both air and atmosphere instead of crowding the seam. */}
+            <div id="work" className="projects-section relative pt-16 md:pt-28 mb-20 md:mb-40 scroll-mt-16">
+                {/* Thin air behind the showcase — wisps, and stars at night.
+                    The content wrapper below is `relative` so it paints above. */}
+                <WorkAtmosphere />
+                <div className="relative flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center">
 
-                    <div className='light-wrapper2 lg:block hidden lg:dark:hidden md:mb-4 lg:mb-8'>
-                        <h2 className="text-title font-semibold text-slate-400 lowercase text-balance">My Selected Work to Showcase</h2>
-                    </div>
+                    {/* One heading for every theme and breakpoint, arriving
+                        with the hero's word-by-word shimmer fade. */}
+                    <SectionHeading
+                        text="My Selected Work to Showcase"
+                        className="text-title font-semibold lowercase text-center text-balance text-slate-500 dark:text-slate-300 mb-5"
+                    />
 
-                    <div className="w-full my-8">
+                    {/* Bottom margin only. A top margin here would stack with
+                        the heading's own and open a 48px gap, which both reads
+                        as a hole and pushes the switcher rail down under the
+                        floating dock. */}
+                    <div className="w-full mb-4">
                         <WorkShowcase />
                     </div>
                 </div>

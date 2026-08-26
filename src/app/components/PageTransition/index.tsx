@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import CloudWispA from "../../../../public/homepage_assets/cloud_wisp_a.png";
+import CloudWispB from "../../../../public/homepage_assets/cloud_wisp_b.png";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { liftVeil, raiseVeil } from "@/app/lib/useReveal";
@@ -159,13 +161,41 @@ export function CaseStudyTransitionProvider({
             />
 
             {/* Same scrim stack as the card, so frame one is identical. */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10 md:from-black/85 md:via-black/45 md:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/10 md:from-slate-950/90 md:via-slate-950/50 md:to-transparent" />
             <motion.div
               className="absolute inset-0 bg-black/55"
               initial={{ opacity: req.hovered ? 1 : 0 }}
               animate={{ opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             />
+
+            {/* Passing through the clouds: two fog puffs sweep the frame as
+                the card expands, completing the site's metaphor — entering
+                a case study crosses the cloud layer one more time. They
+                linger at partial opacity and leave with the overlay's own
+                lifting fade. This whole overlay only exists when reduced
+                motion is off (the card falls back to plain navigation). */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
+            >
+              <motion.div
+                className="cloud-sweep cloud-sweep--a"
+                initial={{ x: "-70%", opacity: 0 }}
+                animate={{ x: "35%", opacity: [0, 1, 0.5] }}
+                transition={{ duration: 1.1, ease: "easeOut" }}
+              >
+                <Image src={CloudWispA} alt="" sizes="75vw" draggable={false} className="cloud-art" />
+              </motion.div>
+              <motion.div
+                className="cloud-sweep cloud-sweep--b"
+                initial={{ x: "65%", opacity: 0 }}
+                animate={{ x: "-30%", opacity: [0, 0.9, 0.4] }}
+                transition={{ duration: 1.25, ease: "easeOut", delay: 0.08 }}
+              >
+                <Image src={CloudWispB} alt="" sizes="70vw" draggable={false} className="cloud-art -scale-x-100" />
+              </motion.div>
+            </div>
 
             {/* The card's text rides the expansion briefly, then dissolves —
                 the case study's own headline takes over from here. */}

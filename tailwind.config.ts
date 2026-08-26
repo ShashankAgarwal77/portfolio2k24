@@ -52,6 +52,13 @@ const config: Config = {
         'spotlight' : "spotlight 2s ease .75s 1 forwards",
         'scroll' : "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         'meteor-effect': 'meteor 5s linear infinite',
+        // PipelineDiagram's connector lines: a single glowing pulse
+        // traces each static line left-to-right (top-to-bottom on the
+        // stacked mobile layout), standing in for data moving through the
+        // pipeline. `*` under prefers-reduced-motion in globals.css
+        // already collapses this to a single near-instant frame, so no
+        // separate motion-safe handling is needed here.
+        'dash-flow': 'dash-flow 1.8s linear infinite',
       },
       keyframes: {
         aurora: {
@@ -128,6 +135,13 @@ const config: Config = {
             transform: "rotate(215deg) translateX(-500px)",
             opacity: "0",
           },
+        },
+        // One full lap of a 74-unit dash+gap cycle (dash 12-16, gap
+        // 58-62 depending on orientation) — an exact multiple of the
+        // pattern keeps the loop seamless, no visible jump at wrap.
+        "dash-flow": {
+          from: { strokeDashoffset: "0" },
+          to: { strokeDashoffset: "-74" },
         },
       },
     },

@@ -168,6 +168,675 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   font-style: italic;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   .night-sky — the hero's Starry-Night-inspired sky (night-sky.tsx).
+
+   The canvases paint the currents and the stars; everything here is the
+   scenery around them, in two moods keyed off the theme class:
+
+     · night (dark) — deep indigo falling to the page's own void, so the
+       sky's bottom edge dissolves into the body background with no seam
+     · dawn (light) — pale morning blue warming toward the horizon, ending
+       on the page's paper color for the same reason
+
+   Layer notes:
+
+   · __layers carries extra top slack (-14%) because the scroll parallax
+     translates the whole sky group downward; without the slack its top
+     edge would slide into view.
+
+   · __calm is the readability radial — the page's own background color at
+     ~half strength behind the headline, so the currents thin out exactly
+     where the type sits. The canvases never need to know about it.
+
+   · __ground is the permanent bottom dissolve into the page; __dawn is the
+     scroll-driven veil that completes the same dissolve as the hero leaves.
+     Both are painted in page background colors so neither ends on a seam.
+
+   · Mist blobs animate transform only (the blur is static), and the
+     __mist wrapper adds a few pixels of cursor parallax via --sky-mx/-my,
+     set from the canvas loop. Under prefers-reduced-motion the global
+     animation kill-switch freezes the drift; the blobs simply hold still.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.night-sky__layers {
+  position: absolute;
+  inset: -14% 0 0 0;
+}
+
+.night-sky__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.night-sky__base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 85% at 74% 64%, rgb(253 230 138 / 0.42) 0%, rgb(253 230 138 / 0) 55%),
+    linear-gradient(to bottom, #cfe0f7 0%, #e3ecfa 45%, #f3e9d3 76%, #f8fafc 100%);
+}
+
+.dark .night-sky__base {
+  background:
+    radial-gradient(130% 90% at 78% 28%, rgb(129 140 248 / 0.16) 0%, rgb(129 140 248 / 0) 55%),
+    linear-gradient(to bottom, #030718 0%, #081130 36%, #0c1c47 62%, #091634 82%, #020617 100%);
+}
+
+.night-sky__mist {
+  position: absolute;
+  inset: -8%;
+  transform: translate3d(
+    calc(var(--sky-mx, 0) * 12px),
+    calc(var(--sky-my, 0) * 9px),
+    0
+  );
+}
+
+.night-sky__mist-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.night-sky__mist-blob--a {
+  left: 4%;
+  top: 16%;
+  width: 52vw;
+  height: 36vh;
+  background: rgb(255 255 255 / 0.6);
+  animation: night-sky-mist-a 80s ease-in-out infinite alternate;
+}
+
+.night-sky__mist-blob--b {
+  right: 2%;
+  top: 38%;
+  width: 44vw;
+  height: 30vh;
+  background: rgb(253 224 138 / 0.34);
+  animation: night-sky-mist-b 95s ease-in-out infinite alternate;
+}
+
+.night-sky__mist-blob--c {
+  left: 30%;
+  top: 52%;
+  width: 46vw;
+  height: 30vh;
+  background: rgb(191 219 254 / 0.5);
+  animation: night-sky-mist-c 70s ease-in-out infinite alternate;
+}
+
+.dark .night-sky__mist-blob {
+  mix-blend-mode: screen;
+}
+
+.dark .night-sky__mist-blob--a {
+  background: rgb(99 102 241 / 0.17);
+}
+
+.dark .night-sky__mist-blob--b {
+  background: rgb(56 189 248 / 0.1);
+}
+
+.dark .night-sky__mist-blob--c {
+  background: rgb(167 139 250 / 0.13);
+}
+
+@keyframes night-sky-mist-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(6vw, 3vh, 0) scale(1.12); }
+}
+
+@keyframes night-sky-mist-b {
+  from { transform: translate3d(0, 0, 0) scale(1.08); }
+  to { transform: translate3d(-7vw, -2vh, 0) scale(0.95); }
+}
+
+@keyframes night-sky-mist-c {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(4vw, -3vh, 0) scale(1.15); }
+}
+
+.night-sky__calm {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    56% 44% at 50% 47%,
+    rgb(248 250 252 / 0.5),
+    rgb(248 250 252 / 0) 100%
+  );
+}
+
+.dark .night-sky__calm {
+  background: radial-gradient(
+    56% 44% at 50% 47%,
+    rgb(2 6 23 / 0.44),
+    rgb(2 6 23 / 0) 100%
+  );
+}
+
+.night-sky__ground {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, rgb(248 250 252 / 0), #f8fafc);
+}
+
+.dark .night-sky__ground {
+  background: linear-gradient(to bottom, rgb(2 6 23 / 0), #020617);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .cloud-band / .work-atmosphere — the cloud layer between hero and work,
+   and the thin air behind the showcase (atmosphere.tsx).
+
+   The band's negative margins equal its height, so it adds ZERO flow
+   height — pure overlap across the seam. Puffs are blurred radial
+   gradients (the hero mist's language, denser); the drift keyframes are
+   idle motion, while the parting is scroll-driven from the component.
+   z-index 10 floats it over both neighbouring sections; the dock (50)
+   stays above. Everything is pointer-transparent.
+
+   Fog color is moonlit slate-blue at night, warm white at dawn — never
+   pure white on the night sky, which would read as smoke, not cloud.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.cloud-band {
+  position: relative;
+  z-index: 10;
+  height: 38vh;
+  margin-top: -18vh;
+  margin-bottom: -20vh;
+  pointer-events: none;
+}
+
+.cloud-band__half {
+  position: absolute;
+  inset: 0;
+}
+
+.cloud-puff {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(52px);
+  will-change: transform;
+}
+
+.cloud-puff--a {
+  left: -6%;
+  top: 8%;
+  width: 48vw;
+  height: 24vh;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.6), rgb(255 255 255 / 0) 78%);
+  animation: cloud-drift-a 34s ease-in-out infinite alternate;
+}
+
+.cloud-puff--b {
+  right: -8%;
+  top: 16%;
+  width: 52vw;
+  height: 26vh;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 78%);
+  animation: cloud-drift-b 42s ease-in-out infinite alternate;
+}
+
+.cloud-puff--c {
+  left: 22%;
+  top: 40%;
+  width: 44vw;
+  height: 22vh;
+  background: radial-gradient(closest-side, rgb(253 238 205 / 0.45), rgb(253 238 205 / 0) 78%);
+  animation: cloud-drift-b 48s ease-in-out infinite alternate-reverse;
+}
+
+.cloud-puff--d {
+  right: 20%;
+  top: 46%;
+  width: 38vw;
+  height: 20vh;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0) 78%);
+  animation: cloud-drift-a 38s ease-in-out infinite alternate-reverse;
+}
+
+.cloud-puff--e {
+  left: 34%;
+  top: 4%;
+  width: 40vw;
+  height: 22vh;
+  background: radial-gradient(closest-side, rgb(226 232 240 / 0.5), rgb(226 232 240 / 0) 78%);
+  animation: cloud-drift-b 44s ease-in-out infinite alternate;
+}
+
+/* With the painterly cloud art carrying the visible cloudscape, the
+   procedural puffs step back into a haze bed — still present (they fill
+   the gaps between the paintings and soften their edges) but no longer
+   the show. These alphas were 0.42–0.5 when the puffs worked alone. */
+.dark .cloud-puff--a {
+  background: radial-gradient(closest-side, rgb(165 180 220 / 0.3), rgb(165 180 220 / 0) 78%);
+}
+
+.dark .cloud-puff--b {
+  background: radial-gradient(closest-side, rgb(165 180 220 / 0.27), rgb(165 180 220 / 0) 78%);
+}
+
+.dark .cloud-puff--c {
+  background: radial-gradient(closest-side, rgb(253 230 138 / 0.12), rgb(253 230 138 / 0) 78%);
+}
+
+.dark .cloud-puff--d {
+  background: radial-gradient(closest-side, rgb(148 163 205 / 0.25), rgb(148 163 205 / 0) 78%);
+}
+
+.dark .cloud-puff--e {
+  background: radial-gradient(closest-side, rgb(186 200 235 / 0.22), rgb(186 200 235 / 0) 78%);
+}
+
+/* ── Painterly cloud art (cloud_bank / cloud_wisp_a / cloud_wisp_b) ──────
+   One neutral grey-white asset set, tinted per theme entirely in CSS:
+   near-full brightness at dawn, dimmed to moonlit grey at night (the sky
+   behind lends the blue). The 2px blur seats crisp brush edges into the
+   scene. Slots own position + drift; the image owns width and any mirror
+   flip — a drift keyframe writing transform on the image itself would
+   cancel the flip. */
+
+.cloud-art-slot {
+  position: absolute;
+  pointer-events: none;
+}
+
+.cloud-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.92;
+  filter: brightness(1.05) blur(2px);
+}
+
+.dark .cloud-art {
+  opacity: 0.85;
+  filter: brightness(0.4) blur(2px);
+}
+
+/* In front of the showcase card the art must whisper, not cover. */
+.cloud-art.cloud-art--front {
+  opacity: 0.6;
+  filter: brightness(1.02) blur(3px);
+}
+
+.dark .cloud-art.cloud-art--front {
+  opacity: 0.45;
+  filter: brightness(0.45) blur(3px);
+}
+
+.cloud-art-slot--band-a {
+  left: -5%;
+  top: 14%;
+  width: 58vw;
+  animation: cloud-drift-a 44s ease-in-out infinite alternate;
+}
+
+.cloud-art-slot--band-b {
+  right: -7%;
+  top: 26%;
+  width: 52vw;
+  animation: cloud-drift-b 52s ease-in-out infinite alternate;
+}
+
+.cloud-art-slot--band-c {
+  left: 26%;
+  top: 44%;
+  width: 45vw;
+  animation: cloud-drift-b 58s ease-in-out infinite alternate-reverse;
+}
+
+.cloud-art-slot--band-d {
+  right: 16%;
+  top: 2%;
+  width: 44vw;
+  animation: cloud-drift-a 62s ease-in-out infinite alternate-reverse;
+}
+
+/* Perceptible, not restless: ~0.3vw/s of lateral travel. The alternate
+   direction plus staggered durations means neighbouring puffs are always
+   moving relative to each other, which is what reads as "rolling". */
+@keyframes cloud-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(9vw, 2vh, 0) scale(1.12); }
+}
+
+@keyframes cloud-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.06); }
+  to { transform: translate3d(-10vw, -1.8vh, 0) scale(0.95); }
+}
+
+/* The air around the work — wisps both themes, stars only at night.
+   Positioned children paint over non-positioned siblings, so the section's
+   content wrapper must carry `relative` to stay above this layer. */
+
+.work-atmosphere {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.work-atmosphere__wisp {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+}
+
+.work-atmosphere__wisp--a {
+  left: -10%;
+  top: 12%;
+  width: 44vw;
+  height: 20vh;
+  background: rgb(255 255 255 / 0.4);
+  animation: cloud-drift-a 110s ease-in-out infinite alternate;
+}
+
+.work-atmosphere__wisp--b {
+  right: -12%;
+  bottom: 6%;
+  width: 48vw;
+  height: 22vh;
+  background: rgb(253 238 205 / 0.35);
+  animation: cloud-drift-b 130s ease-in-out infinite alternate;
+}
+
+.dark .work-atmosphere__wisp--a {
+  background: rgb(148 163 205 / 0.1);
+}
+
+.dark .work-atmosphere__wisp--b {
+  background: rgb(165 180 220 / 0.09);
+}
+
+.work-atmosphere__stars {
+  display: none;
+}
+
+.dark .work-atmosphere__stars {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.work-atmosphere__stars > span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgb(255 244 214 / 0.9), rgb(255 244 214 / 0) 70%);
+  animation: work-star-twinkle 4.5s ease-in-out infinite;
+}
+
+/* Ends at a visible opacity on purpose: the reduced-motion kill-switch
+   plays one near-instant iteration and freezes on the final frame. */
+@keyframes work-star-twinkle {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.15; }
+  100% { opacity: 0.5; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Showcase atmosphere — setting the work card INTO the scene.
+
+   · .showcase-halo — the documented second exception to the Flat-Card
+     Rule (after cta-lift, and for the same reason): the card floats over
+     the animated night atmosphere, and a moonlight rim is what seats it
+     there. Square corners and the hairline border stay.
+   · .showcase-breath — a 4px bob on a 7s cycle. The one big rectangle in
+     a scene where everything else drifts must not be perfectly still.
+   · .showcase-wisp — fog crossing the card's lower corners, in front of
+     it. Hybrid-ready like the cloud band: swap the background for a
+     painterly PNG later without touching the choreography.
+   · .rail-fill — the active project's progress line ends in a soft
+     twinkling star instead of a bare loading-bar edge. Inactive segments
+     have transparent accents, so their star is invisible for free.
+   · .cloud-sweep — the "passing through the clouds" puffs that cross the
+     expanding card during the case-study transition (PageTransition).
+   ───────────────────────────────────────────────────────────────────────── */
+
+.showcase-halo {
+  box-shadow:
+    0 18px 48px rgb(2 6 23 / 0.1),
+    0 0 40px rgb(148 163 205 / 0.18);
+}
+
+.dark .showcase-halo {
+  box-shadow:
+    0 0 44px rgb(148 163 205 / 0.16),
+    0 0 96px rgb(99 102 241 / 0.09);
+}
+
+.showcase-breath {
+  animation: card-breath 7s ease-in-out infinite alternate;
+}
+
+@keyframes card-breath {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, -4px, 0); }
+}
+
+/* Slots for the painterly wisps crossing the card's lower corners — the
+   slot drifts, the .cloud-art--front image inside carries the visual. */
+.showcase-wisp {
+  position: absolute;
+  pointer-events: none;
+}
+
+.showcase-wisp--l {
+  left: -7%;
+  bottom: -10%;
+  width: 42%;
+  animation: cloud-drift-a 40s ease-in-out infinite alternate;
+}
+
+.showcase-wisp--r {
+  right: -6%;
+  bottom: -14%;
+  width: 36%;
+  animation: cloud-drift-b 52s ease-in-out infinite alternate;
+}
+
+.rail-fill {
+  color: var(--rail-light);
+}
+
+.dark .rail-fill {
+  color: var(--rail-dark);
+}
+
+.rail-fill::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  transform: translate(50%, -50%);
+  background: currentColor;
+  box-shadow: 0 0 8px 2px currentColor;
+  animation: rail-twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes rail-twinkle {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.4; }
+}
+
+/* The sweep keeps a faint radial glow as its background: the wisp image
+   inside loads on first use, and the gradient guarantees the sweep is
+   never invisible on that first click. Blur is light — the painterly art
+   is the point now. */
+.cloud-sweep {
+  position: absolute;
+  filter: blur(3px);
+}
+
+.cloud-sweep--a {
+  left: 0;
+  top: 6%;
+  width: 75%;
+  background: radial-gradient(closest-side, rgb(203 213 240 / 0.3), rgb(203 213 240 / 0) 76%);
+}
+
+.cloud-sweep--b {
+  right: 0;
+  bottom: 0%;
+  width: 68%;
+  background: radial-gradient(closest-side, rgb(226 232 250 / 0.25), rgb(226 232 250 / 0) 76%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .dock-glass — the floating dock's "moonlit glass" treatment.
+
+   The one sanctioned glassmorphism moment on the site (DESIGN.md allows it
+   "rare and purposeful"): the dock is the only persistent chrome floating
+   over the painted sky, and frosted glass lets the scene glow through it
+   instead of sitting on top like a sticker. Three pieces share the
+   language: the pill, the icon buttons, and the tooltip.
+
+   Hover halos are warm gold — the same lamp-star glow the night sky uses
+   (and the dawn sky's sun haze), so the dock reads as lit by the scene.
+   The translucent backgrounds are chosen to stay readable even where
+   backdrop-filter is unavailable.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.dock-glass {
+  background: rgb(255 255 255 / 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgb(255 255 255 / 0.6);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.65),
+    0 8px 32px rgb(2 6 23 / 0.14);
+}
+
+.dark .dock-glass {
+  background: rgb(9 16 52 / 0.38);
+  border-color: rgb(255 255 255 / 0.14);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.12),
+    0 8px 32px rgb(2 6 23 / 0.5);
+}
+
+.dock-glass__item {
+  background: rgb(255 255 255 / 0.55);
+  border: 1px solid rgb(15 23 42 / 0.1);
+  transition:
+    box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dock-glass__item:hover,
+.dock-glass__item:focus-visible {
+  background: rgb(255 251 235 / 0.85);
+  border-color: rgb(217 119 6 / 0.35);
+  box-shadow: 0 0 20px rgb(217 119 6 / 0.3);
+}
+
+.dark .dock-glass__item {
+  background: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.dark .dock-glass__item:hover,
+.dark .dock-glass__item:focus-visible {
+  background: rgb(253 230 138 / 0.1);
+  border-color: rgb(253 230 138 / 0.3);
+  box-shadow: 0 0 24px rgb(253 230 138 / 0.32);
+}
+
+.dock-glass__tooltip {
+  background: rgb(255 255 255 / 0.7);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 0.6);
+  color: #334155;
+  box-shadow: 0 4px 16px rgb(2 6 23 / 0.12);
+}
+
+.dark .dock-glass__tooltip {
+  background: rgb(9 16 52 / 0.55);
+  border-color: rgb(255 255 255 / 0.14);
+  color: #e2e8f0;
+  box-shadow: 0 4px 16px rgb(2 6 23 / 0.45);
+}
+
+/* The foreground meadow — full-bleed across the viewport. The image only
+   ever scales uniformly (width drives height): any object-fit crop would
+   cut through the figure, whose head sits near the top of the painted
+   area, so distortion-free means aspect-true, full stop.
+
+   103%, not 100%: the export is genuinely full-bleed (alpha-measured:
+   painted content spans the full frame width at full opacity), so the
+   only overscan needed is enough slack to keep both edges covered while
+   the ±9px cursor parallax shifts the image.
+
+   The 900px floor is for phones, where a viewport-wide meadow would
+   shrink the figure to a speck — below that width the meadow keeps its
+   size and the section's overflow crops the sides instead. 900 and no
+   higher: the figure sits right of center (~63% across the frame), and a
+   larger floor pushes him past a 375px screen's right edge. Cursor parallax rides the same eased
+   --sky-mx/--sky-my the mist uses, at a slightly larger amplitude: the
+   nearest layer moves the most, which is what reads as depth. Under
+   prefers-reduced-motion the variables never update, so the meadow simply
+   holds still. */
+.night-sky__foreground {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: max(103%, 900px);
+  height: auto;
+  max-width: none;
+  transform: translate3d(
+    calc(-50% + var(--sky-mx, 0) * 9px),
+    calc(var(--sky-my, 0) * 6px),
+    0
+  );
+  will-change: transform;
+  /* The art's bottom row is a hard straight line, invisible while it sits
+     on the viewport edge but a guillotine once you scroll past it. Fading
+     the last few percent lets the grass dissolve into the ground layer
+     and the cloud band instead of ending on a rule. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 91%, transparent 100%);
+}
+
+.night-sky__dawn {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    to top,
+    #f8fafc 0%,
+    rgb(248 250 252 / 0.92) 38%,
+    rgb(253 238 205 / 0.5) 68%,
+    rgb(248 250 252 / 0) 100%
+  );
+}
+
+.dark .night-sky__dawn {
+  background: linear-gradient(
+    to top,
+    #020617 0%,
+    rgb(2 6 23 / 0.92) 40%,
+    rgb(13 29 71 / 0.42) 70%,
+    rgb(2 6 23 / 0) 100%
+  );
+}
+
 .scrollbar-hide {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -588,4 +1257,469 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   line-height: 1.5;
   font-weight: 400;
   color: rgb(100 116 139);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .sheet — one row of a spreadsheet, read inside a depicted browser window.
+
+   Two things about the shape are worth stating, because neither is obvious
+   from the markup:
+
+   · The row is TRANSPOSED. A guideline in the source sheet is one row
+     spanning 22 columns; rendered as a sheet renders it, that is 22 columns
+     of guillotined text. Turned on its side, the sheet's column letters
+     become the left gutter and the sheet's two rows — headers, then the
+     guideline — become the two columns. The header cells still carry their
+     real row numbers (1 and 2) so the transposition reads as deliberate.
+
+   · The chrome is illustration. Every part of it is aria-hidden; the only
+     thing inside a keyboard can reach is the scroll region, which needs to
+     be reachable because it is genuinely clipped.
+
+   Colour is held in local custom properties rather than written into each
+   rule, because the whole window swaps together between themes and the
+   bottom fade has to be painted in exactly the sheet's own paper colour to
+   be invisible as a gradient.
+   ───────────────────────────────────────────────────────────────────────── */
+.sheet {
+  --sheet-paper: #ffffff;
+  /* The same paper at zero alpha. Written out rather than using the
+     `transparent` keyword, which is transparent BLACK and greys the middle
+     of the fade wherever gradients are not interpolated premultiplied. */
+  --sheet-paper-0: rgb(255 255 255 / 0);
+  --sheet-chrome: #f1f5f9;
+  --sheet-band: #f8fafc;
+  /* The window's outer edge is a card border (DESIGN.md §5) — it has to
+     hold the shape against the page without a shadow. Everything inside is
+     a gridline, and gridlines are supposed to disappear. */
+  --sheet-frame: rgb(0 0 0 / 0.2);
+  --sheet-rule: rgb(148 163 184 / 0.34);
+  --sheet-rule-soft: rgb(148 163 184 / 0.2);
+  --sheet-ink: #0f172a;
+  --sheet-body: #475569;
+  --sheet-muted: #64748b;
+  /* Secondary text that lands OFF the white paper — on the chrome bar, or
+     on the page itself. slate-500 clears 4.5:1 on paper and misses it on
+     both of those, so anything outside the grid steps one down the ramp. */
+  --sheet-quiet: #475569;
+  --sheet-chip: rgb(203 213 225 / 0.66);
+  --sheet-chip-ink: #334155;
+
+  /* margin-block, not margin: .bleed-wide owns the inline margins past
+     1280px and a shorthand here would silently cancel the breakout. */
+  margin-block: 2.5rem 3rem;
+}
+
+.dark .sheet {
+  --sheet-paper: #0f172a;
+  --sheet-paper-0: rgb(15 23 42 / 0);
+  --sheet-chrome: #1e293b;
+  --sheet-band: #16203a;
+  --sheet-frame: rgb(255 255 255 / 0.2);
+  --sheet-rule: rgb(148 163 184 / 0.22);
+  --sheet-rule-soft: rgb(148 163 184 / 0.14);
+  --sheet-ink: #f1f5f9;
+  --sheet-body: #cbd5e1;
+  --sheet-muted: #94a3b8;
+  --sheet-quiet: #94a3b8;
+  --sheet-chip: rgb(148 163 184 / 0.18);
+  --sheet-chip-ink: #e2e8f0;
+}
+
+.sheet__window {
+  overflow: hidden;
+  border: 1px solid var(--sheet-frame);
+  border-radius: 6px;
+  background: var(--sheet-paper);
+}
+
+/* Window chrome ─────────────────────────────────────────────────────────── */
+
+.sheet__chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 2.75rem;
+  padding-inline: 0.875rem;
+  background: var(--sheet-chrome);
+  border-bottom: 1px solid var(--sheet-rule);
+}
+
+.sheet__lights {
+  display: flex;
+  flex: none;
+  gap: 0.5rem;
+}
+
+.sheet__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+}
+
+.sheet__light--close {
+  background: #ff5f57;
+}
+.sheet__light--min {
+  background: #febc2e;
+}
+.sheet__light--zoom {
+  background: #28c840;
+}
+
+.sheet__nav,
+.sheet__tools {
+  display: none;
+  flex: none;
+  gap: 0.5rem;
+  color: var(--sheet-muted);
+}
+
+/* Below this the address pill needs the whole bar; nav and tools are the
+   first things a real window drops too. */
+@media (min-width: 560px) {
+  .sheet__nav,
+  .sheet__tools {
+    display: flex;
+  }
+}
+
+.sheet__url {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 24rem;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--sheet-paper);
+  color: var(--sheet-muted);
+  /* Caption role — 0.875rem / 1.5 / 400. */
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.sheet__url > svg {
+  flex: none;
+}
+
+.sheet__url > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* The sheet's own identity strip, below the browser's ─────────────────── */
+
+.sheet__strip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--sheet-rule);
+  background: var(--sheet-paper);
+  color: var(--sheet-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.sheet__file {
+  font-weight: 600;
+  color: var(--sheet-ink);
+}
+
+.sheet__meta {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* The grid ──────────────────────────────────────────────────────────────
+   Head and line share one template so the columns stay locked while the
+   body scrolls under the sticky header. */
+
+.sheet__head,
+.sheet__line {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: start;
+}
+
+@media (min-width: 640px) {
+  .sheet__head,
+  .sheet__line {
+    grid-template-columns: 2.5rem 11.5rem minmax(0, 1fr);
+  }
+}
+
+.sheet__viewport {
+  position: relative;
+}
+
+.sheet__scroll {
+  max-height: clamp(20rem, 58vh, 32rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sheet__scroll:focus-visible {
+  outline: 2px solid var(--sheet-ink);
+  outline-offset: -2px;
+}
+
+.sheet__head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  /* Opaque on purpose: rows scroll underneath it. */
+  background: var(--sheet-band);
+  border-bottom: 1px solid var(--sheet-rule);
+}
+
+.sheet__head > * {
+  padding: 0.625rem 0.875rem;
+  /* Label role — 0.75rem / 1.4 / 600 / 0.14em. */
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sheet-quiet);
+}
+
+.sheet__corner {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: stretch;
+  border-right: 1px solid var(--sheet-rule-soft);
+}
+
+/* Field names sit above their values on narrow screens, so the column that
+   would have labelled them has nothing left to say. */
+.sheet__head-field {
+  display: none;
+}
+
+.sheet__head-value {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+@media (min-width: 640px) {
+  .sheet__head-field {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: stretch;
+    border-right: 1px solid var(--sheet-rule-soft);
+  }
+
+  .sheet__head-value {
+    grid-column: 3;
+  }
+}
+
+/* The sheet's real row numbers, kept so the transposition reads as one. */
+.sheet__rownum {
+  display: inline-grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  vertical-align: -0.3em;
+  border-radius: 9999px;
+  background: var(--sheet-rule);
+  color: var(--sheet-ink);
+  letter-spacing: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet__grid {
+  margin: 0;
+}
+
+.sheet__line {
+  border-bottom: 1px solid var(--sheet-rule-soft);
+  transition: background-color 0.15s ease-out;
+}
+
+.sheet__line:last-child {
+  border-bottom: 0;
+}
+
+/* Tracking one field across a wide window is the whole reason a spreadsheet
+   highlights the row you are on. */
+.sheet__line:hover {
+  background: var(--sheet-band);
+}
+
+.sheet__gutter {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  padding-top: 0.875rem;
+  border-right: 1px solid var(--sheet-rule-soft);
+  text-align: center;
+  /* Trailing letter-space would otherwise pull the glyph off centre. */
+  text-indent: 0.14em;
+  color: var(--sheet-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.sheet__field {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0.875rem 0.875rem 0.25rem;
+  color: var(--sheet-ink);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.sheet__value {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  padding: 0 0.875rem 0.875rem;
+  color: var(--sheet-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .sheet__gutter {
+    grid-row: 1;
+  }
+
+  .sheet__field {
+    padding: 0.875rem;
+    align-self: stretch;
+    border-right: 1px solid var(--sheet-rule-soft);
+  }
+
+  .sheet__value {
+    grid-column: 3;
+    grid-row: 1;
+    padding: 0.875rem;
+  }
+}
+
+/* Cell kinds ────────────────────────────────────────────────────────────
+   Prose stays prose; the controlled-vocabulary axes render as chips. The
+   visible difference between the two is the point being made. */
+
+.sheet__prose {
+  margin: 0;
+  max-width: 68ch;
+}
+
+.sheet__bullets {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 68ch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheet__bullets > li {
+  display: grid;
+  grid-template-columns: 0.625rem minmax(0, 1fr);
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.sheet__bullets > li::before {
+  content: "•";
+  color: var(--sheet-muted);
+}
+
+.sheet__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.sheet__chip {
+  padding: 0.125rem 0.5rem;
+  border-radius: 6px;
+  background: var(--sheet-chip);
+  color: var(--sheet-chip-ink);
+}
+
+.sheet__code {
+  color: var(--sheet-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Clipping and the status bar ──────────────────────────────────────────── */
+
+.sheet__fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3rem;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--sheet-paper), var(--sheet-paper-0));
+  transition: opacity 0.25s ease-out;
+}
+
+/* The sentinel the fade watches. Zero height, so it only ever comes into
+   view when the very last field has. */
+.sheet__end {
+  height: 1px;
+  margin-top: -1px;
+}
+
+/* A permanent fade over the last field would read as a smudge, not an
+   affordance. It only means anything while there is more below. */
+.sheet__viewport[data-at-end="true"] .sheet__fade {
+  opacity: 0;
+}
+
+.sheet__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.875rem;
+  border-top: 1px solid var(--sheet-rule);
+  background: var(--sheet-chrome);
+  color: var(--sheet-quiet);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.sheet__tab {
+  padding: 0.125rem 0.5rem;
+  border-radius: 6px;
+  background: var(--sheet-paper);
+  color: var(--sheet-ink);
+  font-weight: 600;
+}
+
+.sheet figcaption {
+  margin-top: 1rem;
+  max-width: 68ch;
+  color: var(--sheet-quiet);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* On paper there is no scrolling, so the clip has to come off or the last
+   fifteen fields never print. */
+@media print {
+  .sheet__scroll {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .sheet__fade {
+    display: none;
+  }
 }
