@@ -9,8 +9,8 @@ The landing page is one continuous journey inspired by Van Gogh's Starry
 Night — **abstract interpretation, never literal**: steal the physics (swirling
 currents, halo stars, drifting mist), not the painting.
 
-> night meadow hero → up through a parting cloud band → the work floating
-> above the clouds → through the clouds one last time into a case study
+> night meadow hero (cosmos) → mist layer (work) → mountains (contact:
+> the landing) — with a fog sweep when a case study opens
 
 Dual mood follows the theme class on `<html>` (manual toggle, no next-themes):
 **dark = indigo night**, **light = pale dawn morning** — same physics, different
@@ -23,16 +23,36 @@ slider, and legibility were deliberately left untouched (recruiters skim —
 | Piece | File | What it is |
 |---|---|---|
 | Night sky hero | `src/app/components/uiFrontend/night-sky.tsx` | `NightSkyHero` — canvas flow-field (vortex eddies), star canvas, mist, meadow foreground, scroll-linked "dawn" exit |
-| Cloud band + work air | `src/app/components/uiFrontend/atmosphere.tsx` | `CloudBand` (fog belt at hero/work seam, parts on scroll) + `WorkAtmosphere` (wisps + 11 stars behind showcase) |
-| Hero page assembly | `src/app/components/uiFrontend/hero.tsx` | NightSkyHero → CloudBand → #work (WorkAtmosphere + heading + WorkShowcase) |
+| Work-section mist | `atmosphere.tsx` + `mist-background.tsx` | `WorkAtmosphere` = `MistBackground` (WebGL FBM domain-warped mist shader as the section background, top mask-feathered into the hero, theme-reactive palette uniforms, warm-gold cursor glow) + 11 dark-mode stars |
+| Hero page assembly | `src/app/components/uiFrontend/hero.tsx` | NightSkyHero → #work (WorkAtmosphere + heading + WorkShowcase) → dribbble → ContactSection |
+| Contact / landing | `src/app/components/uiFrontend/contact-section.tsx` | Two painted ridges (mountain_far/near.png): scroll-settle parallax + differential cursor parallax (near faster/further than far, clamped), 7 glowing dark-mode stars, hero's CTA pill verbatim + mailto shashank.ux@outlook.com. No CSS mist here — the paintings carry their own (a CSS mist band read as a blue field and was removed). |
+| Footer | `uiFrontend/footer.tsx` | Deliberately surface-less: transparent, no band, beams animation removed (GPU cost + broke the single-background illusion). Dark page bg gradient ends on #020617, same as it starts — never reintroduce a fade to pure black. |
 | Work showcase | `src/app/components/uiFrontend/work-showcase.tsx` | WebGL glass-wipe slider (pre-existing) + this redesign's halo/breath/wisps/surfacing/rail-twinkle |
 | Case-study transition | `src/app/components/PageTransition/index.tsx` | Card-expand overlay + cloud fog sweep |
 | Dock | `Animations/floating-dock.tsx` + `uiFrontend/floating-dock.tsx` | "Moonlit glass" treatment, Phosphor icons |
 | All atmosphere CSS | `src/app/globals.css` | Named blocks: `.night-sky`, `.cloud-band`/`.cloud-puff`, `.cloud-art`, `.work-atmosphere`, showcase block, `.dock-glass` |
 
 Assets: `public/homepage_assets/` — `hero_section_foreground.png` (3840×960
-meadow), `cloud_bank.png` (3000×800 dense), `cloud_wisp_a/b.png` (2000×900
-wispy). All user-generated, painterly, transparent PNG.
+meadow), `mountain_far.png` (3840×800), `mountain_near.png` (3840×700).
+The mountains bake their indigo color in (dark dawn silhouettes read
+correctly in light mode) — only theme-neutral assets get CSS tinting. The painterly cloud PNGs were **removed** (deployed
+performance + user preference for pure ethereal fog); all fog is now
+CSS gradients.
+
+## PERFORMANCE (learned the hard way — deployed site lagged)
+
+The lag was the blur stack: many huge `filter: blur(52–72px)` surfaces,
+all continuously animating, forced per-frame GPU re-filtering. Rules now:
+
+- **No `filter: blur()` on any large or animated element.** Fog softness
+  comes from radial/linear gradients, which are pre-soft and free. The
+  only remaining blurs: the dock's small `backdrop-filter` and the
+  one-shot loader wordmark.
+- Atmosphere animates **transform/opacity only**.
+- Canvas caps: flow dpr ≤ 1.25, stars dpr ≤ 1.5, particles 200/90
+  (desktop/mobile) — see `night-sky.tsx`.
+- The fixed fog veil sits fully off-viewport (translate) outside its
+  scroll window, so it costs nothing at rest.
 
 ## Load-bearing implementation rules (violating these breaks things)
 
@@ -68,11 +88,10 @@ wispy). All user-generated, painterly, transparent PNG.
 10. **`data-reveal="off"`** on any direct child of the `Reveal` wrapper that
     choreographs its own appearance (hero, CloudBand).
 
-## Asset pipeline (for new painterly assets)
+## Asset pipeline (for any future painterly assets)
 
-- **Clouds must be near-neutral grey-white.** Theme tinting is 100% CSS
-  (`.cloud-art`: brightness 1.05 dawn / 0.4 night + 2px blur; the sky behind
-  lends the blue). Baked color would lock assets to one mood.
+- **Keep exports near-neutral** if they must serve both themes — theme
+  tinting is done in CSS, baked color locks an asset to one mood.
 - **Trim to painted bounds.** The first meadow export wasted 25% of its width
   on transparent margins and needed CSS overscan gymnastics (now just 103%
   for the meadow — parallax slack only).
@@ -80,17 +99,18 @@ wispy). All user-generated, painterly, transparent PNG.
   fringe RGB (red halos = background-removal residue; check against a LIGHT
   background), (c) zero pinholes. Scan method: draw to canvas at ¼ scale,
   walk columns/rows for alpha bounds, average RGB of semi-transparent pixels.
-- Full generation prompts for meadow and clouds are reproducible from the
-  rules above: painterly impressionist, PNG alpha, content-to-edges,
-  decontaminated edges, ≥3000px wide.
+- Mind the PERFORMANCE section before adding image layers to the
+  atmosphere: every composited decorative layer has a cost.
 
 ## Tuning knobs (user feedback tends to hit these)
 
-- **Fog density**: `.dark .cloud-puff--*` alphas (procedural haze bed,
-  currently 0.12–0.3 under the art) and `.cloud-art` night brightness (0.4).
-  History: fog was invisible at 0.14 peaks — dark mode needs ~0.3+ effective.
-- **Fog drift speed**: `cloud-drift-a/b` keyframes (34–62s, 9–10vw travel).
-- **Cloud sizes**: `.cloud-art-slot--band-*` widths.
+- **Mist mood**: the `NIGHT`/`DAWN` palettes in `mist-background.tsx`
+  (base MUST stay equal to the page background — #020617 / #f8fafc — or
+  the masked edges show seams). `mist`/`accent` set the fold colors,
+  `gain` the overall brightness.
+- **Mist speed**: the `0.05/0.11/0.09 * u_time` factors in the shader.
+- **Mist cost**: `RES_SCALE` (0.45) and the fbm octave count (5).
+- **Mist edges**: the mask-image stops on `.work-atmosphere__mist`.
 - **Card presence**: `.showcase-halo` shadows, `.cloud-art--front` opacity.
 - **Meadow scale floor on phones**: `max(103%, 900px)` — 900px is calibrated
   to the figure at ~63% across; bigger pushes him off a 375px screen.
@@ -121,7 +141,11 @@ wispy). All user-generated, painterly, transparent PNG.
   wisps, scroll surfacing, rail star-twinkle) + cloud sweep in the expand
   transition. **Rejected**: floating-islands redesign, scroll-pinned journey
   (both hurt recruiter skimming).
-- Hybrid clouds: procedural haze bed under painterly PNGs.
+- Fog/cloud history (do not re-try): painterly cloud PNGs → REMOVED
+  (deployed lag). Viewport-filling top-down fog wipe → rejected ("too
+  linear"). Rising gradient plumes → replaced at user's request by the
+  current WebGL FBM mist shader (user-supplied reference, recolored to
+  our palettes) as the work section's background.
 
 ## Open threads
 

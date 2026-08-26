@@ -2,8 +2,6 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import CloudWispA from "../../../../public/homepage_assets/cloud_wisp_a.png";
-import CloudWispB from "../../../../public/homepage_assets/cloud_wisp_b.png";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { liftVeil, raiseVeil } from "@/app/lib/useReveal";
@@ -156,7 +154,7 @@ export function CaseStudyTransitionProvider({
               alt=""
               fill
               priority
-              sizes="75vw"
+              sizes="(min-width: 768px) 72vw, 88vw"
               className="object-cover"
             />
 
@@ -184,17 +182,13 @@ export function CaseStudyTransitionProvider({
                 initial={{ x: "-70%", opacity: 0 }}
                 animate={{ x: "35%", opacity: [0, 1, 0.5] }}
                 transition={{ duration: 1.1, ease: "easeOut" }}
-              >
-                <Image src={CloudWispA} alt="" sizes="75vw" draggable={false} className="cloud-art" />
-              </motion.div>
+              />
               <motion.div
                 className="cloud-sweep cloud-sweep--b"
                 initial={{ x: "65%", opacity: 0 }}
                 animate={{ x: "-30%", opacity: [0, 0.9, 0.4] }}
                 transition={{ duration: 1.25, ease: "easeOut", delay: 0.08 }}
-              >
-                <Image src={CloudWispB} alt="" sizes="70vw" draggable={false} className="cloud-art -scale-x-100" />
-              </motion.div>
+              />
             </div>
 
             {/* The card's text rides the expansion briefly, then dissolves —

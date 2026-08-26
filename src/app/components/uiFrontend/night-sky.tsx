@@ -141,13 +141,15 @@ function useSky(
     let W = 0;
     let H = 0;
     /* Trails are soft by nature — a lower pixel ratio on the flow canvas is
-       invisible and halves its fill cost. Stars stay crisp. */
-    const flowDpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    const starDpr = Math.min(window.devicePixelRatio || 1, 2);
+       invisible and cuts its full-canvas fade cost sharply on hi-dpi
+       screens. Stars stay reasonably crisp at 1.5. (Both caps lowered in
+       the deployed-lag pass, alongside removing all large CSS blurs.) */
+    const flowDpr = Math.min(window.devicePixelRatio || 1, 1.25);
+    const starDpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
     const coarse = !window.matchMedia("(pointer: fine)").matches;
     const small = window.innerWidth < 768;
-    const PARTICLES = small ? 110 : 230;
+    const PARTICLES = small ? 90 : 200;
 
     type Particle = {
       x: number; y: number; px: number; py: number;

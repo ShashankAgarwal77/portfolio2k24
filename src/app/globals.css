@@ -16,7 +16,9 @@
 .dark {
   --foreground-rgb: 2, 6, 23;
   --background-start-rgb: 2, 6, 23;
-  --background-end-rgb: 0, 0, 0;
+  /* Same as start: a fade to pure black made the page tail visibly
+     mismatch the #020617 the sky, mist, and mountains all assume. */
+  --background-end-rgb: 2, 6, 23;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -238,7 +240,8 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
 .night-sky__mist-blob {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(72px);
+  /* No blur filter: the gradients are pre-softened. Large animated
+     blur() layers were the deployed site's main lag source. */
   will-change: transform;
 }
 
@@ -247,7 +250,7 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   top: 16%;
   width: 52vw;
   height: 36vh;
-  background: rgb(255 255 255 / 0.6);
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 72%);
   animation: night-sky-mist-a 80s ease-in-out infinite alternate;
 }
 
@@ -256,7 +259,7 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   top: 38%;
   width: 44vw;
   height: 30vh;
-  background: rgb(253 224 138 / 0.34);
+  background: radial-gradient(closest-side, rgb(253 224 138 / 0.4), rgb(253 224 138 / 0) 72%);
   animation: night-sky-mist-b 95s ease-in-out infinite alternate;
 }
 
@@ -265,7 +268,7 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   top: 52%;
   width: 46vw;
   height: 30vh;
-  background: rgb(191 219 254 / 0.5);
+  background: radial-gradient(closest-side, rgb(191 219 254 / 0.5), rgb(191 219 254 / 0) 72%);
   animation: night-sky-mist-c 70s ease-in-out infinite alternate;
 }
 
@@ -274,15 +277,15 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
 }
 
 .dark .night-sky__mist-blob--a {
-  background: rgb(99 102 241 / 0.17);
+  background: radial-gradient(closest-side, rgb(99 102 241 / 0.2), rgb(99 102 241 / 0) 72%);
 }
 
 .dark .night-sky__mist-blob--b {
-  background: rgb(56 189 248 / 0.1);
+  background: radial-gradient(closest-side, rgb(56 189 248 / 0.12), rgb(56 189 248 / 0) 72%);
 }
 
 .dark .night-sky__mist-blob--c {
-  background: rgb(167 139 250 / 0.13);
+  background: radial-gradient(closest-side, rgb(167 139 250 / 0.16), rgb(167 139 250 / 0) 72%);
 }
 
 @keyframes night-sky-mist-a {
@@ -330,176 +333,6 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   background: linear-gradient(to bottom, rgb(2 6 23 / 0), #020617);
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   .cloud-band / .work-atmosphere — the cloud layer between hero and work,
-   and the thin air behind the showcase (atmosphere.tsx).
-
-   The band's negative margins equal its height, so it adds ZERO flow
-   height — pure overlap across the seam. Puffs are blurred radial
-   gradients (the hero mist's language, denser); the drift keyframes are
-   idle motion, while the parting is scroll-driven from the component.
-   z-index 10 floats it over both neighbouring sections; the dock (50)
-   stays above. Everything is pointer-transparent.
-
-   Fog color is moonlit slate-blue at night, warm white at dawn — never
-   pure white on the night sky, which would read as smoke, not cloud.
-   ───────────────────────────────────────────────────────────────────────── */
-
-.cloud-band {
-  position: relative;
-  z-index: 10;
-  height: 38vh;
-  margin-top: -18vh;
-  margin-bottom: -20vh;
-  pointer-events: none;
-}
-
-.cloud-band__half {
-  position: absolute;
-  inset: 0;
-}
-
-.cloud-puff {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(52px);
-  will-change: transform;
-}
-
-.cloud-puff--a {
-  left: -6%;
-  top: 8%;
-  width: 48vw;
-  height: 24vh;
-  background: radial-gradient(closest-side, rgb(255 255 255 / 0.6), rgb(255 255 255 / 0) 78%);
-  animation: cloud-drift-a 34s ease-in-out infinite alternate;
-}
-
-.cloud-puff--b {
-  right: -8%;
-  top: 16%;
-  width: 52vw;
-  height: 26vh;
-  background: radial-gradient(closest-side, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 78%);
-  animation: cloud-drift-b 42s ease-in-out infinite alternate;
-}
-
-.cloud-puff--c {
-  left: 22%;
-  top: 40%;
-  width: 44vw;
-  height: 22vh;
-  background: radial-gradient(closest-side, rgb(253 238 205 / 0.45), rgb(253 238 205 / 0) 78%);
-  animation: cloud-drift-b 48s ease-in-out infinite alternate-reverse;
-}
-
-.cloud-puff--d {
-  right: 20%;
-  top: 46%;
-  width: 38vw;
-  height: 20vh;
-  background: radial-gradient(closest-side, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0) 78%);
-  animation: cloud-drift-a 38s ease-in-out infinite alternate-reverse;
-}
-
-.cloud-puff--e {
-  left: 34%;
-  top: 4%;
-  width: 40vw;
-  height: 22vh;
-  background: radial-gradient(closest-side, rgb(226 232 240 / 0.5), rgb(226 232 240 / 0) 78%);
-  animation: cloud-drift-b 44s ease-in-out infinite alternate;
-}
-
-/* With the painterly cloud art carrying the visible cloudscape, the
-   procedural puffs step back into a haze bed — still present (they fill
-   the gaps between the paintings and soften their edges) but no longer
-   the show. These alphas were 0.42–0.5 when the puffs worked alone. */
-.dark .cloud-puff--a {
-  background: radial-gradient(closest-side, rgb(165 180 220 / 0.3), rgb(165 180 220 / 0) 78%);
-}
-
-.dark .cloud-puff--b {
-  background: radial-gradient(closest-side, rgb(165 180 220 / 0.27), rgb(165 180 220 / 0) 78%);
-}
-
-.dark .cloud-puff--c {
-  background: radial-gradient(closest-side, rgb(253 230 138 / 0.12), rgb(253 230 138 / 0) 78%);
-}
-
-.dark .cloud-puff--d {
-  background: radial-gradient(closest-side, rgb(148 163 205 / 0.25), rgb(148 163 205 / 0) 78%);
-}
-
-.dark .cloud-puff--e {
-  background: radial-gradient(closest-side, rgb(186 200 235 / 0.22), rgb(186 200 235 / 0) 78%);
-}
-
-/* ── Painterly cloud art (cloud_bank / cloud_wisp_a / cloud_wisp_b) ──────
-   One neutral grey-white asset set, tinted per theme entirely in CSS:
-   near-full brightness at dawn, dimmed to moonlit grey at night (the sky
-   behind lends the blue). The 2px blur seats crisp brush edges into the
-   scene. Slots own position + drift; the image owns width and any mirror
-   flip — a drift keyframe writing transform on the image itself would
-   cancel the flip. */
-
-.cloud-art-slot {
-  position: absolute;
-  pointer-events: none;
-}
-
-.cloud-art {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 0.92;
-  filter: brightness(1.05) blur(2px);
-}
-
-.dark .cloud-art {
-  opacity: 0.85;
-  filter: brightness(0.4) blur(2px);
-}
-
-/* In front of the showcase card the art must whisper, not cover. */
-.cloud-art.cloud-art--front {
-  opacity: 0.6;
-  filter: brightness(1.02) blur(3px);
-}
-
-.dark .cloud-art.cloud-art--front {
-  opacity: 0.45;
-  filter: brightness(0.45) blur(3px);
-}
-
-.cloud-art-slot--band-a {
-  left: -5%;
-  top: 14%;
-  width: 58vw;
-  animation: cloud-drift-a 44s ease-in-out infinite alternate;
-}
-
-.cloud-art-slot--band-b {
-  right: -7%;
-  top: 26%;
-  width: 52vw;
-  animation: cloud-drift-b 52s ease-in-out infinite alternate;
-}
-
-.cloud-art-slot--band-c {
-  left: 26%;
-  top: 44%;
-  width: 45vw;
-  animation: cloud-drift-b 58s ease-in-out infinite alternate-reverse;
-}
-
-.cloud-art-slot--band-d {
-  right: 16%;
-  top: 2%;
-  width: 44vw;
-  animation: cloud-drift-a 62s ease-in-out infinite alternate-reverse;
-}
-
 /* Perceptible, not restless: ~0.3vw/s of lateral travel. The alternate
    direction plus staggered durations means neighbouring puffs are always
    moving relative to each other, which is what reads as "rolling". */
@@ -523,40 +356,31 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   bottom: 0;
   left: calc(50% - 50vw);
   width: 100vw;
-  overflow: hidden;
+  /* No overflow clip: the mist canvas reaches 38vh up into the hero so
+     its fade-in lives INSIDE the hero scene (faint fog over the meadow's
+     base) instead of starting on a line at the section boundary. */
   pointer-events: none;
 }
 
-.work-atmosphere__wisp {
+/* The WebGL mist canvas (mist-background.tsx). The mask feathers its top
+   into the hero's meadow and its bottom into the page — the shader's
+   base color already matches the page background, so the dissolve is
+   seamless. Rendered at 0.45x buffer scale; CSS upscales, the mist's
+   softness hides it completely. */
+.work-atmosphere__mist {
   position: absolute;
-  border-radius: 9999px;
-  filter: blur(64px);
-}
-
-.work-atmosphere__wisp--a {
-  left: -10%;
-  top: 12%;
-  width: 44vw;
-  height: 20vh;
-  background: rgb(255 255 255 / 0.4);
-  animation: cloud-drift-a 110s ease-in-out infinite alternate;
-}
-
-.work-atmosphere__wisp--b {
-  right: -12%;
-  bottom: 6%;
-  width: 48vw;
-  height: 22vh;
-  background: rgb(253 238 205 / 0.35);
-  animation: cloud-drift-b 130s ease-in-out infinite alternate;
-}
-
-.dark .work-atmosphere__wisp--a {
-  background: rgb(148 163 205 / 0.1);
-}
-
-.dark .work-atmosphere__wisp--b {
-  background: rgb(165 180 220 / 0.09);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Reaches up into the hero: the mask's 0→28% ramp spans roughly that
+     38vh overlap, so mist builds gradually OVER the meadow's faded base
+     and is at full strength by the section boundary — no aligned edge,
+     no band. */
+  top: -38vh;
+  width: 100%;
+  height: calc(100% + 38vh);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 86%, transparent 100%);
 }
 
 .work-atmosphere__stars {
@@ -587,6 +411,102 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   .contact-section — the landing (contact-section.tsx).
+
+   Two painted ridges close the page; a top veil in the page's own
+   background color hazes the peaks so they emerge from the sky instead
+   of being pasted on it, and a gradient mist breathes in the valley
+   between the ridges — no blur filters, gradients only (perf rule).
+   Stars are dark-mode only, sharing the work section's twinkle.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.contact-stars {
+  display: none;
+}
+
+.dark .contact-stars {
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dark .contact-stars > span {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgb(255 248 225 / 1), rgb(255 244 214 / 0) 72%);
+  box-shadow: 0 0 16px 4px rgb(253 230 138 / 0.55), 0 0 4px 1px rgb(255 248 225 / 0.8);
+  animation: work-star-twinkle 4.5s ease-in-out infinite;
+}
+
+.contact-mountains {
+  position: relative;
+  pointer-events: none;
+}
+
+/* Atmospheric veil: page background hazing the ridge peaks. */
+.contact-mountains::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to bottom, rgb(248 250 252 / 0.55) 0%, rgb(248 250 252 / 0) 42%);
+}
+
+.dark .contact-mountains::after {
+  background: linear-gradient(to bottom, rgb(2 6 23 / 0.6) 0%, rgb(2 6 23 / 0) 42%);
+}
+
+.contact-ridge__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The exports' "transparent" sky carries a faint blue wash that printed a
+   visible rectangle against the page black — fading each image's top
+   dissolves the wash and hazes the peaks in one move. */
+.contact-ridge--far .contact-ridge__img {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 2%, #000 40%);
+  mask-image: linear-gradient(to bottom, transparent 2%, #000 40%);
+}
+
+.contact-ridge--near .contact-ridge__img {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 1%, #000 26%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 1%, #000 26%, #000 90%, transparent 100%);
+}
+
+/* Cursor-parallax layers: base transform matches the JS loop's scale so
+   there is no jump when the loop takes over; the scale gives each layer
+   edge bleed while it drifts. */
+.contact-ridge__parallax {
+  will-change: transform;
+}
+
+.contact-ridge__parallax--far {
+  transform: scale(1.02);
+}
+
+.contact-ridge__parallax--near {
+  transform: scale(1.035);
+}
+
+.contact-ridge--far {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 24%;
+  z-index: 0;
+}
+
+.contact-ridge--near {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────
    Showcase atmosphere — setting the work card INTO the scene.
 
    · .showcase-halo — the documented second exception to the Flat-Card
@@ -595,7 +515,7 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
      there. Square corners and the hairline border stay.
    · .showcase-breath — a 4px bob on a 7s cycle. The one big rectangle in
      a scene where everything else drifts must not be perfectly still.
-   · .showcase-wisp — fog crossing the card's lower corners, in front of
+   · .showcase-wisp — gradient fog crossing the card's lower corners, in front of
      it. Hybrid-ready like the cloud band: swap the background for a
      painterly PNG later without touching the choreography.
    · .rail-fill — the active project's progress line ends in a soft
@@ -626,17 +546,20 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   to { transform: translate3d(0, -4px, 0); }
 }
 
-/* Slots for the painterly wisps crossing the card's lower corners — the
-   slot drifts, the .cloud-art--front image inside carries the visual. */
+/* Fog wisps crossing the card's lower corners — pre-softened gradients,
+   no blur filter (performance). */
 .showcase-wisp {
   position: absolute;
   pointer-events: none;
+  border-radius: 9999px;
 }
 
 .showcase-wisp--l {
   left: -7%;
   bottom: -10%;
   width: 42%;
+  height: 30%;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.4), rgb(255 255 255 / 0) 74%);
   animation: cloud-drift-a 40s ease-in-out infinite alternate;
 }
 
@@ -644,7 +567,17 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   right: -6%;
   bottom: -14%;
   width: 36%;
+  height: 26%;
+  background: radial-gradient(closest-side, rgb(253 238 205 / 0.35), rgb(253 238 205 / 0) 74%);
   animation: cloud-drift-b 52s ease-in-out infinite alternate;
+}
+
+.dark .showcase-wisp--l {
+  background: radial-gradient(closest-side, rgb(165 180 220 / 0.16), rgb(165 180 220 / 0) 74%);
+}
+
+.dark .showcase-wisp--r {
+  background: radial-gradient(closest-side, rgb(148 163 205 / 0.13), rgb(148 163 205 / 0) 74%);
 }
 
 .rail-fill {
@@ -674,27 +607,26 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   50% { opacity: 0.4; }
 }
 
-/* The sweep keeps a faint radial glow as its background: the wisp image
-   inside loads on first use, and the gradient guarantees the sweep is
-   never invisible on that first click. Blur is light — the painterly art
-   is the point now. */
+/* The fog puffs that sweep the expanding card — gradients only. */
 .cloud-sweep {
   position: absolute;
-  filter: blur(3px);
+  border-radius: 9999px;
 }
 
 .cloud-sweep--a {
   left: 0;
-  top: 6%;
+  top: 8%;
   width: 75%;
-  background: radial-gradient(closest-side, rgb(203 213 240 / 0.3), rgb(203 213 240 / 0) 76%);
+  height: 55%;
+  background: radial-gradient(closest-side, rgb(203 213 240 / 0.55), rgb(203 213 240 / 0) 76%);
 }
 
 .cloud-sweep--b {
   right: 0;
-  bottom: 0%;
+  bottom: 2%;
   width: 68%;
-  background: radial-gradient(closest-side, rgb(226 232 250 / 0.25), rgb(226 232 250 / 0) 76%);
+  height: 50%;
+  background: radial-gradient(closest-side, rgb(226 232 250 / 0.45), rgb(226 232 250 / 0) 76%);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────

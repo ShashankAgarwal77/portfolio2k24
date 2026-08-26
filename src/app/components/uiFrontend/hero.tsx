@@ -6,7 +6,8 @@ import { WorkShowcase } from './work-showcase';
 import { DribbbleShots } from './dribbble-posts';
 import { SparklesPreview } from './sparkles-heading';
 import { NightSkyHero } from './night-sky';
-import { CloudBand, WorkAtmosphere } from './atmosphere';
+import { WorkAtmosphere } from './atmosphere';
+import { ContactSection } from './contact-section';
 import { Reveal } from '../Reveal';
 
 const HeroSection = () => {
@@ -49,18 +50,16 @@ const HeroSection = () => {
                 </NightSkyHero>
             </div>
 
-            {/* The cloud layer straddling the seam — fog builds as you leave
-                the meadow, then parts to reveal the work. Zero flow height,
-                so it never shifts the layout; data-reveal="off" because it
-                choreographs its own scroll appearance. */}
-            <CloudBand />
-
-            {/* pt: the breathing room after the meadow — the cloud band's
-                overlap fills this whitespace with fog, so the heading gets
-                both air and atmosphere instead of crowding the seam. */}
-            <div id="work" className="projects-section relative pt-16 md:pt-28 mb-20 md:mb-40 scroll-mt-16">
-                {/* Thin air behind the showcase — wisps, and stars at night.
-                    The content wrapper below is `relative` so it paints above. */}
+            {/* pt: breathing room after the meadow — the mist's feathered
+                top edge fills it, so the heading gets both air and
+                atmosphere instead of crowding the seam. */}
+            {/* Section rhythm: every section owns its own pt-16 md:pt-24 top
+                padding and no bottom margin — spacing between sections can
+                never stack or drift. */}
+            <div id="work" className="projects-section relative pt-16 md:pt-24 scroll-mt-16">
+                {/* The section's environment — WebGL mist feathered into the
+                    hero above, stars at night. The content wrapper below is
+                    `relative` so it paints above. */}
                 <WorkAtmosphere />
                 <div className="relative flex flex-col sm:mx-10 md:mx-20 lg:mx-40 items-center">
 
@@ -68,7 +67,7 @@ const HeroSection = () => {
                         with the hero's word-by-word shimmer fade. */}
                     <SectionHeading
                         text="My Selected Work to Showcase"
-                        className="text-title font-semibold lowercase text-center text-balance text-slate-500 dark:text-slate-300 mb-5"
+                        className="text-title font-semibold lowercase text-center text-balance text-slate-500 dark:text-slate-300 mb-8 md:mb-12"
                     />
 
                     {/* Bottom margin only. A top margin here would stack with
@@ -82,7 +81,7 @@ const HeroSection = () => {
             </div>
 
 
-            <div className="ui-section mx-4 my-8 md:m-12 lg:mx-40 lg:my-20">
+            <div className="ui-section mx-4 md:mx-12 lg:mx-40 pt-16 md:pt-24">
 
 
                 <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
@@ -102,6 +101,11 @@ const HeroSection = () => {
                     <DribbbleShots />
                 </div>
             </div>
+
+            {/* The landing: universe (hero) → clouds (work) → mountains.
+                The page's closing contact moment; the shared footer sits
+                just below the ridge line. */}
+            <ContactSection />
         </Reveal>
     );
 };

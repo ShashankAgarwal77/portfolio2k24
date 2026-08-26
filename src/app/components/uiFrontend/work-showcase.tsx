@@ -8,8 +8,6 @@ import * as THREE from "three";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useCaseStudyExpand } from "@/app/components/PageTransition";
 
-import CloudWispA from "../../../../public/homepage_assets/cloud_wisp_a.png";
-import CloudWispB from "../../../../public/homepage_assets/cloud_wisp_b.png";
 import Audit360Thumb from "../../../../public/audit360_thumbnail.png";
 import BCASThumb from "../../../../public/bcas_thumbnail.png";
 import SecureHubThumb from "../../../../public/securehub_thumbnail.png";
@@ -506,7 +504,7 @@ export function WorkShowcase() {
     return (
         <section
             ref={sectionRef}
-            className="relative flex w-screen ml-[calc(50%-50vw)] flex-col items-center gap-4 md:gap-5"
+            className="relative flex w-screen ml-[calc(50%-50vw)] flex-col items-center gap-5 md:gap-7"
             aria-roledescription="carousel"
             aria-label="Selected case studies"
         >
@@ -515,8 +513,11 @@ export function WorkShowcase() {
                 against the section's own blur reveal. The breath wrapper is
                 separate because framer and the CSS breathing animation would
                 otherwise fight over the same transform. */}
+            {/* Sized so heading + card + switcher rail share one viewport:
+                the card cedes height (55/60vh, was 75) and the rail always
+                matches the card's width. */}
             <motion.div
-                className="relative w-[75vw]"
+                className="relative w-[88vw] md:w-[72vw]"
                 style={prefersReducedMotion ? undefined : { y: surfaceY }}
             >
             <div className="showcase-breath relative">
@@ -527,7 +528,7 @@ export function WorkShowcase() {
                 bg-slate-950 is the fallback behind the image. */}
             <div
                 ref={cardRef}
-                className="showcase-halo relative h-[75vh] w-full overflow-hidden border border-black/20 bg-slate-950 dark:border-white/15"
+                className="showcase-halo relative h-[55vh] md:h-[60vh] w-full overflow-hidden border border-black/20 bg-slate-950 dark:border-white/15"
             >
             {/* Media stack: crossfade <Image> slides always exist (SSR, LCP,
                 fade mode); the canvas sits above them and takes over once
@@ -541,7 +542,7 @@ export function WorkShowcase() {
                         alt={i === index ? PROJECTS[i].imageAlt : ""}
                         fill
                         priority={i === 0}
-                        sizes="75vw"
+                        sizes="(min-width: 768px) 72vw, 88vw"
                         className={`object-cover transition-opacity duration-700 ease-out ${
                             i === index ? "opacity-100" : "opacity-0"
                         }`}
@@ -614,12 +615,8 @@ export function WorkShowcase() {
                 rather than a screenshot on top of it. Siblings of the card
                 (not children): the card's overflow-hidden would clip the
                 spill past its edges, which is the whole point. */}
-            <div aria-hidden="true" className="showcase-wisp showcase-wisp--l">
-                <Image src={CloudWispA} alt="" sizes="35vw" draggable={false} className="cloud-art cloud-art--front" />
-            </div>
-            <div aria-hidden="true" className="showcase-wisp showcase-wisp--r">
-                <Image src={CloudWispB} alt="" sizes="30vw" draggable={false} className="cloud-art cloud-art--front -scale-x-100" />
-            </div>
+            <div aria-hidden="true" className="showcase-wisp showcase-wisp--l" />
+            <div aria-hidden="true" className="showcase-wisp showcase-wisp--r" />
             </div>
             </motion.div>
 
@@ -630,7 +627,7 @@ export function WorkShowcase() {
                 line, deep on the light theme and pale on the dark one. */}
             <nav
                 aria-label="Case studies in this showcase"
-                className="grid w-[75vw] grid-cols-5 items-start gap-3 md:gap-5"
+                className="grid w-[88vw] md:w-[72vw] grid-cols-5 items-start gap-3 md:gap-5"
             >
                 {PROJECTS.map((p, i) => {
                     const isActive = i === index;
