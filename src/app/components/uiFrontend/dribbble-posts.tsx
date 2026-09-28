@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MdArrowOutward } from "react-icons/md";
 
 interface Shot {
@@ -17,20 +17,44 @@ interface Shot {
 
 export function DribbbleShots() {
   const [shots, setShots] = useState<Shot[]>([]);
+  const hostRef = useRef<HTMLDivElement>(null);
 
+  /* The shots live below the fold — fetch them when the grid is a
+     viewport away instead of competing with the landing's first paint. */
   useEffect(() => {
-    async function fetchAndSetShots() {
-      const response = await fetch('/api/fetchDribbbleShots');
-      const shots = await response.json();
-      console.log(shots);
-      setShots(shots);
-    }
+    const host = hostRef.current;
+    if (!host) return;
+    let cancelled = false;
 
-    fetchAndSetShots();
+    const load = async () => {
+      try {
+        const response = await fetch('/api/fetchDribbbleShots');
+        const data = await response.json();
+        if (!cancelled && Array.isArray(data)) setShots(data);
+      } catch {
+        /* the grid simply stays empty — the section heading still reads */
+      }
+    };
+
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          io.disconnect();
+          load();
+        }
+      },
+      { rootMargin: '100% 0px' }
+    );
+    io.observe(host);
+
+    return () => {
+      cancelled = true;
+      io.disconnect();
+    };
   }, []);
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+    <div ref={hostRef} className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
       {shots && shots.map((shot) => (
         <a href={shot.html_url} key={shot.id} target='_blank' rel='noopener noreferrer' className='group'>
 
@@ -75,7 +99,7 @@ export function DribbbleShots() {
   );
 }
 
-export const Icon = ({ className, ...rest }: any) => {
+const Icon = ({ className, ...rest }: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

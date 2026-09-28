@@ -5,7 +5,13 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import * as THREE from "three";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+    motion,
+    useMotionValueEvent,
+    useReducedMotion,
+    useScroll,
+    useTransform,
+} from "framer-motion";
 import { useCaseStudyExpand } from "@/app/components/PageTransition";
 
 import Audit360Thumb from "../../../../public/audit360_thumbnail.png";
@@ -15,25 +21,37 @@ import OroThumbnail from "../../../../public/oro_thumbnail.png";
 import HaulkarThumbnail from "../../../../public/haulkar_thumbnail.png";
 
 /* ─────────────────────────────────────────────────────────────────────────
-   WorkShowcase — the home page's case-study section as one full-viewport
-   slider: the project's thumbnail full-bleed behind a left-aligned content
-   block, a project list with a progress line on the right, and a WebGL
-   "liquid glass" wipe between slides (adapted from the Lumina slider, but
-   with the bundled three/gsap instead of CDN scripts, and only the glass
-   effect — the others in the source were stubs).
+   WorkShowcase — the home page's case-study section as a scroll-driven
+   showcase: the full-viewport card pins while the visitor scrolls, and
+   scroll position scrubs the WebGL "liquid glass" wipe from one project
+   to the next. Every case study is reached by simply continuing to
+   scroll — no clicking through options, no autoplay timer racing the
+   reader. Scrolling back rewinds the same wipe; the section is a strip
+   of film the visitor drags through at their own pace.
+
+   Geometry: the section is a tall runway (~480vh); a sticky h-screen
+   viewport inside it holds the card + rail. Progress through the runway
+   maps to a position on the strip: each step is DWELL (card at rest,
+   readable) then WIPE (the shader scrubs to the next slide). The last
+   slide's dwell is the runway's tail, so it holds before unpinning.
 
    Modes, decided once on mount:
-     · webgl — desktop with motion allowed. Canvas paints the slides and a
-       shader wipe carries transitions. The render loop only runs during a
-       transition; a static frame costs no GPU.
-     · fade  — phones, reduced motion, or no WebGL context. Same layout and
-       content, plain crossfade (which prefers-reduced-motion collapses to
-       an instant swap via the global CSS rule).
+     · webgl — desktop with motion allowed. Canvas paints the slides and
+       the shader wipe is scrubbed by scroll. Renders happen only when
+       scroll actually moves the wipe — a resting frame costs no GPU.
+     · fade  — phones, reduced motion, or no WebGL context. Same scroll
+       mapping and content, plain crossfade at the wipe midpoint (which
+       prefers-reduced-motion collapses to an instant swap via the
+       global CSS rule).
+
+   The GL context and its five textures are created only when the runway
+   approaches the viewport (IntersectionObserver, one viewport out) — the
+   landing's first paint and the site loader never pay for them.
 
    The whole slide is a link into the active case study, handed to the
-   same card-expand veil transition the old card stack used. Per-project
-   accent color appears only on that project's own progress line — the One
-   Hue Rule scoped to the active slide.
+   same card-expand veil transition as before. Per-project accent color
+   appears only on that project's own progress line — the One Hue Rule
+   scoped to the active slide.
    ───────────────────────────────────────────────────────────────────────── */
 
 type Project = {
@@ -121,10 +139,13 @@ const PROJECTS: Project[] = [
     },
 ];
 
-const SLIDE_MS = 6000;
-const TICK_MS = 50;
-const TRANSITION_S = 1.5;
-const FADE_MS = 700;
+const STEPS = PROJECTS.length - 1;
+/** Scroll runway consumed by one dwell+wipe step, in vh. */
+const STEP_VH = 80;
+/** Extra runway after the last wipe so the final slide holds while pinned. */
+const TAIL_VH = 60;
+/** Fraction of a step the card rests before the wipe begins. */
+const DWELL = 0.4;
 
 /* The Lumina glass wipe, reduced to what it actually uses: a circular
    refraction front expanding from the centre, chromatic fringing on the
@@ -200,11 +221,22 @@ type GL = {
     sizes: THREE.Vector2[];
 };
 
+/** Map runway progress (0..1) to a continuous position on the film strip
+    (0..STEPS). The tail is dead scroll after the last wipe. */
+function stripPosition(p: number): number {
+    const total = STEPS * STEP_VH + TAIL_VH;
+    const s = Math.min((p * total) / STEP_VH, STEPS);
+    const i = Math.min(Math.floor(s), STEPS - 1);
+    const t = s - i;
+    const wipe = t <= DWELL ? 0 : (t - DWELL) / (1 - DWELL);
+    return i + Math.min(wipe, 1);
+}
+
 export function WorkShowcase() {
     const prefersReducedMotion = useReducedMotion();
     const expand = useCaseStudyExpand();
 
-    const sectionRef = React.useRef<HTMLElement>(null);
+    const runwayRef = React.useRef<HTMLElement>(null);
     const cardRef = React.useRef<HTMLDivElement>(null);
     const canvasRef = React.useRef<HTMLCanvasElement>(null);
     const contentRef = React.useRef<HTMLDivElement>(null);
@@ -212,27 +244,40 @@ export function WorkShowcase() {
     const fillRefs = React.useRef<(HTMLSpanElement | null)[]>([]);
 
     const [mode, setMode] = React.useState<Mode>("static");
+    const [near, setNear] = React.useState(false);
     const [index, setIndex] = React.useState(0);
     const [prevIndex, setPrevIndex] = React.useState(0);
     const [glReady, setGlReady] = React.useState(false);
 
-    /* Surfacing parallax: 0 while the section is below the fold, 1 once its
-       top reaches 35% down the viewport — the card rides the tail of the
-       cloud band's parting. */
+    const gl = React.useRef<GL | null>(null);
+    const indexRef = React.useRef(0);
+    const posRef = React.useRef(0);
+    const lastPaintedPos = React.useRef(-1);
+    /* Scrub smoothing: wheel detents land in ~100px steps, which would
+       jump the wipe a quarter of its span per tick. The painted position
+       chases the scroll position through a short rAF lerp (~120ms settle)
+       so the scrub reads as continuous whatever the input device. */
+    const targetPos = React.useRef(0);
+    const smoothRaf = React.useRef(0);
+    const hadScrollEvent = React.useRef(false);
+    const reducedRef = React.useRef(false);
+    reducedRef.current = !!prefersReducedMotion;
+    const firstRender = React.useRef(true);
+
+    /* Pinned progress through the runway: 0 when its top reaches the
+       viewport top, 1 when its bottom meets the viewport bottom. */
+    const { scrollYProgress } = useScroll({
+        target: runwayRef,
+        offset: ["start start", "end end"],
+    });
+
+    /* Surfacing parallax on approach: the card rides the tail of the cloud
+       band's parting as the section scrolls in, before the pin engages. */
     const { scrollYProgress: surfaceProgress } = useScroll({
-        target: sectionRef,
+        target: runwayRef,
         offset: ["start end", "start 0.35"],
     });
     const surfaceY = useTransform(surfaceProgress, [0, 1], [44, 0]);
-
-    const gl = React.useRef<GL | null>(null);
-    const indexRef = React.useRef(0);
-    indexRef.current = index;
-    const transitioning = React.useRef(false);
-    const paused = React.useRef(true); // starts paused until scrolled into view
-    const progress = React.useRef(0);
-    const goToRef = React.useRef<(i: number) => void>(() => {});
-    const firstRender = React.useRef(true);
 
     /* ── mode decision, once, on the client ── */
     React.useEffect(() => {
@@ -242,9 +287,60 @@ export function WorkShowcase() {
         setMode(prefersReducedMotion || coarse ? "fade" : "webgl");
     }, [prefersReducedMotion]);
 
+    /* ── defer all GL cost until the section is one viewport away ── */
+    React.useEffect(() => {
+        const runway = runwayRef.current;
+        if (!runway) return;
+        const io = new IntersectionObserver(
+            ([e]) => {
+                if (e.isIntersecting) {
+                    setNear(true);
+                    io.disconnect();
+                }
+            },
+            { rootMargin: "100% 0px" }
+        );
+        io.observe(runway);
+        return () => io.disconnect();
+    }, []);
+
+    /* ── paint one position on the strip: textures + wipe + rail fills ── */
+    const paintStrip = React.useCallback((pos: number, force = false) => {
+        /* Dwell zones map every scrolled frame to the same position —
+           skip the GL render and rail writes entirely when nothing moved. */
+        if (!force && Math.abs(pos - lastPaintedPos.current) < 0.0005) return;
+        lastPaintedPos.current = pos;
+
+        const i = Math.min(Math.floor(pos), STEPS - 1);
+        const wipe = pos - i;
+
+        const api = gl.current;
+        if (api) {
+            const u = api.material.uniforms;
+            u.uTexture1.value = api.textures[i];
+            u.uTexture1Size.value = api.sizes[i];
+            u.uTexture2.value = api.textures[i + 1];
+            u.uTexture2Size.value = api.sizes[i + 1];
+            u.uProgress.value = wipe;
+            api.renderer.render(api.scene, api.camera);
+        }
+
+        /* Rail: each segment fills as its slide approaches; passed segments
+           stay full. Only the active slide's segment carries an accent, so
+           the rest are invisible for free. Direct DOM writes — this runs
+           every scrolled frame. */
+        for (let s = 0; s < PROJECTS.length; s++) {
+            const fill = fillRefs.current[s];
+            if (fill) {
+                const amt = Math.max(0, Math.min(pos - s + 1, 1));
+                fill.style.width = `${amt * 100}%`;
+            }
+        }
+    }, []);
+
     /* ── WebGL lifecycle ── */
     React.useEffect(() => {
-        if (mode !== "webgl") return;
+        if (mode !== "webgl" || !near) return;
         const canvas = canvasRef.current;
         const card = cardRef.current;
         if (!canvas || !card) return;
@@ -281,7 +377,10 @@ export function WorkShowcase() {
         const size = () => {
             const r = card.getBoundingClientRect();
             renderer.setSize(r.width, r.height, false);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            /* 1.5, not 2: the canvas shows photographs in motion, where the
+               extra density is invisible — but on a 2x display it would
+               nearly double the fragment work of every scrubbed frame. */
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
             material.uniforms.uResolution.value.set(r.width, r.height);
             renderOnce();
         };
@@ -308,10 +407,7 @@ export function WorkShowcase() {
                     (t) => new THREE.Vector2(t.image.width, t.image.height)
                 );
                 gl.current = { renderer, scene, camera, material, textures, sizes };
-                const i = indexRef.current;
-                material.uniforms.uTexture1.value = textures[i];
-                material.uniforms.uTexture1Size.value = sizes[i];
-                renderOnce();
+                paintStrip(posRef.current, true);
                 setGlReady(true);
             })
             .catch(() => {
@@ -327,76 +423,55 @@ export function WorkShowcase() {
             gl.current = null;
             setGlReady(false);
         };
-    }, [mode]);
+    }, [mode, near, paintStrip]);
 
-    /* ── slide change ── */
-    const goTo = React.useCallback(
-        (target: number) => {
-            const from = indexRef.current;
-            if (transitioning.current || target === from) return;
-            transitioning.current = true;
-            progress.current = 0;
-            const fill = fillRefs.current[from];
-            if (fill) fill.style.width = "0%";
+    /* The content block swaps at the wipe midpoint, when the incoming
+       image owns the card's centre. */
+    const syncDisplayed = React.useCallback((pos: number) => {
+        const displayed = Math.round(pos);
+        if (displayed !== indexRef.current) {
+            setPrevIndex(indexRef.current);
+            indexRef.current = displayed;
+            setIndex(displayed);
+        }
+    }, []);
 
-            setPrevIndex(from);
-            setIndex(target);
+    /* One lerp step per frame toward the scroll position; the loop only
+       lives while there is distance left to close. */
+    const smoothTick = React.useCallback(() => {
+        const t = targetPos.current;
+        const s = posRef.current;
+        const next = Math.abs(t - s) < 0.001 ? t : s + (t - s) * 0.18;
+        posRef.current = next;
+        paintStrip(next);
+        syncDisplayed(next);
+        smoothRaf.current = next === t ? 0 : requestAnimationFrame(smoothTick);
+    }, [paintStrip, syncDisplayed]);
 
-            const api = gl.current;
-            if (mode === "webgl" && api) {
-                const u = api.material.uniforms;
-                u.uTexture1.value = api.textures[from];
-                u.uTexture1Size.value = api.sizes[from];
-                u.uTexture2.value = api.textures[target];
-                u.uTexture2Size.value = api.sizes[target];
-                /* The render loop exists only for the duration of the wipe. */
-                let running = true;
-                const renderLoop = () => {
-                    if (!running) return;
-                    api.renderer.render(api.scene, api.camera);
-                    requestAnimationFrame(renderLoop);
-                };
-                requestAnimationFrame(renderLoop);
-                const settle = () => {
-                    u.uProgress.value = 0;
-                    u.uTexture1.value = api.textures[target];
-                    u.uTexture1Size.value = api.sizes[target];
-                    api.renderer.render(api.scene, api.camera);
-                    running = false;
-                    transitioning.current = false;
-                };
-                const tween = gsap.fromTo(
-                    u.uProgress,
-                    { value: 0 },
-                    {
-                        value: 1,
-                        duration: TRANSITION_S,
-                        ease: "power2.inOut",
-                        onComplete: () => {
-                            window.clearTimeout(deadline);
-                            settle();
-                        },
-                    }
-                );
-                /* gsap's ticker is rAF-driven and pauses in hidden tabs, so
-                   the completion callback can be deferred indefinitely. The
-                   transition lock must not be — same rule as the veil. */
-                const deadline = window.setTimeout(() => {
-                    if (!transitioning.current) return;
-                    tween.kill();
-                    settle();
-                }, TRANSITION_S * 1000 + 2000);
-            } else {
-                /* fade mode: the crossfade is CSS; just release the lock when
-                   it has finished. */
-                window.setTimeout(() => {
-                    transitioning.current = false;
-                }, FADE_MS);
-            }
-        },
-        [mode]
-    );
-    goToRef.current = goTo;
+    /* ── scroll drives everything ── */
+    useMotionValueEvent(scrollYProgress, "change", (p) => {
+        const pos = stripPosition(p);
+        targetPos.current = pos;
+
+        /* Reduced motion tracks 1:1; the first event after mount snaps
+           (a refresh mid-runway must not animate a catch-up). */
+        if (reducedRef.current || !hadScrollEvent.current) {
+            hadScrollEvent.current = true;
+            posRef.current = pos;
+            paintStrip(pos);
+            syncDisplayed(pos);
+            return;
+        }
+        if (!smoothRaf.current) smoothRaf.current = requestAnimationFrame(smoothTick);
+    });
+
+    /* Initial rail state (before any scroll): first segment full. */
+    React.useEffect(() => {
+        paintStrip(0, true);
+        return () => {
+            if (smoothRaf.current) cancelAnimationFrame(smoothRaf.current);
+        };
+    }, [paintStrip]);
 
     /* ── content reveal per slide — the site's blur-to-sharp signature,
           word-staggered on the title like the hero heading ── */
@@ -414,7 +489,7 @@ export function WorkShowcase() {
         tl.fromTo(
             words,
             { opacity: 0, y: 14, filter: "blur(8px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, stagger: 0.045, ease: "power3.out", delay: 0.1, clearProps: "filter" }
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, stagger: 0.045, ease: "power3.out", delay: 0.05, clearProps: "filter" }
         ).fromTo(
             rest,
             { opacity: 0, y: 10, filter: "blur(6px)" },
@@ -426,56 +501,17 @@ export function WorkShowcase() {
         };
     }, [index, prefersReducedMotion]);
 
-    /* ── autoplay: accumulate while visible, on-screen, and unhovered.
-          The fill width is written straight to the DOM — sixty state
-          updates a second have no business going through React. ── */
-    React.useEffect(() => {
-        if (mode === "static" || prefersReducedMotion) return;
-        const section = sectionRef.current;
-        if (!section) return;
-
-        const onScreen = { current: false };
-        const io = new IntersectionObserver(
-            ([e]) => {
-                onScreen.current = e.isIntersecting;
-            },
-            { threshold: 0.35 }
-        );
-        io.observe(section);
-
-        const hover = { current: false };
-        const enter = () => (hover.current = true);
-        const leave = () => (hover.current = false);
-        section.addEventListener("mouseenter", enter);
-        section.addEventListener("mouseleave", leave);
-        section.addEventListener("focusin", enter);
-        section.addEventListener("focusout", leave);
-
-        const timer = window.setInterval(() => {
-            paused.current =
-                !onScreen.current ||
-                hover.current ||
-                document.visibilityState === "hidden" ||
-                transitioning.current;
-            if (paused.current) return;
-            progress.current += (100 / SLIDE_MS) * TICK_MS;
-            const fill = fillRefs.current[indexRef.current];
-            if (fill) fill.style.width = `${Math.min(progress.current, 100)}%`;
-            if (progress.current >= 100) {
-                progress.current = 0;
-                goToRef.current((indexRef.current + 1) % PROJECTS.length);
-            }
-        }, TICK_MS);
-
-        return () => {
-            window.clearInterval(timer);
-            io.disconnect();
-            section.removeEventListener("mouseenter", enter);
-            section.removeEventListener("mouseleave", leave);
-            section.removeEventListener("focusin", enter);
-            section.removeEventListener("focusout", leave);
-        };
-    }, [mode, prefersReducedMotion]);
+    /* ── rail click: scroll the runway to that slide's dwell ── */
+    const scrollToSlide = (i: number) => {
+        const runway = runwayRef.current;
+        if (!runway) return;
+        const top =
+            runway.getBoundingClientRect().top +
+            window.scrollY +
+            (i * STEP_VH * window.innerHeight) / 100 +
+            2;
+        window.scrollTo({ top, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    };
 
     /* ── click-through into the case study, via the veil transition ── */
     const handleOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -503,29 +539,29 @@ export function WorkShowcase() {
 
     return (
         <section
-            ref={sectionRef}
-            className="relative flex w-screen ml-[calc(50%-50vw)] flex-col items-center gap-5 md:gap-7"
-            aria-roledescription="carousel"
+            ref={runwayRef}
+            className="relative w-screen ml-[calc(50%-50vw)]"
+            style={{ height: `${100 + STEPS * STEP_VH + TAIL_VH}vh` }}
             aria-label="Selected case studies"
         >
+            {/* The pinned stage: card + switcher rail share one viewport for
+                the whole runway. */}
+            <div className="sticky top-0 flex h-screen flex-col items-center justify-center gap-5 md:gap-7">
             {/* Surfacing: the card rises the last few centimetres as the
                 section scrolls in — position-linked, so it can't double-fire
                 against the section's own blur reveal. The breath wrapper is
                 separate because framer and the CSS breathing animation would
                 otherwise fight over the same transform. */}
-            {/* Sized so heading + card + switcher rail share one viewport:
-                the card cedes height (55/60vh, was 75) and the rail always
-                matches the card's width. */}
             <motion.div
                 className="relative w-[88vw] md:w-[72vw]"
                 style={prefersReducedMotion ? undefined : { y: surfaceY }}
             >
             <div className="showcase-breath relative">
-            {/* The showcase card: 75% of the viewport, hairline border in the
-                page's own frame language (Flat-Card Rule — square corners,
-                but with the documented moonlight-rim exception: it floats
-                over the night atmosphere, like the CTA over the sky).
-                bg-slate-950 is the fallback behind the image. */}
+            {/* The showcase card: hairline border in the page's own frame
+                language (Flat-Card Rule — square corners, but with the
+                documented moonlight-rim exception: it floats over the night
+                atmosphere, like the CTA over the sky). bg-slate-950 is the
+                fallback behind the image. */}
             <div
                 ref={cardRef}
                 className="showcase-halo relative h-[55vh] md:h-[60vh] w-full overflow-hidden border border-black/20 bg-slate-950 dark:border-white/15"
@@ -623,8 +659,11 @@ export function WorkShowcase() {
             {/* The switcher rail: one segment per case study, horizontal,
                 just below the card and outside it — on the page background,
                 where its contrast doesn't depend on the photograph behind
-                it. Each project's accent appears only on its own progress
-                line, deep on the light theme and pale on the dark one. */}
+                it. The fills mirror scroll position now: passed slides stay
+                full, the active slide's line is the strip's read head. Each
+                project's accent appears only on its own line, deep on the
+                light theme and pale on the dark one. Clicking a name still
+                jumps — it scrolls the runway to that slide's dwell. */}
             <nav
                 aria-label="Case studies in this showcase"
                 className="grid w-[88vw] md:w-[72vw] grid-cols-5 items-start gap-3 md:gap-5"
@@ -635,9 +674,9 @@ export function WorkShowcase() {
                         <button
                             key={p.href}
                             type="button"
-                            onClick={() => goToRef.current(i)}
+                            onClick={() => scrollToSlide(i)}
                             aria-current={isActive ? "true" : undefined}
-                            aria-label={`Show ${p.name}`}
+                            aria-label={`Scroll to ${p.name}`}
                             className="group/nav flex flex-col items-stretch gap-2 pb-1 text-left"
                         >
                             <span className="relative block h-px w-full overflow-hidden bg-black/15 dark:bg-white/25">
@@ -667,6 +706,7 @@ export function WorkShowcase() {
                     );
                 })}
             </nav>
+            </div>
         </section>
     );
 }

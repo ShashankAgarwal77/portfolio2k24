@@ -122,9 +122,9 @@ const currentMode = (): Mode =>
   document.documentElement.classList.contains("dark") ? "night" : "dawn";
 
 function useSky(
-  sectionRef: React.RefObject<HTMLDivElement>,
-  flowRef: React.RefObject<HTMLCanvasElement>,
-  starRef: React.RefObject<HTMLCanvasElement>,
+  sectionRef: React.RefObject<HTMLDivElement | null>,
+  flowRef: React.RefObject<HTMLCanvasElement | null>,
+  starRef: React.RefObject<HTMLCanvasElement | null>,
   reduced: boolean
 ) {
   useEffect(() => {
@@ -381,6 +381,7 @@ function useSky(
 
     let raf = 0;
     let running = false;
+    let held = false; // true while the first-landing veil owns the screen
     let last = 0;
     let healFrame = 0;
 
@@ -411,7 +412,7 @@ function useSky(
     };
 
     const start = () => {
-      if (running) return;
+      if (running || held) return;
       running = true;
       last = performance.now();
       raf = requestAnimationFrame(frame);
@@ -454,11 +455,22 @@ function useSky(
     warm(160);
 
     /* Star ignition waits for the first-landing veil, so the sky lights up
-       as the loader fades instead of invisibly underneath it. */
+       as the loader fades instead of invisibly underneath it. The render
+       loop holds with it: frames simulated under an opaque loader are
+       main-thread cost spent at the exact moment hydration needs it most
+       (`held` gates start(), so the visibility observers below can't
+       start the loop early either). The currents are pre-warmed above,
+       so the first visible frame is already alive; onVeilLift's own
+       timeout failsafe bounds the hold. */
+    if (veilUp()) held = true;
     let cancelVeil: (() => void) | undefined;
-    if (veilUp()) {
+    if (held) {
       cancelVeil = onVeilLift(() => {
         igniteAt = performance.now() + 200;
+        held = false;
+        /* inView is declared below but assigned by the observer before
+           this ever fires — the veil holds for at least a second. */
+        if (document.visibilityState === "visible" && inView) start();
       });
       igniteAt = performance.now() + 6000; // failsafe if the event never fires
     }

@@ -39,19 +39,27 @@ const STAR_SEATS: [number, number, number, number][] = [
 export function WorkAtmosphere() {
   return (
     <div aria-hidden="true" className="work-atmosphere">
-      <MistBackground />
-      <div className="work-atmosphere__stars">
-        {STAR_SEATS.map(([x, y, s, d], i) => (
-          <span
-            key={i}
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: `scale(${s})`,
-              animationDelay: `${d}s`,
-            }}
-          />
-        ))}
+      {/* The section is now a multi-viewport scroll runway (the showcase
+          pins while scroll scrubs through the case studies), so the
+          atmosphere pins too: one viewport of mist + stars that rides
+          along for the whole journey. Without this the mist canvas would
+          stretch to ~5 viewports of GPU surface and the pinned card
+          would scroll out of its own cloudscape after the first screen. */}
+      <div className="work-atmosphere__pin">
+        <MistBackground />
+        <div className="work-atmosphere__stars">
+          {STAR_SEATS.map(([x, y, s, d], i) => (
+            <span
+              key={i}
+              style={{
+                left: `${x}%`,
+                top: `${y}%`,
+                transform: `scale(${s})`,
+                animationDelay: `${d}s`,
+              }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

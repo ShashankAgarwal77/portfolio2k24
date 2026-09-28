@@ -11,6 +11,16 @@ const ThemeSwitcher = () => {
         return existingPreference ? JSON.parse(existingPreference) : true;
     });
 
+    /* The server can't read localStorage, so it always renders the dark-
+       default icon; committing the real icon only after mount keeps the
+       hydrated tree identical to the SSR one (React 19 reports the
+       mismatch as an error). The boot script has already applied the real
+       theme class pre-paint — only this little icon waits a frame. */
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     // Update localStorage and document element class when darkMode state changes
     useEffect(() => {
         if (darkMode) {
@@ -25,9 +35,11 @@ const ThemeSwitcher = () => {
         setDarkMode(!darkMode);
     };
 
+    const showDark = mounted ? darkMode : true;
+
     return (
         <button onClick={toggleDarkMode} className='h-full w-full flex items-center justify-center'>
-            {darkMode
+            {showDark
                 ? <Sun weight="light" className='h-full w-full text-slate-200' />
                 : <MoonStars weight="light" className='h-full w-full text-slate-600' />}
         </button>

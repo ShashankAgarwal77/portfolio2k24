@@ -4,14 +4,10 @@ import createMDX from '@next/mdx';
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx', 'md'],
   images: {
-    domains: [
-      'images.unsplash.com',
-      'pbs.twimg.com',
-      'media.licdn.com',
-      'mir-s3-cdn-cf.behance.net',
-      'cdn.sanity.io',
-      'aceternity.com',
-    ],
+    /* Only host the site actually loads remote imagery from (testimonial
+       avatars). The old unsplash/twimg/behance/sanity/aceternity entries
+       served components and routes that no longer exist. */
+    remotePatterns: [{ protocol: 'https', hostname: 'media.licdn.com' }],
   },
 };
 

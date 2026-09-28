@@ -2,7 +2,6 @@
 import React from "react";
 import {
   TextRevealCard,
-  TextRevealCardDescription,
   TextRevealCardTitle,
 } from "../Animations/text-reveal-card-animation";
 

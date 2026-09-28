@@ -1,10 +1,7 @@
 import type { Config } from "tailwindcss";
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 const svgToDataUri = require("mini-svg-data-uri");
 
-const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
@@ -22,10 +19,6 @@ const config: Config = {
   theme: {
     extend: {
 
-      fontFamily: {
-        'custom-variable': ['var(--font-satoshi)'],
-      },
-
       // The six-role type scale (DESIGN.md §3). Every text element on the
       // site maps to exactly one of these — no arbitrary text-[...] values.
       fontSize: {
@@ -36,22 +29,11 @@ const config: Config = {
         label: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.14em' }],
       },
 
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      // Only the animations with live call sites survive here — the old
+      // aurora/shimmer/spotlight/meteor set belonged to aceternity
+      // components that were removed from the codebase.
       animation: {
-        'aurora': "aurora 60s linear infinite",
-        'first': 'moveVertical 30s ease infinite',
-        'second': 'moveInCircle 20s reverse infinite',
-        'third': 'moveInCircle 40s linear infinite',
-        'fourth': 'moveHorizontal 40s ease infinite',
-        'fifth': 'moveInCircle 20s ease infinite',
-        'shimmer': 'shimmer 2s linear infinite',
-        'spotlight' : "spotlight 2s ease .75s 1 forwards",
         'scroll' : "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-        'meteor-effect': 'meteor 5s linear infinite',
         // PipelineDiagram's connector lines: a single glowing pulse
         // traces each static line left-to-right (top-to-bottom on the
         // stacked mobile layout), standing in for data moving through the
@@ -61,79 +43,9 @@ const config: Config = {
         'dash-flow': 'dash-flow 1.8s linear infinite',
       },
       keyframes: {
-        aurora: {
-          from: {
-            backgroundPosition: "50% 50%, 50% 50%",
-          },
-          to: {
-            backgroundPosition: "350% 50%, 350% 50%",
-          },
-        },
-        moveHorizontal: {
-          "0%": {
-            transform: "translateX(-50%) translateY(-10%)",
-          },
-          "50%": {
-            transform: "translateX(50%) translateY(10%)",
-          },
-          "100%": {
-            transform: "translateX(-50%) translateY(-10%)",
-          },
-        },
-        moveInCircle: {
-          "0%": {
-            transform: "rotate(0deg)",
-          },
-          "50%": {
-            transform: "rotate(180deg)",
-          },
-          "100%": {
-            transform: "rotate(360deg)",
-          },
-        },
-        moveVertical: {
-          "0%": {
-            transform: "translateY(-50%)",
-          },
-          "50%": {
-            transform: "translateY(50%)",
-          },
-          "100%": {
-            transform: "translateY(-50%)",
-          },
-        },
- 
-        shimmer: {
-          from: {
-            "backgroundPosition": "0 0"
-          },
-          to: {
-            "backgroundPosition": "-200% 0"
-          }
-        },
-
         scroll: {
           to: {
             transform: "translate(calc(-50% - 0.5rem))",
-          },
-        },
-
-        spotlight: {
-          "0%": {
-            "opacity": "0",
-            "transform": "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            "opacity": "1",
-            "transform": "translate(-50%,-40%) scale(1)",
-          },
-        },
-        meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
-          "70%": { opacity: "1" },
-          "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
-            opacity: "0",
           },
         },
         // One full lap of a 74-unit dash+gap cycle (dash 12-16, gap
@@ -147,7 +59,6 @@ const config: Config = {
     },
   },
   plugins: [
-    require("@tailwindcss/aspect-ratio"), 
     addVariablesForColors,
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
@@ -155,11 +66,6 @@ const config: Config = {
           "bg-grid": (value: any) => ({
             backgroundImage: `url("${svgToDataUri(
               `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
-          }),
-          "bg-grid-small": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="8" height="8" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
             )}")`,
           }),
           "bg-dot": (value: any) => ({
@@ -179,7 +85,7 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });

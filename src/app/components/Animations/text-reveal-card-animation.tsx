@@ -124,22 +124,21 @@ export const TextRevealCardTitle = ({
   );
 };
 
-export const TextRevealCardDescription = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <p className={twMerge("text-[#a9a9a9] text-body font-normal", className)}>{children}</p>
-  );
-};
-
 const Stars = () => {
   const randomMove = () => Math.random() * 4 - 2;
   const randomOpacity = () => Math.random();
   const random = () => Math.random();
+
+  /* Random positions can't match between server and client, so the field
+     mounts empty and fills after hydration — React 19 reports the
+     mismatch as an error where 18 quietly patched it. The stars are a
+     decorative twinkle layer; appearing one frame late is invisible. */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) return <div className="absolute inset-0" />;
+
   return (
     <div className="absolute inset-0">
       {[...Array(140)].map((_, i) => (
@@ -173,4 +172,4 @@ const Stars = () => {
   );
 };
 
-export const MemoizedStars = memo(Stars);
+const MemoizedStars = memo(Stars);

@@ -57,6 +57,94 @@ html {
   cursor: none;
 }
 
+/* The cursor itself (custom-cursor.tsx). Position is written straight to
+   `transform` in the mousemove handler — no rAF pipeline, no React — so
+   these rules carry everything else: the layer, and the dot↔ring cross-
+   fade on hover. will-change is earned here: one small fixed element that
+   moves every frame the pointer does. */
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  will-change: transform;
+}
+
+/* The glow — the starry-sky recipe (bright core + blurred blue halo).
+   Deeper/more saturated on light (sky-500) since a pale glow washes out
+   against a light page; lighter on dark (sky-400) to match the stars. */
+.custom-cursor__glow {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: rgb(14 165 233 / 0.7);
+  filter: blur(6px);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.dark .custom-cursor__glow {
+  background: rgb(56 189 248 / 0.7);
+}
+
+/* Rest state: a small filled dot, white + difference blend so it inverts
+   against whatever is actually underneath. Fades out on hover. */
+.custom-cursor__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #fff;
+  mix-blend-mode: difference;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* Hover state: the same white + difference treatment as an outline,
+   scaled up, arriving on a fast exponential ease-out. */
+.custom-cursor__ring {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 1px solid #fff;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.custom-cursor--hover .custom-cursor__glow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-cursor--hover .custom-cursor__dot {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.custom-cursor--hover .custom-cursor__ring {
+  opacity: 1;
+  transform: scale(1.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor__glow,
+  .custom-cursor__dot,
+  .custom-cursor__ring {
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -139,30 +227,123 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* The wordmark blurs in — the same blur-to-sharp signature the rest of the
-   site reveals with. */
-.site-loader__word {
-  animation: veil-word-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+/* A quiet aura behind the wordmark — dawn-warm on the light theme,
+   moonlit indigo on the dark one. Static on purpose: the choreography
+   lives in the letters, the light-line, and the stars, and a large
+   animated gradient is exactly the kind of paint cost the loader is
+   trying to keep off the main thread while the page hydrates. */
+.site-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 56% 38% at 50% 46%, rgb(253 238 205 / 0.4), transparent 70%);
 }
 
-/* `animation: none` lets the exit transition win — a filling animation
-   otherwise overrides transitioned properties for as long as it applies. */
-.site-loader--leaving .site-loader__word {
-  animation: none;
+.dark .site-loader::before {
+  background: radial-gradient(ellipse 56% 38% at 50% 46%, rgb(99 102 241 / 0.08), transparent 70%);
+}
+
+/* The loader's own sky: a handful of stars kindling in around the
+   wordmark, in the same warm-core starlight as the hero and the work
+   section — the loader is the first frame of the same night, so the
+   hero's ignition reads as this sky carrying on, not a scene change.
+   Dark theme only, like every other star on the site. Compositor-only
+   (opacity), hand-seated to ring the name and leave its centre dark. */
+.site-loader__stars {
+  display: none;
+}
+
+.dark .site-loader__stars {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.dark .site-loader__stars > span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgb(255 244 214 / 0.9), rgb(255 244 214 / 0) 70%);
   opacity: 0;
-  filter: blur(8px);
-  transition: opacity 0.45s ease-out, filter 0.45s ease-out;
+  animation: loader-star-kindle 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  /* per-star delay set inline */
 }
 
-@keyframes veil-word-in {
+@keyframes loader-star-kindle {
+  0% { opacity: 0; }
+  45% { opacity: 0.9; }
+  70% { opacity: 0.45; }
+  100% { opacity: 0.75; }
+}
+
+/* Wordmark + light-line as one column; the exit fades this whole mark
+   (children keep their finished entrance animations — those hold their
+   final frames and don't fight a transition on the parent). */
+.site-loader__mark {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-loader--leaving .site-loader__mark {
+  opacity: 0;
+  transform: translateY(-14px);
+  filter: blur(8px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out,
+    filter 0.45s ease-out;
+}
+
+.site-loader--leaving .site-loader__stars {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+/* The wordmark arrives letter by letter — the site's blur-to-sharp
+   signature, staggered like the hero heading's word cascade. */
+.site-loader__word > span {
+  display: inline-block;
+  white-space: pre;
+  animation: loader-letter-in 0.7s cubic-bezier(0.16, 1, 0.3, 1)
+    calc(150ms + var(--i, 0) * 45ms) both;
+}
+
+@keyframes loader-letter-in {
   from {
     opacity: 0;
-    filter: blur(10px);
+    transform: translateY(0.35em);
+    filter: blur(8px);
   }
   to {
     opacity: 1;
-    filter: blur(0);
+    transform: translateY(0);
+    filter: blur(0px);
   }
+}
+
+/* A thin light-line draws beneath the name — the footer's horizon
+   hairline language, arriving. Timed so it completes exactly as the
+   loader's minimum hold ends: the line finishing is the cue that the
+   page is about to breathe in. */
+.site-loader__line {
+  width: min(200px, 40vw);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgb(15 23 42 / 0.4), transparent);
+  box-shadow: 0 0 12px rgb(251 191 36 / 0.3);
+  transform: scaleX(0);
+  animation: loader-line-draw 1.35s cubic-bezier(0.65, 0, 0.35, 1) 250ms both;
+}
+
+.dark .site-loader__line {
+  background: linear-gradient(to right, transparent, rgb(241 245 249 / 0.55), transparent);
+  box-shadow: 0 0 14px rgb(148 163 205 / 0.4);
+}
+
+@keyframes loader-line-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .fontGloock {
@@ -360,6 +541,16 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
      its fade-in lives INSIDE the hero scene (faint fog over the meadow's
      base) instead of starting on a line at the section boundary. */
   pointer-events: none;
+}
+
+/* One viewport of atmosphere that pins alongside the showcase runway —
+   the mist + stars ride with the pinned card instead of scrolling away,
+   and the mist canvas stays a single viewport of GPU surface no matter
+   how tall the section's scroll runway grows. */
+.work-atmosphere__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 /* The WebGL mist canvas (mist-background.tsx). The mask feathers its top

@@ -34,35 +34,7 @@ export const GlowingStarsBackgroundCard = ({
   );
 };
 
-export const GlowingStarsDescription = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => {
-  return (
-    <p className={cn("text-base text-white max-w-[16rem]", className)}>
-      {children}
-    </p>
-  );
-};
-
-export const GlowingStarsTitle = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => {
-  return (
-    <h2 className={cn("font-bold text-2xl text-[#eaeaea]", className)}>
-      {children}
-    </h2>
-  );
-};
-
-export const Illustration = ({ mouseEnter }: { mouseEnter: boolean }) => {
+const Illustration = ({ mouseEnter }: { mouseEnter: boolean }) => {
   const stars = 108;
   const columns = 18;
 

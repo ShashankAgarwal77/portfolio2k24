@@ -55,7 +55,14 @@ export default function RootLayout({
   return (
     // suppressHydrationWarning: the boot script legitimately mutates the
     // <html> class (theme) and attributes (data-veil) before React hydrates.
-    <html lang="en" className={`${satoshi.variable}`} suppressHydrationWarning>
+    // data-scroll-behavior: globals.css sets scroll-behavior smooth; Next 16
+    // asks for this attribute to keep instant scroll-to-top on route change.
+    <html
+      lang="en"
+      className={`${satoshi.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         {/* Primary Meta Tags */}

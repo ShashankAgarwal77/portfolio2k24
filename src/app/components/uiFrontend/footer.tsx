@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Logo from '../../../../public/Logo.svg';
 
@@ -34,14 +35,14 @@ const FooterComp = () => {
 
                 <nav className="flex flex-wrap justify-center">
                     <div className="px-5 py-2">
-                        <a href="/" className="footer-link text-caption font-normal text-slate-500 dark:text-slate-400">
+                        <Link href="/" className="footer-link text-caption font-normal text-slate-500 dark:text-slate-400">
                             Home
-                        </a>
+                        </Link>
                     </div>
                     <div className="px-5 py-2">
-                        <a href="/about" className="footer-link text-caption font-normal text-slate-500 dark:text-slate-400">
+                        <Link href="/about" className="footer-link text-caption font-normal text-slate-500 dark:text-slate-400">
                             About
-                        </a>
+                        </Link>
                     </div>
                     <div className="px-5 py-2">
                         <a href="https://www.linkedin.com/in/shashank-agarwal11/" className="footer-link text-caption font-normal text-slate-500 dark:text-slate-400">

@@ -95,11 +95,8 @@ const HeroSection = () => {
 
                 <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
 
-                    <div className="dribbble-heading flex flex-col gap-y-4">
-
+                    <div className="dribbble-heading">
                         <h3 className="text-title font-semibold dark:text-white text-slate-600 text-center text-balance">Here are some of my dribbble shots 🏀</h3>
-                        <p className='text-body font-normal text-slate-600 dark:text-slate-400 z-1 text-center'>Click on any of the below project to see the thought process more in detail</p>
-
                     </div>
 
                     <div className="sparkles-container hidden md:block">

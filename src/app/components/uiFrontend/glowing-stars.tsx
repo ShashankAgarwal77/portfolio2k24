@@ -1,10 +1,6 @@
 "use client";
 import React from "react";
-import {
-  GlowingStarsBackgroundCard,
-  GlowingStarsDescription,
-  GlowingStarsTitle,
-} from "../Animations/glowing-stars-animation";
+import { GlowingStarsBackgroundCard } from "../Animations/glowing-stars-animation";
 
 export function GlowingStarsBackgroundCardPreview() {
   return (
