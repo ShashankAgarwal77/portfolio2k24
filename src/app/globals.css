@@ -1916,3 +1916,173 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
     display: none;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .case-lock — the Audit360 password gate (components/CaseStudyLock).
+
+   Each typed character ignites one star; a right password draws the lines
+   between them and the cluster turns out to be a tick. Audit360's own accent
+   pair is the only hue, per the One Hue Rule.
+   ───────────────────────────────────────────────────────────────────────── */
+.case-lock {
+  --lock-star: #94a3b8;
+  --lock-dust: #cbd5e1;
+  --lock-lit: #6d28d9;
+  --lock-glow: rgb(109 40 217 / 0.4);
+  --lock-field: rgb(255 255 255 / 0.75);
+  --lock-ink: #0f172a;
+  --lock-border: #cbd5e1;
+  --lock-focus: #7c3aed;
+  --lock-error: #e11d48;
+  display: flex;
+  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  padding: 7rem 1.5rem 9rem;
+  transition:
+    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .case-lock {
+  --lock-star: #64748b;
+  --lock-dust: #475569;
+  --lock-lit: #ede9fe;
+  --lock-glow: rgb(196 181 253 / 0.75);
+  --lock-field: rgb(15 23 42 / 0.7);
+  --lock-ink: #f1f5f9;
+  --lock-border: rgb(255 255 255 / 0.1);
+  --lock-focus: #c4b5fd;
+  --lock-error: #fda4af;
+}
+
+.case-lock[data-leaving] {
+  filter: blur(8px);
+  opacity: 0;
+}
+
+.case-lock__sky {
+  width: min(100%, 18rem);
+  height: auto;
+  overflow: visible;
+}
+
+.case-lock__dust {
+  fill: var(--lock-dust);
+  animation: case-lock-twinkle 5s ease-in-out infinite alternate;
+}
+
+.case-lock__star {
+  fill: var(--lock-star);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    fill 0.35s ease-out,
+    filter 0.35s ease-out,
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.case-lock__star[data-lit="true"] {
+  fill: var(--lock-lit);
+  transform: scale(1.6);
+  filter: drop-shadow(0 0 3px var(--lock-glow));
+}
+
+/* The constellation is the loading indicator. */
+.case-lock[data-status="checking"] .case-lock__star[data-lit="true"] {
+  animation: case-lock-pulse 1s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 110ms);
+}
+
+.case-lock[data-status="success"] .case-lock__star {
+  transform: scale(1.9);
+  filter: drop-shadow(0 0 5px var(--lock-glow));
+  transition-delay: calc(var(--i) * 55ms);
+}
+
+.case-lock__line {
+  fill: none;
+  stroke: var(--lock-lit);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.75;
+}
+
+.case-lock[data-status="success"] .case-lock__line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.35s;
+}
+
+.case-lock__input {
+  background: var(--lock-field);
+  border-color: var(--lock-border);
+  color: var(--lock-ink);
+  caret-color: var(--lock-focus);
+  letter-spacing: 0.08em;
+}
+
+.case-lock__input::placeholder {
+  color: #64748b;
+  letter-spacing: normal;
+}
+
+.dark .case-lock__input::placeholder {
+  color: #94a3b8;
+}
+
+.case-lock__input:focus-visible {
+  border-color: var(--lock-focus);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--lock-focus) 16%, transparent);
+}
+
+.case-lock__input[aria-invalid="true"] {
+  border-color: var(--lock-error);
+}
+
+.case-lock__input::selection {
+  background: color-mix(in srgb, var(--lock-focus) 30%, transparent);
+}
+
+.case-lock__form[data-shake="1"] {
+  animation: case-lock-shake-a 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.case-lock__form[data-shake="2"] {
+  animation: case-lock-shake-b 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes case-lock-twinkle {
+  from { opacity: 0.15; }
+  to { opacity: 0.7; }
+}
+
+@keyframes case-lock-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.35; }
+}
+
+/* Two identical keyframes so a second wrong password restarts the shake. */
+@keyframes case-lock-shake-a {
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+@keyframes case-lock-shake-b {
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-lock,
+  .case-lock * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

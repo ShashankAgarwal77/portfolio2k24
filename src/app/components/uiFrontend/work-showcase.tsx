@@ -12,6 +12,7 @@ import {
     useScroll,
     useTransform,
 } from "framer-motion";
+import { LockSimple } from "@phosphor-icons/react";
 import { useCaseStudyExpand } from "@/app/components/PageTransition";
 
 import Audit360Thumb from "../../../../public/audit360_thumbnail.png";
@@ -57,6 +58,8 @@ import HaulkarThumbnail from "../../../../public/haulkar_thumbnail.png";
 type Project = {
     name: string;
     label: string;
+    /** Behind the password gate — flagged on the card so the lock isn't a surprise. */
+    locked?: boolean;
     title: string;
     outcome: string;
     keypoints: string[];
@@ -82,6 +85,7 @@ const PROJECTS: Project[] = [
         image: Audit360Thumb,
         imageAlt: "Audit360 UX compliance dashboard, shown on a laptop at a desk lit by purple ambient light",
         href: "/case-study/audit360",
+        locked: true,
         accentLight: "#6d28d9",
         accentDark: "#ede9fe",
     },
@@ -608,8 +612,14 @@ export function WorkShowcase() {
                     ref={contentRef}
                     className="flex h-full max-w-xl flex-col justify-center gap-4 p-6 md:p-10 lg:p-14"
                 >
-                    <p className="text-label font-semibold uppercase text-white/70">
+                    <p className="text-label font-semibold uppercase text-white/70 inline-flex items-center gap-2">
                         {active.label}
+                        {active.locked && (
+                            <>
+                                <LockSimple size={13} weight="bold" aria-hidden="true" />
+                                <span className="sr-only">(password protected)</span>
+                            </>
+                        )}
                     </p>
                     <h3 ref={titleRef} className="text-title font-semibold text-white text-balance">
                         {active.title.split(" ").map((word, i) => (
