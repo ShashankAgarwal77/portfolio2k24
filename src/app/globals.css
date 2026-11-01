@@ -2086,3 +2086,76 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
     transition: none !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .pg-range — Playground control sliders. A hairline track that fills up
+   to the thumb (--pg-fill, set inline), lamp-gold at night to match the
+   dock's hover halos.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.pg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+  --pg-track: #e2e8f0;
+  --pg-on: #0f172a;
+  --pg-knob: #ffffff;
+}
+
+.dark .pg-range {
+  --pg-track: #1e293b;
+  --pg-on: #fde68a;
+  --pg-knob: #020617;
+}
+
+.pg-range::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--pg-on) var(--pg-fill, 50%), var(--pg-track) var(--pg-fill, 50%));
+}
+
+.pg-range::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--pg-track);
+}
+
+.pg-range::-moz-range-progress {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--pg-on);
+}
+
+.pg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -6.5px;
+  height: 16px;
+  width: 16px;
+  border-radius: 999px;
+  background: var(--pg-knob);
+  border: 1.5px solid var(--pg-on);
+  box-shadow: 0 1px 4px rgb(2 6 23 / 0.18);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.pg-range::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 999px;
+  background: var(--pg-knob);
+  border: 1.5px solid var(--pg-on);
+}
+
+.pg-range:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+.pg-range:focus-visible {
+  outline: none;
+}
+
+.pg-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgb(217 119 6 / 0.3);
+}

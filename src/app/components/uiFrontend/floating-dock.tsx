@@ -10,6 +10,7 @@ import { FloatingDock } from "@/app/components/Animations/floating-dock";
 import {
   House,
   User,
+  Flask,
   LinkedinLogo,
   ReadCvLogo,
 } from "@phosphor-icons/react";
@@ -29,6 +30,11 @@ export function FloatingDockUI() {
       title: "About",
       icon: <User weight="light" className={iconClass} />,
       href: "/about",
+    },
+    {
+      title: "Playground",
+      icon: <Flask weight="light" className={iconClass} />,
+      href: "/playground",
     },
     {
       title: "LinkedIn",
