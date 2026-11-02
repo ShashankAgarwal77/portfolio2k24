@@ -31,7 +31,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children }) => {
       const id = slugify(extractText(children));
       return (
-        <h2 id={id} className="mt-24 md:mt-32 mb-6 scroll-mt-28 text-title font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100">
+        <h2 id={id} className="mt-20 md:mt-24 mb-5 scroll-mt-28 text-title font-semibold tracking-tight text-balance text-slate-900 dark:text-slate-100">
           {children}
         </h2>
       );
@@ -45,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     p: ({ children }) => (
-      <p className="mb-6 text-body font-normal text-slate-700 dark:text-slate-300">
+      <p className="mb-7 text-[1.1875rem]/[1.75] font-normal text-slate-700 dark:text-slate-300">
         {children}
       </p>
     ),
@@ -60,12 +60,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     ul: ({ children }) => (
-      <ul className="mb-6 ml-6 list-disc space-y-2 text-body font-normal text-slate-700 dark:text-slate-300 marker:text-slate-400">
+      <ul className="mb-7 ml-6 list-disc space-y-3 text-[1.1875rem]/[1.75] font-normal text-slate-700 dark:text-slate-300 marker:text-slate-400">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="mb-6 ml-6 list-decimal space-y-2 text-body font-normal text-slate-700 dark:text-slate-300 marker:text-slate-500">
+      <ol className="mb-7 ml-6 list-decimal space-y-3 text-[1.1875rem]/[1.75] font-normal text-slate-700 dark:text-slate-300 marker:text-slate-500">
         {children}
       </ol>
     ),
@@ -75,7 +75,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     em: ({ children }) => <em className="italic">{children}</em>,
     blockquote: ({ children }) => (
-      <blockquote className="my-8 border-l-2 border-slate-300 dark:border-slate-600 pl-6 italic text-slate-600 dark:text-slate-400">
+      <blockquote className="my-14 border-l-2 border-slate-900 pl-6 dark:border-slate-100 [&_p]:mb-0 [&_p]:text-[1.5rem]/[1.45] [&_p]:font-medium [&_p]:tracking-[-0.01em] [&_p]:text-slate-900 dark:[&_p]:text-slate-100">
         {children}
       </blockquote>
     ),

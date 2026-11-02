@@ -22,6 +22,8 @@ const config: Config = {
       // The six-role type scale (DESIGN.md §3). Every text element on the
       // site maps to exactly one of these — no arbitrary text-[...] values.
       fontSize: {
+        // Case-study scroll stories only: the one hero line per page.
+        display: ['clamp(2.75rem, 7vw, 6.5rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
         headline: ['clamp(2.25rem, 5vw, 4rem)', { lineHeight: '1.05', letterSpacing: 'normal' }],
         title: ['clamp(1.5rem, 2.5vw, 1.875rem)', { lineHeight: '1.25', letterSpacing: 'normal' }],
         body: ['1.125rem', { lineHeight: '1.65', letterSpacing: 'normal' }],

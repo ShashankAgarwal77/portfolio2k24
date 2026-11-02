@@ -1,12 +1,28 @@
-import { ArticleShell } from "@/app/components/Article";
+import { ArticleShell, Figure } from "@/app/components/Article";
+import Audit360Thumb from "../../../../../public/audit360_thumbnail.png";
 import { Annotated } from "@/app/components/Annotated";
 import { MediaMarquee } from "@/app/components/MediaMarquee";
-import { ShotPlaceholder } from "@/app/components/ShotPlaceholder";
 import { PipelineDiagram } from "@/app/components/PipelineDiagram";
 import { SheetRow } from "@/app/components/SheetRow";
 import { TC001_FIELDS } from "@/app/components/SheetRow/tc001";
 
 <ArticleShell
+  kicker="Case study · Audit360 · NeGD"
+  title={<>I rewrote a national UX standard so a <span className="fontGloock italic font-normal">machine could read it</span></>}
+  dek="Audit360, the AI audit platform NeGD uses to evaluate government websites against UX4G, GIGW and Lighthouse. Built by four people. The tool was the easy half."
+  meta="Product Manager and Product Designer · Team of four · Feb 2025 – Mar 2026"
+  readTime={13}
+  cover={Audit360Thumb}
+  coverAlt="Audit360, the automated UX audit platform for Indian government websites."
+  facts={[
+    { value: "60,000", label: "government sites" },
+    { value: "480 → 411", label: "guidelines rewritten" },
+    { value: "21 → 63%", label: "machine-evaluable" },
+    { value: "5,463", label: "websites audited" },
+    { value: "7d → 5 min", label: "per audit" },
+    { value: "4", label: "people" },
+  ]}
+  next={{ href: "/case-study/bcas", kicker: "eBCAS 2.0", title: "India's aviation security compliance, on one traceable platform" }}
   index={[
     { id: "the-conversation-that-started-it", label: "Origin" },
     { id: "what-was-actually-broken", label: "The problem" },
@@ -19,21 +35,6 @@ import { TC001_FIELDS } from "@/app/components/SheetRow/tc001";
     { id: "what-id-do-differently", label: "What I'd change" },
   ]}
 >
-
-# I rewrote a national UX standard so a <span className="fontGloock italic font-normal">machine could read it</span>
-
-<p className="mb-10 text-lg leading-[1.7] text-slate-600 dark:text-slate-400">Audit360, the AI audit platform NeGD uses to evaluate government websites against UX4G, GIGW and Lighthouse. Built by four people. The tool was the easy half.</p>
-
-<p className="mb-12 text-sm text-slate-500 dark:text-slate-400">Product Manager and Product Designer · Team of four · Feb 2025 – Mar 2026, in production</p>
-
-<div className="mb-14 grid grid-cols-2 gap-x-6 gap-y-5 border-y border-slate-200 py-6 dark:border-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
-  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">60,000</p><p className="text-sm text-slate-500 dark:text-slate-400">government sites</p></div>
-  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">480 → 411</p><p className="text-sm text-slate-500 dark:text-slate-400">guidelines rewritten</p></div>
-  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">21 → 63%</p><p className="text-sm text-slate-500 dark:text-slate-400">machine-evaluable</p></div>
-  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">5,463</p><p className="text-sm text-slate-500 dark:text-slate-400">websites audited</p></div>
-  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">7 days → 5 min</p><p className="text-sm text-slate-500 dark:text-slate-400">per audit</p></div>
-  <div><p className="text-lg font-semibold text-slate-900 dark:text-slate-100">4</p><p className="text-sm text-slate-500 dark:text-slate-400">people</p></div>
-</div>
 
 ## The conversation that started it
 
@@ -162,11 +163,13 @@ Three decisions I would defend without hedging:
 
 And one gap I will not dress up. **AI confidence does not discount the score.** A finding the model was unsure about moves the number exactly as much as an SSL check that either passes or does not, and the only mitigation shipped is a disclaimer telling users to verify important information. A disclaimer moves risk onto the user instead of handling it. It is the thing in this product I most want to fix.
 
-<ShotPlaceholder
-  title="Score composition and the Rank Tracker"
-  detail="Two shots side by side: the report's Overall Results block showing the donut and the six category tiles, and the Rank Tracker leaderboard showing national and ministry rank. Replace mock data first — the current file shows three sites with different overall scores and identical sub-scores."
-  path="/public/case-study/audit360/scoring-and-rank.webp"
-  ratio="16 / 9"
+<Figure
+  wide
+  src="/case-study/audit360/dashboard.webp"
+  alt="The Automated Audits dashboard: two audited sites, each with an overall score ring and six category scores against the last audit."
+  width={2400}
+  height={1800}
+  caption="The dashboard. Every audited site carries an overall score and six category scores, each set against its previous audit. v1 design, mock data."
 />
 
 I also lost an argument here worth recording. I proposed opening the platform beyond government, including a paid tier for businesses that wanted their own UX health checked, which would have funded the compute and widened the sample enormously. It was rejected — a government body cannot generate revenue that way. Access stayed with government officials and invited members. I still think the reach was worth more than the tidiness, but the constraint was real and it was not mine to overrule.
@@ -179,11 +182,12 @@ Five minutes is too long to watch and too short to schedule. So the run has thre
 
 The wait screen also teaches. While the pipeline runs, it shows the site being audited and a piece of UX evidence — *users form an opinion about a website's credibility in about 50 milliseconds*. We are a UX advocacy organisation with a captive government audience for five minutes. Spending that on a progress bar would have been a waste.
 
-<ShotPlaceholder
-  title="The wait screen, with the email modal open"
-  detail="Export Automated Report / Loading – Enter Email from the v2 Figma page. Must show three things at once: live per-check progress, the site thumbnail, and the UX education card behind the modal. Swap this block for the <Annotated> markup held in the comment below, and check the three marker positions against the exported image."
-  path="/public/case-study/audit360/wait-state.webp"
-  ratio="4 / 3"
+<Figure
+  src="/case-study/audit360/wait.webp"
+  alt="The audit in progress: the site's thumbnail beside four named checks, the first at 40%, and a Did you know card below."
+  width={2400}
+  height={1500}
+  caption="The wait screen in v1. Each check is named as it runs, with a piece of UX evidence beside it. The email hand-off came in v2."
 />
 
 {/* READY TO SWAP IN once wait-state.webp exists — replace the ShotPlaceholder above with this, then verify marker x/y against the real export:
@@ -205,20 +209,39 @@ The report itself is organised the way a ministry reads it, not the way the pipe
 
 Underneath, a comparison against the previous audit, per page. That view is what turns a report into a loop.
 
-<ShotPlaceholder
-  title="The report, annotated"
-  detail="Full audit report: site hero, Overall Results, the per-page Page Analysis table, and History and Comparison. Fix the mock data first — the current file shows five pages in the table and seven in the chart, and Sign Up appears as both 0% unavailable and a healthy bar."
-  path="/public/case-study/audit360/report-annotated.webp"
-  ratio="4 / 5"
+<Figure
+  wide
+  src="/case-study/audit360/report.webp"
+  alt="The audit report: the audited site's homepage, an overall score of 93% and six category scores."
+  width={2400}
+  height={1500}
+  caption="The report opens on the site and its scores, organised the way a ministry reads it."
+/>
+
+<Figure
+  src="/case-study/audit360/report-pages.webp"
+  alt="The Page Analysis table: seven pages with overall score, fixes required and an Excellent or Average status. Sign-up is marked as not available on this website."
+  width={2280}
+  height={1425}
+  caption="Scores by page, not one verdict. A page the site does not have says so rather than scoring zero quietly."
+/>
+
+<Figure
+  src="/case-study/audit360/report-history.webp"
+  alt="History and comparison: paired bars for the latest and previous audit across seven categories."
+  width={2280}
+  height={1425}
+  caption="Every audit against the last. This is the view that turns a report into a loop."
 />
 
 Everything that can fail, has a screen. Unreachable URL, API failure mid-run, restricted audits, a first-time account with nothing in it, and a second attempt that resumes rather than restarts. None of these are interesting to design and all of them are the difference between a demo and a product a government department will use unattended.
 
-<ShotPlaceholder
-  title="Five edge states, as a gallery"
-  detail="Export from the v2 Figma page: Homepage / Empty, Homepage / In Progress, Loading Screen / API failure, Audit in Progress – Second Attempt, and Homepage / Audit Restricted. Swap this block for the <MediaMarquee> markup held in the comment below."
-  path="/public/case-study/audit360/states/01-empty.webp … 05-audit-restricted.webp"
-  ratio="16 / 9"
+<Figure
+  src="/case-study/audit360/empty.webp"
+  alt="The first-run empty state: the Audit360 sidebar, a greeting, an illustration of two clipboards and a Start New Audit button."
+  width={2400}
+  height={1800}
+  caption="The first-run state, before any audit exists."
 />
 
 {/* READY TO SWAP IN once the five state exports exist — replace the ShotPlaceholder above with this:
@@ -276,12 +299,7 @@ The routing gap is not fixed. Fixing it means separating page from context acros
 
 <p className="mb-10 mt-8 text-lg leading-[1.7] text-slate-600 dark:text-slate-400">The lesson wasn't about spreadsheets. I built a system to make a standard measurable, and then let the system's own inputs go unmeasured. The governance was the deliverable, and I had shipped the schema without it.</p>
 
-<ShotPlaceholder
-  title="The drift, before and after"
-  detail="A chart of the four controlled-vocabulary fields before and after normalisation: Severity 5→3, AI Support 14→5, Evidence Type 30+→14, and the 156-versus-7 page value gap called out separately. Generate from the mastersheet; do not screenshot Excel."
-  path="/public/case-study/audit360/drift-analysis.webp"
-  ratio="16 / 9"
-/>
+{/* IMAGE NEEDED: the drift chart, before and after normalisation (Severity 5→3, AI Support 14→5, Evidence Type 30+→14, 156 vs 7 page values). Generate from the mastersheet and add as a <Figure> at /case-study/audit360/drift-analysis.webp. */}
 
 ## What happened
 
@@ -313,6 +331,6 @@ And the one that stings. **Audit360 exists because nobody at NeGD could answer h
 
 **Solve version comparability.** When a guideline's text changes, every score computed under the old wording becomes quietly incomparable. I have no answer for this yet. It is the hardest open problem in the product and it gets harder with every audit we run.
 
-<p className="mt-16 border-t border-slate-200 pt-10 text-body text-slate-700 dark:border-white/[0.08] dark:text-slate-300">The parts I could not fit — the arguments about weighting, the things that did not work, what a national standard teaches you about designing with AI — I am happy to walk through. <a href="https://www.linkedin.com/in/shashank-agarwal11/" target="_blank" rel="noopener noreferrer" className="text-slate-900 underline decoration-slate-400/60 underline-offset-4 transition-colors hover:decoration-slate-900 dark:text-slate-100 dark:hover:decoration-slate-100">Find me on LinkedIn</a>.</p>
+
 
 </ArticleShell>

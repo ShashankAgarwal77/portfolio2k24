@@ -4,17 +4,33 @@ import { Annotated } from "@/app/components/Annotated";
 import BCASThumb from "../../../../../public/bcas_thumbnail.png";
 
 export const metadata = {
-  title: "487 production-ready screens in 6 weeks, by four designers with no engineers",
+  title: "India's aviation security compliance, on one traceable platform",
   description:
-    "A national civil aviation security platform covering 164 airports and 18 entity categories, designed and built for a pitch in six weeks by four designers and no engineers.",
+    "eBCAS 2.0: one platform where a national aviation security regulator and the airlines, airports and ground handlers it oversees review compliance together, with every action traced.",
 };
 
 <ArticleShell
-  backdrop={BCASThumb}
+  kicker="Case study · eBCAS 2.0 · Civil aviation security"
+  title={<>India&apos;s aviation security compliance, on one <span className="fontGloock italic font-normal">traceable</span> platform</>}
+  dek="The regulator and every airline, airport and ground handler it oversees, working on the same record. 487 screens in six weeks, by four designers and no engineers."
+  meta="Senior Designer · Design lead, team of four · 2026, ongoing"
+  readTime={9}
+  cover={BCASThumb}
+  coverAlt="eBCAS 2.0, the compliance platform for India's civil aviation security regulator."
+  facts={[
+    { value: "164", label: "airports" },
+    { value: "18", label: "entity categories" },
+    { value: "5", label: "modules" },
+    { value: "487", label: "screens" },
+    { value: "6 weeks", label: "to the pitch" },
+    { value: "0", label: "engineers" },
+  ]}
+  next={{ href: "/case-study/audit360", kicker: "Audit360", title: "I rewrote a national UX standard so a machine could read it" }}
   index={[
-    { id: "the-problem", label: "Problem" },
+    { id: "the-problem", label: "The problem" },
     { id: "three-variants-one-shipped", label: "Variants" },
-    { id: "what-shipped", label: "What shipped" },
+    { id: "what-shipped-first", label: "What shipped" },
+    { id: "then-the-comment-moved-onto-the-field", label: "Comment review" },
     { id: "how-four-designers-held-one-system", label: "The system" },
     { id: "the-call-i-got-wrong", label: "What I got wrong" },
     { id: "what-happened", label: "Outcome" },
@@ -22,28 +38,15 @@ export const metadata = {
   ]}
 >
 
-# 487 production-ready screens in 6 weeks, by four designers and <span className="fontGloock italic font-normal">no engineers</span>
-
-<p className="mb-10 text-body text-slate-600 dark:text-slate-400">eBCAS 2.0, the compliance platform a national civil aviation security regulator uses with every airline, airport operator and ground handler in India.</p>
-
-<p className="mb-12 text-caption text-slate-600 dark:text-slate-400">Senior Designer · Started as IC, then design lead for a team of four · 2026, ongoing</p>
-
-<div className="mb-14 grid grid-cols-2 gap-x-6 gap-y-5 border-y border-slate-200 py-6 dark:border-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">164</p><p className="text-caption text-slate-500 dark:text-slate-400">airports</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">18</p><p className="text-caption text-slate-500 dark:text-slate-400">entity categories</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">5</p><p className="text-caption text-slate-500 dark:text-slate-400">modules</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">6</p><p className="text-caption text-slate-500 dark:text-slate-400">weeks to pitch</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">4</p><p className="text-caption text-slate-500 dark:text-slate-400">designers</p></div>
-  <div><p className="text-body font-semibold text-slate-900 dark:text-slate-100">0</p><p className="text-caption text-slate-500 dark:text-slate-400">engineers</p></div>
-</div>
-
 ## The problem
 
-**A regulated entity and the regulator argue about compliance in rounds, and nothing bounds the argument.** No defined turnaround for a Security Programme audit. No limit on how many rounds a single observation can run. It takes months, and nobody can say how many.
+**Nobody could trace who did what.** A regulated entity and the regulator argue about compliance in rounds, and the argument leaves no trail. Which official raised a point, who agreed with it before it went out, what the entity changed in reply, who accepted the change: none of it lived in one place that both sides could see. No defined turnaround, no limit on rounds. It takes months, and nobody can say how many, or whose desk it is stuck on.
 
-I spent a day at Lucknow airport with an IPS officer, regional directors and architects, asking each of them the same question: what are you waiting on. Every friction had one shape. The entity prepares something, the regulator responds, the entity revises, it goes back. The loop was the cost, not any individual screen.
+I spent a day at Lucknow airport with an IPS officer, regional directors and architects, asking each of them the same question: what are you waiting on. Every friction had one shape. The entity prepares something, the regulator responds, the entity revises, it goes back, largely offline. Each hand-off dropped the history of the one before it. The loop was the cost, and the missing trail is what made it expensive.
 
-Inside the Security Programme module that loop is at its most formal, and its most expensive. The assessment runs to 106 questions, and every one of them can spawn its own thread of disagreement. Answering a single observation meant first reconstructing everything already said about that clause, and with observations scattered across 106 questions, nobody could see what was still outstanding.
+Inside the Security Programme module that loop is at its most formal. The assessment runs to 106 questions, and every one of them can spawn its own thread of disagreement. Answering a single observation meant first reconstructing everything already said about that clause, and with observations scattered across 106 questions, nobody could see what was still outstanding.
+
+So the job was not a better form. It was one collaborative workspace where the regulator and the entity comment on the same compliance check, and every action on either side, a comment, an approval, a correction, an attestation, leaves a trace.
 
 ## Three variants, one shipped
 
@@ -61,7 +64,7 @@ I took that cost, on one condition, and the condition became the design.
 
 {/* IMAGE NEEDED: the designer sandbox holding the three generated variants side by side, before Variant C was selected and fine-tuned. Save to /public/case-study/bcas/variant-sandbox.webp */}
 
-## What shipped
+## What shipped first
 
 Variant C, fine-tuned. The shipped screen still carries its label.
 
@@ -76,6 +79,62 @@ Variant C, fine-tuned. The shipped screen still carries its label.
   ]}
   caption="Each observation carries the regulatory provision it is raised under, the value the entity declared, and how long is left. The conversation sits beside it, not behind a click."
 />
+
+## Then the comment moved onto the field
+
+The workspace answered the entity's question. It did not answer the regulator's, and it only traced half the actions: the regulator's side was still a black box.
+
+Before an entity sees a single observation, it has already travelled inside BCAS. A dealing hand drafts it, it can climb rank by rank for review, and only the Joint Director can send it out. Who wrote it, who changed it on the way and who signed it off was exactly the trail nobody could reconstruct. Two things fell out of looking inside that chain.
+
+**Every reader was translating prose back into a value.** An observation said the AOC date was wrong. Each officer who reviewed it, then the entity, then the officer checking the answer, had to find that date on a 106-question form before they could judge anything. The same lookup, repeated by every person in the chain, every round.
+
+**Review was drifting into conversation.** Early builds let officials reply to each other under an observation. A thread is the wrong shape for a decision that has to pass a chain of command: you have to read all of it to learn where it stands.
+
+> The form became the review. The comment sits on the value it is about.
+
+So the comment moved onto the field. Turn on comment view and every value and uploaded file on the programme can take a pin, like a comment in Figma. A comment is structured, not freeform: a finding, the action that closes it, a line of explanation, and the value as submitted, captured at the moment of pinning. The pin carries its author's avatar, and its tint carries its status.
+
+<Annotated
+  src="/case-study/bcas/jd-comment-review.webp"
+  alt="The Joint Director's comment review in eBCAS 2.0. A section rail on the left marks which of sixteen sections carry comments and which are clean. The form shows Entity Credentials with two comment pins beside AOC / AOP number and AOC valid until. The comment panel on the right lists both comments, each written by a DASO, marked Approved, with the ASO's approval recorded beneath."
+  markers={[
+    { x: 67, y: 48, note: "The pin sits on the value it questions, not on the section. Nobody hunts for the field." },
+    { x: 85, y: 39, note: "A comment has a status, not replies. Approved says where it stands without reading a thread." },
+    { x: 19, y: 45, note: "The rail answers the old question for the regulator too: which sections carry comments, which are clean." },
+    { x: 15, y: 97, note: "Whose desk it is on, and how far the review has got, in one line." },
+  ]}
+  caption="The same programme, seen by the Joint Director while a senior officer holds it. Entity details are anonymised."
+/>
+
+The chain is held by rules rather than by etiquette. Ranks run DG, JD, DD, AD, SASO, ASO, DASO. Work is assigned downwards and sent upwards. A senior can approve or return a junior's comment. A junior can read a senior's comment but never act on it. A returned comment can only travel back to its author or someone ranked between them, so it never lands with a person who cannot fix it. Nothing sent is ever deleted, and once a programme leaves you, your comment is locked: only its status moves.
+
+That is where traceability comes from. Every status change names the rank that made it, Approved by ASO, Returned by DD, Replaced by JD, and a programme log beside the form records every move with its note. A returned or replaced comment stays on the page rather than collapsing out of sight. Months later, anyone on the programme can answer the question nobody could answer before: who decided this, and when.
+
+That kept every card down to two buttons at most. Your own, unsent: Edit or Remove. Someone else's: Approve or Return. Returned to you: Approve or Replace. After dispatch: Accept or Re-raise. The verbs shrank in rounds. An earlier build had separate acts for sending up, sending back and reporting to the Joint Director, and a section-level Mark reviewed. Each was cut when it turned out to mean something the status already said.
+
+The entity sees the same form, from the other side. Officials' names and internal notes never cross over. Every comment arrives from BCAS HQ. Only the pinned fields and files become editable, in place, so a correction cannot drift into anything nobody asked about. The entity answers every comment, then attests and sends the whole programme once per round with Aadhaar, not once per observation. The entity's side of the trail is signed too: every correction arrives with its old value, its reply and the attestation that sent it.
+
+<div className="bleed-wide">
+
+![The entity's correction view. The two pinned fields, AOC / AOP number and AOC valid until, are now editable inputs, each with a BCAS HQ pin. The comment panel shows both comments from BCAS HQ, marked Open, each with a Reply action. A footer reads Round 1, 0 of 3 sections answered, response due 5 Nov 2026, beside an Attest & send to BCAS HQ button.](/case-study/bcas/entity-correction.webp)
+
+</div>
+
+<p className="-mt-2 mb-12 text-center text-caption text-slate-500 dark:text-slate-400">The entity's side. Only the pinned values open for editing, and every comment is signed BCAS HQ.</p>
+
+Back at the regulator, the form shows the corrected value tagged Amended. The before and after live inside the comment, next to the entity's reply and the trail of who approved what. The dealing hand accepts or re-raises, and once every comment is accepted the programme goes up the chain towards the Director General.
+
+<div className="bleed-wide">
+
+![The re-review screen. The AOC valid until field now reads 2027-06-30 with an Amended tag and a green pin. The comment panel shows the DASO's original comment marked Answered, the ASO and JD approvals beneath it, then the airline's reply with an attached register extract, and Accept and Re-raise actions.](/case-study/bcas/jd-rereview.webp)
+
+</div>
+
+<p className="-mt-2 mb-12 text-center text-caption text-slate-500 dark:text-slate-400">Re-review. The form shows what changed; the comment shows why, and who already agreed.</p>
+
+I did not pick the pattern by taste. Before building I compared published comment and form-review systems, Figma-style pins, Liveblocks, Velt, Atlassian's comment component and the CMS Design System's form review, and took four things from them: a visible comment mode with a keyboard shortcut, comments anchored to the field's identity rather than its position on screen, identical forms and section order for every role, and a clear split between a value the entity edited and one that differs from what was submitted.
+
+The earlier variants were kept alongside, not overwritten, so the team could compare the two models on the same case before the comment review became the default for every role.
 
 ## How four designers held one system
 
@@ -109,7 +168,7 @@ We won the pitch. Leadership had a real product to interact with rather than a d
 
 The honest part. eBCAS 2.0 is still in progress and I have no usage data yet. What was validated is the pitch, not the outcome. And there is no baseline to compare against, because the process I replaced had no defined turnaround and no bound on rounds. An unmeasured process is exactly why a legible one matters, which is why time-to-close per observation, split by which side is holding it, is the first thing I want instrumented.
 
-Two things I would fix before that. The collapsed row tells you whose turn it is but not whether this is a one-line clarification or a four-round dispute. And an entity that believes an observation is wrong replies in the same box it would use to comply, when contesting a finding is a different act with a different outcome.
+Two things I would fix before that, and the comment review only moved them, it did not solve them. A pin tells you where a comment stands, not how long it has been fighting: Open and Re-raised share a tint, so a fresh question and a third-round dispute look the same until you open them. And an entity that believes a comment is wrong still answers in the same reply it would use to comply, when contesting a finding is a different act with a different outcome.
 
 ## Wall of Love
 
@@ -145,6 +204,6 @@ Two things I would fix before that. The collapsed row tells you whose turn it is
 
 </div>
 
-<p className="mt-16 border-t border-slate-200 pt-10 text-body text-slate-700 dark:border-white/[0.08] dark:text-slate-300">If you want the parts I could not put in writing, the constraints, the arguments, the things that nearly did not work, I am happy to walk through it. <a href="https://www.linkedin.com/in/shashank-agarwal11/" target="_blank" rel="noopener noreferrer" className="text-slate-900 underline decoration-slate-400/60 underline-offset-4 transition-colors hover:decoration-slate-900 dark:text-slate-100 dark:hover:decoration-slate-100">Find me on LinkedIn</a>.</p>
+
 
 </ArticleShell>
