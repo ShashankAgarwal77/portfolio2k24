@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/app/components/Reveal";
-import { ExplorationCard, ComingSoonCard } from "@/app/components/Playground/ExplorationCard";
+import { ExplorationStack } from "@/app/components/Playground/ExplorationCard";
 import { explorations } from "./explorations";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export default function PlaygroundPage() {
   return (
     <Reveal
       as="main"
-      className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-32 pt-16 md:px-8 md:pt-24"
+      className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 pb-32 pt-16 md:px-8 md:pt-24"
     >
       <header className="flex flex-col gap-4">
         <div className="flex flex-row items-center gap-x-4">
@@ -31,11 +31,10 @@ export default function PlaygroundPage() {
         </p>
       </header>
 
-      <section className="grid gap-6 md:grid-cols-2">
-        {explorations.map((e) => (
-          <ExplorationCard key={e.slug} exploration={e} />
-        ))}
-        <ComingSoonCard />
+      {/* The stack manages its own scroll motion; the blur reveal would
+          briefly put a filter on the sticky slots' ancestor. */}
+      <section data-reveal="off">
+        <ExplorationStack explorations={explorations} />
       </section>
     </Reveal>
   );
