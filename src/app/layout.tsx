@@ -5,7 +5,7 @@ import React from 'react';
 
 import localFont from 'next/font/local';
 
-const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.ttf', variable: '--font-satoshi', display: 'swap' });
+const satoshi = localFont({ src: './Assets/fonts/Satoshi/Satoshi-Variable.woff2', variable: '--font-satoshi', display: 'swap' });
 
 
 // import { Work_Sans } from "next/font/google";

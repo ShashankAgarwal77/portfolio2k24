@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import type { Metadata } from "next";
 import Audit360Content from "./content.mdx";
 import { CaseStudyLock, UnlockReveal } from "@/app/components/CaseStudyLock";
-import { AUDIT360_ACCESS_COOKIE, hasAudit360Access } from "@/app/lib/case-study-access";
+import { accessCookie, hasAccess } from "@/app/lib/case-study-access";
 
 export const metadata: Metadata = {
   title: "I rewrote a national UX standard so a machine could read it",
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Audit360Page() {
-  const token = (await cookies()).get(AUDIT360_ACCESS_COOKIE)?.value;
+  const token = (await cookies()).get(accessCookie("audit360"))?.value;
 
-  if (!hasAudit360Access(token)) return <CaseStudyLock />;
+  if (!hasAccess("audit360", token)) return <CaseStudyLock study="audit360" />;
 
   return (
     <UnlockReveal>

@@ -7,19 +7,47 @@ import { useIsomorphicLayoutEffect } from "@/app/lib/useReveal";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/shashank-agarwal11/";
 
-/* Seven stars that read as a loose, irregular cluster while you type. Only
-   on unlock do the lines draw in and show what they always were: a tick —
-   the audit passed. */
-const STARS = [
-  { x: 36, y: 80, r: 2.2 },
-  { x: 60, y: 97, r: 1.8 },
-  { x: 86, y: 121, r: 2.8 },
-  { x: 111, y: 97, r: 2 },
-  { x: 143, y: 72, r: 2.4 },
-  { x: 168, y: 47, r: 1.9 },
-  { x: 205, y: 28, r: 3 },
-];
-const TICK_PATH = "M" + STARS.map((s) => `${s.x} ${s.y}`).join(" L");
+type Star = { x: number; y: number; r: number };
+
+/* Each gated study has its own copy and its own seven-star constellation.
+   The stars read as a loose, irregular cluster while you type; only on
+   unlock do the lines draw in and show what they always were. */
+const STUDIES = {
+  /* A tick — the audit passed. */
+  audit360: {
+    name: "Audit360",
+    blurb:
+      "It's how I rewrote a national UX standard so a machine could read it, then built the platform that runs on it.",
+    stars: [
+      { x: 36, y: 80, r: 2.2 },
+      { x: 60, y: 97, r: 1.8 },
+      { x: 86, y: 121, r: 2.8 },
+      { x: 111, y: 97, r: 2 },
+      { x: 143, y: 72, r: 2.4 },
+      { x: 168, y: 47, r: 1.9 },
+      { x: 205, y: 28, r: 3 },
+    ],
+  },
+  /* A climbing flight path — cleared for takeoff. */
+  bcas: {
+    name: "BCAS",
+    blurb:
+      "It's how four designers and no engineers put India's aviation security compliance on one traceable platform.",
+    stars: [
+      { x: 24, y: 124, r: 2 },
+      { x: 62, y: 120, r: 1.8 },
+      { x: 98, y: 108, r: 2.4 },
+      { x: 130, y: 88, r: 2 },
+      { x: 158, y: 64, r: 2.6 },
+      { x: 184, y: 42, r: 1.9 },
+      { x: 214, y: 24, r: 3 },
+    ],
+  },
+} satisfies Record<string, { name: string; blurb: string; stars: Star[] }>;
+
+export type LockedStudy = keyof typeof STUDIES;
+
+const linePath = (stars: Star[]) => "M" + stars.map((s) => `${s.x} ${s.y}`).join(" L");
 
 /* Fixed seed, so the server and client draw the same sky. */
 const DUST = (() => {
@@ -47,7 +75,8 @@ const MESSAGES: Record<Status, string> = {
   success: "Unlocked. Opening the case study…",
 };
 
-export function CaseStudyLock() {
+export function CaseStudyLock({ study }: { study: LockedStudy }) {
+  const { name, blurb, stars: STARS } = STUDIES[study];
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState("");
@@ -66,7 +95,7 @@ export function CaseStudyLock() {
 
     let result: Status;
     try {
-      const res = await fetch("/api/audit360-access", {
+      const res = await fetch(`/api/case-study-access/${study}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
@@ -101,7 +130,7 @@ export function CaseStudyLock() {
       className="case-lock"
       data-status={status}
       data-leaving={leaving || undefined}
-      aria-labelledby="audit360-lock-title"
+      aria-labelledby={`${study}-lock-title`}
     >
       <div className="mx-auto flex w-full max-w-md flex-col items-center text-center">
         <svg viewBox="0 0 240 150" className="case-lock__sky" aria-hidden="true">
@@ -115,7 +144,7 @@ export function CaseStudyLock() {
               style={{ animationDelay: `${d.delay}s` }}
             />
           ))}
-          <path className="case-lock__line" d={TICK_PATH} pathLength={1} />
+          <path className="case-lock__line" d={linePath(STARS)} pathLength={1} />
           {STARS.map((s, i) => (
             <circle
               key={i}
@@ -130,14 +159,13 @@ export function CaseStudyLock() {
         </svg>
 
         <h1
-          id="audit360-lock-title"
+          id={`${study}-lock-title`}
           className="mt-10 text-title font-semibold text-balance text-slate-900 dark:text-slate-100"
         >
-          Audit360 is <span className="fontGloock italic font-normal">password&#8209;protected</span>
+          {name} is <span className="fontGloock italic font-normal">password&#8209;protected</span>
         </h1>
         <p className="mt-3 text-body font-normal text-balance text-slate-600 dark:text-slate-400">
-          It&apos;s how I rewrote a national UX standard so a machine could read it,
-          then built the platform that runs on it.
+          {blurb}
         </p>
 
         <form
@@ -145,13 +173,13 @@ export function CaseStudyLock() {
           className="case-lock__form mt-10 w-full"
           data-shake={shakes === 0 ? undefined : (shakes % 2) + 1}
         >
-          <label htmlFor="audit360-password" className="sr-only">
+          <label htmlFor={`${study}-password`} className="sr-only">
             Password
           </label>
           <div className="relative">
             <input
               ref={inputRef}
-              id="audit360-password"
+              id={`${study}-password`}
               type="password"
               autoComplete="off"
               autoFocus
@@ -160,7 +188,7 @@ export function CaseStudyLock() {
               value={password}
               disabled={status === "success"}
               aria-invalid={failed || undefined}
-              aria-describedby="audit360-lock-status"
+              aria-describedby={`${study}-lock-status`}
               onChange={(e) => {
                 setPassword(e.target.value);
                 if (failed) setStatus("idle");
@@ -180,7 +208,7 @@ export function CaseStudyLock() {
         </form>
 
         <p
-          id="audit360-lock-status"
+          id={`${study}-lock-status`}
           role="status"
           className={`mt-4 min-h-[1.5em] text-caption ${
             failed ? "text-rose-600 dark:text-rose-300" : "text-slate-500 dark:text-slate-400"

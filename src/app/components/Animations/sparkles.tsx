@@ -67,7 +67,9 @@ export const SparklesCore = (props: ParticlesProps) => {
               zIndex: 1,
             },
 
-            fpsLimit: 120,
+            // 60, not 120: a slow sparkle field gains nothing from 120Hz
+            // screens except twice the main-thread work.
+            fpsLimit: 60,
             interactivity: {
               events: {
                 onClick: {

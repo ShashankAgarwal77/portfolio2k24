@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Gloock';
-  src: url('./Assets/fonts/Gloock/Gloock-Regular.ttf') format('truetype');
+  src: url('./Assets/fonts/Gloock/Gloock-Regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 @tailwind base;
@@ -698,20 +699,10 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
 
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Showcase atmosphere — setting the work card INTO the scene.
-
-   · .showcase-halo — the documented second exception to the Flat-Card
-     Rule (after cta-lift, and for the same reason): the card floats over
-     the animated night atmosphere, and a moonlight rim is what seats it
-     there. Square corners and the hairline border stay.
-   · .showcase-breath — a 4px bob on a 7s cycle. The one big rectangle in
-     a scene where everything else drifts must not be perfectly still.
-   · .showcase-wisp — gradient fog crossing the card's lower corners, in front of
-     it. Hybrid-ready like the cloud band: swap the background for a
-     painterly PNG later without touching the choreography.
-   · .rail-fill — the active project's progress line ends in a soft
-     twinkling star instead of a bare loading-bar edge. Inactive segments
-     have transparent accents, so their star is invisible for free.
+   .showcase-halo — the documented second exception to the Flat-Card Rule
+   (after cta-lift, and for the same reason): the work preview frame sits
+   over the animated night atmosphere, and a moonlight rim is what seats it
+   there. Square corners and the hairline border stay. Static shadow only.
    ───────────────────────────────────────────────────────────────────────── */
 
 .showcase-halo {
@@ -726,75 +717,121 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
     0 0 96px rgb(99 102 241 / 0.09);
 }
 
-.showcase-breath {
-  animation: card-breath 7s ease-in-out infinite alternate;
+/* The case-study carousel track (work-showcase.tsx). While a mouse drag
+   is in progress snapping is off, or the browser fights every pixel. */
+.carousel-track[data-dragging] {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
 }
 
-@keyframes card-breath {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(0, -4px, 0); }
+/* ─────────────────────────────────────────────────────────────────────────
+   .constellation — stars joined by lines (constellation.tsx; used by the
+   Dribbble shots in dribbble-posts.tsx).
+   Lines trace in once ([data-drawn] on the root, staggered by --d), stars
+   ignite in the same order. Hover/focus lights a star and its lines in the
+   project accent. Stroke/opacity/transform only; small elements only.
+   Night: moonlit lines + warm white stars (the work-atmosphere recipe).
+   Dawn: slate lines + slate stars with a warm-gold glow (the dock's).
+   ───────────────────────────────────────────────────────────────────────── */
+
+.constellation__line {
+  fill: none;
+  stroke: rgb(100 116 139 / 0.6);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition:
+    stroke-dashoffset 1.1s cubic-bezier(0.6, 0, 0.2, 1) var(--d, 0s),
+    stroke 0.35s ease,
+    opacity 0.35s ease;
 }
 
-/* Fog wisps crossing the card's lower corners — pre-softened gradients,
-   no blur filter (performance). */
-.showcase-wisp {
-  position: absolute;
-  pointer-events: none;
+.dark .constellation__line {
+  stroke: rgb(199 210 254 / 0.6);
+}
+
+.constellation[data-drawn] .constellation__line {
+  stroke-dashoffset: 0;
+}
+
+.constellation__line[data-state="lit"] {
+  stroke: var(--accent-light);
+  stroke-width: 1.5;
+}
+
+.dark .constellation__line[data-state="lit"] {
+  stroke: var(--accent-dark);
+}
+
+.constellation__line[data-state="dim"] {
+  opacity: 0.3;
+}
+
+.constellation__star {
+  width: 10px;
+  height: 10px;
+  margin: -5px;
+  z-index: 1;
   border-radius: 9999px;
+  background: radial-gradient(circle, #475569 0 32%, rgb(251 191 36 / 0.45) 34%, transparent 72%);
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+    opacity 0.4s ease var(--d, 0s);
 }
 
-.showcase-wisp--l {
-  left: -7%;
-  bottom: -10%;
-  width: 42%;
-  height: 30%;
-  background: radial-gradient(closest-side, rgb(255 255 255 / 0.4), rgb(255 255 255 / 0) 74%);
-  animation: cloud-drift-a 40s ease-in-out infinite alternate;
+.dark .constellation__star {
+  background: radial-gradient(circle, rgb(255 244 214) 0 32%, rgb(255 244 214 / 0.45) 34%, transparent 72%);
 }
 
-.showcase-wisp--r {
-  right: -6%;
-  bottom: -14%;
-  width: 36%;
-  height: 26%;
-  background: radial-gradient(closest-side, rgb(253 238 205 / 0.35), rgb(253 238 205 / 0) 74%);
-  animation: cloud-drift-b 52s ease-in-out infinite alternate;
-}
-
-.dark .showcase-wisp--l {
-  background: radial-gradient(closest-side, rgb(165 180 220 / 0.16), rgb(165 180 220 / 0) 74%);
-}
-
-.dark .showcase-wisp--r {
-  background: radial-gradient(closest-side, rgb(148 163 205 / 0.13), rgb(148 163 205 / 0) 74%);
-}
-
-.rail-fill {
-  color: var(--rail-light);
-}
-
-.dark .rail-fill {
-  color: var(--rail-dark);
-}
-
-.rail-fill::after {
+/* Four-point flare: two thin gradient bars, twinkling. */
+.constellation__star::before,
+.constellation__star::after {
   content: "";
   position: absolute;
-  right: 0;
+  left: 50%;
   top: 50%;
-  width: 4px;
-  height: 4px;
-  border-radius: 9999px;
-  transform: translate(50%, -50%);
-  background: currentColor;
-  box-shadow: 0 0 8px 2px currentColor;
-  animation: rail-twinkle 2.4s ease-in-out infinite;
+  width: 26px;
+  height: 1px;
+  margin: -0.5px 0 0 -13px;
+  background: linear-gradient(90deg, transparent, rgb(71 85 105 / 0.6), transparent);
+  animation: constellation-twinkle 3.6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
 }
 
-@keyframes rail-twinkle {
-  0%, 100% { opacity: 0.95; }
-  50% { opacity: 0.4; }
+.constellation__star::after {
+  transform: rotate(90deg);
 }
+
+.dark .constellation__star::before,
+.dark .constellation__star::after {
+  background: linear-gradient(90deg, transparent, rgb(255 244 214 / 0.75), transparent);
+}
+
+.constellation[data-drawn] .constellation__star {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Lit: the core takes the project accent and the star swells. The delay
+   is dropped so hover answers immediately after the first trace. */
+.constellation[data-drawn] .constellation__star[data-lit] {
+  transform: scale(1.6);
+  transition-delay: 0s;
+  background: radial-gradient(circle, var(--accent-light) 0 34%, rgb(251 191 36 / 0.4) 36%, transparent 72%);
+}
+
+.dark .constellation[data-drawn] .constellation__star[data-lit] {
+  background: radial-gradient(circle, var(--accent-dark) 0 34%, rgb(255 244 214 / 0.5) 36%, transparent 72%);
+}
+
+@keyframes constellation-twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
 
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -1947,7 +1984,7 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   .case-lock — the Audit360 password gate (components/CaseStudyLock).
+   .case-lock — the case-study password gate (components/CaseStudyLock).
 
    Each typed character ignites one star; a right password draws the lines
    between them and the cluster turns out to be a tick. Audit360's own accent
@@ -2647,4 +2684,140 @@ html:not([data-veil]) .site-loader:not(.site-loader--leaving) {
 
 .pg-range:focus-visible::-webkit-slider-thumb {
   box-shadow: 0 0 0 4px rgb(217 119 6 / 0.3);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .work-card — the home page case-study grid (work-showcase.tsx).
+
+   Flat at rest: hairline border plus the drawn corner-bracket frame
+   (DESIGN.md's Flat-Card Rule). Hover and keyboard focus are one moment,
+   "lamplight", spent in the card's own accent only (the One Hue Rule):
+   a soft accent glow rising from under the pointer (--mx/--my, set from
+   JS), brackets spreading outward, the image drifting closer, and an
+   accent hairline drawing under the title. Transform / opacity /
+   background only, never filter.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.work-card {
+  --a: var(--al);
+  --mx: 50%;
+  --my: 0%;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  transition: border-color 0.5s var(--ease-out), background-color 0.5s var(--ease-out);
+}
+
+.dark .work-card {
+  --a: var(--ad);
+}
+
+.work-card:hover,
+.work-card:focus-visible {
+  border-color: color-mix(in srgb, var(--a) 45%, transparent);
+}
+
+.work-card:focus-visible {
+  outline: 1px solid var(--a);
+  outline-offset: 6px;
+}
+
+.work-card__lamp {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    30rem circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--a) 11%, transparent),
+    transparent 65%
+  );
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.dark .work-card__lamp {
+  background: radial-gradient(
+    30rem circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--a) 14%, transparent),
+    transparent 65%
+  );
+}
+
+.work-card:hover .work-card__lamp,
+.work-card:focus-visible .work-card__lamp {
+  opacity: 1;
+}
+
+.work-card__corner {
+  position: absolute;
+  z-index: 2;
+  width: 12px;
+  height: 12px;
+  border: 0 solid rgb(15 23 42 / 0.35);
+  pointer-events: none;
+  transition: transform 0.5s var(--ease-out), border-color 0.5s var(--ease-out);
+}
+
+.dark .work-card__corner {
+  border-color: rgb(255 255 255 / 0.35);
+}
+
+.work-card__corner--tl { top: -6px; left: -6px; border-top-width: 1px; border-left-width: 1px; }
+.work-card__corner--tr { top: -6px; right: -6px; border-top-width: 1px; border-right-width: 1px; }
+.work-card__corner--bl { bottom: -6px; left: -6px; border-bottom-width: 1px; border-left-width: 1px; }
+.work-card__corner--br { bottom: -6px; right: -6px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.work-card:hover .work-card__corner,
+.work-card:focus-visible .work-card__corner {
+  border-color: var(--a);
+}
+
+.work-card:hover .work-card__corner--tl,
+.work-card:focus-visible .work-card__corner--tl { transform: translate(-4px, -4px); }
+.work-card:hover .work-card__corner--tr,
+.work-card:focus-visible .work-card__corner--tr { transform: translate(4px, -4px); }
+.work-card:hover .work-card__corner--bl,
+.work-card:focus-visible .work-card__corner--bl { transform: translate(-4px, 4px); }
+.work-card:hover .work-card__corner--br,
+.work-card:focus-visible .work-card__corner--br { transform: translate(4px, 4px); }
+
+.work-card__image {
+  transition: transform 1.2s var(--ease-out);
+}
+
+.work-card:hover .work-card__image,
+.work-card:focus-visible .work-card__image {
+  transform: scale(1.045);
+}
+
+.work-card__title {
+  padding-bottom: 2px;
+  background-image: linear-gradient(var(--a), var(--a));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.7s var(--ease-out);
+}
+
+.work-card:hover .work-card__title,
+.work-card:focus-visible .work-card__title {
+  background-size: 100% 1px;
+}
+
+.work-card__arrow {
+  transition: transform 0.4s var(--ease-out);
+}
+
+.work-card:hover .work-card__arrow,
+.work-card:focus-visible .work-card__arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card:hover .work-card__image,
+  .work-card:focus-visible .work-card__image,
+  .work-card:hover .work-card__corner,
+  .work-card:focus-visible .work-card__corner {
+    transform: none;
+  }
 }

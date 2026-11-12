@@ -90,7 +90,9 @@ const HeroSection = () => {
             </div>
 
 
-            <div className="ui-section mx-4 md:mx-12 lg:mx-40 pt-16 md:pt-24">
+            {/* lg:mx-[10vw] = the same 80vw column as the case studies — the
+                shot constellation needs the width to scatter. */}
+            <div className="ui-section mx-4 md:mx-12 lg:mx-[10vw] pt-16 md:pt-24">
 
 
                 <div className="flex flex-col gap-y-6 lg:gap-y-12 items-center">
